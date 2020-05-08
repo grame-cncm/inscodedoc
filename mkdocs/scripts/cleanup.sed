@@ -1,0 +1,17 @@
+# remove comments
+s/^}[ \t]*$/__removed__/
+s/.*\\begin{.*$/__removed__/
+s/.*\\end{.*$/__removed__/
+s/\\index{[^}*}]/__removed__/
+
+s/\\label{\([^}]*\)}/<a name="\1"><\/a>/g
+s/.*\\caption{.*$/__removed__/
+s/.*\\includegraphics.*$/__removed__/
+
+s/.*\\hline.*$/__removed__/
+
+s/\\sample{//g
+s/\\railalias.*$//g
+
+############## remove comments
+s/%.*//

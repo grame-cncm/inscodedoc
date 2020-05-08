@@ -1,0 +1,55 @@
+site_name: INScore Documentation
+site_description: INScore documentation.
+copyright: <a href="https://inscore.grame.fr">INscore projects</a> Copyright &copy; 2019-2020 <a href="http://www.grame.fr">Grame-CNCM</a>
+nav:
+    - Home: index.md
+    - Reference:
+        - 'Format of a message' : refs/1-genformat.md
+        - 'Common Messages' : refs/2-common.md
+        - 'Time Messages' : refs/3-time.md
+        - 'Miscellaneous' : refs/4-miscmsgs.md
+        - 'The set Message' : refs/5-setsect.md
+        - 'The get Message' : refs/6-getsect.md
+        - 'Specific Messages' : refs/7-specificMsg.md
+        - 'Application Messages' : refs/8-ITL.md
+        - 'Scene Messages' : refs/9-scene.md
+        - 'Messages Forwarding' : refs/10-forwarding.md
+        - 'Layers' : refs/11-layers.md
+        - 'Mapping' : refs/12-mapping.md
+        - 'Synchronization' : refs/13-syncmsg.md
+        - 'Graphic signals' : refs/14-graphsig.md
+        - 'Interaction' : refs/15-interaction.md
+        - 'Scripting' : refs/16-scripting.md
+        - 'Plugins' : refs/17-plugins.md
+        - 'Grammar definitions' : refs/18-yacc.md
+        - 'Changes list' : refs/19-changes.md
+        - 'Index' : refs/index.md
+    - About: about.md
+
+#theme: readthedocs
+
+site_dir: ../docs
+
+extra:
+    social:
+        - type: github
+          link: https://github.com/grame-cncm/inscore
+        - type: home
+          link: https://inscore.grame.fr
+        - type: envelope
+          link: mailto:fober@grame.fr
+
+plugins:
+    - search
+
+extra_css:
+    - '/css/inscore.css'
+    - '/BNF/railroad-diagrams/railroad-diagrams.css'
+
+extra_javascript:
+  - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML
+
+markdown_extensions:
+    - mdx_math
+    - markdown_include.include:
+        base_path: './docs'

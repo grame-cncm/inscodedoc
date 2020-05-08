@@ -1,0 +1,91 @@
+
+h1 {
+    color: #444;
+    font-weight: 400;
+    font-size: 42px;
+}
+
+hr {
+    border-top: 1px solid #aaa;
+}
+
+pre, .rst-content tt {
+	margin-left: 20px;
+    max-width: 100%;
+    background: #fff;
+    padding: 3px;
+    border: solid 1px darkgrey;
+    color: #333;
+    overflow-x: auto;
+}
+
+h2 {
+    color: #444;
+    font-weight: 300;
+    background: rgb(54, 171, 232);
+    padding: 5px 5px 5px 15px;
+}
+
+.example {
+	color: white;
+	font-size: 120;
+    background: #36ABE8;
+    padding: 5px;
+    border-radius: 4px;
+}
+
+.railtitle {
+	font-style: italic;
+}
+
+.rail {
+	margin-left: 20px;
+	margin-bottom: 20px;
+}
+
+.note {
+	color: black;
+	font-size: 100%;
+    background: #eec;
+	padding: 1px 5px 1px 5px;
+	margin-right: 10px;
+    border-radius: 4px;
+	/* font-weight: bold; */
+}
+
+.terminal {
+	color: black;
+	border: 1px solid grey;
+	padding: 2px ;
+}
+
+.warning {
+	color: red;
+	font-size: 120;
+    background: rgb(214, 203, 203);
+    padding: 5px;
+    border-radius: 4px;
+}
+
+.values {
+	color: blue;
+	font-family: monospace;
+}
+
+.seealso {
+	color: rgb(35, 22, 97);
+	font-weight: bold;
+}
+
+.try_it {
+	border: 1px solid #666666;
+	border-radius: 5px;
+	background-color: #4CAF50;
+	color: white;
+	padding-left: 12px;
+	padding-right: 12px;
+	padding-top: 4px;
+	padding-bottom: 4px;
+}
+
+.try_it:focus 	{ outline: none; }

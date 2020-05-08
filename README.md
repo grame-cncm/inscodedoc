@@ -1,2 +1,2 @@
-# inscodedoc
+# INScore Project
 INScore Environment Documentation

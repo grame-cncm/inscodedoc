@@ -1,0 +1,2 @@
+# inscodedoc
+INScore Environment Documentation

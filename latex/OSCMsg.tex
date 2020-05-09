@@ -2316,7 +2316,8 @@ A layer may be synchronized to other objects, including other layers. It include
 Creating a layer and its content:
 \sample{/ITL/scene/layer1 set layer;\\
 /ITL/scene/layer1/score set gmnf 'myscore.gmn';\\
-/ITL/scene/layer1/cursor set rect 0.01 0.1;}
+/ITL/scene/layer1/cursor set rect 0.01 0.1;
+}
 
 Synchronizing 2 components of a layer :
 \sample{\icomment'score' and 'cursor' must be enclosed in layer1 \\
@@ -2336,68 +2337,6 @@ Making a layer visible :
 The idea of layer is generalized to all the type of objects: any INScore object can be a container without depth limitation. 
 
 Layers but also any object respond to the \OSC{count} and \OSC{rcount} queries described in section \fullref{scenequery}.
-
-
-
-%-------------------------------
-%\sublevel{Video maps}
-%
-%Messages accepted by \OSC{video} components.
-%\begin{rail}
-%specificMsg : 	 'videoMap' ( 
-%								( floatSegment relativeTimeSegment ) + 
-%							| 	( ( 'tempo' float32 | ) ( 'startSecond' float32 | )  )
-%							)
-%				| 'videoMapf' string
-%\end{rail}
-
-
-
-%\begin{rail}
-%specificMsg : 	  [5] 'curveType' curveType
-%				| [5] 'thickness' thickness
-%				| [5] 'drawLine' drawLine
-%				| [5] 'ignoreSignalColor' int32
-%				| [5] 'penIgnoreSignalColor' int32
-%\end{rail}
-
-
-%\begin{rail}
-%curveType : 'round' | 'step'
-%\end{rail}
-%
-%\begin{rail}
-%thickness : 'centered' | 'up' | 'down'
-%\end{rail}
-%
-%\begin{rail}
-%drawLine : 'top' | 'bottom' | 'both'
-%\end{rail}
-
-%\index{Specific messages! ignoreSignalColor}
-%\index{Specific messages! penIgnoreSignalColor}
-%\index{Specific messages! curveType! round}
-%\index{Specific messages! curveType! step}
-%\index{Specific messages! thickness! centered}
-%\index{Specific messages! thickness! up}
-%\index{Specific messages! thickness! down}
-%\index{Specific messages! drawLine! top}
-%\index{Specific messages! drawLine! bottom}
-%\index{Specific messages! drawLine! both}
-
-%Graph specific messages:
-%\begin{itemize}
-%\item \OSC{curveType}: defines if the graph's shape should be smooth (\OSC{round}) or with steps, like in an histogram (\OSC{step}). Default: \OSC{round}.
-%\item \OSC{thickness}: defines if the thickness of the graph's shape, starting from the 'y' value, should go \OSC{up}, \OSC{down}, or sould be \OSC{centered}. Default: \OSC{centered}.
-%\item \OSC{drawLine}: defines if the top and bottom bounds of the graph's shape should be outlined using the graph's \OSC{penStyle} and \OSC{penWidth}. Note that if you don't want any outlining, just set the \OSC{penWidth} to 0. Default: \OSC{both}.
-%\item \OSC{ignoreSignalColor}: If set, the color signal of the graph signal will be ignored, and the object's \OSC{color} will be used instead to fill the graph's shape. Default: 0.
-%\item \OSC{penIgnoreSignalColor}: Same as \OSC{ignoreSignalColor}, but for the outlining of the graph's shape (use/don't use the \OSC{penColor}). Default: 0.
-%\end{itemize}
-
-%The \OSC{videoMap} specifies the relative time mapping of the \OSC{video}: it maps chronometric time segments (\OSC{floatSegment}) of the video, expressed in seconds, to relative time segments, so that it's possible to navigate through the video using its \OSC{date}.\\
-%The \OSC{videoMap} can also be expressed by a \OSC{tempo} and a \OSC{startSecond}, thus defining an affine relation between relative time and chronometric time.\\
-%When no \OSC{videoMap} has been specified, \OSC{video} components use a default \OSC{tempo=60.0} and a default \OSC{startSecond=0.0}.
-%The \OSC{videoMapf} message is similar to the \OSC{videoMap} message but expects the path name of a file containing the mapping data.
 
 %===============================
 %:Mapping graphic space to time space

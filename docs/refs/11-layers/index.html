@@ -166,9 +166,7 @@
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
         <li class="main active"><a href="#layers">Layers</a></li>
-        <li class="main "><a href="#score-and-cursor-must-be-enclosed-in-layer1">'score' and 'cursor' must be enclosed in layer1</a></li>
             <li><a href="#layers-generalization">Layers generalization</a></li>
-            <li><a href="#video-maps">Video maps</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
@@ -185,26 +183,23 @@
 Creating a layer and its content:</p>
 <pre><code>/ITL/scene/layer1 set layer;
 /ITL/scene/layer1/score set gmnf 'myscore.gmn';
-/ITL/scene/layer1/cursor set rect 0.01 0.1;}
-
-Synchronizing 2 components of a layer :
+/ITL/scene/layer1/cursor set rect 0.01 0.1;
 </code></pre>
 
-<h1 id="score-and-cursor-must-be-enclosed-in-layer1">'score' and 'cursor' must be enclosed in layer1</h1>
-<p>/ITL/scene/layer1/sync cursor score; </p>
-<pre><code>
-
-Making a layer visible :
+<p>Synchronizing 2 components of a layer :</p>
+<pre><code>#'score' and 'cursor' must be enclosed in layer1 
+/ITL/scene/layer1/sync cursor score; 
 </code></pre>
 
-<p>/ITL/scene/layer1 brushStyle solid; 
+<p>Making a layer visible :</p>
+<pre><code>/ITL/scene/layer1 brushStyle solid; 
 /ITL/scene/layer1 color 120 120 120; 
-~~~~~~~</p>
+</code></pre>
+
 <h2 id="layers-generalization">Layers generalization</h2>
 <p><a name="layersgen"></a></p>
 <p>The idea of layer is generalized to all the type of objects: any INScore object can be a container without depth limitation. </p>
-<p>Layers but also any object respond to the <span class="OSC">count</span> and <span class="OSC">rcount</span> queries described in section <a href="../9-scene#scenequery">scenequery</a>.</p>
-<h2 id="video-maps">Video maps</h2></div>
+<p>Layers but also any object respond to the <span class="OSC">count</span> and <span class="OSC">rcount</span> queries described in section <a href="../9-scene#scenequery">scenequery</a>.</p></div>
         </div>
 
         <footer class="col-md-12">

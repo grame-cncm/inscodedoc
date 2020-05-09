@@ -3,6 +3,8 @@ site_description: INScore documentation.
 copyright: <a href="https://inscore.grame.fr">INscore projects</a> Copyright &copy; 2019-2020 <a href="http://www.grame.fr">Grame-CNCM</a>
 nav:
     - Home: index.md
+    - Tutorials:
+        - 'Introduction' : http://berio.grame.fr/MusicNotation/Introduction-to-INScore/
     - Reference:
         - 'Format of a message' : refs/1-genformat.md
         - 'Common Messages' : refs/2-common.md
@@ -24,6 +26,8 @@ nav:
         - 'Grammar definitions' : refs/18-yacc.md
         - 'Changes list' : refs/19-changes.md
         - 'Index' : refs/index.md
+    - Download:
+        - 'Pdf documentation' : rsrc/INScoreLang.pdf
     - About: about.md
 
 #theme: readthedocs

@@ -26,6 +26,21 @@ h2 {
 	padding: 2px 5px 5px 15px;
 	margin-top: 25px;
 }
+ 
+
+.col-md-9 img {
+	display: block;
+	margin-right: auto;
+	margin-left: auto;
+	margin-bottom: 0px;
+} 
+
+.col-md-9 .ilogo {
+	display: block;
+	float: right;
+	width: 100px;
+	border-style: none;
+}
 
 .example {
 	color: white;
@@ -33,6 +48,15 @@ h2 {
     background: #36ABE8;
     padding: 5px;
     border-radius: 4px;
+}
+
+.caption {
+	display: block;
+	color: darkblue;
+	font-style: italic;
+	text-align: center;
+    /* background: #36ABE8; */
+	padding: 0px 0px 20px 40px;
 }
 
 .indexitem {

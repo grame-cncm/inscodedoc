@@ -44,7 +44,7 @@ plugins:
 
 extra_css:
     - '/css/inscore.css'
-    - '/BNF/railroad-diagrams/railroad-diagrams.css'
+    - '/BNF/railroad-diagrams.css'
 
 extra_javascript:
   - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML

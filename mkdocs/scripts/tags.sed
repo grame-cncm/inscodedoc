@@ -1,9 +1,19 @@
 
+############## sections and subsections
+s/\\toplevel{\([^}]*\)}/# \1/
+s/\\sublevel{\([^}]*\)}/## \1/
+s/\\subsublevel{\([^}]*\)}/### \1/
+
 ############## unescape latex special characters
 s/\\%/%/g
 s/\\\$/$/g
 s/\\_/_/g
 s/\\~{}/\~/g
+
+############## handle verbatim sections
+s/\\begin{verbatim}/\
+~~~~~~~~~~~/
+s/\\end{verbatim}/~~~~~~~~~~~/
 
 ############## handle itemize sections
 s/\\begin{itemize}//

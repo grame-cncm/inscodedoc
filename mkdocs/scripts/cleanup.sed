@@ -3,6 +3,8 @@ s/^}[ \t]*$/__removed__/
 s/.*\\begin{.*$/__removed__/
 s/.*\\end{.*$/__removed__/
 s/\\index{[^}*}]/__removed__/
+s/\\input.*/__removed__/
+s/\\printindex/__removed__/
 
 s/\\label{\([^}]*\)}/<a name="\1"><\/a>/g
 s/.*\\caption{.*$/__removed__/
@@ -15,3 +17,4 @@ s/\\railalias.*$//g
 
 ############## remove comments
 s/%.*//
+

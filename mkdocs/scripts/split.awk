@@ -1,6 +1,21 @@
 
+function basename(file) {
+    gsub(/\..*/, "", file);
+    return file;
+}
+
 function getTagContent(str) {
 	gsub(/}.*/ ,"",str);
+	return str;
+}
+
+function getsection(str) {
+	gsub(/!.*/ ,"",str);
+	return str;
+}
+
+function gettag(str) {
+	gsub(/[^!]*!/ ,"",str);
 	return str;
 }
 
@@ -19,8 +34,10 @@ BEGIN {
 	SECTION = "";
 	FILE    = "";
 	INDEX   = "index.md";
+	SED     = "index.sed";
 	FS      = "{";
 	print > INDEX;
+	print > SED;
 	N       = 1;
 }
 
@@ -72,7 +89,14 @@ END {
 }
 
 /\\index/ {
-	if (PRINT) print getTagContent($2) >> INDEX;
+	if (PRINT) {
+		ref = getTagContent($2);
+		section = getsection(ref);
+		tag = gettag(ref);
+		mdfile =  basename(FILE);
+		print section ": <a class=\"indexitem\" href=\"" mdfile "#" mdfile "-" tag "\">" tag "<\/a> " >> INDEX;
+		print "s/\\" $0 "/<a name=\"" mdfile "-" tag "\"><\\/a>/" >> SED;
+	}
 }
 
 

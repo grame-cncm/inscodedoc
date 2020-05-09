@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Specific Messages - INScore Documentation</title>
+        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+        <link href="/css/inscore.css" rel="stylesheet">
+        <link href="/BNF/railroad-diagrams.css" rel="stylesheet">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../js/bootstrap-3.0.3.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+
+                <!-- Collapsed navigation -->
+                <div class="navbar-header">
+                    <!-- Expander button -->
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="../..">INScore Documentation</a>
+                </div>
+
+                <!-- Expanded navigation -->
+                <div class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li >
+                                <a href="../..">Home</a>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Reference <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li >
+    <a href="../1-genformat/">Format of a message</a>
+</li>
+                                    
+<li >
+    <a href="../2-common/">Common Messages</a>
+</li>
+                                    
+<li >
+    <a href="../3-time/">Time Messages</a>
+</li>
+                                    
+<li >
+    <a href="../4-miscmsgs/">Miscellaneous</a>
+</li>
+                                    
+<li >
+    <a href="../5-setsect/">The set Message</a>
+</li>
+                                    
+<li >
+    <a href="../6-getsect/">The get Message</a>
+</li>
+                                    
+<li class="active">
+    <a href="./">Specific Messages</a>
+</li>
+                                    
+<li >
+    <a href="../8-ITL/">Application Messages</a>
+</li>
+                                    
+<li >
+    <a href="../9-scene/">Scene Messages</a>
+</li>
+                                    
+<li >
+    <a href="../10-forwarding/">Messages Forwarding</a>
+</li>
+                                    
+<li >
+    <a href="../11-layers/">Layers</a>
+</li>
+                                    
+<li >
+    <a href="../12-mapping/">Mapping</a>
+</li>
+                                    
+<li >
+    <a href="../13-syncmsg/">Synchronization</a>
+</li>
+                                    
+<li >
+    <a href="../14-graphsig/">Graphic signals</a>
+</li>
+                                    
+<li >
+    <a href="../15-interaction/">Interaction</a>
+</li>
+                                    
+<li >
+    <a href="../16-scripting/">Scripting</a>
+</li>
+                                    
+<li >
+    <a href="../17-plugins/">Plugins</a>
+</li>
+                                    
+<li >
+    <a href="../18-yacc/">Grammar definitions</a>
+</li>
+                                    
+<li >
+    <a href="../19-changes/">Changes list</a>
+</li>
+                                    
+<li >
+    <a href="../">Index</a>
+</li>
+                                </ul>
+                            </li>
+                            <li >
+                                <a href="../../about/">About</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li >
+                                <a rel="next" href="../6-getsect/">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li >
+                                <a rel="prev" href="../8-ITL/">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#type-specific-messages">Type specific messages</a></li>
+            <li><a href="#brush-control">Brush control</a></li>
+            <li><a href="#width-and-height-control">Width and height control</a></li>
+            <li><a href="#symbolic-score">Symbolic score</a></li>
+            <li><a href="#piano-roll">Piano roll</a></li>
+            <li><a href="#video">Video</a></li>
+            <li><a href="#svg-objects">SVG Objects</a></li>
+            <li><a href="#rectangles">Rectangles</a></li>
+            <li><a href="#arcs">Arcs</a></li>
+            <li><a href="#the-grid-object">The 'grid' object</a></li>
+            <li><a href="#arrows">Arrows</a></li>
+            <li><a href="#textual-objects">Textual objects</a></li>
+            <li><a href="#the-debug-nodes">The 'debug' nodes</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<script src='/BNF/railroad-diagrams.js'></script>
+
+<h1 id="type-specific-messages">Type specific messages</h1>
+<p><a name="specificMsg"></a></p>
+<p>Some of the messages are accepted only by specific components.</p>
+<h2 id="brush-control">Brush control</h2>
+<p><a name="brush"></a></p>
+<p><a name="brushstyle"></a>
+<img alt="brushstyle" src="../imgs/brush.png" />  <br />
+<span class='caption'>Brush styles</span></p>
+<p>Specific brush messages accepted by the following components: <span class="OSC">rect | ellipse | polygon | curve |  layer</span>.</p>
+<p><a name="7-specificMsg- brushStyle"></a>
+<a name="7-specificMsg- solid"></a>
+<a name="7-specificMsg- dense"></a>
+<a name="7-specificMsg- dense2"></a>
+<a name="7-specificMsg- dense3"></a>
+<a name="7-specificMsg- dense4"></a>
+<a name="7-specificMsg- dense5"></a>
+<a name="7-specificMsg- dense6"></a>
+<a name="7-specificMsg- dense7"></a>
+<a name="7-specificMsg- none"></a>
+<a name="7-specificMsg- hor"></a>
+<a name="7-specificMsg- ver"></a>
+<a name="7-specificMsg- cross"></a>
+<a name="7-specificMsg- bdiag"></a>
+<a name="7-specificMsg- fdiag"></a>
+<a name="7-specificMsg- diagCross"></a>
+<a name="7-specificMsg- linearCross"></a></p>
+<div class="rail">
+<span class="railtitle">brushMsg</span>
+<br /><script>
+ComplexDiagram(
+    Sequence ('brushStyle', Choice (0, 'solid', 'dense1', 'dense2', 'dense3', 'dense4', 'dense5', 'dense6', 'dense7', 'none', 'hor', 'ver', 'cross', 'bdiag', 'fdiag', 'diagCross'))
+).addTo()
+
+</script>
+</div>
+
+<ul>
+<li><span class="OSC">brushStyle</span> controls the brush style (see figure <a href="../7-specificMsg#brushstyle">brushstyle</a>).</li>
+</ul>
+<p>The brush style default value is <span class="OSC">solid</span>.
+For the <span class="OSC">layer</span> object, the brush style default value is <span class="OSC">none</span>.</p>
+<p><span class="example">Example</span> 
+Setting a rectangle style :</p>
+<pre><code>/ITL/scene/rect set rect 0.5 0.5 ;
+/ITL/scene/rect brushStyle dense4; 
+</code></pre>
+
+<h2 id="width-and-height-control">Width and height control</h2>
+<p><a name="whcontrol"></a></p>
+<p><span class="OSC">width</span> and <span class="OSC">height</span> messages are accepted by the following components: <span class="OSC">rect | ellipse | arc | graph | fastgraph | grid | pianoroll | pianorollf</span>.</p>
+<p><a name="7-specificMsg- width"></a>
+<a name="7-specificMsg- height"></a></p>
+<div class="rail">
+<span class="railtitle">widthMsg</span>
+<br /><script>
+ComplexDiagram(
+    Choice (0, Sequence ('width', NonTerminal('float32')), Sequence ('height', NonTerminal('float32')))
+).addTo()
+
+</script>
+</div>
+
+<p><span class="note">Note:</span> 
+Querying the <span class="OSC">width</span> and <span class="OSC">height</span> of any object is always supported, provided that the object has been graphically rendered.</p>
+<h2 id="symbolic-score">Symbolic score</h2>
+<p><a name="gmnpage"></a></p>
+<p>The following messages are accepted by the components types <span class="OSC">gmn | gmnstream | gmnf</span>. </p>
+<p><a name="7-specificMsg- page"></a>
+<a name="7-specificMsg- dpage"></a>
+<a name="7-specificMsg- pageFormat"></a>
+<a name="7-specificMsg- columns"></a>
+<a name="7-specificMsg- rows"></a>
+<a name="7-specificMsg- pageCount"></a>
+<a name="7-specificMsg- systemCount"></a></p>
+<div class="rail">
+<span class="railtitle">scoreMsg</span>
+<br /><script>
+ComplexDiagram(
+    Choice (0, Sequence ('page', NonTerminal('int32')), Sequence ('dpage', NonTerminal('int32')), Sequence ('pageFormat', NonTerminal('float32'), NonTerminal('float32')), Sequence ('columns', NonTerminal('int32')), Sequence ('rows', NonTerminal('int32')), Sequence ('get', Choice (0, 'pageCount', 'systemCount')))
+).addTo()
+
+</script>
+</div>
+
+<ul>
+<li><span class="OSC">page</span>: set the score current page</li>
+<li><span class="OSC">dpage</span>: moves the score current page</li>
+<li><span class="OSC">pageFormat</span>: set the page format. The parameters are the page width and height. Note that the message has no effect when the score already includes a \pageformat tag.</li>
+<li><span class="OSC">columns</span>: for multi pages display: set the number of columns.</li>
+<li><span class="OSC">rows</span>: for multi pages display: set the number of rows.</li>
+<li><span class="OSC">pageCount</span>:  a read only attribute, gives the score pages count.</li>
+<li><span class="OSC">systemCount</span>:  a read only attribute, gives the number of systems on each of the score pages. The result is given as a list systems count ordered by page number (index 0 is page 1, etc.).</li>
+</ul>
+<p><span class="example">Example</span> 
+Displaying a multi-pages score on two pages starting at page 3:</p>
+<pre><code>/ITL/scene/myScore columns 2 ;
+/ITL/scene/myScore page 3 ;
+</code></pre>
+
+<p><a name="7-specificMsg- write"></a>
+<a name="7-specificMsg- clear"></a></p>
+<div class="rail">
+<span class="railtitle">gmnstreamMsg</span>
+<br /><script>
+ComplexDiagram(
+    Choice (0, Sequence ('write', NonTerminal('gmnCode')), 'clear')
+).addTo()
+
+</script>
+</div>
+
+<ul>
+<li><span class="OSC">write</span>: add the gmn code to the current gmn stream</li>
+<li><span class="OSC">clear</span>: reinitialize the stream</li>
+</ul>
+<p><span class="example">Example</span> 
+Writing a score in 3 steps:</p>
+<pre><code>/ITL/scene/myScore set gmnstream &quot;[ c&quot;; 
+/ITL/scene/myScore write &quot; d e&quot;;
+/ITL/scene/myScore write &quot; f]&quot;;
+</code></pre>
+
+<h2 id="piano-roll">Piano roll</h2>
+<p><a name="pianoroll"></a></p>
+<p>The following messages are accepted by the components types <span class="OSC">pianoroll | pianorollstream | pianorollf</span>.</p>
+<p><a name="7-specificMsg- keyboard"></a>
+<a name="7-specificMsg- autoVoicesColoration"></a>
+<a name="7-specificMsg- measureBars"></a>
+<a name="7-specificMsg- voiceColor"></a>
+<a name="7-specificMsg- pitchLines"></a>
+<a name="7-specificMsg- clipTime"></a>
+<a name="7-specificMsg- clipPitch"></a></p>
+<div class="rail">
+<span class="railtitle">pianorollMsg</span>
+<br /><script>
+ComplexDiagram(
+    Choice (0, Sequence ('keyboard', NonTerminal('int32')), Sequence ('autoVoicesColoration', NonTerminal('int32')), Sequence ('measureBars', NonTerminal('int32')), Sequence ('voiceColor', Optional (Sequence (NonTerminal('int32'), Optional (NonTerminal('color')) )) ), Sequence ('pitchLines', Optional ('Notes') ), Sequence ('clipTime', Optional (Sequence (NonTerminal('time'), NonTerminal('time'))) ), Sequence ('clipPitch', Optional (Sequence (NonTerminal('int32'), NonTerminal('int32'))) ))
+).addTo()
+
+</script>
+</div>
+
+<ul>
+<li><span class="OSC">keyboard</span>: display the keyboard on left of piano roll. Default value to 0.</li>
+<li><span class="OSC">autoVoicesColoration</span>: enable voices automatic coloration. If voiceColor is used for a voice, automatic voices coloration do nothing for it. Default value to 0.</li>
+<li><span class="OSC">measureBars</span>: Display measure bars on piano roll. Default value to 0.</li>
+<li><span class="OSC">voiceColor</span>: set a color to a voice. The parameters are voice number (start to 1), and RGBA color (See section <a href="../2-common#colormsg">colormsg</a>). If not color is present, voice color is reset to default color. If voice number and color are not present, reset all voices to default color.</li>
+<li><span class="OSC">pitchLines</span>:  Display pitch lines on pianoroll. Parameters are a note list in english notation (A A# B ...) with case insensitive. Default to all lines. An '<span class="OSC">empty</span>' note (i.e. the litteral '<span class="OSC">empty</span>' string)  can be used to not display any line.</li>
+<li><span class="OSC">clipTime</span>: set time limits for piano roll (See section <a href="../3-time#time">time</a> to set a time). The two times have to be wrote in the same format. If no time is present, time limits are reset to default.</li>
+<li><span class="OSC">clipPitch</span>:  Set pitch limits to piano roll. The pitch is in midi format. If no value is present, pitch limits are reset to default.</li>
+</ul>
+<p><span class="example">Example</span> 
+Set a color on voice 2 with transparency and display C and F pitch lines: </p>
+<pre><code>/ITL/scene/myPianoroll voiceColor 2 154 234 45 100;
+/ITL/scene/myPianoroll pitchLines 'C' 'F';
+</code></pre>
+
+<p>Removes the pitch lines: </p>
+<pre><code>/ITL/scene/myPianoroll pitchLines empty;
+</code></pre>
+
+<p>Piano roll streams support the same messages than Guido streams:</p>
+<p><a name="7-specificMsg- write"></a>
+<a name="7-specificMsg- clear"></a></p>
+<div class="rail">
+<span class="railtitle">pianorollstreamMsg</span>
+<br /><script>
+ComplexDiagram(
+    Choice (0, Sequence ('write', NonTerminal('gmnCode')), 'clear')
+).addTo()
+
+</script>
+</div>
+
+<ul>
+<li><span class="OSC">write</span>: add the gmn code to the current gmn stream</li>
+<li><span class="OSC">clear</span>: reinitialize the stream</li>
+</ul>
+<p><span class="example">Example</span> 
+Writing a pianoroll in 3 steps:</p>
+<pre><code>/ITL/scene/myPianoroll set pianorollstream &quot;[ c&quot;; 
+/ITL/scene/myPianoroll write &quot; d e&quot;;
+/ITL/scene/myPianoroll write &quot; f]&quot;;
+</code></pre>
+
+<h2 id="video">Video</h2>
+<p><a name="video"></a></p>
+<p>A video object has an own internal time and duration that is independant from the INScore time and duration. 
+This video time is controlled using specific messages.</p>
+<p><a name="7-specificMsg- play"></a>
+<a name="7-specificMsg- volume"></a>
+<a name="7-specificMsg- rate"></a>
+<a name="7-specificMsg- vdate"></a></p>
+<div class="rail">
+<span class="railtitle">video</span>
+<br /><script>
+ComplexDiagram(
+    Choice (0, Sequence ('play', NonTerminal('int32')), Sequence (NonTerminal('volume'), NonTerminal('float32')), Sequence (NonTerminal('rate'), NonTerminal('float32')), Sequence (NonTerminal('vdate'), Choice (0, Sequence (Comment ('1'), NonTerminal('int32')), Sequence (Comment ('2'), Sequence (NonTerminal('int32'), NonTerminal('int32'))), Sequence (Comment ('3'), NonTerminal('float')))))
+).addTo()
+
+</script>
+</div>
+
+<ul>
+<li><span class="OSC">play</span> start or stop playing the video. Default value is 0. </li>
+<li><span class="OSC">volume</span> sets the audio volume of the video. Default and maximum value is 1.</li>
+<li><span class="OSC">rate</span> sets the video playing rate. Default value is 1.</li>
+<li>
+<p><span class="OSC">vdate</span> sets the current video frame. Default value is 0. Arguments are the following:</p>
+</li>
+<li>
+<p><strong>1</strong> : a value in milliseconds. </p>
+</li>
+<li><strong>2</strong> : a musical time expressed as a rational. Note that musical time is converted to milliseconds using a tempo value of 60. </li>
+<li><strong>3</strong> : a musical time expressed as a float. </li>
+</ul>
+<p>The video position may be updated while the video is playing.</p>
+<p>A video object supports also specific queries: </p>
+<p><a name="7-specificMsg- vduration"></a></p>
+<div class="rail">
+<span class="railtitle">videoget</span>
+<br /><script>
+ComplexDiagram(
+    Choice (0, 'mls', 'vduration')
+).addTo()
+
+</script>
+</div>
+
+<ul>
+<li><span class="OSC">mls</span> gives the video absolute duration in milliseconds.</li>
+<li><span class="OSC">vduration</span> gives the video duration in musical time. The returned value is a rational computed using the current rate, according to a tempo value of 60.</li>
+</ul>
+<p>A video object supports specific events (see section <a href="../15-interaction#typespecevents">typespecevents</a> for more details). </p>
+<p><span class="example">Example</span> 
+Playing a video at half speed:</p>
+<pre><code>/ITL/scene/video set video &quot;Video.mp4&quot;; 
+/ITL/scene/video rate 0.5;
+/ITL/scene/video play 1&quot;;
+</code></pre>
+
+<p><span class="note">Note:</span> 
+Depending on the video encoding and on the platform renderer, setting the video current position using the <span class="OSC">vdate</span> message may be aligned to key frames.</p>
+<p>Supported video formats are highly dependent on the platform, as well as the video specific features (e.g. setting the playing rate that may or may not be supported, or may behave differently).  </p>
+<h2 id="svg-objects">SVG Objects</h2>
+<p><a name="svgobjects"></a></p>
+<p>The following message is accepted by the SVG components (types <span class="OSC">svg | svgf</span>).</p>
+<p><a name="7-specificMsg- animate"></a>
+<a name="7-specificMsg- animated"></a></p>
+<div class="rail">
+<span class="railtitle">svgMsg</span>
+<br /><script>
+ComplexDiagram(
+    Choice (0, Sequence ('animate', NonTerminal('int32')), Sequence (NonTerminal('get'), 'animated'))
+).addTo()
+
+</script>
+</div>
+
+<ul>
+<li><span class="OSC">animate</span>: start or stop the svg animation (provided the SVG is animated). The parameter is a boolean value (default is 0).</li>
+<li><span class="OSC">animated</span>: a <span class="OSC">get</span> parameter only: returns whether the svg is animated or not.</li>
+</ul>
+<p><span class="note">Note:</span>
+SVG objects are rendered using the Qt SVG Renderer and suffer the Qt limitations. For example and with Qt 5.5, xlinks are not supported.</p>
+<h2 id="rectangles">Rectangles</h2>
+<p><a name="rectobjects"></a></p>
+<p>Rectangles (type <span class="OSC">rect</span>) accept a <span class="OSC">radius</span> message that can be used to draw rounded rectangles.</p>
+<p><a name="7-specificMsg- radius"></a></p>
+<div class="rail">
+<span class="railtitle">radiusMsg</span>
+<br /><script>
+ComplexDiagram(
+    Sequence ('radius', NonTerminal('float32'), NonTerminal('float32'))
+).addTo()
+
+</script>
+</div>
+
+<ul>
+<li><span class="OSC">radius</span>: followed by 2 values that specify the radius on the x and y axis (default is 0 0). The values express a percentage of the object dimensions, thus the value's range is [0, 100].</li>
+</ul>
+<h2 id="arcs">Arcs</h2>
+<p><a name="arcobjects"></a></p>
+<p>Arcs are portion of ellipses.
+Although an arc is specified by it's <span class="OSC">set</span> message, it supports additional messages to control the start angles and the arc extension individually. An additional <span class="OSC">close</span> message affects the drawing of the arc.</p>
+<p><a name="7-specificMsg- start"></a>
+<a name="7-specificMsg- range"></a>
+<a name="7-specificMsg- dstart"></a>
+<a name="7-specificMsg- drange"></a>
+<a name="7-specificMsg- close"></a></p>
+<div class="rail">
+<span class="railtitle">arcMsg</span>
+<br /><script>
+ComplexDiagram(
+    Choice (0, Sequence ('start', NonTerminal('float32')), Sequence ('range', NonTerminal('float32')), Sequence ('dstart', NonTerminal('float32')), Sequence ('drange', NonTerminal('float32')), Sequence ('close', NonTerminal('int32')))
+).addTo()
+
+</script>
+</div>
+
+<ul>
+<li><span class="OSC">start</span>:  set the start angle of the arc.</li>
+<li><span class="OSC">range</span>:  set the arc extension in degrees counter-clockwise.</li>
+<li><span class="OSC">dstart</span>: move the start angle of the arc from the value given as parameter.</li>
+<li><span class="OSC">drange</span>: move the arc range from the value given as parameter.</li>
+<li><span class="OSC">close</span>:  by default, only the curve of an arc is drawn. When the <span class="OSC">close</span> attribute is set, lines from the arc borders to the center of the ellipse are also drawn. The <span class="OSC">close</span> parameter is read as a boolean value.</li>
+</ul>
+<p>Angles are in degrees and express counter-clockwise directions.</p>
+<h2 id="the-grid-object">The 'grid' object</h2>
+<p><a name="grid"></a></p>
+<p>The <span class="OSC">grid</span> object provides a pre-defined time to graphic mapping organized in columns and row. By default, it is not visible (white, transparent) but supports all the attributes of rectangles (color, pen, effects, etc.). Each element of a grid has a duration that is computed as the grid duration divided by the total number of elements ( columns x rows) and is placed in the time space from the date 0 to the end of the grid duration.</p>
+<div class="rail">
+<span class="railtitle">gridMsg</span>
+<br /><script>
+ComplexDiagram(
+    Choice (0, Sequence ('columns', NonTerminal('int32')), Sequence ('rows', NonTerminal('int32')), Sequence ('xborder', NonTerminal('float')), Sequence ('yborder', NonTerminal('float')), Sequence ('order', Choice (0, 'leftright', 'topbottom')))
+).addTo()
+
+</script>
+</div>
+
+<ul>
+<li><span class="OSC">columns</span> set the number of columns of the grid,</li>
+<li><span class="OSC">rows</span> set the number of rows of the grid,</li>
+<li><span class="OSC">xborder</span> set the horizontal spacing between the elements of the grid (default is 0.),</li>
+<li><span class="OSC">yborder</span> set the vertical spacing between the elements of the grid (default is 0.),</li>
+<li><span class="OSC">order</span> defines the time order of the elements. By default, elements are organized from left to right first and from top to bottom next (<span class="OSC">leftright</span>). The <span class="OSC">topbottom</span> parameter changes this order from top to bottom first and from left to right next.</li>
+</ul>
+<p><span class="example">Example</span> 
+Creating a 10 x 10 grid organized from top to bottom with a border:</p>
+<pre><code>/ITL/scene/grid set grid 10 10 ;
+/ITL/scene/grid xborder 3. ;
+/ITL/scene/grid yborder 3. ;
+/ITL/scene/grid order topbottom ;
+</code></pre>
+
+<h2 id="arrows">Arrows</h2>
+<p><a name="arrows"></a></p>
+<p>Specific arrows message is accepted by the component type <span class="OSC">line</span>. It add capability to draw arrow heads to the begining and the end of a line object.</p>
+<p><a name="7-specificMsg- arrows"></a></p>
+<div class="rail">
+<span class="railtitle">arrowsheadMsg</span>
+<br /><script>
+ComplexDiagram(
+    Sequence ('arrows', NonTerminal('arrowStyleBegin'), NonTerminal('arrowStyleEnd'))
+).addTo()
+
+</script>
+</div>
+
+<ul>
+<li><span class="OSC">arrowStyleBegin</span> Set the arrow head of the begining of the line.</li>
+<li><span class="OSC">arrowStyleEnd</span> Set the arrow head of the end of the line.</li>
+</ul>
+<div class="rail">
+<span class="railtitle">arrowStyle</span>
+<br /><script>
+ComplexDiagram(
+    Choice (0, 'none', 'triangle', 'diamond', 'disk')
+).addTo()
+
+</script>
+</div>
+
+<p>The arrow style default value is <span class="OSC">none</span>.</p>
+<h2 id="textual-objects">Textual objects</h2>
+<h3 id="font-control">Font control</h3>
+<p><a name="fontctrl"></a>
+Specific font messages are accepted by <span class="OSC">txt</span> <span class="OSC">html</span> <span class="OSC">txtf</span> and  <span class="OSC">htmlf</span> components.</p>
+<p><a name="7-specificMsg- fontSize"></a>
+<a name="7-specificMsg- fontFamily"></a>
+<a name="7-specificMsg- fontStyle"></a>
+<a name="7-specificMsg- fontWeight"></a></p>
+<div class="rail">
+<span class="railtitle">fontMsg</span>
+<br /><script>
+ComplexDiagram(
+    Choice (0, Sequence ('fontSize', NonTerminal('int32')), Sequence ('fontFamily', NonTerminal('string')), Sequence ('fontStyle', NonTerminal('style')), Sequence ('fontWeight', NonTerminal('weight')))
+).addTo()
+
+</script>
+</div>
+
+<p><a name="7-specificMsg- normal"></a>
+<a name="7-specificMsg- italic"></a>
+<a name="7-specificMsg- oblique"></a></p>
+<div class="rail">
+<span class="railtitle">fontStyle</span>
+<br /><script>
+ComplexDiagram(
+    Choice (0, 'normal', 'italic', 'oblique')
+).addTo()
+
+</script>
+</div>
+
+<p><a name="7-specificMsg- light"></a>
+<a name="7-specificMsg- demibold"></a>
+<a name="7-specificMsg- normal"></a>
+<a name="7-specificMsg- bold"></a>
+<a name="7-specificMsg- black"></a></p>
+<div class="rail">
+<span class="railtitle">fontWeight</span>
+<br /><script>
+ComplexDiagram(
+    Choice (0, 'light', 'demibold', 'normal', 'bold', 'black')
+).addTo()
+
+</script>
+</div>
+
+<ul>
+<li><span class="OSC">fontSize</span> controls the font size in pixel. The default value is 13px.</li>
+<li><span class="OSC">fontFamily</span> controls the font family. The default value is 'Arial'. If a non existing value is used, system default font is used.</li>
+<li><span class="OSC">fontStyle</span> controls the pen style. The font style default value is <span class="OSC">normal</span>.</li>
+<li><span class="OSC">weightValue</span> controls the font weight. The font weight default value is <span class="OSC">normal</span>.</li>
+</ul>
+<p><span class="example">Example</span> 
+Setting a text object with a font family Times and bold weight:</p>
+<pre><code>/ITL/scene/text set txt &quot;text sample&quot;;
+/ITL/scene/text fontFamily Times;
+/ITL/scene/text fontWeight bold;  
+</code></pre>
+
+<h3 id="writing">Writing</h3>
+<p><a name="txtwrite"></a>
+Textual objects support writing in a stream-like way.</p>
+<p><a name="7-specificMsg- write"></a></p>
+<div class="rail">
+<span class="railtitle">txtwrite</span>
+<br /><script>
+ComplexDiagram(
+    Sequence ('write', OneOrMore (NonTerminal('arg')))
+).addTo()
+
+</script>
+</div>
+
+<ul>
+<li><span class="OSC">write</span>: append the <span class="OSC">arg</span> list formatted as a string to the textual content.</li>
+</ul>
+<p><span class="example">Example</span> </p>
+<pre><code>/ITL/scene/text set txt &quot;Hello&quot;;
+/ITL/scene/text write &quot;world!&quot;;
+</code></pre>
+
+<h2 id="the-debug-nodes">The 'debug' nodes</h2>
+<p><a name="debugnode"></a></p>
+<p>Each component includes a static <span class="OSC">debug</span> nodes provided to give information about components.</p>
+<p><a name="7-specificMsg-map"></a>
+<a name="7-specificMsg-name"></a></p>
+<div class="rail">
+<span class="railtitle">debugMsg</span>
+<br /><script>
+ComplexDiagram(
+    Choice (0, Sequence ('map', NonTerminal('int32')), Sequence ('name', NonTerminal('int32')))
+).addTo()
+
+</script>
+</div>
+
+<ul>
+<li><span class="OSC">map</span> is used to display the time to graphic mapping. The parameter is a int value: 0 prevents mapping display, 1 displays only the bounding boxes and 2 displays also the dates along with the boxes. Default is 0 (no map).</li>
+<li><span class="OSC">name</span> is used to display both the object name and bounding box. The parameter is a boolean value. Default is 0.</li>
+</ul></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+                <p><a href="https://inscore.grame.fr">INscore projects</a> Copyright &copy; 2019-2020 <a href="http://www.grame.fr">Grame-CNCM</a></p>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" defer></script>
+        <script src="../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Index - INScore Documentation</title>
+        <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+        <link href="/css/inscore.css" rel="stylesheet">
+        <link href="/BNF/railroad-diagrams.css" rel="stylesheet">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../js/bootstrap-3.0.3.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+
+                <!-- Collapsed navigation -->
+                <div class="navbar-header">
+                    <!-- Expander button -->
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="..">INScore Documentation</a>
+                </div>
+
+                <!-- Expanded navigation -->
+                <div class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li >
+                                <a href="..">Home</a>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Reference <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li >
+    <a href="1-genformat/">Format of a message</a>
+</li>
+                                    
+<li >
+    <a href="2-common/">Common Messages</a>
+</li>
+                                    
+<li >
+    <a href="3-time/">Time Messages</a>
+</li>
+                                    
+<li >
+    <a href="4-miscmsgs/">Miscellaneous</a>
+</li>
+                                    
+<li >
+    <a href="5-setsect/">The set Message</a>
+</li>
+                                    
+<li >
+    <a href="6-getsect/">The get Message</a>
+</li>
+                                    
+<li >
+    <a href="7-specificMsg/">Specific Messages</a>
+</li>
+                                    
+<li >
+    <a href="8-ITL/">Application Messages</a>
+</li>
+                                    
+<li >
+    <a href="9-scene/">Scene Messages</a>
+</li>
+                                    
+<li >
+    <a href="10-forwarding/">Messages Forwarding</a>
+</li>
+                                    
+<li >
+    <a href="11-layers/">Layers</a>
+</li>
+                                    
+<li >
+    <a href="12-mapping/">Mapping</a>
+</li>
+                                    
+<li >
+    <a href="13-syncmsg/">Synchronization</a>
+</li>
+                                    
+<li >
+    <a href="14-graphsig/">Graphic signals</a>
+</li>
+                                    
+<li >
+    <a href="15-interaction/">Interaction</a>
+</li>
+                                    
+<li >
+    <a href="16-scripting/">Scripting</a>
+</li>
+                                    
+<li >
+    <a href="17-plugins/">Plugins</a>
+</li>
+                                    
+<li >
+    <a href="18-yacc/">Grammar definitions</a>
+</li>
+                                    
+<li >
+    <a href="19-changes/">Changes list</a>
+</li>
+                                    
+<li class="active">
+    <a href="./">Index</a>
+</li>
+                                </ul>
+                            </li>
+                            <li >
+                                <a href="../about/">About</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li >
+                                <a rel="next" href="19-changes/">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li >
+                                <a rel="prev" href="../about/">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#index">Index</a></li>
+            <li><a href="#common-messages">Common messages</a></li>
+            <li><a href="#effect-messages">Effect messages</a></li>
+            <li><a href="#graphic-signal">Graphic signal</a></li>
+            <li><a href="#itl-debug">ITL debug</a></li>
+            <li><a href="#itl-log">ITL log</a></li>
+            <li><a href="#itl-messages">ITL messages</a></li>
+            <li><a href="#itl-plugin">ITL plugin</a></li>
+            <li><a href="#itl-stat">ITL stat</a></li>
+            <li><a href="#interaction">Interaction</a></li>
+            <li><a href="#misc-messages">Misc messages</a></li>
+            <li><a href="#position-messages">Position messages</a></li>
+            <li><a href="#scene-messages">Scene messages</a></li>
+            <li><a href="#scene-query">Scene query</a></li>
+            <li><a href="#scripting">Scripting</a></li>
+            <li><a href="#set-type">Set type</a></li>
+            <li><a href="#specific-messages">Specific messages</a></li>
+            <li><a href="#synchronization">Synchronization</a></li>
+            <li><a href="#time-messages">Time messages</a></li>
+            <li><a href="#transform-messages">Transform messages</a></li>
+            <li><a href="#faustprocessor">faustprocessor</a></li>
+            <li><a href="#filewatcher">fileWatcher</a></li>
+            <li><a href="#gesture-events">gesture events</a></li>
+            <li><a href="#gesture-follower">gesture follower</a></li>
+            <li><a href="#gesture-variables">gesture variables</a></li>
+            <li><a href="#gesture">gesture</a></li>
+            <li><a href="#httpdmessage">httpdmessage</a></li>
+            <li><a href="#httpdserver">httpdserver</a></li>
+            <li><a href="#signal">signal</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="index">Index</h1>
+<h2 id="common-messages">Common messages</h2>
+<p><a class="indexitem" href="1-genformat#1-genformat-alias">alias</a> 
+ <a class="indexitem" href="12-mapping#12-mapping-map">map</a> 
+ <a class="indexitem" href="12-mapping#12-mapping-map+">map+</a> 
+ <a class="indexitem" href="12-mapping#12-mapping-mapf">mapf</a> 
+ <a class="indexitem" href="15-interaction#15-interaction-event">event</a> 
+ <a class="indexitem" href="2-common#2-common-alpha">alpha</a> 
+ <a class="indexitem" href="2-common#2-common-angle">angle</a> 
+ <a class="indexitem" href="2-common#2-common-blue">blue</a> 
+ <a class="indexitem" href="2-common#2-common-brightness">brightness</a> 
+ <a class="indexitem" href="2-common#2-common-color">color</a> 
+ <a class="indexitem" href="2-common#2-common-color">color</a> 
+ <a class="indexitem" href="2-common#2-common-del">del</a> 
+ <a class="indexitem" href="2-common#2-common-dx">dx</a> 
+ <a class="indexitem" href="2-common#2-common-dy">dy</a> 
+ <a class="indexitem" href="2-common#2-common-dz">dz</a> 
+ <a class="indexitem" href="2-common#2-common-edit">edit</a> 
+ <a class="indexitem" href="2-common#2-common-export">export</a> 
+ <a class="indexitem" href="2-common#2-common-exportAll">exportAll</a> 
+ <a class="indexitem" href="2-common#2-common-green">green</a> 
+ <a class="indexitem" href="2-common#2-common-hsb">hsb</a> 
+ <a class="indexitem" href="2-common#2-common-hue">hue</a> 
+ <a class="indexitem" href="2-common#2-common-lock">lock</a> 
+ <a class="indexitem" href="2-common#2-common-name">name</a> 
+ <a class="indexitem" href="2-common#2-common-red">red</a> 
+ <a class="indexitem" href="2-common#2-common-saturation">saturation</a> 
+ <a class="indexitem" href="2-common#2-common-save">save</a> 
+ <a class="indexitem" href="2-common#2-common-scale">scale</a> 
+ <a class="indexitem" href="2-common#2-common-show">show</a> 
+ <a class="indexitem" href="2-common#2-common-x">x</a> 
+ <a class="indexitem" href="2-common#2-common-y">y</a> 
+ <a class="indexitem" href="2-common#2-common-z">z</a> 
+ <a class="indexitem" href="5-setsect#5-setsect-set">set</a> 
+ <a class="indexitem" href="5-setsect#5-setsect-set">set</a> 
+ <a class="indexitem" href="6-getsect#6-getsect-get">get</a> 
+ <a class="indexitem" href="7-specificMsg#7-specificMsg-map">map</a> 
+ <a class="indexitem" href="7-specificMsg#7-specificMsg-name">name</a> </p>
+<h2 id="effect-messages">Effect messages</h2>
+<p><a class="indexitem" href="2-common#2-common-blur">blur</a> 
+ <a class="indexitem" href="2-common#2-common-colorize">colorize</a> 
+ <a class="indexitem" href="2-common#2-common-none">none</a> 
+ <a class="indexitem" href="2-common#2-common-shadow">shadow</a> </p>
+<h2 id="graphic-signal">Graphic signal</h2>
+<p><a class="indexitem" href="14-graphsig#14-graphsig- dimension"> dimension</a> 
+ <a class="indexitem" href="14-graphsig#14-graphsig-fastgraph">fastgraph</a> 
+ <a class="indexitem" href="14-graphsig#14-graphsig-graph">graph</a> 
+ <a class="indexitem" href="14-graphsig#14-graphsig-radialgraph">radialgraph</a> 
+ <a class="indexitem" href="14-graphsig#14-graphsig-set">set</a> </p>
+<h2 id="itl-debug">ITL debug</h2>
+<p><a class="indexitem" href="8-ITL#8-ITL-osc">osc</a> </p>
+<h2 id="itl-log">ITL log</h2>
+<p><a class="indexitem" href="8-ITL#8-ITL-clear">clear</a> 
+ <a class="indexitem" href="8-ITL#8-ITL-level">level</a> 
+ <a class="indexitem" href="8-ITL#8-ITL-save">save</a> 
+ <a class="indexitem" href="8-ITL#8-ITL-show">show</a> 
+ <a class="indexitem" href="8-ITL#8-ITL-wrap">wrap</a> </p>
+<h2 id="itl-messages">ITL messages</h2>
+<p><a class="indexitem" href="10-forwarding#10-forwarding-accept">accept</a> 
+ <a class="indexitem" href="10-forwarding#10-forwarding-forward">forward</a> 
+ <a class="indexitem" href="10-forwarding#10-forwarding-reject">reject</a> 
+ <a class="indexitem" href="8-ITL#8-ITL-browse">browse</a> 
+ <a class="indexitem" href="8-ITL#8-ITL-compatibility">compatibility</a> 
+ <a class="indexitem" href="8-ITL#8-ITL-defaultShow">defaultShow</a> 
+ <a class="indexitem" href="8-ITL#8-ITL-errport">errport</a> 
+ <a class="indexitem" href="8-ITL#8-ITL-guido-version">guido-version</a> 
+ <a class="indexitem" href="8-ITL#8-ITL-hello">hello</a> 
+ <a class="indexitem" href="8-ITL#8-ITL-load">load</a> 
+ <a class="indexitem" href="8-ITL#8-ITL-mouse">mouse</a> 
+ <a class="indexitem" href="8-ITL#8-ITL-musicxml-version">musicxml-version</a> 
+ <a class="indexitem" href="8-ITL#8-ITL-outport">outport</a> 
+ <a class="indexitem" href="8-ITL#8-ITL-port">port</a> 
+ <a class="indexitem" href="8-ITL#8-ITL-preprocess">preprocess</a> 
+ <a class="indexitem" href="8-ITL#8-ITL-rate">rate</a> 
+ <a class="indexitem" href="8-ITL#8-ITL-read">read</a> 
+ <a class="indexitem" href="8-ITL#8-ITL-require">require</a> 
+ <a class="indexitem" href="8-ITL#8-ITL-rootPath">rootPath</a> 
+ <a class="indexitem" href="8-ITL#8-ITL-ticks">ticks</a> 
+ <a class="indexitem" href="8-ITL#8-ITL-time">time</a> 
+ <a class="indexitem" href="8-ITL#8-ITL-version">version</a> </p>
+<h2 id="itl-plugin">ITL plugin</h2>
+<p><a class="indexitem" href="8-ITL#8-ITL-path">path</a> 
+ <a class="indexitem" href="8-ITL#8-ITL-reset">reset</a> </p>
+<h2 id="itl-stat">ITL stat</h2>
+<p><a class="indexitem" href="8-ITL#8-ITL-get">get</a> 
+ <a class="indexitem" href="8-ITL#8-ITL-reset">reset</a> </p>
+<h2 id="interaction">Interaction</h2>
+<p><a class="indexitem" href="15-interaction#15-interaction-absx">absx</a> 
+ <a class="indexitem" href="15-interaction#15-interaction-absy">absy</a> 
+ <a class="indexitem" href="15-interaction#15-interaction-address">address</a> 
+ <a class="indexitem" href="15-interaction#15-interaction-cancel">cancel</a> 
+ <a class="indexitem" href="15-interaction#15-interaction-date">date</a> 
+ <a class="indexitem" href="15-interaction#15-interaction-doubleClick">doubleClick</a> 
+ <a class="indexitem" href="15-interaction#15-interaction-durEnter">durEnter</a> 
+ <a class="indexitem" href="15-interaction#15-interaction-durLeave">durLeave</a> 
+ <a class="indexitem" href="15-interaction#15-interaction-end">end</a> 
+ <a class="indexitem" href="15-interaction#15-interaction-endPaint">endPaint</a> 
+ <a class="indexitem" href="15-interaction#15-interaction-error">error</a> 
+ <a class="indexitem" href="15-interaction#15-interaction-error">error</a> 
+ <a class="indexitem" href="15-interaction#15-interaction-event">event</a> 
+ <a class="indexitem" href="15-interaction#15-interaction-export">export</a> 
+ <a class="indexitem" href="15-interaction#15-interaction-mouseDown">mouseDown</a> 
+ <a class="indexitem" href="15-interaction#15-interaction-mouseEnter">mouseEnter</a> 
+ <a class="indexitem" href="15-interaction#15-interaction-mouseLeave">mouseLeave</a> 
+ <a class="indexitem" href="15-interaction#15-interaction-mouseMove">mouseMove</a> 
+ <a class="indexitem" href="15-interaction#15-interaction-mouseUp">mouseUp</a> 
+ <a class="indexitem" href="15-interaction#15-interaction-name">name</a> 
+ <a class="indexitem" href="15-interaction#15-interaction-newData">newData</a> 
+ <a class="indexitem" href="15-interaction#15-interaction-newElement">newElement</a> 
+ <a class="indexitem" href="15-interaction#15-interaction-pageCount">pageCount</a> 
+ <a class="indexitem" href="15-interaction#15-interaction-pop">pop</a> 
+ <a class="indexitem" href="15-interaction#15-interaction-push">push</a> 
+ <a class="indexitem" href="15-interaction#15-interaction-rdate">rdate</a> 
+ <a class="indexitem" href="15-interaction#15-interaction-ready">ready</a> 
+ <a class="indexitem" href="15-interaction#15-interaction-scene">scene</a> 
+ <a class="indexitem" href="15-interaction#15-interaction-success">success</a> 
+ <a class="indexitem" href="15-interaction#15-interaction-sx">sx</a> 
+ <a class="indexitem" href="15-interaction#15-interaction-sy">sy</a> 
+ <a class="indexitem" href="15-interaction#15-interaction-timeEnter">timeEnter</a> 
+ <a class="indexitem" href="15-interaction#15-interaction-timeLeave">timeLeave</a> 
+ <a class="indexitem" href="15-interaction#15-interaction-touchBegin">touchBegin</a> 
+ <a class="indexitem" href="15-interaction#15-interaction-touchEnd">touchEnd</a> 
+ <a class="indexitem" href="15-interaction#15-interaction-touchUpdate">touchUpdate</a> 
+ <a class="indexitem" href="15-interaction#15-interaction-watch">watch</a> 
+ <a class="indexitem" href="15-interaction#15-interaction-watch+">watch+</a> 
+ <a class="indexitem" href="15-interaction#15-interaction-x">x</a> 
+ <a class="indexitem" href="15-interaction#15-interaction-y">y</a> </p>
+<h2 id="misc-messages">Misc messages</h2>
+<p><a class="indexitem" href="4-miscmsgs#4-miscmsgs-eval">eval</a> 
+ <a class="indexitem" href="4-miscmsgs#4-miscmsgs-map">map</a> 
+ <a class="indexitem" href="4-miscmsgs#4-miscmsgs-pop">pop</a> 
+ <a class="indexitem" href="4-miscmsgs#4-miscmsgs-push">push</a> 
+ <a class="indexitem" href="4-miscmsgs#4-miscmsgs-watch">watch</a> </p>
+<h2 id="position-messages">Position messages</h2>
+<p><a class="indexitem" href="2-common#2-common-angle">angle</a> 
+ <a class="indexitem" href="2-common#2-common-dalpha">dalpha</a> 
+ <a class="indexitem" href="2-common#2-common-dangle">dangle</a> 
+ <a class="indexitem" href="2-common#2-common-dblue">dblue</a> 
+ <a class="indexitem" href="2-common#2-common-dbrightness">dbrightness</a> 
+ <a class="indexitem" href="2-common#2-common-dcolor">dcolor</a> 
+ <a class="indexitem" href="2-common#2-common-dgreen">dgreen</a> 
+ <a class="indexitem" href="2-common#2-common-dhsb">dhsb</a> 
+ <a class="indexitem" href="2-common#2-common-dhue">dhue</a> 
+ <a class="indexitem" href="2-common#2-common-dred">dred</a> 
+ <a class="indexitem" href="2-common#2-common-drotatex">drotatex</a> 
+ <a class="indexitem" href="2-common#2-common-drotatey">drotatey</a> 
+ <a class="indexitem" href="2-common#2-common-drotatez">drotatez</a> 
+ <a class="indexitem" href="2-common#2-common-dsaturation">dsaturation</a> 
+ <a class="indexitem" href="2-common#2-common-dscale">dscale</a> 
+ <a class="indexitem" href="2-common#2-common-dx">dx</a> 
+ <a class="indexitem" href="2-common#2-common-dxorigin">dxorigin</a> 
+ <a class="indexitem" href="2-common#2-common-dy">dy</a> 
+ <a class="indexitem" href="2-common#2-common-dyorigin">dyorigin</a> 
+ <a class="indexitem" href="2-common#2-common-dz">dz</a> 
+ <a class="indexitem" href="2-common#2-common-scale">scale</a> 
+ <a class="indexitem" href="2-common#2-common-x">x</a> 
+ <a class="indexitem" href="2-common#2-common-xorigin">xorigin</a> 
+ <a class="indexitem" href="2-common#2-common-y">y</a> 
+ <a class="indexitem" href="2-common#2-common-yorigin">yorigin</a> 
+ <a class="indexitem" href="2-common#2-common-z">z</a> </p>
+<h2 id="scene-messages">Scene messages</h2>
+<p><a class="indexitem" href="9-scene#9-scene-Scene messages">Scene messages</a> 
+ <a class="indexitem" href="9-scene#9-scene-absolutexy">absolutexy</a> 
+ <a class="indexitem" href="9-scene#9-scene-del">del</a> 
+ <a class="indexitem" href="9-scene#9-scene-foreground">foreground</a> 
+ <a class="indexitem" href="9-scene#9-scene-frameless">frameless</a> 
+ <a class="indexitem" href="9-scene#9-scene-fullscreen">fullscreen</a> 
+ <a class="indexitem" href="9-scene#9-scene-load">load</a> 
+ <a class="indexitem" href="9-scene#9-scene-new">new</a> 
+ <a class="indexitem" href="9-scene#9-scene-opengl">opengl</a> 
+ <a class="indexitem" href="9-scene#9-scene-preprocess">preprocess</a> 
+ <a class="indexitem" href="9-scene#9-scene-reset">reset</a> 
+ <a class="indexitem" href="9-scene#9-scene-rootPath">rootPath</a> </p>
+<h2 id="scene-query">Scene query</h2>
+<p><a class="indexitem" href="9-scene#9-scene-Scene query">Scene query</a> 
+ <a class="indexitem" href="9-scene#9-scene-count">count</a> 
+ <a class="indexitem" href="9-scene#9-scene-rcount">rcount</a> </p>
+<h2 id="scripting">Scripting</h2>
+<p><a class="indexitem" href="16-scripting#16-scripting- javascript"> javascript</a> 
+ <a class="indexitem" href="16-scripting#16-scripting- lua"> lua</a> 
+ <a class="indexitem" href="16-scripting#16-scripting- message based parameters"> message based parameters</a> 
+ <a class="indexitem" href="16-scripting#16-scripting- run"> run</a> 
+ <a class="indexitem" href="16-scripting#16-scripting- variable"> variable</a> 
+ <a class="indexitem" href="16-scripting#16-scripting-expressions">expressions</a> 
+ <a class="indexitem" href="16-scripting#16-scripting-javascript">javascript</a> 
+ <a class="indexitem" href="16-scripting#16-scripting-lua">lua</a> </p>
+<h2 id="set-type">Set type</h2>
+<p><a class="indexitem" href="5-setsect#5-setsect-arc">arc</a> 
+ <a class="indexitem" href="5-setsect#5-setsect-curve">curve</a> 
+ <a class="indexitem" href="5-setsect#5-setsect-ellipse">ellipse</a> 
+ <a class="indexitem" href="5-setsect#5-setsect-fastgraph">fastgraph</a> 
+ <a class="indexitem" href="5-setsect#5-setsect-faust">faust</a> 
+ <a class="indexitem" href="5-setsect#5-setsect-faustdsp">faustdsp</a> 
+ <a class="indexitem" href="5-setsect#5-setsect-file">file</a> 
+ <a class="indexitem" href="5-setsect#5-setsect-gmn">gmn</a> 
+ <a class="indexitem" href="5-setsect#5-setsect-gmnf">gmnf</a> 
+ <a class="indexitem" href="5-setsect#5-setsect-gmnstream">gmnstream</a> 
+ <a class="indexitem" href="5-setsect#5-setsect-graph">graph</a> 
+ <a class="indexitem" href="5-setsect#5-setsect-grid">grid</a> 
+ <a class="indexitem" href="5-setsect#5-setsect-html">html</a> 
+ <a class="indexitem" href="5-setsect#5-setsect-htmlf">htmlf</a> 
+ <a class="indexitem" href="5-setsect#5-setsect-httpd">httpd</a> 
+ <a class="indexitem" href="5-setsect#5-setsect-img">img</a> 
+ <a class="indexitem" href="5-setsect#5-setsect-layer">layer</a> 
+ <a class="indexitem" href="5-setsect#5-setsect-line">line</a> 
+ <a class="indexitem" href="5-setsect#5-setsect-memimg">memimg</a> 
+ <a class="indexitem" href="5-setsect#5-setsect-musicxml">musicxml</a> 
+ <a class="indexitem" href="5-setsect#5-setsect-musicxmlf">musicxmlf</a> 
+ <a class="indexitem" href="5-setsect#5-setsect-pianoroll">pianoroll</a> 
+ <a class="indexitem" href="5-setsect#5-setsect-pianorollf">pianorollf</a> 
+ <a class="indexitem" href="5-setsect#5-setsect-pianorollstream">pianorollstream</a> 
+ <a class="indexitem" href="5-setsect#5-setsect-polygon">polygon</a> 
+ <a class="indexitem" href="5-setsect#5-setsect-rect">rect</a> 
+ <a class="indexitem" href="5-setsect#5-setsect-svg">svg</a> 
+ <a class="indexitem" href="5-setsect#5-setsect-svgf">svgf</a> 
+ <a class="indexitem" href="5-setsect#5-setsect-txt">txt</a> 
+ <a class="indexitem" href="5-setsect#5-setsect-txtf">txtf</a> 
+ <a class="indexitem" href="5-setsect#5-setsect-url">url</a> 
+ <a class="indexitem" href="5-setsect#5-setsect-video">video</a> 
+ <a class="indexitem" href="5-setsect#5-setsect-websocket">websocket</a> </p>
+<h2 id="specific-messages">Specific messages</h2>
+<p><a class="indexitem" href="2-common#2-common- dash"> dash</a> 
+ <a class="indexitem" href="2-common#2-common- dashDot"> dashDot</a> 
+ <a class="indexitem" href="2-common#2-common- dashDotDot"> dashDotDot</a> 
+ <a class="indexitem" href="2-common#2-common- dot"> dot</a> 
+ <a class="indexitem" href="2-common#2-common- penAlpha"> penAlpha</a> 
+ <a class="indexitem" href="2-common#2-common- penColor"> penColor</a> 
+ <a class="indexitem" href="2-common#2-common- penStyle"> penStyle</a> 
+ <a class="indexitem" href="2-common#2-common- penWidth"> penWidth</a> 
+ <a class="indexitem" href="2-common#2-common- pendAlpha"> pendAlpha</a> 
+ <a class="indexitem" href="2-common#2-common- solid"> solid</a> 
+ <a class="indexitem" href="7-specificMsg#7-specificMsg- animate"> animate</a> 
+ <a class="indexitem" href="7-specificMsg#7-specificMsg- animated"> animated</a> 
+ <a class="indexitem" href="7-specificMsg#7-specificMsg- arrows"> arrows</a> 
+ <a class="indexitem" href="7-specificMsg#7-specificMsg- autoVoicesColoration"> autoVoicesColoration</a> 
+ <a class="indexitem" href="7-specificMsg#7-specificMsg- bdiag"> bdiag</a> 
+ <a class="indexitem" href="7-specificMsg#7-specificMsg- black"> black</a> 
+ <a class="indexitem" href="7-specificMsg#7-specificMsg- bold"> bold</a> 
+ <a class="indexitem" href="7-specificMsg#7-specificMsg- brushStyle"> brushStyle</a> 
+ <a class="indexitem" href="7-specificMsg#7-specificMsg- clear"> clear</a> 
+ <a class="indexitem" href="7-specificMsg#7-specificMsg- clear"> clear</a> 
+ <a class="indexitem" href="7-specificMsg#7-specificMsg- clipPitch"> clipPitch</a> 
+ <a class="indexitem" href="7-specificMsg#7-specificMsg- clipTime"> clipTime</a> 
+ <a class="indexitem" href="7-specificMsg#7-specificMsg- close"> close</a> 
+ <a class="indexitem" href="7-specificMsg#7-specificMsg- columns"> columns</a> 
+ <a class="indexitem" href="7-specificMsg#7-specificMsg- cross"> cross</a> 
+ <a class="indexitem" href="7-specificMsg#7-specificMsg- demibold"> demibold</a> 
+ <a class="indexitem" href="7-specificMsg#7-specificMsg- dense"> dense</a> 
+ <a class="indexitem" href="7-specificMsg#7-specificMsg- dense2"> dense2</a> 
+ <a class="indexitem" href="7-specificMsg#7-specificMsg- dense3"> dense3</a> 
+ <a class="indexitem" href="7-specificMsg#7-specificMsg- dense4"> dense4</a> 
+ <a class="indexitem" href="7-specificMsg#7-specificMsg- dense5"> dense5</a> 
+ <a class="indexitem" href="7-specificMsg#7-specificMsg- dense6"> dense6</a> 
+ <a class="indexitem" href="7-specificMsg#7-specificMsg- dense7"> dense7</a> 
+ <a class="indexitem" href="7-specificMsg#7-specificMsg- diagCross"> diagCross</a> 
+ <a class="indexitem" href="7-specificMsg#7-specificMsg- dpage"> dpage</a> 
+ <a class="indexitem" href="7-specificMsg#7-specificMsg- drange"> drange</a> 
+ <a class="indexitem" href="7-specificMsg#7-specificMsg- dstart"> dstart</a> 
+ <a class="indexitem" href="7-specificMsg#7-specificMsg- fdiag"> fdiag</a> 
+ <a class="indexitem" href="7-specificMsg#7-specificMsg- fontFamily"> fontFamily</a> 
+ <a class="indexitem" href="7-specificMsg#7-specificMsg- fontSize"> fontSize</a> 
+ <a class="indexitem" href="7-specificMsg#7-specificMsg- fontStyle"> fontStyle</a> 
+ <a class="indexitem" href="7-specificMsg#7-specificMsg- fontWeight"> fontWeight</a> 
+ <a class="indexitem" href="7-specificMsg#7-specificMsg- height"> height</a> 
+ <a class="indexitem" href="7-specificMsg#7-specificMsg- hor"> hor</a> 
+ <a class="indexitem" href="7-specificMsg#7-specificMsg- italic"> italic</a> 
+ <a class="indexitem" href="7-specificMsg#7-specificMsg- keyboard"> keyboard</a> 
+ <a class="indexitem" href="7-specificMsg#7-specificMsg- light"> light</a> 
+ <a class="indexitem" href="7-specificMsg#7-specificMsg- linearCross"> linearCross</a> 
+ <a class="indexitem" href="7-specificMsg#7-specificMsg- measureBars"> measureBars</a> 
+ <a class="indexitem" href="7-specificMsg#7-specificMsg- none"> none</a> 
+ <a class="indexitem" href="7-specificMsg#7-specificMsg- normal"> normal</a> 
+ <a class="indexitem" href="7-specificMsg#7-specificMsg- normal"> normal</a> 
+ <a class="indexitem" href="7-specificMsg#7-specificMsg- oblique"> oblique</a> 
+ <a class="indexitem" href="7-specificMsg#7-specificMsg- page"> page</a> 
+ <a class="indexitem" href="7-specificMsg#7-specificMsg- pageCount"> pageCount</a> 
+ <a class="indexitem" href="7-specificMsg#7-specificMsg- pageFormat"> pageFormat</a> 
+ <a class="indexitem" href="7-specificMsg#7-specificMsg- pitchLines"> pitchLines</a> 
+ <a class="indexitem" href="7-specificMsg#7-specificMsg- play"> play</a> 
+ <a class="indexitem" href="7-specificMsg#7-specificMsg- radius"> radius</a> 
+ <a class="indexitem" href="7-specificMsg#7-specificMsg- range"> range</a> 
+ <a class="indexitem" href="7-specificMsg#7-specificMsg- rate"> rate</a> 
+ <a class="indexitem" href="7-specificMsg#7-specificMsg- rows"> rows</a> 
+ <a class="indexitem" href="7-specificMsg#7-specificMsg- solid"> solid</a> 
+ <a class="indexitem" href="7-specificMsg#7-specificMsg- start"> start</a> 
+ <a class="indexitem" href="7-specificMsg#7-specificMsg- systemCount"> systemCount</a> 
+ <a class="indexitem" href="7-specificMsg#7-specificMsg- vdate"> vdate</a> 
+ <a class="indexitem" href="7-specificMsg#7-specificMsg- vduration"> vduration</a> 
+ <a class="indexitem" href="7-specificMsg#7-specificMsg- ver"> ver</a> 
+ <a class="indexitem" href="7-specificMsg#7-specificMsg- voiceColor"> voiceColor</a> 
+ <a class="indexitem" href="7-specificMsg#7-specificMsg- volume"> volume</a> 
+ <a class="indexitem" href="7-specificMsg#7-specificMsg- width"> width</a> 
+ <a class="indexitem" href="7-specificMsg#7-specificMsg- write"> write</a> 
+ <a class="indexitem" href="7-specificMsg#7-specificMsg- write"> write</a> 
+ <a class="indexitem" href="7-specificMsg#7-specificMsg- write"> write</a> </p>
+<h2 id="synchronization">Synchronization</h2>
+<p><a class="indexitem" href="12-mapping#12-mapping-Guido map">Guido map</a> 
+ <a class="indexitem" href="12-mapping#12-mapping-page">page</a> 
+ <a class="indexitem" href="12-mapping#12-mapping-staff">staff</a> 
+ <a class="indexitem" href="12-mapping#12-mapping-system">system</a> 
+ <a class="indexitem" href="12-mapping#12-mapping-systemflat">systemflat</a> 
+ <a class="indexitem" href="12-mapping#12-mapping-voice">voice</a> 
+ <a class="indexitem" href="13-syncmsg#13-syncmsg- syncIdentifier"> syncIdentifier</a> 
+ <a class="indexitem" href="13-syncmsg#13-syncmsg-Synchronization">Synchronization</a> 
+ <a class="indexitem" href="13-syncmsg#13-syncmsg-absolute">absolute</a> 
+ <a class="indexitem" href="13-syncmsg#13-syncmsg-get">get</a> 
+ <a class="indexitem" href="13-syncmsg#13-syncmsg-h">h</a> 
+ <a class="indexitem" href="13-syncmsg#13-syncmsg-hv">hv</a> 
+ <a class="indexitem" href="13-syncmsg#13-syncmsg-relative">relative</a> 
+ <a class="indexitem" href="13-syncmsg#13-syncmsg-syncBottom">syncBottom</a> 
+ <a class="indexitem" href="13-syncmsg#13-syncmsg-syncFrame">syncFrame</a> 
+ <a class="indexitem" href="13-syncmsg#13-syncmsg-syncHow">syncHow</a> 
+ <a class="indexitem" href="13-syncmsg#13-syncmsg-syncOver">syncOver</a> 
+ <a class="indexitem" href="13-syncmsg#13-syncmsg-syncPos">syncPos</a> 
+ <a class="indexitem" href="13-syncmsg#13-syncmsg-syncStretch">syncStretch</a> 
+ <a class="indexitem" href="13-syncmsg#13-syncmsg-syncTop">syncTop</a> 
+ <a class="indexitem" href="13-syncmsg#13-syncmsg-syncmode">syncmode</a> 
+ <a class="indexitem" href="13-syncmsg#13-syncmsg-v">v</a> </p>
+<h2 id="time-messages">Time messages</h2>
+<p><a class="indexitem" href="3-time#3-time-clock">clock</a> 
+ <a class="indexitem" href="3-time#3-time-date">date</a> 
+ <a class="indexitem" href="3-time#3-time-ddate">ddate</a> 
+ <a class="indexitem" href="3-time#3-time-dduration">dduration</a> 
+ <a class="indexitem" href="3-time#3-time-durClock">durClock</a> 
+ <a class="indexitem" href="3-time#3-time-duration">duration</a> 
+ <a class="indexitem" href="3-time#3-time-tempo">tempo</a> </p>
+<h2 id="transform-messages">Transform messages</h2>
+<p><a class="indexitem" href="2-common#2-common-dshear">dshear</a> 
+ <a class="indexitem" href="2-common#2-common-rotate">rotate</a> 
+ <a class="indexitem" href="2-common#2-common-shear">shear</a> </p>
+<h2 id="faustprocessor">faustprocessor</h2>
+<p><a class="indexitem" href="17-plugins#17-plugins-in">in</a> 
+ <a class="indexitem" href="17-plugins#17-plugins-max">max</a> 
+ <a class="indexitem" href="17-plugins#17-plugins-min">min</a> 
+ <a class="indexitem" href="17-plugins#17-plugins-out">out</a> 
+ <a class="indexitem" href="17-plugins#17-plugins-set">set</a> 
+ <a class="indexitem" href="17-plugins#17-plugins-set">set</a> 
+ <a class="indexitem" href="17-plugins#17-plugins-set">set</a> </p>
+<h2 id="filewatcher">fileWatcher</h2>
+<p><a class="indexitem" href="15-interaction#15-interaction-watch">watch</a> 
+ <a class="indexitem" href="15-interaction#15-interaction-watch+">watch+</a> </p>
+<h2 id="gesture-events">gesture events</h2>
+<p><a class="indexitem" href="17-plugins#17-plugins-gfActive">gfActive</a> 
+ <a class="indexitem" href="17-plugins#17-plugins-gfEnter">gfEnter</a> 
+ <a class="indexitem" href="17-plugins#17-plugins-gfIdle">gfIdle</a> 
+ <a class="indexitem" href="17-plugins#17-plugins-gfLeave">gfLeave</a> 
+ <a class="indexitem" href="17-plugins#17-plugins-watch">watch</a> </p>
+<h2 id="gesture-follower">gesture follower</h2>
+<p><a class="indexitem" href="17-plugins#17-plugins-follow">follow</a> 
+ <a class="indexitem" href="17-plugins#17-plugins-gesture follower">gesture follower</a> 
+ <a class="indexitem" href="17-plugins#17-plugins-learn">learn</a> 
+ <a class="indexitem" href="17-plugins#17-plugins-likelihoodwindow">likelihoodwindow</a> 
+ <a class="indexitem" href="17-plugins#17-plugins-stop">stop</a> 
+ <a class="indexitem" href="17-plugins#17-plugins-tolerance">tolerance</a> </p>
+<h2 id="gesture-variables">gesture variables</h2>
+<p><a class="indexitem" href="17-plugins#17-plugins-gflikelihood">gflikelihood</a> 
+ <a class="indexitem" href="17-plugins#17-plugins-gfpos">gfpos</a> 
+ <a class="indexitem" href="17-plugins#17-plugins-gfspeed">gfspeed</a> </p>
+<h2 id="gesture">gesture</h2>
+<p><a class="indexitem" href="17-plugins#17-plugins-clear">clear</a> 
+ <a class="indexitem" href="17-plugins#17-plugins-get">get</a> 
+ <a class="indexitem" href="17-plugins#17-plugins-learn">learn</a> 
+ <a class="indexitem" href="17-plugins#17-plugins-likelihoodThreshold">likelihoodThreshold</a> 
+ <a class="indexitem" href="17-plugins#17-plugins-set">set</a> 
+ <a class="indexitem" href="17-plugins#17-plugins-size">size</a> </p>
+<h2 id="httpdmessage">httpdmessage</h2>
+<p><a class="indexitem" href="17-plugins#17-plugins-status">status</a> </p>
+<h2 id="httpdserver">httpdserver</h2>
+<p><a class="indexitem" href="17-plugins#17-plugins-set">set</a> </p>
+<h2 id="signal">signal</h2>
+<p><a class="indexitem" href="14-graphsig#14-graphsig-connect">connect</a> 
+ <a class="indexitem" href="14-graphsig#14-graphsig-connection">connection</a> 
+ <a class="indexitem" href="14-graphsig#14-graphsig-default">default</a> 
+ <a class="indexitem" href="14-graphsig#14-graphsig-del">del</a> 
+ <a class="indexitem" href="14-graphsig#14-graphsig-disconnect">disconnect</a> 
+ <a class="indexitem" href="14-graphsig#14-graphsig-get">get</a> 
+ <a class="indexitem" href="14-graphsig#14-graphsig-get">get</a> 
+ <a class="indexitem" href="14-graphsig#14-graphsig-parallel signal">parallel signal</a> 
+ <a class="indexitem" href="14-graphsig#14-graphsig-projection string">projection string</a> 
+ <a class="indexitem" href="14-graphsig#14-graphsig-reset">reset</a> 
+ <a class="indexitem" href="14-graphsig#14-graphsig-signal">signal</a> 
+ <a class="indexitem" href="14-graphsig#14-graphsig-size">size</a> </p>
+</div></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+                <p><a href="https://inscore.grame.fr">INscore projects</a> Copyright &copy; 2019-2020 <a href="http://www.grame.fr">Grame-CNCM</a></p>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" defer></script>
+        <script src="../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

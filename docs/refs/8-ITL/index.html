@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Application Messages - INScore Documentation</title>
+        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+        <link href="/css/inscore.css" rel="stylesheet">
+        <link href="/BNF/railroad-diagrams.css" rel="stylesheet">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../js/bootstrap-3.0.3.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+
+                <!-- Collapsed navigation -->
+                <div class="navbar-header">
+                    <!-- Expander button -->
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="../..">INScore Documentation</a>
+                </div>
+
+                <!-- Expanded navigation -->
+                <div class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li >
+                                <a href="../..">Home</a>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Reference <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li >
+    <a href="../1-genformat/">Format of a message</a>
+</li>
+                                    
+<li >
+    <a href="../2-common/">Common Messages</a>
+</li>
+                                    
+<li >
+    <a href="../3-time/">Time Messages</a>
+</li>
+                                    
+<li >
+    <a href="../4-miscmsgs/">Miscellaneous</a>
+</li>
+                                    
+<li >
+    <a href="../5-setsect/">The set Message</a>
+</li>
+                                    
+<li >
+    <a href="../6-getsect/">The get Message</a>
+</li>
+                                    
+<li >
+    <a href="../7-specificMsg/">Specific Messages</a>
+</li>
+                                    
+<li class="active">
+    <a href="./">Application Messages</a>
+</li>
+                                    
+<li >
+    <a href="../9-scene/">Scene Messages</a>
+</li>
+                                    
+<li >
+    <a href="../10-forwarding/">Messages Forwarding</a>
+</li>
+                                    
+<li >
+    <a href="../11-layers/">Layers</a>
+</li>
+                                    
+<li >
+    <a href="../12-mapping/">Mapping</a>
+</li>
+                                    
+<li >
+    <a href="../13-syncmsg/">Synchronization</a>
+</li>
+                                    
+<li >
+    <a href="../14-graphsig/">Graphic signals</a>
+</li>
+                                    
+<li >
+    <a href="../15-interaction/">Interaction</a>
+</li>
+                                    
+<li >
+    <a href="../16-scripting/">Scripting</a>
+</li>
+                                    
+<li >
+    <a href="../17-plugins/">Plugins</a>
+</li>
+                                    
+<li >
+    <a href="../18-yacc/">Grammar definitions</a>
+</li>
+                                    
+<li >
+    <a href="../19-changes/">Changes list</a>
+</li>
+                                    
+<li >
+    <a href="../">Index</a>
+</li>
+                                </ul>
+                            </li>
+                            <li >
+                                <a href="../../about/">About</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li >
+                                <a rel="next" href="../7-specificMsg/">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li >
+                                <a rel="prev" href="../9-scene/">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#application-messages">Application messages</a></li>
+            <li><a href="#application-management">Application management</a></li>
+            <li><a href="#ports-management">Ports management</a></li>
+            <li><a href="#system-support">System support</a></li>
+            <li><a href="#application-level-queries">Application level queries</a></li>
+            <li><a href="#application-static-nodes">Application static nodes</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<script src='/BNF/railroad-diagrams.js'></script>
+
+<h1 id="application-messages">Application messages</h1>
+<p><a name="ITL"></a></p>
+<p>Application messages are accepted by the static OSC address <span class="OSC">/ITL</span>. </p>
+<h2 id="application-management">Application management</h2>
+<p><a name="applmgmt"></a></p>
+<p><a name="8-ITL-rootPath"></a>
+<a name="8-ITL-preprocess"></a>
+<a name="8-ITL-mouse"></a>
+<a name="8-ITL-defaultShow"></a>
+<a name="8-ITL-load"></a>
+<a name="8-ITL-read"></a>
+<a name="8-ITL-hello"></a>
+<a name="8-ITL-require"></a>
+<a name="8-ITL-compatibility"></a>
+<a name="8-ITL-rate"></a>
+<a name="8-ITL-time"></a>
+<a name="8-ITL-ticks"></a></p>
+<div class="rail">
+<span class="railtitle">ITLMsg</span>
+<br /><script>
+ComplexDiagram(
+    Choice (0, 'quit', Sequence ('rootPath', NonTerminal('path')), Sequence ('preprocess', NonTerminal('file')), Sequence ('mouse', Choice (0, 'show', 'hide')), Sequence ('defaultShow', NonTerminal('int32')), Sequence ('load', NonTerminal('filePath')), Sequence ('read', NonTerminal('buffer')), Sequence ('require', NonTerminal('float'), NonTerminal('oscMsg')), Sequence ('compatibility', NonTerminal('float')), Sequence ('time', NonTerminal('int32')), Sequence ('ticks', NonTerminal('int32')), Sequence ('rate', NonTerminal('int32')), 'hello', NonTerminal('forwardingMsg'))
+).addTo()
+
+</script>
+</div>
+
+<ul>
+<li>
+<p><span class="OSC">quit</span>: requests the client application to quit.</p>
+</li>
+<li>
+<p><span class="OSC">rootPath</span>: <strong>rootPath</strong> of an INScore application is the default path where the application reads or writes a file when a relative path is used for this file. The default value is the user home directory. Sending the <span class="OSC">rootPath</span> message without parameter resets the application path to its default value.</p>
+</li>
+<li>
+<p><span class="OSC">preprocess</span>: evaluates the input file script and print the result to the log window.</p>
+</li>
+<li>
+<p><span class="OSC">mouse</span>: hide or show the mouse pointer.</p>
+</li>
+<li>
+<p><span class="OSC">defaultShow</span>: changes the default <span class="OSC">show</span> status for new objects. 
+The default <span class="OSC">defaultShow</span> value is 1.</p>
+</li>
+<li>
+<p><span class="OSC">load</span>: loads a file previously saved using the <span class="OSC">save</span> message (see section <a href="../2-common#common">common</a>). Note that the load operation appends the new objects to the existing scene. When necessary, it is the sender responsibility to clear the scene before loading a file. URL are supported for the file path (see section <a href="../5-setsect#filebasedrsrc">filebasedrsrc</a>);</p>
+</li>
+<li>
+<p><span class="OSC">read</span>: read a buffer that is expected to contain a valid inscore script.</p>
+</li>
+<li>
+<p><span class="OSC">require</span>: check that the current INScore version number is equal or greater to the number given as argument. The version number is given as a float value. A message is associated to the <span class="OSC">require</span> message, which is triggered when the check fails. See section <a href="../15-interaction#interaction">interaction</a> for more details.</p>
+</li>
+<li>
+<p><span class="OSC">compatibility</span>: preserve INScore previous behavior. The argument corresponds to a version number, INScore will preserve the corresponding behavior (objects scaling, default size, etc.).</p>
+</li>
+<li>
+<p><span class="OSC">rate</span>: changes the time task rate. Note that null values are ignored.
+The default <span class="OSC">rate</span> value is 10.</p>
+</li>
+<li>
+<p><span class="OSC">time</span>: sets the application current time. The time is expressed in milliseconds.</p>
+</li>
+<li>
+<p><span class="OSC">ticks</span>: sets the application current ticks count. The ticks count indicates the number of time tasks performed by the application.</p>
+</li>
+<li>
+<p><span class="OSC">hello</span>: query the host IP number. The message is intended for ITL applications discovery. Answer to the query has the following format: 
+\oldexample <span class="OSC">IP  inPort outPort errPort</span> where <span class="OSC">IP</span> is sent as a string and port numbers as integer values.</p>
+</li>
+<li>
+<p><span class="OSC">forwardingMsg</span>: application support message forwading and filtering. See section <a href="../10-forwarding#forwarding">forwarding</a>.</p>
+</li>
+</ul>
+<p><span class="example">Example</span> 
+when sending the message:</p>
+<pre><code>/ITL hello;
+</code></pre>
+
+<p>the application will answer with the following message:</p>
+<pre><code>/ITL 192.168.0.5  7000 7001 7003
+</code></pre>
+
+<p>when it runs on a host which IP number is <span class="OSC">192.168.0.5</span> using the default port numbers.</p>
+<h2 id="ports-management">Ports management</h2>
+<p><a name="ITLPorts"></a></p>
+<p><a name="8-ITL-port"></a>
+<a name="8-ITL-outport"></a>
+<a name="8-ITL-errport"></a></p>
+<div class="rail">
+<span class="railtitle">ITLPortsMsg</span>
+<br /><script>
+ComplexDiagram(
+    Choice (0, Sequence ('port', NonTerminal('int32')), Sequence ('outport', NonTerminal('int32')), Sequence ('errport', NonTerminal('int32')))
+).addTo()
+
+</script>
+</div>
+
+<p>Changes the UDP port numbers:</p>
+<ul>
+<li><span class="OSC">port</span> defines the listening port number, </li>
+<li><span class="OSC">outport</span> defines the port used to send replies to queries, </li>
+<li><span class="OSC">errport</span> defines the port used to send error messages. </li>
+</ul>
+<p>The <span class="OSC">int32</span> parameter should be a positive value in the range <span class="values">[1024-49150]</span>. 
+The default <span class="OSC">port</span>, <span class="OSC">outport</span> and <span class="OSC">errport</span> values are 7000, 7001 and 7002.</p>
+<p><span class="note">Note: </span> 
+Error messages are sent as a single string.</p>
+<h2 id="system-support">System support</h2>
+<p><a name="system"></a></p>
+<p><a name="8-ITL-browse"></a></p>
+<div class="rail">
+<span class="railtitle">ITLSystem</span>
+<br /><script>
+ComplexDiagram(
+    Sequence ('browse', NonTerminal('file'))
+).addTo()
+
+</script>
+</div>
+
+<ul>
+<li><span class="OSC">browse</span> open the file given as parameter using the system default browser. The message supports URLs that can be of type <span class="OSC">http://</span> , <span class="OSC">https://</span> or <span class="OSC">file://</span> . It supports also direct reference to a local file (e.g. myfile.html) that is translated into <span class="OSC">file://</span> url using the application rootPath.</li>
+</ul>
+<h2 id="application-level-queries">Application level queries</h2>
+<p><a name="ITLQuery"></a></p>
+<p>The application supports the <span class="OSC">get</span> messages for its parameters (see section <a href="../6-getsect#getsect">getsect</a>). In addition, it provides the following messages to query version numbers.</p>
+<p><a name="8-ITL-version"></a>
+<a name="8-ITL-guido-version"></a>
+<a name="8-ITL-musicxml-version"></a></p>
+<div class="rail">
+<span class="railtitle">ITLRequest</span>
+<br /><script>
+ComplexDiagram(
+    Sequence ('get', Choice (0, 'version', 'guido-version', 'musicxml-version'))
+).addTo()
+
+</script>
+</div>
+
+<ul>
+<li><span class="OSC">version</span>: version number request.</li>
+<li><span class="OSC">guido-version</span>: Guido engine version number request.</li>
+<li><span class="OSC">musicxml-version</span>: MusicXML and Guido converter version numbers request. Returns "not available" when the library is not found.</li>
+</ul>
+<p><span class="example">Example</span> 
+Querying INScore version:</p>
+<pre><code>/ITL get version;
+</code></pre>
+
+<p>will give the following as output:</p>
+<pre><code>/ITL version 1.00
+</code></pre>
+
+<h2 id="application-static-nodes">Application static nodes</h2>
+<p><a name="ITLStatic"></a></p>
+<p>The application level provides the static nodes - <span class="OSC">stats</span>, <span class="OSC">debug</span> and <span class="OSC">log</span>, available at <span class="OSC">/ITL/stats</span> <span class="OSC">/ITL/debug</span> and <span class="OSC">/ITL/log</span>  to help debugging communication and INScore scripts design.</p>
+<h3 id="the-stats-nodes">The 'stats' nodes</h3>
+<p><a name="ITLstat"></a></p>
+<p><a name="8-ITL-get"></a>
+<a name="8-ITL-reset"></a></p>
+<div class="rail">
+<span class="railtitle">ITLStats</span>
+<br /><script>
+ComplexDiagram(
+    Choice (0, 'get', 'reset')
+).addTo()
+
+</script>
+</div>
+
+<ul>
+<li><span class="OSC">get</span> gives the count of handled messages at OSC and UDP levels: the UDP count indicates the count of messages received from the network, the OSC count includes the UDP count and the messages received internally.</li>
+<li><span class="OSC">reset</span> resets the counters to zero. Note that querying the <span class="OSC">stats</span> node increments at least the OSC the counter.</li>
+</ul>
+<p><span class="example">Example</span> 
+Answer to a <span class="OSC">get</span> message addressed to <span class="OSC">/ITL/stats</span></p>
+<pre><code>/ITL/stats osc 15 udp 10
+</code></pre>
+
+<h3 id="the-debug-nodes">The 'debug' nodes</h3>
+<p><a name="ITLdebug"></a></p>
+<p>The <span class="OSC">debug</span> node is used to activate debugging information.</p>
+<p><a name="8-ITL-osc"></a></p>
+<div class="rail">
+<span class="railtitle">ITLdebug</span>
+<br /><script>
+ComplexDiagram(
+    Sequence ('osc', NonTerminal('int23'))
+).addTo()
+
+</script>
+</div>
+
+<ul>
+<li>switch the debug mode ON or OFF. The parameter is interpreted as a boolean value. When in debug mode, INScore sends verbose messages to the OSC error port for every message that can't be correctly handled. Debugging is ON by default.</li>
+</ul>
+<p><span class="example">Example</span> 
+Error messages generated on error port in debug mode:</p>
+<pre><code>error:  incorrect OSC address: /ITL/stat
+error:  incorrect parameters: /ITL/scene/foo unknown 0.1
+error:  incorrect parameters: /ITL/scene/foo x &quot;incorrectType&quot;
+</code></pre>
+
+<h3 id="the-log-nodes">The 'log' nodes</h3>
+<p><a name="ITLlog"></a></p>
+<p>The <span class="OSC">log</span> node controls a console window that display all the messages sent to the OSC error port. Typical content is given by the example above.</p>
+<p><a name="8-ITL-show"></a>
+<a name="8-ITL-clear"></a>
+<a name="8-ITL-wrap"></a>
+<a name="8-ITL-save"></a>
+<a name="8-ITL-level"></a></p>
+<div class="rail">
+<span class="railtitle">ITLLog</span>
+<br /><script>
+ComplexDiagram(
+    Choice (0, Sequence ('show', NonTerminal('int32')), 'clear', 'foreground', Sequence ('wrap', NonTerminal('int32')), Sequence ('write', OneOrMore (NonTerminal('arg'))), Sequence ('save', NonTerminal('string')), Sequence ('level', NonTerminal('int32')))
+).addTo()
+
+</script>
+</div>
+
+<ul>
+<li><span class="OSC">show</span> show or hides the console. The parameter is a boolean value.</li>
+<li><span class="OSC">clear</span> clear the console window.</li>
+<li><span class="OSC">foreground</span> put the console window to front.</li>
+<li><span class="OSC">wrap</span> control line wrapping of the console. The parameter is a boolean value.</li>
+<li><span class="OSC">write</span> write the <span class="OSC">arg</span> list formatted as a string to the log window.</li>
+<li><span class="OSC">save</span> save the current log content to a file. The parameter is a file name. When expressed as a relative path, the file is saved under the current application root path.</li>
+<li>
+<p><span class="OSC">level</span> set the log level. Expected values are: </p>
+</li>
+<li>
+<p>0 : no log</p>
+</li>
+<li>1 : log errors (default value)</li>
+<li>2 : log errors and output of <span class="OSC">get</span> messages</li>
+</ul>
+<h3 id="the-plugins-nodes">The 'plugins' nodes</h3>
+<p><a name="ITLplugins"></a></p>
+<p>The <span class="OSC">plugins</span> node controls the search path for plugins. See section <a href="../17-plugins#plugins">plugins</a> for more information on plugins and search strategies.</p>
+<p><a name="8-ITL-path"></a>
+<a name="8-ITL-reset"></a></p>
+<div class="rail">
+<span class="railtitle">ITLPlugin</span>
+<br /><script>
+ComplexDiagram(
+    Choice (0, Sequence ('path', NonTerminal('folder')), 'reset')
+).addTo()
+
+</script>
+</div>
+
+<ul>
+<li><span class="OSC">path</span> add <span class="OSC">folder</span> as a user path. The system will look for plugins in this folder first.</li>
+<li><span class="OSC">reset</span> clear the current user path.</li>
+</ul></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+                <p><a href="https://inscore.grame.fr">INscore projects</a> Copyright &copy; 2019-2020 <a href="http://www.grame.fr">Grame-CNCM</a></p>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" defer></script>
+        <script src="../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

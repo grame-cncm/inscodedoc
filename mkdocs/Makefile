@@ -35,6 +35,7 @@ help:
 ####################################################################
 build:
 	cd $(MKDIR) && mkdocs build
+	git checkout ../docs/CNAME
 
 serve:
 	cd $(MKDIR) && mkdocs serve

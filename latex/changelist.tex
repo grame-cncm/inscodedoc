@@ -1,7 +1,7 @@
 
 %===============================
 %:    Differences to version 1.18  (version 1.21)
-\sublevel{Differences to version 1.18}
+\sublevel{Version 1.21 vs version 1.18}
 \begin{itemize}
 \item new set of sensor objects. See section \fullref{sensors}.
 \item update to guido engine 1.63
@@ -36,7 +36,7 @@
 
 %===============================
 %:    Differences to version 1.17  (version 1.18)
-\sublevel{Differences to version 1.17}
+\sublevel{Version 1.18 vs version 1.17}
 \begin{itemize}
 \item new \OSC{tempo} message supported by all objects. See section \fullref{tempo}.
 \item new \OSC{pageCount} event supported by symbolic score objects. See section \fullref{typespecevents}.
@@ -47,7 +47,7 @@
 
 %===============================
 %:    Differences to version 1.15  (version 1.17)
-\sublevel{Differences to version 1.15}
+\sublevel{Version 1.17 vs version 1.15}
 \begin{itemize}
 \item support animated svg using the new \OSC{animate} message. See section \fullref{svgobjects}.
 \item messages list variables are exported to javascript as a string.
@@ -80,7 +80,7 @@
 
 %===============================
 %:    Differences to version 1.12  (version 1.15)
-\sublevel{Differences to version 1.12}
+\sublevel{Version 1.15 vs version 1.12}
 \begin{itemize}
 \item new \OSC{frame} query method: \OSC{get frame} gives the coordinates of 4 points that represent the 
   object frame, expressed in the scene local coordinates system and including all the graphic 
@@ -105,7 +105,7 @@
 
 %===============================
 %:    Differences to version 1.08  (version 1.12)
-\sublevel{Differences to version 1.08}
+\sublevel{Version 1.12 vs version 1.08}
 \begin{itemize}
 \item \OSC{line} objects: \OSC{color} message is now an alias of \OSC{penColor}. 
 \item \OSC{foreground} method at scene level to put a scene window in foreground. See section \fullref{scene}.
@@ -146,7 +146,7 @@
 
 %===============================
 %:    Differences to version 1.07
-\sublevel{Differences to version 1.07}
+\sublevel{Version 1.08 vs version 1.07}
 \begin{itemize}
 \item  new \OSC{\_\_END\_\_} marker supported to end a script parsing at arbitrary location  (see section \fullref{scriptstatement}).
 \item  when displaying the mapping, the map dates are not printed any more by default (due to size and collisions).  The debug map parameter change from boolean to int value: 1 to activate the mapping display, 
@@ -159,7 +159,7 @@
 
 %===============================
 %:    Differences to version 1.06
-\sublevel{Differences to version 1.06}
+\sublevel{Version 1.07 vs version 1.06}
 \begin{itemize}
 \item bug with 'line' initialization corrected: wrong position and orientation with negative coordinates.
 \item new \OSC{plugins} static node at application level to provide a user path to look for pugins (see section \fullref{ITLplugins}).
@@ -175,7 +175,7 @@
 
 %===============================
 %:    Differences to version 1.05
-\sublevel{Differences to version 1.05}
+\sublevel{Version 1.06 vs version 1.05}
 \begin{itemize}
 \item \OSC{save} message can now take an optional list of attributes to be saved  (see section \fullref{common})
 \item variables are now evaluated and expanded inside strings. Thus interaction variables can now be passed as argument of javascript functions.
@@ -186,7 +186,7 @@
 
 %===============================
 %:    Differences to version 1.03
-\sublevel{Differences to version 1.03}
+\sublevel{Version 1.05 vs version 1.03}
 \begin{itemize}
 \item incorrect error message for watch messages corrected
 \item new javascript \OSC{readfile} function (see section \fullref{jsobj})
@@ -201,7 +201,7 @@
 
 %===============================
 %:    Differences to version 1.0
-\sublevel{Differences to version 1.0}
+\sublevel{Version 1.03 vs version 1.0}
 \begin{itemize}
 \item log window utility provided as a new static node at application level (\OSC{/ITL/log}) (see section \fullref{ITLlog}).
 \item new \OSC{systemCount} read only attribute for Guido scores (see section \fullref{gmnpage})
@@ -217,7 +217,7 @@
 
 %===============================
 %:    Differences to version 0.98
-\sublevel{Differences to version 0.98}
+\sublevel{Version 1.0 vs version 0.98}
 \begin{itemize}
 \item bug correction in streching very small objects (due to approximations)
 \item bug correction in \$sx and \$sy computation (xorigin and yorigin was not taken into account)
@@ -248,7 +248,7 @@
 
 %===============================
 %:    Differences to version 0.97
-\sublevel{Differences to version 0.97}
+\sublevel{Version 0.98 vs version 0.97}
 \begin{itemize}
 \item new \OSC{fastgraph} object for graphic signals fast rendering (see section \fullref{setsect})
 \item \$date variable overflow catched
@@ -262,7 +262,7 @@
 
 %===============================
 %:    Differences to version 0.96
-\sublevel{Differences to version 0.96}
+\sublevel{Version 0.97 vs version 0.96}
 \begin{itemize}
 \item  objects position, date and watched events preserved through type change
 \item  bug in quantified dates corrected (null denominator set to the quantified value)
@@ -274,7 +274,7 @@
 
 %===============================
 %:    Differences to version 0.95
-\sublevel{Differences to version 0.95}
+\sublevel{Version 0.96 vs version 0.95}
 \begin{itemize}
 \item switch to v8 javascript engine
 \item lua not embedded by default
@@ -282,7 +282,7 @@
 
 %===============================
 %:    Differences to version 0.92
-\sublevel{Differences to version 0.92}
+\sublevel{Version 0.95 vs version 0.92}
 \begin{itemize}
 \item new 'mouse' 'show/hide' message supported at application level (see section \fullref{ITL})
 \item graphic signal supports alpha messages at object level
@@ -292,7 +292,7 @@
 
 %===============================
 %:    Differences to version 0.91
-\sublevel{Differences to version 0.91}
+\sublevel{Version 0.92 vs version 0.91}
 \begin{itemize}
 \item bug corrected: crash with messages addressed to a signal without argument
 \item date and duration messages support one arg form using 1 as implicit denominator value 
@@ -301,14 +301,14 @@
 
 %===============================
 %:    Differences to version 0.90
-\sublevel{Differences to version 0.90}
+\sublevel{Version 0.91 vs version 0.90}
 \begin{itemize}
 \item bug in sync management corrected (introduced with the new sync parsing scheme)
 \end{itemize}
 
 %===============================
 %:    Differences to version 0.82
-\sublevel{Differences to version 0.82}
+\sublevel{Version 0.90 vs version 0.82}
 \begin{itemize}
 \item at application level: osc debug is now 'on' by default
 \item new scripting features (variables)  (see section \fullref{scriptvar}).
@@ -324,7 +324,7 @@
 
 %===============================
 %:    Differences to version 0.81
-\sublevel{Differences to version 0.81}
+\sublevel{Version 0.82 vs version 0.81}
 \begin{itemize}
 \item new Faust plugins for signals processing
 \item colors management change: all the color models (RGBA and HSBA) accept now
@@ -338,7 +338,7 @@
 
 %===============================
 %:    Differences to version 0.80
-\sublevel{Differences to version 0.80}
+\sublevel{Version 0.81 vs version 0.80}
 \begin{itemize}
 \item behavior change with synchronization without stretch: now the system looks also in the
   slave map for a segment corresponding to the master date.
@@ -349,7 +349,7 @@
 
 %===============================
 %:    Differences to version 0.79
-\sublevel{Differences to version 0.79}
+\sublevel{Version 0.80 vs version 0.79}
 \begin{itemize}
 \item corrects the map not saved by the \OSC{save} message issue
 \item corrects \OSC{get map} output: 2D segments were not correctly converted to string
@@ -357,7 +357,7 @@
 
 %===============================
 %:    Differences to version 0.78
-\sublevel{Differences to version 0.78}
+\sublevel{Version 0.79 vs version 0.78}
 \begin{itemize}
 \item crash bug corrected for the 'save' message addressed to '/ITL'
 \item message policy change: relaxed numeric parameters policy (float are accepted for int and int for float)
@@ -370,7 +370,7 @@ Known issues:
 
 %===============================
 %:    Differences to version 0.77
-\sublevel{Differences to version 0.77}
+\sublevel{Version 0.78 vs version 0.77}
 \begin{itemize}
 \item guido system map extended: supports flat map or subdivided map (see section \fullref{guidomap}).
 \item new \OSC{shear} and \OSC{rotate} transformations messages (see section \fullref{transform}).
@@ -384,7 +384,7 @@ Known issues:
 
 %===============================
 %:    Differences to version 0.76
-\sublevel{Differences to version 0.76}
+\sublevel{Version 0.77 vs version 0.76}
 \begin{itemize}
 \item  get \OSC{guido-version} and \OSC{musicxml-version} messages supported by the application (see section \fullref{ITL}).
 \item  \OSC{save} message bug correction - introduced with version 0.70: only partial state of objects was saved
@@ -398,7 +398,7 @@ Known issues:
 
 %===============================
 %:    Differences to version 0.75
-\sublevel{Differences to version 0.75}
+\sublevel{Version 0.76 vs version 0.75}
 \begin{itemize}
 \item new \OSC{require} message supported by the \OSC{/ITL} node (see section \fullref{ITL}).
 \item new event named \OSC{newElement} supported at scene level (see section \fullref{timeevents}).
@@ -416,7 +416,7 @@ Known issues:
 
 %===============================
 %:    Differences to version 0.74
-\sublevel{Differences to version 0.74}
+\sublevel{Version 0.75 vs version 0.74}
 \begin{itemize}
 \item new \OSC{map+} message  (see section \fullref{mapAddMsg}).
 \item the \OSC{click} and \OSC{select} messages are deprecated (but still supported). They will be removed in a future version.
@@ -424,7 +424,7 @@ Known issues:
 
 %===============================
 %:    Differences to version 0.63
-\sublevel{Differences to version 0.63}
+\sublevel{Version 0.74 vs version 0.63}
 \begin{itemize}
 \item new \OSC{dpage} message accepted by \OSC{gmn} objects (see section \fullref{gmnpage}).
 \item x and y variables: automatic range type detection (int | float)
@@ -445,7 +445,7 @@ Known issues:
 
 %===============================
 %:    Differences to version 0.60
-\sublevel{Differences to version 0.60}
+\sublevel{Version 0.63 vs version 0.60}
 \begin{itemize}
 \item new 'mousemove' event (see section \fullref{uievents}).
 \item interaction messages accept variables (\$x, \$y, \$date...) (see section \fullref{interactvar}).
@@ -464,7 +464,7 @@ Known issues:
 
 %===============================
 %:    Differences to version 0.55
-\sublevel{Differences to version 0.55}
+\sublevel{Version 0.60 vs version 0.55}
 \begin{itemize}
 \item new 'xorigin' and 'yorigin' messages (section \fullref{origin}).
 \item new interaction messages set (section \fullref{interaction}).
@@ -482,7 +482,7 @@ Known issues:
 
 %===============================
 %:    Differences to version 0.53
-\sublevel{Differences to version 0.53}
+\sublevel{Version 0.55 vs version 0.53}
 \begin{itemize}
 \item ITL parser corrected to support regexp in message string (used by messages addressed to sync node)
 \item format of mapping files and strings changed (section \fullref{mapMsg}).
@@ -499,7 +499,7 @@ Known issues:
 
 %===============================
 %:    Differences to version 0.50
-\sublevel{Differences to version 0.50}
+\sublevel{Version 0.53 vs version 0.50}
 \begin{itemize}
 \item Graphic signal thickness is now symmetrically drawn around y position.
 \item ITL file format supports regular expressions in OSC addresses.
@@ -520,7 +520,7 @@ Known issues:
 
 %===============================
 %:    Differences to version 0.42
-\sublevel{Differences to version 0.42}
+\sublevel{Version 0.50 vs version 0.42}
 
 \begin{itemize}
 \item \OSC{identifier} specification change (section \fullref{genformat}).

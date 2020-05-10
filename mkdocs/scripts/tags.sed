@@ -8,12 +8,15 @@ s/\\subsublevel{\([^}]*\)}/### \1/
 s/\\%/%/g
 s/\\\$/$/g
 s/\\_/_/g
+s/\\&/\&/g
+s/\\lowTilde/~/g
 s/\\~{}/\~/g
 
 ############## handle verbatim sections
 s/\\begin{verbatim}/\
 ~~~~~~~~~~~/
 s/\\end{verbatim}/~~~~~~~~~~~/
+
 
 ############## handle itemize sections
 s/\\begin{itemize}//

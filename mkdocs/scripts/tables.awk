@@ -16,11 +16,12 @@ function formatrow(line) {
 }
 
 function formatheader(line) {
-	gsub(/r/, "------:", line);
-	gsub(/l/, "------", line);
-	gsub(/c[^l]/, ":------:|", line);
-	gsub(/cl]/, "------", line);
-	return line;
+	gsub(/\|/, "", line);
+	gsub(/[^rlc]*/, "", line);
+	gsub("r", "------:|", line);
+	gsub("l", "------|", line);
+	gsub("c", ":------:|", line);
+	return "|" line;
 }
 
 function endtable(label, caption) {
@@ -41,16 +42,17 @@ END {
 
 ################# 
 # scan sample sections
-/\\begin{table}/ 	{ INTABLE = 1; }
-/\\end{table}/ 		{ endtable(LABEL, CAPTION); INTABLE = 0; }
+/\\begin{table/ 	{ INTABLE = 1; print "\n";}
+/\\end{table/ 		{ endtable(LABEL, CAPTION); INTABLE = 0; }
 /\\begin{tabular}/ 	{ FORMAT = formatheader(getTagContent($3)); }
 
 /\\caption/ 	{ CAPTION = getTagContent($2); }
 /\\label/ 		{ LABEL = getTagContent($2); }
+/\\centering/   {}
 
 ################# 
 # content
-!/\\begin{tabular}/  {
+!/\\centering/ {
 	if (INTABLE) {
 		print formatrow($0);
  		if (FORMAT && tblcontent($0)) {

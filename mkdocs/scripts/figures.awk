@@ -5,8 +5,8 @@ function getTagContent(str) {
 }
 
 function makefigure(label, caption, file) {
-	print "![" label "](" file ")    ";
-	print "<span class='caption'>" caption "</span>";
+	if (label) print "![" label "](" file ")    ";
+	if (caption) print "<span class='caption'>" caption "</span>";
 	cmd = "cp " SRCF file " " DSTF file
 	system ( cmd );
 }

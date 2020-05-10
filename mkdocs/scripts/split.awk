@@ -53,14 +53,30 @@ END {
 	PRINT = 0;
 }
 
+/\\section/ 	{
+	if (START)  SECTION = "# " getTagContent($2);
+	WAITLABEL = 1;
+	PRINT = 0;
+}
+
 /\\sublevel/ 	{
 	if (START) 	printheader("##", getTagContent($2));
-	PRINT = 0;
+	PRINT = START;
+}
+
+/\\subsection/ 	{
+	if (START) 	printheader("##", getTagContent($2));
+	PRINT = START;
 }
 
 /\\subsublevel/ {
 	if (START) 	printheader("###", getTagContent($2));
-	PRINT = 0;
+	PRINT = START;
+}
+
+/\\subsubsection/ {
+	if (START) 	printheader("###", getTagContent($2));
+	PRINT = START;
 }
 
 /\\begin{document}/ {

@@ -18,8 +18,12 @@ Since INScore version \inscoremathversion , mathematical expressions have been i
 %===============================
 %:    Operators
 \sublevel{Operators}
+\label{Operators}
 
 Basic mathematical expressions are supported. They are listed below.
+
+\index{Math expression!operators}
+
 \begin{rail}
 mathexpr:     [1] matharg '+' matharg
 			| [2] matharg '-' matharg
@@ -32,7 +36,6 @@ mathexpr:     [1] matharg '+' matharg
 			| [9] 'min' '(' (matharg +) ')'
 			| [10]'(' mathbool '?' matharg ':' matharg ')'
 \end{rail}
-\index{Math expression!operators}
 
 Note that \textit{matharg} could be a \textit{mathexpr} as well (see section \ref{mathargs}).
 
@@ -56,6 +59,9 @@ Some simple mathematical expressions used as message parameters:
 }
 
 Boolean operations are the following:
+
+\index{Math expression!booleans}
+
 \begin{rail}
 mathbool:     [1] arg
 			| [2] '!' arg
@@ -65,7 +71,6 @@ mathbool:     [1] arg
 			| [6] arg '<' arg
 			| [7] arg '<=' arg
 \end{rail}
-\index{Math expression!booleans}
 
 \begin{itemize}
 \item \textbf{1}: evaluate the argument as a boolean value.
@@ -90,6 +95,8 @@ Compare two variables:
 
 Arguments of mathematical operations are the following:
 
+\index{Math expression!arguments}
+
 \begin{rail}
 matharg:      [1] 'param'
 			| [2] 'variable'
@@ -98,7 +105,7 @@ matharg:      [1] 'param'
 			| [5] 'msgvariable'
 			| [6] mathexpr
 \end{rail}
-\index{Math expression!arguments}
+
 \begin{itemize}
 \item \textbf{1}: any message parameter.
 \item \textbf{2}: a variable value.
@@ -119,11 +126,15 @@ Since INScore's parameters are polymorphic, the semantic of the operations are t
 
 %===============================
 \subsublevel{Numeric values}
+\label{numbers}
 
 For numeric arguments, automatic type conversion is applied with a precedence of \OSC{float32} i.e. when one of the argument's type is  \OSC{float32}, the result is also  \OSC{float32} (see Table \ref{table:mathopnum}).
+
+\label{table:mathopnum}
+
 \begin{table}[htbp]
   \centering
-  \begin{tabular}{@{} rlc @{}}
+  \begin{tabular}{rlc}
     \hline
     arg1 & arg2 & output\\ 
     \hline
@@ -134,16 +145,18 @@ For numeric arguments, automatic type conversion is applied with a precedence of
     \hline
   \end{tabular}
   \caption{Numeric operations output}
-  \label{table:mathopnum}
 \end{table} 
 
 %===============================
 \subsublevel{Strings}
+\label{strings}
+
 For \OSC{string} parameters, operations that have an obvious semantic (like + applied to two strings) are defined (see Table \ref{table:mathopstr}) , the others are undefined and generate an error (see Table \ref{table:mathnoopstr}). 
 
+\label{table:mathopstr}
 \begin{table}[htbp]
   \centering
-  \begin{tabular}{@{} rlc @{}}
+  \begin{tabular}{rlc}
     \hline
     operation & evaluates to & comment\\ 
     \hline
@@ -155,12 +168,13 @@ For \OSC{string} parameters, operations that have an obvious semantic (like + ap
     \hline
   \end{tabular}
   \caption{Supported operations on strings}
-  \label{table:mathopstr}
 \end{table} 
+
+\label{table:mathnoopstr}
 
 \begin{table}[htbp]
   \centering
-  \begin{tabular}{@{} rc @{}}
+  \begin{tabular}{rc}
     \hline
     operation & comment\\ 
     \hline
@@ -172,15 +186,15 @@ For \OSC{string} parameters, operations that have an obvious semantic (like + ap
     \hline
   \end{tabular}
   \caption{Non supported operations on strings}
-  \label{table:mathnoopstr}
 \end{table} 
 
 Boolean operations are supported on \OSC{string} only when both arguments are strings (see Table \ref{table:mathboolstr}). Other types combination generate an error.
 	
+\label{table:mathboolstr}
 
 \begin{table}[htbp]
   \centering
-  \begin{tabular}{@{} rc @{}}
+  \begin{tabular}{rc}
     \hline
     boolean operation & evaluated as \\ 
     \hline
@@ -192,19 +206,26 @@ Boolean operations are supported on \OSC{string} only when both arguments are st
     \hline
   \end{tabular}
   \caption{Supported boolean operations on strings}
-  \label{table:mathboolstr}
 \end{table} 
 
 
 %===============================
 \subsublevel{Arrays}
+\label{arrays}
+
 For arrays, the operation is distributed inside the array elements:
-$$ arg\ op\ [v_1\ ...\ v_n]  := [arg\ op\ v_1\ ...\ arg\ op\ v_n] $$
+\[
+ arg\ op\ [v_1\ ...\ v_n]  := [arg\ op\ v_1\ ...\ arg\ op\ v_n] 
+\]
 or
-$$ [v_1\ ...\ v_n]\ op\ arg  := [v_1\ op\ arg\ ...\ v_n\ op\ arg] $$
+\[ 
+[v_1\ ...\ v_n]\ op\ arg  := [v_1\ op\ arg\ ...\ v_n\ op\ arg] 
+\]
 
 When both parameters are arrays, the operation is distributed from one array elements to the other array elements when the arrays have the same size and it generates an error when the sizes differ:
-$$[a_1\ ...\ a_i]\ op\ [b_1\ ...\ b_i]  := [a_1\ op\ b_1\ ...\ a_i\ op\ b_i\ ] $$
+\[
+[a_1\ ...\ a_i]\ op\ [b_1\ ...\ b_i]  := [a_1\ op\ b_1\ ...\ a_i\ op\ b_i\ ] 
+\]
 
 Boolean operations on arrays are evaluated as the logical $and$ of it's element's boolean values and generate an error when the arrays sizes differ.
 

@@ -7,11 +7,14 @@
 
 \example\\
 The following example defines a \OSC{gmn} and a \OSC{pianoroll} object using score expressions, the meaning of the expression is explained further.
+
 \sample{/ITL/scene/score set gmn expr(seq [a] [b]); \\
-/ITL/scene/pianoroll set pianoroll expr(score);}
+/ITL/scene/pianoroll set pianoroll expr(score);
+}
 
 %===============================
 \sublevel{General Syntax}
+\label{exprSyntax}
 
 A score expression  always starts with \OSC{expr(} and ends with \OSC{)}, then 
 2 syntaxes are handled:
@@ -36,16 +39,13 @@ When defining an object using a score expressions, INScore will parse it, constr
 
 \example \\
 Creating a guido object by sequencing two guido string
-\sample{
-/ITL/scene/score set gmn expr( seq "[c d e]" "[f g h]");
-}
+\sample{/ITL/scene/score set gmn expr( seq "[c d e]" "[f g h]");}
 is equivalent to
-\sample{
-/ITL/scene/score set gmn "[c d e f g h]";
-}
+\sample{/ITL/scene/score set gmn "[c d e f g h]";}
 
 \sublevel{Score Operators}
 \label{operators}
+
 All the score operators of INScore make use of guido operators implemented in the GuidoAR library.
 \begin{table*}[htbp]
 \begin{center}
@@ -76,6 +76,7 @@ rhythm 	&	$s1\ s2$	& applies the rhythm of $s1$ to $s2$ in a loop \\
 %===============================
 \sublevel{Score Arguments}
 \label{arguments}
+
 The syntax for arguments is quite permissive and various resources can be used as arguments for score expressions. In any case, when evaluating the expression, all the arguments will be reduce to GMN string so they can then be processed by the operators.
 \begin{rail}
 Argument: 	 GmnCode
@@ -90,6 +91,7 @@ Argument: 	 GmnCode
 \end{rail}
 
 \subsubsection{Arguments specification}
+\label{argsSpec}
 
 \begin{itemize}
 \item \OSC{GmnCode} are not evaluated, passed as they are to operators. Both GMN and MusicXML string are supported.
@@ -99,9 +101,10 @@ Argument: 	 GmnCode
 \end{itemize}
 
 \subsubsection{Arguments prefix}
+\label{argsPrefix}
 
 \begin{itemize}
-\item \OSC{\&}: When triggering the reevaluation of an expression (see Section~\ref{exprCmd}) only the arguments prefixed with \OSC{\&} are updated.
+\item \OSC{\&}: When triggering the reevaluation of an expression (see Section \ref{exprCmd}) only the arguments prefixed with \OSC{\&} are updated.
 
 
 \item \OSC{\lowTilde}: before the first evaluation of a score expression, any \OSC{ScoreObjects} prefixed with a \OSC{\lowTilde} shall be replaced by their own expression. In other words, score expressions containing \OSC{\lowTilde} arguments will be expended with existing score expressions. This mechanism allows to compose not only scores and score expressions together.
@@ -117,9 +120,11 @@ Defining \OSC{/ITL/scene/score} as a copy of \OSC{/ITL/scene/simpleScore} duplic
 /ITL/scene/score set gmn expr( par \lowTilde score \lowTilde score);\\
 }
 \OSC{/ITL/scene/score} should look like:\\
+\begin{figure}
 \begin{center}
  \includegraphics[scale=0.1]{imgs/seqparEnhanced}
 \end{center}
+\end{figure}
 
 Querying for the expanded expression of \OSC{/ITL/scene/score} (see Section~\ref{exprCmd}) should return:
 \begin{verbatim}
@@ -137,14 +142,14 @@ Querying for the expanded expression of \OSC{/ITL/scene/score} (see Section~\ref
 \end{verbatim}
 \smallbreak
 
-\note {on arguments quoting} \\
+\note{on arguments quoting} \\
 Arguments using special characters (space, tabulation, parenthesis, braces...), should be simple or double quoted, otherwise quotes can be omitted.
 
 
 %\pagebreak
 
 %===============================
-\sublevel{\OSC{expr} commands}
+\sublevel{'expr' commands}
 \label{exprCmd}
 
 ITLObject defined using an evaluable expression gain access to these specific commands:
@@ -166,6 +171,7 @@ The \OSC{renew} command reset the internal state of the evaluated variable, forc
 
 %===============================
 \sublevel{newData event}
+\label{exprNewData}
 
 \OSC{newData} is triggered by any object when its value change (generally because of a \OSC{set} message). Neither trying to set an object to its actual value without changing its type, nor re-evaluating an object to its actual value will trigger newData.
 
@@ -183,10 +189,8 @@ To avoid infinite loop when using recursion, \OSC{newData} event is delayed of o
 \note\\
 Because newData event is delayed, if \OSC{score} experiences multiple modifications during the same event loop (because multiple \OSC{set} messages have been sent together), only his final value will be accessible when newData will be actually triggered, however the event will be sent as many times as \OSC{score} have been modified.
 
-\note {when automatising update}\\
+\note{when automatizing update}\\
 For the reasons raised in the previous note, one should be very careful to delayed update when automatise \OSC{reeval} with \OSC{newData}. Indeed, in some extreme case, executing a script one line after an other won't have the same result as executing the all script at once!!
-
-%\pagebreak
 
 \example\\
 Creating a "score buffer", storing every state adopted by \OSC{score}
@@ -201,19 +205,18 @@ Creating a "score buffer", storing every state adopted by \OSC{score}
 /ITL/scene/score set gmn "[\{c,e,g\}]";
 }
 Won't have the same result if run line by line, or the all script as once:
-%\begin{multicols}{2}
-
 Line by line:
+\begin{figure}
 \begin{center}
  \includegraphics[scale=0.3]{imgs/autoSingleLine}
 \end{center}
+\end{figure}
 
-%\columnbreak
 All script at once:
+\begin{figure}
 \begin{center}
  \includegraphics[scale=0.3]{imgs/autoAllScript}
 \end{center}
-
-%\end{multicols}
+\end{figure}
 
 To avoid such undeterministic behaviour, one should, in this case, manually trigger \OSC{reeval} after each modification of \OSC{score}.

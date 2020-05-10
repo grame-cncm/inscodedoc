@@ -2746,12 +2746,12 @@ And :
 Signal messages can be sent to any address with the form \OSC{/ITL/\textit{scene}/signal/\textit{identifier}}, where \OSC{\textit{identifier}} is a unique signal identifier.
 The set of messages supported by a signal is the following:
 
-\index{signal}
-\index{signal!simple signal!size}
-\index{signal!simple signal!default}
-\index{signal!simple signal!get}
-\index{signal!simple signal!reset}
-\index{signal!simple signal!del}
+\index{Signal}
+\index{Signal!simple signal!size}
+\index{Signal!simple signal!default}
+\index{Signal!simple signal!get}
+\index{Signal!simple signal!reset}
+\index{Signal!simple signal!del}
 
 \begin{rail}
 simpleSignal : [1] ( float32 + )
@@ -2786,8 +2786,8 @@ Composing signals in parallel produces a signal which value at a time \values{t}
 
 The format of the messages for parallel signals is the following:
 
-\index{signal!parallel signal}
-\index{signal!parallel signal!get}
+\index{Signal!parallel signal}
+\index{Signal!parallel signal!get}
 
 \begin{rail}
 parallelSignal :  
@@ -2839,7 +2839,7 @@ For a parallel signal:
 When signals are in parallel, a \emph{projection string} may be used to distribute data over each signal.
 Individual components of a parallel signal may be addressed using a \emph{projection string} that is defined as follows:
 
-\index{signal!parallel signal!projection string}
+\index{Signal!parallel signal!projection string}
 
 \begin{rail}
 projectionString :  '[' int32 (| '\~{}' (| int32)) ']'
@@ -2884,8 +2884,8 @@ Sending data to the second and third components of a set of 3 parallel signals:
 A signal may be connected to one or several graphic attributes of an object. Only the common attributes  (see section \fullref{common}) support this mechanism.
 When a connection between a signal and an object attribute is set, sending values to the signal is equivalent to send the values to the connected object attribute. A similar behavior could be achieved by sending the equivalent messages, however the connection mechanism is provided for efficiency reasons and in addition, it supports values scaling. 
 
-\index{signal!connect}
-\index{signal!disconnect}
+\index{Signal!connect}
+\index{Signal!disconnect}
 
 \begin{rail}
 signalcnx : 	( 'connect'   connection )
@@ -2897,7 +2897,7 @@ signalcnx : 	( 'connect'   connection )
 \item the \OSC{disconnect} message breaks a specific connection \textbf{[1]} or all the connections of a given signal \textbf{[2]}, or all connections between a given signal and a given object \textbf{[3]}.
 \end{itemize}
 
-\index{signal!connection}
+\index{Signal!connection}
 
 \begin{rail}
 connection : signal ( target + )
@@ -3577,8 +3577,8 @@ It receives messages at the address \OSC{/ITL/scene/fileWatcher}.
 
 The \OSC{fileWatcher} support the \OSC{watch} and \OSC{watch+} messages as described in section \fullref{interaction} with a file name used in place of the \OSC{what} parameter.
 
-\index{fileWatcher!watch}
-\index{fileWatcher!watch+}
+\index{File Watcher!watch}
+\index{File Watcher!watch+}
 
 \begin{rail}
 fileWatcher : (('watch' | 'watch+')  ( | filePath  ( |  ( ( message  )+ "," ) )  )) 
@@ -3923,7 +3923,7 @@ There are two ways to create a FAUST Processor :
 \begin{itemize}
 \item [1]- By charging a DSP as a plugin already compiled \\
 
-\index{faustprocessor!set}
+\index{Faust Processor!set (plugin)}
 
 \begin{rail}
 faustprocessor : 'set' 'faust' path
@@ -3937,7 +3937,7 @@ The plugin name should not include the extension. The expected extensions are th
 
 \item [2]- By charging libfaust as a plugin to compile a DSP on-the-fly  (as a string or a file). \\
 
-\index{faustprocessor!set}
+\index{Faust Processor!set (dsp)}
 
 \begin{rail}
 faustdsp : 'set' 'faustdsp' faustcode
@@ -3945,7 +3945,7 @@ faustdsp : 'set' 'faustdsp' faustcode
 
 \vspace{0.3cm}
 
-\index{faustprocessor!set}
+\index{Faust Processor!set (dsp file)}
 
 \begin{rail}
 faustdspfile : 'set' 'faustdspf' faustfile
@@ -3964,10 +3964,10 @@ faustdspfile : 'set' 'faustdspf' faustfile
 \label{faustmsg}
 A FAUST processor is characterized by the numbers of input and output channels and by a set of parameters. Each parameter carries a name defined by the FAUST processor. The set of messages supported by a FAUST processor is the set of signals messages extended with the parameters names and with specific query messages. 
 
-\index{faustprocessor!in}
-\index{faustprocessor!out}
-\index{faustprocessor!min}
-\index{faustprocessor!max}
+\index{Faust Processor!in}
+\index{Faust Processor!out}
+\index{Faust Processor!min}
+\index{Faust Processor!max}
 
 \begin{rail}
 faustmessage : signalMsgs
@@ -4041,7 +4041,7 @@ In the \emph{following phase}, the system maintains a list of likelihood for the
 \label{gfmessages}
 A gesture follower is created in a scene using the \OSC{imtrgf} type. It has a graphic appearance that may be used for debug purpose but it is hidden by default.
 
-\index{gesture follower}
+\index{Gesture follower}
 
 \begin{rail}
 gesturefollower : 'set' 'imtrgf' gesturedimension bufsize ( name + )
@@ -4057,11 +4057,11 @@ The parameters are:
 \note{} \\
 A gesture follower is created with a fixed count of gestures that can be learned and decoded. These gestures are named gestures and can be addressed at \OSC{/ITL/\textit{scene}/\textit{myfollower}/\textit{gesturename}} where the part in italic are user defined names and where \OSC{myfollower} is a gesture follower.
 
-\index{gesture follower!learn}
-\index{gesture follower!follow}
-\index{gesture follower!stop}
-\index{gesture follower!likelihoodwindow}
-\index{gesture follower!tolerance}
+\index{Gesture follower!learn}
+\index{Gesture follower!follow}
+\index{Gesture follower!stop}
+\index{Gesture follower!likelihoodwindow}
+\index{Gesture follower!tolerance}
 
 \begin{rail}
 gesturefollowerMsgs :
@@ -4105,10 +4105,10 @@ A gesture could be in two states:
 \item an idle state: when its likelihood is lower than the likelihood threshold.
 \end{itemize}
 
-\index{gesture!set}
-\index{gesture!likelihoodThreshold}
-\index{gesture!learn}
-\index{gesture!clear}
+\index{Gesture follower!set}
+\index{Gesture follower!likelihoodThreshold}
+\index{Gesture follower!learn}
+\index{Gesture follower!clear}
 
 \begin{rail}
 gesture : 'set' ( float32 +)
@@ -4126,8 +4126,8 @@ gesture : 'set' ( float32 +)
 
 Gestures supports also specific queries :
 
-\index{gesture!get}
-\index{gesture!get!size}
+\index{Gesture follower!get}
+\index{Gesture follower!get!size}
 
 \begin{rail}
 gestureget : 'get' (| 'likelihoodThreshold' | 'size')
@@ -4146,11 +4146,11 @@ gestureget : 'get' (| 'likelihoodThreshold' | 'size')
 
 Events are defined at gesture level and events management messages should be addressed to gestures. 
 
-\index{gesture events!watch}
-\index{gesture events!gfEnter}
-\index{gesture events!gfLeave}
-\index{gesture events!gfActive}
-\index{gesture events!gfIdle}
+\index{Gesture follower!watch}
+\index{Gesture follower!gfEnter}
+\index{Gesture follower!gfLeave}
+\index{Gesture follower!gfActive}
+\index{Gesture follower!gfIdle}
 
 \begin{rail}
 gestureevents :
@@ -4166,9 +4166,9 @@ gestureevents :
 
 A message associated to a gesture supports the following specific variables:
 
-\index{gesture variables!gflikelihood}
-\index{gesture variables!gfpos}
-\index{gesture variables!gfspeed}
+\index{Gesture follower!gflikelihood}
+\index{Gesture follower!gfpos}
+\index{Gesture follower!gfspeed}
 
 \begin{rail}
 gesturevariable : 
@@ -4223,7 +4223,7 @@ INScore can embed Http server to expose real time screenshot image of a scene to
 
 The http server object is created in a scene like other objects and served image of his scene.
 
-\index{httpdserver!set}
+\index{Httpd Server!set}
 
 \begin{rail}
 httpdserver: 'set' 'httpd' port
@@ -4245,7 +4245,7 @@ If the http port is already used, the server cannot start.
 \label{httpdmsg}
 The http server status can be delivered with a specific message.
 
-\index{httpdmessage!status}
+\index{Httpd Server!status}
 
 \begin{rail}
 httpdmessage : 'get' status
@@ -4259,16 +4259,11 @@ A string corresponding to the server status ("started" or "stopped") is return.
 %===============================
 %:Appendix
 \toplevel{Appendices}
-\sublevel{Grammar definition}
-\label{yacc}
+\label{appendices}
 \input{yacc.tex}
 
-\sublevel{Lexical tokens}
-\label{lex}
 \input{tokens.tex}
 
-\sublevel{Score expressions grammar}
-\label{yaccexpr}
 \input{yaccexpr.tex}
 
 

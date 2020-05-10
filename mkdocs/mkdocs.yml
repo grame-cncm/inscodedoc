@@ -10,21 +10,24 @@ nav:
         - 'Common Messages' : refs/2-common.md
         - 'Time Messages' : refs/3-time.md
         - 'Miscellaneous' : refs/4-miscmsgs.md
-        - 'The set Message' : refs/5-setsect.md
+        - 'The set Message': refs/5-setsect.md
         - 'The get Message' : refs/6-getsect.md
         - 'Specific Messages' : refs/7-specificMsg.md
-        - 'Application Messages' : refs/8-ITL.md
+        - 'Application Messages': refs/8-ITL.md
         - 'Scene Messages' : refs/9-scene.md
         - 'Messages Forwarding' : refs/10-forwarding.md
         - 'Layers' : refs/11-layers.md
         - 'Mapping' : refs/12-mapping.md
         - 'Synchronization' : refs/13-syncmsg.md
         - 'Graphic signals' : refs/14-graphsig.md
-        - 'Interaction' : refs/15-interaction.md
-        - 'Scripting' : refs/16-scripting.md
-        - 'Plugins' : refs/17-plugins.md
-        - 'Grammar definitions' : refs/18-yacc.md
-        - 'Changes list' : refs/19-changes.md
+        - 'Sensors' : refs/15-sensors.md
+        - 'Interaction' : refs/16-interaction.md
+        - 'Scripting' : refs/17-scripting.md
+        - 'Math Expressions' : refs/18-mathExpr.md
+        - 'Score Expressions' : refs/19-scoreExpr.md
+        - 'Plugins' : refs/20-plugins.md
+        - 'Grammar definition' : refs/21-appendices.md
+        - 'Changes list' : refs/22-changes.md
         - 'Index' : refs/index.md
     - Download:
         - 'Pdf documentation' : rsrc/INScoreLang.pdf

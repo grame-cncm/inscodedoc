@@ -121,7 +121,11 @@
 </li>
                                     
 <li >
-    <a href="../15-interaction/">Interaction</a>
+    <a href="../15-sensors/">Sensors</a>
+</li>
+                                    
+<li >
+    <a href="../16-interaction/">Interaction</a>
 </li>
                                     
 <li class="active">
@@ -129,15 +133,23 @@
 </li>
                                     
 <li >
-    <a href="../17-plugins/">Plugins</a>
+    <a href="../18-mathExpr/">Math Expressions</a>
 </li>
                                     
 <li >
-    <a href="../18-yacc/">Grammar definitions</a>
+    <a href="../19-scoreExpr/">Score Expressions</a>
 </li>
                                     
 <li >
-    <a href="../19-changes/">Changes list</a>
+    <a href="../20-plugins/">Plugins</a>
+</li>
+                                    
+<li >
+    <a href="../21-appendices/">Grammar definition</a>
+</li>
+                                    
+<li >
+    <a href="../22-changes/">Changes list</a>
 </li>
                                     
 <li >
@@ -166,12 +178,12 @@
                             </a>
                         </li>
                             <li >
-                                <a rel="next" href="../15-interaction/">
+                                <a rel="next" href="../16-interaction/">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li >
-                                <a rel="prev" href="../17-plugins/">
+                                <a rel="prev" href="../18-mathExpr/">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -209,7 +221,7 @@ An INScore file is a list of textual expressions. A script expression is:</p>
 <li>a foreign language script that may generate messages as output.</li>
 <li>an end marker '<span class="OSC"><strong>END</strong></span>' to declare a script end. After the marker, the remaining part of the script will be ignored.</li>
 </ul>
-<p><a name="16-scripting-expressions"></a></p>
+<p><a name="17-scripting-expressions"></a></p>
 <div class="rail">
 <span class="railtitle">expression</span>
 <br /><script>
@@ -223,8 +235,8 @@ ComplexDiagram(
 <p>Messages and variables declarations must be followed by a semicolon, used as statements separator.</p>
 <h2 id="messages">Messages</h2>
 <p><a name="scriptmsgs"></a></p>
-<p>Messages are basically OSC messages that support the address extension scheme described in section <a href="../15-interaction#interaction">interaction</a> and relative addresses that are described below.
-Messages parameters can be replaced by variables that are evaluated at parsing level. Variables are described in section <a href="../16-scripting#scriptvar">scriptvar</a>.</p>
+<p>Messages are basically OSC messages that support the address extension scheme described in section <a href="../16-interaction#interaction">interaction</a> and relative addresses that are described below.
+Messages parameters can be replaced by variables that are evaluated at parsing level. Variables are described in section <a href="../17-scripting#scriptvar">scriptvar</a>.</p>
 <p>Using the address extension scheme, a script may be designed to initialize an INScore scene and external applications as well, including on remote hosts.</p>
 <p><span class="example">Example</span>
 Initializing a score and an external application listening on port 12000 and running on a remote host named <span class="OSC">host.adomain.net</span>.</p>
@@ -276,8 +288,8 @@ Different string parameter</p>
 <h2 id="variables">Variables</h2>
 <p><a name="scriptvar"></a></p>
 <p>A variable declaration associates a name with a list of parameters or a list of messages.
-Parameters must follow the rules given in section <a href="../16-scripting#scripttypes">scripttypes</a>. They may include previously declared variables. A message list must be enclosed in parenthesis and a comma must be used as messages separator.</p>
-<p><a name="16-scripting- variable"></a></p>
+Parameters must follow the rules given in section <a href="../17-scripting#scripttypes">scripttypes</a>. They may include previously declared variables. A message list must be enclosed in parenthesis and a comma must be used as messages separator.</p>
+<p><a name="17-scripting- variable"></a></p>
 <div class="rail">
 <span class="railtitle">variabledecl</span>
 <br /><script>
@@ -305,7 +317,7 @@ Using a variable to share a common position:</p>
 /ITL/scene/b x $x;
 </code></pre>
 
-<p>Variables can be used in interaction messages as well, which may also use the variables available in the interaction context (see section <a href="../15-interaction#interactvar">interactvar</a>). To differentiate between a <strong>script</strong> and an <strong>interaction</strong> variable, the latter must be quoted to be passed as strings and to prevent their evaluation by the parser. </p>
+<p>Variables can be used in interaction messages as well, which may also use the variables available in the interaction context (see section <a href="../16-interaction#interactvar">interactvar</a>). To differentiate between a <strong>script</strong> and an <strong>interaction</strong> variable, the latter must be quoted to be passed as strings and to prevent their evaluation by the parser. </p>
 <p><span class="example">Example</span> 
 Using variables in interaction messages: $sx is evaluated at event occurrence   and $y is evaluated at parsing level.</p>
 <pre><code>y = 0.5;
@@ -332,9 +344,9 @@ Using variables in interaction messages: $sx is evaluated at event occurrence   
 There is nothing to prevent overriding of an environment variable. It's the script responsibility to handle variable names collisions.</p>
 <h2 id="message-based-parameters">Message based parameters</h2>
 <p><a name="scriptmsgparam"></a></p>
-<p>Similarly to message based variables (see section <a href="../15-interaction#msgvar">msgvar</a>), a message parameter may also use the result of a <span class="OSC">get</span> message as parameters specified like a message based variable.
+<p>Similarly to message based variables (see section <a href="../16-interaction#msgvar">msgvar</a>), a message parameter may also use the result of a <span class="OSC">get</span> message as parameters specified like a message based variable.
 The message must be enclosed in parameters with a leading $ sign.</p>
-<p><a name="16-scripting- message based parameters"></a></p>
+<p><a name="17-scripting- message based parameters"></a></p>
 <div class="rail">
 <span class="railtitle">msgparam</span>
 <br /><script>
@@ -359,9 +371,9 @@ Message based parameters are evaluated by the parser. Thus when the system state
 <p>x position of <span class="OSC">/ITL/scene/foo</span> will be set to x position of <span class="OSC">/ITL/scene/obj</span> at the time of the script evaluation (that may be different to 0.1).</p>
 <h2 id="languages">Languages</h2>
 <p><a name="scriptlang"></a></p>
-<p><a name="16-scripting-javascript"></a></p>
+<p><a name="17-scripting-javascript"></a></p>
 <p>INScore supports Javascript and Lua as scripting languages. Javascript is embedded by default (using the Qt Javascript engine). INScore needs to be recompiled to embed the Lua engine\footnote{<a href="http://www.lua.org/">http://www.lua.org/</a>}. A script section is indicated similarly to a Javascript section in html i.e. enclosed in an opening <span class="OSC">&lt;?</span> and a closing <span class="OSC">?&gt;</span>.</p>
-<p><a name="16-scripting- javascript"></a></p>
+<p><a name="17-scripting- javascript"></a></p>
 <div class="rail">
 <span class="railtitle">script</span>
 <br /><script>
@@ -387,7 +399,7 @@ These messages are then parsed as if replacing the corresponding script section.
 <h3 id="the-javascript-object">The Javascript object</h3>
 <p><a name="jsobj"></a></p>
 <p>The Javascript engine is available at runtime at the address <span class="OSC">/ITL/<em>scene</span>/javascript</em>. It has a <span class="OSC">run</span> method that takes a javascript string as parameter.</p>
-<p><a name="16-scripting- run"></a></p>
+<p><a name="17-scripting- run"></a></p>
 <div class="rail">
 <span class="railtitle">javascript</span>
 <br /><script>
@@ -443,7 +455,13 @@ Actually, including a javascript section in a script is equivalent to send the <
 /ITL/scene/javascript run &quot;foo(1)&quot;;
 </code></pre>
 
-<p>~~~~~~~</p></div>
+<p>~~~~~~~</p>
+<p>\newcommand{\inscoremathversion}{1.20}
+\newcommand{\mathstring}[1]     {<em>string</em>(<span class="OSC">#1</span>)}
+\newcommand{\mathstrnum}[1]     {<em>length</em>(<span class="OSC">#1</span>)}
+\newcommand{\mathsize}[1]       {<em>size</em>(<span class="OSC">#1</span>)}
+\newcommand{\op}                {<script type="math/tex">op</script>}
+\newcommand{\todo}  [1]         {{\big [\texttt{<strong>#1</strong>}]}}</p></div>
         </div>
 
         <footer class="col-md-12">

@@ -90,8 +90,8 @@ h2 {
 
 .terminal {
 	color: black;
-	border: 1px solid grey;
-	padding: 2px ;
+	border: 2px solid black;
+	padding: 0px 2px 0px 2px;
 }
 
 .warning {

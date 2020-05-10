@@ -121,23 +121,35 @@
 </li>
                                     
 <li >
-    <a href="../15-interaction/">Interaction</a>
+    <a href="../15-sensors/">Sensors</a>
 </li>
                                     
 <li >
-    <a href="../16-scripting/">Scripting</a>
+    <a href="../16-interaction/">Interaction</a>
 </li>
                                     
 <li >
-    <a href="../17-plugins/">Plugins</a>
+    <a href="../17-scripting/">Scripting</a>
 </li>
                                     
 <li >
-    <a href="../18-yacc/">Grammar definitions</a>
+    <a href="../18-mathExpr/">Math Expressions</a>
 </li>
                                     
 <li >
-    <a href="../19-changes/">Changes list</a>
+    <a href="../19-scoreExpr/">Score Expressions</a>
+</li>
+                                    
+<li >
+    <a href="../20-plugins/">Plugins</a>
+</li>
+                                    
+<li >
+    <a href="../21-appendices/">Grammar definition</a>
+</li>
+                                    
+<li >
+    <a href="../22-changes/">Changes list</a>
 </li>
                                     
 <li >
@@ -241,7 +253,7 @@ ComplexDiagram(
 <li><span class="OSC">gmnstream</span>: a Guido score defined by a GMN stream (a GMN string that can be written in several times).</li>
 <li><span class="OSC">musicxml</span>: a score defined by a MusicXML string.</li>
 <li><span class="OSC">musicxmlf</span>: a score defined by a MusicXML file.</li>
-<li><span class="OSC">gmn expr</span>: a score defined by a <strong>score expression</strong>. See section \fullref{scoreExpr} for the score expressions reference.</li>
+<li><span class="OSC">gmn expr</span>: a score defined by a <strong>score expression</strong>. See section <a href="../19-scoreExpr#scoreExpr">scoreExpr</a> for the score expressions reference.</li>
 </ul>
 <p><span class="example">Example</span> 
 Creating a music score using a Guido Music Notation language string.</p>
@@ -277,7 +289,7 @@ ComplexDiagram(
 <li><span class="OSC">pianoroll</span>: a piano roll defined by a GMN string.</li>
 <li><span class="OSC">pianorollstream</span>: a piano roll defined by a GMN stream (a GMN string that can be written in several times).</li>
 <li><span class="OSC">pianorollf</span>: a piano roll defined by a guido file (with ".gmn" extension) or by a midi file (with ".mid" extension). Warning: url forms are not supported for midi files.</li>
-<li><span class="OSC">pianoroll expr</span>: a piano roll defined by a <strong>score expression</strong>. See section \fullref{scoreExpr} for the score expressions reference.</li>
+<li><span class="OSC">pianoroll expr</span>: a piano roll defined by a <strong>score expression</strong>. See section <a href="../19-scoreExpr#scoreExpr">scoreExpr</a> for the score expressions reference.</li>
 </ul>
 <p><span class="example">Example</span> 
 Creating a pianoroll using a Guido Music Notation language string.</p>
@@ -374,7 +386,7 @@ Creating a rectangle with a 0.5 width and a 1.5 height.</p>
 <h2 id="signals-and-graphic-signals">Signals and graphic signals</h2>
 <p><a name="sigscore"></a></p>
 <p>Signals are special objects that are stored in a special <span class="OSC">signal</span> node and that may be composed in parallel to produce graphic signals. Signals and graphic signals are decribed in section <a href="../14-graphsig#graphsig">graphsig</a>.</p>
-<p>Signals and computation on signals may be based on FAUST objects that are actually signals processors. FAUST objects are decribed in section <a href="../17-plugins#faust">faust</a>. 
+<p>Signals and computation on signals may be based on FAUST objects that are actually signals processors. FAUST objects are decribed in section <a href="../20-plugins#faust">faust</a>. 
 For more information about the FAUST language, see at <a href="http://faust.grame.fr">http://faust.grame.fr</a>.</p>
 <p><a name="5-setsect-graph"></a>
 <a name="5-setsect-fastgraph"></a>
@@ -393,9 +405,9 @@ ComplexDiagram(
 <ul>
 <li><span class="OSC">graph</span>: graphic of a signal. See section <a href="../14-graphsig#graphsig">graphsig</a> for details about the <span class="OSC">graph</span> objects data.</li>
 <li><span class="OSC">fastgraph</span>: fast rendering graphic signal. See also section <a href="../14-graphsig#graphsig">graphsig</a>.</li>
-<li><span class="OSC">faust</span>: a FAUST object as a plugin (see section <a href="../17-plugins#faust">faust</a>)</li>
-<li><span class="OSC">faustdsp</span>: a FAUST object defined by a string (see section <a href="../17-plugins#faust">faust</a>)</li>
-<li><span class="OSC">faustdspf</span>: a FAUST object defined by a file (see section <a href="../17-plugins#faust">faust</a>)</li>
+<li><span class="OSC">faust</span>: a FAUST object as a plugin (see section <a href="../20-plugins#faust">faust</a>)</li>
+<li><span class="OSC">faustdsp</span>: a FAUST object defined by a string (see section <a href="../20-plugins#faust">faust</a>)</li>
+<li><span class="OSC">faustdspf</span>: a FAUST object defined by a file (see section <a href="../20-plugins#faust">faust</a>)</li>
 </ul>
 <h2 id="images-and-video">Images and video</h2>
 <p><a name="imgscore"></a></p>
@@ -477,7 +489,7 @@ Creating a score using an URL:</p>
 /ITL/scene/score set url gmnf &quot;http://anyhost.adomain.org/score.gmn&quot;;
 </code></pre>
 
-<p><span class="note">Note: </span> The <span class="OSC">url</span> object handles specific events : <span class="OSC">success</span>, <span class="OSC">error</span> and <span class="OSC">cancel</span> (see the section <a href="../15-interaction#urlevents">urlevents</a>).</p>
+<p><span class="note">Note: </span> The <span class="OSC">url</span> object handles specific events : <span class="OSC">success</span>, <span class="OSC">error</span> and <span class="OSC">cancel</span> (see the section <a href="../16-interaction#urlevents">urlevents</a>).</p>
 <h2 id="the-file-type">The file type</h2>
 <p><a name="fileset"></a>
 <a name="setfile"></a></p>
@@ -553,7 +565,7 @@ Creating an image using the <span class="OSC">file</span> type.</p>
 <h2 id="web-objects">Web objects</h2>
 <p><a name="webobjects"></a></p>
 <p>A score can make its content available to the Internet using specific components that provide an image of the scene over http or websocket protocols.</p>
-<p>The <span class="OSC">httpd</span> server depends on the Httpd server plugin and is described in section <a href="../17-plugins#Httpd">Httpd</a>.</p>
+<p>The <span class="OSC">httpd</span> server depends on the Httpd server plugin and is described in section <a href="../20-plugins#Httpd">Httpd</a>.</p>
 <p>The <span class="OSC">websocket</span> server provides a two-ways communication between INScore and distant clients. The server sends notifications to client using a <span class="OSC">Screen updated</span> text message when the scene is updated. Clients can request an image by sending a <span class="OSC">getImage</span> text message to the server. The server responds with a image of the scene in png format, using a Blob type javascript object.</p>
 <p><a name="5-setsect-websocket"></a>
 <a name="5-setsect-httpd"></a></p>
@@ -578,7 +590,7 @@ Creating an websocket server using the port <span class="OSC">1234</span> and li
 <pre><code>/ITL/scene/myObject set websocket 1234 500;
 </code></pre>
 
-<p><span class="seealso">See also:</span> the http web server plugin (section <a href="../17-plugins#Httpd">Httpd</a>).</p></div>
+<p><span class="seealso">See also:</span> the http web server plugin (section <a href="../20-plugins#Httpd">Httpd</a>).</p></div>
         </div>
 
         <footer class="col-md-12">

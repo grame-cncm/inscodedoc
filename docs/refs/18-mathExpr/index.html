@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Math Expressions - INScore Documentation</title>
+        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+        <link href="/css/inscore.css" rel="stylesheet">
+        <link href="/BNF/railroad-diagrams.css" rel="stylesheet">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../js/bootstrap-3.0.3.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+
+                <!-- Collapsed navigation -->
+                <div class="navbar-header">
+                    <!-- Expander button -->
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="../..">INScore Documentation</a>
+                </div>
+
+                <!-- Expanded navigation -->
+                <div class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li >
+                                <a href="../..">Home</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tutorials <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li >
+    <a href="http://berio.grame.fr/MusicNotation/Introduction-to-INScore/">Introduction</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Reference <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li >
+    <a href="../1-genformat/">Format of a message</a>
+</li>
+                                    
+<li >
+    <a href="../2-common/">Common Messages</a>
+</li>
+                                    
+<li >
+    <a href="../3-time/">Time Messages</a>
+</li>
+                                    
+<li >
+    <a href="../4-miscmsgs/">Miscellaneous</a>
+</li>
+                                    
+<li >
+    <a href="../5-setsect/">The set Message</a>
+</li>
+                                    
+<li >
+    <a href="../6-getsect/">The get Message</a>
+</li>
+                                    
+<li >
+    <a href="../7-specificMsg/">Specific Messages</a>
+</li>
+                                    
+<li >
+    <a href="../8-ITL/">Application Messages</a>
+</li>
+                                    
+<li >
+    <a href="../9-scene/">Scene Messages</a>
+</li>
+                                    
+<li >
+    <a href="../10-forwarding/">Messages Forwarding</a>
+</li>
+                                    
+<li >
+    <a href="../11-layers/">Layers</a>
+</li>
+                                    
+<li >
+    <a href="../12-mapping/">Mapping</a>
+</li>
+                                    
+<li >
+    <a href="../13-syncmsg/">Synchronization</a>
+</li>
+                                    
+<li >
+    <a href="../14-graphsig/">Graphic signals</a>
+</li>
+                                    
+<li >
+    <a href="../15-sensors/">Sensors</a>
+</li>
+                                    
+<li >
+    <a href="../16-interaction/">Interaction</a>
+</li>
+                                    
+<li >
+    <a href="../17-scripting/">Scripting</a>
+</li>
+                                    
+<li class="active">
+    <a href="./">Math Expressions</a>
+</li>
+                                    
+<li >
+    <a href="../19-scoreExpr/">Score Expressions</a>
+</li>
+                                    
+<li >
+    <a href="../20-plugins/">Plugins</a>
+</li>
+                                    
+<li >
+    <a href="../21-appendices/">Grammar definition</a>
+</li>
+                                    
+<li >
+    <a href="../22-changes/">Changes list</a>
+</li>
+                                    
+<li >
+    <a href="../">Index</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Download <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li >
+    <a href="../../rsrc/INScoreLang.pdf">Pdf documentation</a>
+</li>
+                                </ul>
+                            </li>
+                            <li >
+                                <a href="../../about/">About</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li >
+                                <a rel="next" href="../17-scripting/">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li >
+                                <a rel="prev" href="../19-scoreExpr/">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#mathematical-expressions">Mathematical expressions</a></li>
+            <li><a href="#operators">Operators</a></li>
+            <li><a href="#arguments">Arguments</a></li>
+            <li><a href="#polymorphism">Polymorphism</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<script src='/BNF/railroad-diagrams.js'></script>
+
+<h1 id="mathematical-expressions">Mathematical expressions</h1>
+<p><a name="mathExpr"></a></p>
+<p>Since INScore version \inscoremathversion , mathematical expressions have been introduced as messages arguments. These expressions allows to compute values at parsing time.</p>
+<h2 id="operators">Operators</h2>
+<p><a name="Operators"></a></p>
+<p>Basic mathematical expressions are supported. They are listed below.</p>
+<p><a name="18-mathExpr-operators"></a></p>
+<div class="rail">
+<span class="railtitle">mathexpr</span>
+<br /><script>
+ComplexDiagram(
+    Choice (0, Sequence (Comment ('1'), NonTerminal('matharg'), '+', NonTerminal('matharg')), Sequence (Comment ('2'), NonTerminal('matharg'), '-', NonTerminal('matharg')), Sequence (Comment ('3'), '-', NonTerminal('matharg')), Sequence (Comment ('4'), NonTerminal('matharg'), '*', NonTerminal('matharg')), Sequence (Comment ('5'), NonTerminal('matharg'), '/', NonTerminal('matharg')), Sequence (Comment ('6'), NonTerminal('matharg'), '%', NonTerminal('matharg')), Sequence (Comment ('7'), '(', NonTerminal('mathexpr'), ')'), Sequence (Comment ('8'), 'max', '(', OneOrMore (NonTerminal('matharg')), ')'), Sequence (Comment ('9'), 'min', '(', OneOrMore (NonTerminal('matharg')), ')'), Sequence (Comment ('10'), '(', NonTerminal('mathbool'), '?', NonTerminal('matharg'), ':', NonTerminal('matharg'), ')'))
+).addTo()
+
+</script>
+</div>
+
+<p>Note that <em>matharg</em> could be a <em>mathexpr</em> as well (see section <a href="../18-mathExpr#mathargs">mathargs</a>).</p>
+<ul>
+<li><strong>1</strong>: addition.</li>
+<li><strong>2</strong>: substraction.</li>
+<li><strong>3</strong>: negation.</li>
+<li><strong>4</strong>: multiplication.</li>
+<li><strong>5</strong>: division.</li>
+<li><strong>6</strong>: modulo.</li>
+<li><strong>7</strong>: parenthesis, to be used for evaluation order.</li>
+<li><strong>8</strong>: gives the maximum value.</li>
+<li><strong>9</strong>: gives the minimum value.</li>
+<li><strong>10</strong>: conditional form: returns the first <span class="OSC">matharg</span> if <span class="OSC">mathbool</span> is true, otherwise returns the second one.</li>
+</ul>
+<p><span class="example">Example</span>
+Some simple mathematical expressions used as message parameters:</p>
+<pre><code>/ITL/scene/myObject x 0.5 * 0.2;
+/ITL/scene/myObject y ($var ? 1 : -1);
+</code></pre>
+
+<p>Boolean operations are the following:</p>
+<p><a name="18-mathExpr-booleans"></a></p>
+<div class="rail">
+<span class="railtitle">mathbool</span>
+<br /><script>
+ComplexDiagram(
+    Choice (0, Sequence (Comment ('1'), NonTerminal('arg')), Sequence (Comment ('2'), '!', NonTerminal('arg')), Sequence (Comment ('3'), NonTerminal('arg'), '==', NonTerminal('arg')), Sequence (Comment ('4'), NonTerminal('arg'), '>', NonTerminal('arg')), Sequence (Comment ('5'), NonTerminal('arg'), '>=', NonTerminal('arg')), Sequence (Comment ('6'), NonTerminal('arg'), '<', NonTerminal('arg')), Sequence (Comment ('7'), NonTerminal('arg'), '<=', NonTerminal('arg')))
+).addTo()
+
+</script>
+</div>
+
+<ul>
+<li><strong>1</strong>: evaluate the argument as a boolean value.</li>
+<li><strong>2</strong>: evaluate the argument as a boolean value and negates the result.</li>
+<li><strong>3</strong>: check if the arguments are equal.</li>
+<li><strong>4</strong>: check if the first argument is greater than the second one.</li>
+<li><strong>5</strong>: check if the first argument is greater or equel to the second one.</li>
+<li><strong>6</strong>: check if the first argument is less than the second one.</li>
+<li><strong>7</strong>: check if the first argument is less or equal to the second one.</li>
+</ul>
+<p><span class="example">Example</span>
+Compare two variables:</p>
+<pre><code>/ITL/scene/myObject x ($var1 &gt; $var2 ? 1 : -1);
+</code></pre>
+
+<h2 id="arguments">Arguments</h2>
+<p><a name="mathargs"></a></p>
+<p>Arguments of mathematical operations are the following:</p>
+<p><a name="18-mathExpr-arguments"></a></p>
+<div class="rail">
+<span class="railtitle">matharg</span>
+<br /><script>
+ComplexDiagram(
+    Choice (0, Sequence (Comment ('1'), 'param'), Sequence (Comment ('2'), 'variable'), Sequence (Comment ('3'), 'variable', Choice (0, '++', '--')), Sequence (Comment ('4'), Choice (0, '++', '- -'), 'variable'), Sequence (Comment ('5'), 'msgvariable'), Sequence (Comment ('6'), NonTerminal('mathexpr')))
+).addTo()
+
+</script>
+</div>
+
+<ul>
+<li><strong>1</strong>: any message parameter.</li>
+<li><strong>2</strong>: a variable value.</li>
+<li><strong>3</strong>: a variable that is post incremented or post decremented.</li>
+<li><strong>4</strong>: a variable that is pre incremented or pre decremented.</li>
+<li><strong>5</strong>: a message based variable.</li>
+<li><strong>6</strong>: a mathematical expression.</li>
+</ul>
+<h2 id="polymorphism">Polymorphism</h2>
+<p><a name="mathpoly"></a></p>
+<p>Since INScore's parameters are polymorphic, the semantic of the operations are to be defined notably when applied to non numeric arguments. Actually, a basic OSC message parameter type is between <span class="OSC">int32</span>, <span class="OSC">float32</span> and <span class="OSC">string</span>. However, due to the extension of the scripting language, parameters could also be arrays of any type, including mixed types (e.g. resulting from variable declarations). </p>
+<h3 id="numeric-values">Numeric values</h3>
+<p><a name="numbers"></a></p>
+<p>For numeric arguments, automatic type conversion is applied with a precedence of <span class="OSC">float32</span> i.e. when one of the argument's type is  <span class="OSC">float32</span>, the result is also  <span class="OSC">float32</span> (see Table <a href="../18-mathExpr#table:mathopnum">table:mathopnum</a>).</p>
+<p><a name="table:mathopnum"></a></p>
+<table>
+<thead>
+<tr>
+<th align="right">arg1</th>
+<th>arg2</th>
+<th align="center">output</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right"><span class="OSC">int32</span></td>
+<td><span class="OSC">int32</span></td>
+<td align="center"><span class="OSC">int32</span></td>
+</tr>
+<tr>
+<td align="right"><span class="OSC">float32</span></td>
+<td><span class="OSC">int32</span></td>
+<td align="center"><span class="OSC">float32</span></td>
+</tr>
+<tr>
+<td align="right"><span class="OSC">int32</span></td>
+<td><span class="OSC">float32</span></td>
+<td align="center"><span class="OSC">float32</span></td>
+</tr>
+<tr>
+<td align="right"><span class="OSC">float32</span></td>
+<td><span class="OSC">float32</span></td>
+<td align="center"><span class="OSC">float32</span></td>
+</tr>
+</tbody>
+</table>
+<p><span class='caption'>Numeric operations output</span></p>
+<h3 id="strings">Strings</h3>
+<p><a name="strings"></a></p>
+<p>For <span class="OSC">string</span> parameters, operations that have an obvious semantic (like + applied to two strings) are defined (see Table <a href="../18-mathExpr#table:mathopstr">table:mathopstr</a>) , the others are undefined and generate an error (see Table <a href="../18-mathExpr#table:mathnoopstr">table:mathnoopstr</a>). </p>
+<p><a name="table:mathopstr"></a></p>
+<table>
+<thead>
+<tr>
+<th align="right">operation</th>
+<th>evaluates to</th>
+<th align="center">comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right"><span class="OSC">string</span> + <span class="OSC">string</span></td>
+<td><span class="OSC">string</span></td>
+<td align="center">concatenate the two strings</td>
+</tr>
+<tr>
+<td align="right"><span class="OSC">string</span> + <span class="OSC">num</span></td>
+<td><span class="OSC">string</span> + \mathstring{num}</td>
+<td align="center"><span class="OSC">num</span> is converted to string</td>
+</tr>
+<tr>
+<td align="right"><span class="OSC">num</span> + <span class="OSC">string</span></td>
+<td>\mathstring{num} + <span class="OSC">string</span></td>
+<td align="center">"</td>
+</tr>
+<tr>
+<td align="right">@max(<span class="OSC">string</span> <span class="OSC">string</span>)</td>
+<td><span class="OSC">string</span></td>
+<td align="center">select the largest string</td>
+</tr>
+<tr>
+<td align="right">@min(<span class="OSC">string</span> <span class="OSC">string</span>)</td>
+<td><span class="OSC">string</span></td>
+<td align="center">select the smallest string</td>
+</tr>
+</tbody>
+</table>
+<p><span class='caption'>Supported operations on strings</span></p>
+<p><a name="table:mathnoopstr"></a></p>
+<table>
+<thead>
+<tr>
+<th align="right">operation</th>
+<th align="center">comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right"><span class="OSC">string</span> \op\ <span class="OSC">string</span></td>
+<td align="center">where \op\ is in [- * /</td>
+</tr>
+<tr>
+<td align="right"><span class="OSC">string</span> \op\ <span class="OSC">num</span></td>
+<td align="center">"</td>
+</tr>
+<tr>
+<td align="right"><span class="OSC">num</span> \op\ <span class="OSC">string</span></td>
+<td align="center">"</td>
+</tr>
+<tr>
+<td align="right">-<span class="OSC">string</span></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="right">prefixed or postfixed <span class="OSC">string</span></td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+<p><span class='caption'>Non supported operations on strings</span></p>
+<p>Boolean operations are supported on <span class="OSC">string</span> only when both arguments are strings (see Table <a href="../18-mathExpr#table:mathboolstr">table:mathboolstr</a>). Other types combination generate an error.</p>
+<p><a name="table:mathboolstr"></a></p>
+<table>
+<thead>
+<tr>
+<th align="right">boolean operation</th>
+<th align="center">evaluated as</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right"><span class="OSC">string</span> == <span class="OSC">string</span></td>
+<td align="center">regular strings comparison</td>
+</tr>
+<tr>
+<td align="right"><span class="OSC">string</span> &gt; <span class="OSC">string</span></td>
+<td align="center">alphabetical strings comparison</td>
+</tr>
+<tr>
+<td align="right"><span class="OSC">string</span> &gt;= <span class="OSC">string</span></td>
+<td align="center">"</td>
+</tr>
+<tr>
+<td align="right"><span class="OSC">string</span> &lt; <span class="OSC">string</span></td>
+<td align="center">"</td>
+</tr>
+<tr>
+<td align="right"><span class="OSC">string</span> &lt;= <span class="OSC">string</span></td>
+<td align="center">"</td>
+</tr>
+</tbody>
+</table>
+<p><span class='caption'>Supported boolean operations on strings</span></p>
+<h3 id="arrays">Arrays</h3>
+<p><a name="arrays"></a></p>
+<p>For arrays, the operation is distributed inside the array elements:
+<script type="math/tex; mode=display">
+ arg\ op\ [v_1\ ...\ v_n]  := [arg\ op\ v_1\ ...\ arg\ op\ v_n] 
+</script>
+or
+<script type="math/tex; mode=display"> 
+[v_1\ ...\ v_n]\ op\ arg  := [v_1\ op\ arg\ ...\ v_n\ op\ arg] 
+</script>
+</p>
+<p>When both parameters are arrays, the operation is distributed from one array elements to the other array elements when the arrays have the same size and it generates an error when the sizes differ:
+<script type="math/tex; mode=display">
+[a_1\ ...\ a_i]\ op\ [b_1\ ...\ b_i]  := [a_1\ op\ b_1\ ...\ a_i\ op\ b_i\ ] 
+</script>
+</p>
+<p>Boolean operations on arrays are evaluated as the logical <script type="math/tex">and</script> of it's element's boolean values and generate an error when the arrays sizes differ.</p></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+                <p><a href="https://inscore.grame.fr">INscore projects</a> Copyright &copy; 2019-2020 <a href="http://www.grame.fr">Grame-CNCM</a></p>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" defer></script>
+        <script src="../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

@@ -121,23 +121,35 @@
 </li>
                                     
 <li >
-    <a href="../15-interaction/">Interaction</a>
+    <a href="../15-sensors/">Sensors</a>
 </li>
                                     
 <li >
-    <a href="../16-scripting/">Scripting</a>
+    <a href="../16-interaction/">Interaction</a>
 </li>
                                     
 <li >
-    <a href="../17-plugins/">Plugins</a>
+    <a href="../17-scripting/">Scripting</a>
 </li>
                                     
 <li >
-    <a href="../18-yacc/">Grammar definitions</a>
+    <a href="../18-mathExpr/">Math Expressions</a>
 </li>
                                     
 <li >
-    <a href="../19-changes/">Changes list</a>
+    <a href="../19-scoreExpr/">Score Expressions</a>
+</li>
+                                    
+<li >
+    <a href="../20-plugins/">Plugins</a>
+</li>
+                                    
+<li >
+    <a href="../21-appendices/">Grammar definition</a>
+</li>
+                                    
+<li >
+    <a href="../22-changes/">Changes list</a>
 </li>
                                     
 <li >
@@ -246,7 +258,7 @@ The default <span class="OSC">defaultShow</span> value is 1.</p>
 <p><span class="OSC">read</span>: read a buffer that is expected to contain a valid inscore script.</p>
 </li>
 <li>
-<p><span class="OSC">require</span>: check that the current INScore version number is equal or greater to the number given as argument. The version number is given as a float value. A message is associated to the <span class="OSC">require</span> message, which is triggered when the check fails. See section <a href="../15-interaction#interaction">interaction</a> for more details.</p>
+<p><span class="OSC">require</span>: check that the current INScore version number is equal or greater to the number given as argument. The version number is given as a float value. A message is associated to the <span class="OSC">require</span> message, which is triggered when the check fails. See section <a href="../16-interaction#interaction">interaction</a> for more details.</p>
 </li>
 <li>
 <p><span class="OSC">compatibility</span>: preserve INScore previous behavior. The argument corresponds to a version number, INScore will preserve the corresponding behavior (objects scaling, default size, etc.).</p>
@@ -436,7 +448,7 @@ ComplexDiagram(
 </ul>
 <h3 id="the-plugins-nodes">The 'plugins' nodes</h3>
 <p><a name="ITLplugins"></a></p>
-<p>The <span class="OSC">plugins</span> node controls the search path for plugins. See section <a href="../17-plugins#plugins">plugins</a> for more information on plugins and search strategies.</p>
+<p>The <span class="OSC">plugins</span> node controls the search path for plugins. See section <a href="../20-plugins#plugins">plugins</a> for more information on plugins and search strategies.</p>
 <p><a name="8-ITL-path"></a>
 <a name="8-ITL-reset"></a></p>
 <div class="rail">

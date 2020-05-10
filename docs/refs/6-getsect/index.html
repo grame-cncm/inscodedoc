@@ -121,23 +121,35 @@
 </li>
                                     
 <li >
-    <a href="../15-interaction/">Interaction</a>
+    <a href="../15-sensors/">Sensors</a>
 </li>
                                     
 <li >
-    <a href="../16-scripting/">Scripting</a>
+    <a href="../16-interaction/">Interaction</a>
 </li>
                                     
 <li >
-    <a href="../17-plugins/">Plugins</a>
+    <a href="../17-scripting/">Scripting</a>
 </li>
                                     
 <li >
-    <a href="../18-yacc/">Grammar definitions</a>
+    <a href="../18-mathExpr/">Math Expressions</a>
 </li>
                                     
 <li >
-    <a href="../19-changes/">Changes list</a>
+    <a href="../19-scoreExpr/">Score Expressions</a>
+</li>
+                                    
+<li >
+    <a href="../20-plugins/">Plugins</a>
+</li>
+                                    
+<li >
+    <a href="../21-appendices/">Grammar definition</a>
+</li>
+                                    
+<li >
+    <a href="../22-changes/">Changes list</a>
 </li>
                                     
 <li >
@@ -206,7 +218,7 @@ ComplexDiagram(
 </div>
 
 <p>The <span class="OSC">get</span> message without parameter is the counterpart of the <span class="OSC">set</span> message. When addressed to a container (the application <span class="OSC">/ITL</span>, a scene <span class="OSC">/ITL/scene</span>, the signal node <span class="OSC">/ITL/scene/signal</span>) is also distributed to all the container components.</p>
-<p>Specific <span class="OSC">get</span> forms may be available, depending on the component type (see sections <a href="../7-specificMsg#gmnpage">gmnpage</a>,  <a href="../8-ITL#ITLQuery">ITLQuery</a>, <a href="../8-ITL#ITLdebug">ITLdebug</a>, <a href="../13-syncmsg#syncmsg">syncmsg</a>, <a href="../14-graphsig#parcomp">parcomp</a>, <a href="../17-plugins#faustmsg">faustmsg</a>).</p>
+<p>Specific <span class="OSC">get</span> forms may be available, depending on the component type (see sections <a href="../7-specificMsg#gmnpage">gmnpage</a>,  <a href="../8-ITL#ITLQuery">ITLQuery</a>, <a href="../8-ITL#ITLdebug">ITLdebug</a>, <a href="../13-syncmsg#syncmsg">syncmsg</a>, <a href="../14-graphsig#parcomp">parcomp</a>, <a href="../20-plugins#faustmsg">faustmsg</a>).</p>
 <p>The <span class="OSC">get frame</span> message is supported by all the components. An object frame is available for read only. It represents the polygon that encloses the object, taking account of scaling, rotations, and shear. The polygon is returned as a set of 4 points (x, y) expressed in the parent object coordinates space.</p>
 <p><span class="example">Example</span> 
 Sending the following request to an object which position is 0.3 0.5</p>

@@ -121,23 +121,35 @@
 </li>
                                     
 <li >
-    <a href="../15-interaction/">Interaction</a>
+    <a href="../15-sensors/">Sensors</a>
 </li>
                                     
 <li >
-    <a href="../16-scripting/">Scripting</a>
+    <a href="../16-interaction/">Interaction</a>
 </li>
                                     
 <li >
-    <a href="../17-plugins/">Plugins</a>
+    <a href="../17-scripting/">Scripting</a>
 </li>
                                     
 <li >
-    <a href="../18-yacc/">Grammar definitions</a>
+    <a href="../18-mathExpr/">Math Expressions</a>
 </li>
                                     
 <li >
-    <a href="../19-changes/">Changes list</a>
+    <a href="../19-scoreExpr/">Score Expressions</a>
+</li>
+                                    
+<li >
+    <a href="../20-plugins/">Plugins</a>
+</li>
+                                    
+<li >
+    <a href="../21-appendices/">Grammar definition</a>
+</li>
+                                    
+<li >
+    <a href="../22-changes/">Changes list</a>
 </li>
                                     
 <li >
@@ -233,15 +245,15 @@ When the destination file is not completely specified (second form or missing ex
 <li>
 <p><span class="OSC">save</span>: recursively saves objects states to a file. When a <span class="OSC">message</span> list is present, only the specified attributes are saved. The <span class="OSC">filePath</span> can be relative or absolute. When relative, an absolute path is build using the current <span class="OSC">rootPath</span> (see application or scene current paths  p.\pageref{applmgmt} and  p.\pageref{scene}). The optional <span class="OSC">+</span> parameter indicates an append mode for the write operation. The message must be sent to the address <span class="OSC">/ITL</span> to save the whole application state.
 <strong>Note</strong>: when a list of attributes is specified, unknown attributes are silently ignored. 
-<strong>Note</strong>: the file extension for INScore files is <span class="OSC">.inscore</span>. INScore files dropped on the application or on a window are interpreted as script files (see section <a href="../16-scripting#scripting">scripting</a>).</p>
+<strong>Note</strong>: the file extension for INScore files is <span class="OSC">.inscore</span>. INScore files dropped on the application or on a window are interpreted as script files (see section <a href="../17-scripting#scripting">scripting</a>).</p>
 </li>
 <li>
 <p>'PositionMsg' are absolute and relative position messages.</p>
 </li>
 <li>'ColorMsg' are absolute and relative color control messages.</li>
 <li>'TimeMsg' are time management messages. They are described in section <a href="../3-time#time">time</a>.</li>
-<li>'WatchMsg' are described in section <a href="../15-interaction#interaction">interaction</a>.</li>
-<li>'EventMsg' are described in section <a href="../15-interaction#eventMsg">eventMsg</a>.</li>
+<li>'WatchMsg' are described in section <a href="../16-interaction#interaction">interaction</a>.</li>
+<li>'EventMsg' are described in section <a href="../16-interaction#eventMsg">eventMsg</a>.</li>
 </ul>
 <p><span class="example">Example</span> 
 Export of a scene to a given file as jpeg at the current root path:</p>

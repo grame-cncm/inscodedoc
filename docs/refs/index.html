@@ -121,23 +121,35 @@
 </li>
                                     
 <li >
-    <a href="15-interaction/">Interaction</a>
+    <a href="15-sensors/">Sensors</a>
 </li>
                                     
 <li >
-    <a href="16-scripting/">Scripting</a>
+    <a href="16-interaction/">Interaction</a>
 </li>
                                     
 <li >
-    <a href="17-plugins/">Plugins</a>
+    <a href="17-scripting/">Scripting</a>
 </li>
                                     
 <li >
-    <a href="18-yacc/">Grammar definitions</a>
+    <a href="18-mathExpr/">Math Expressions</a>
 </li>
                                     
 <li >
-    <a href="19-changes/">Changes list</a>
+    <a href="19-scoreExpr/">Score Expressions</a>
+</li>
+                                    
+<li >
+    <a href="20-plugins/">Plugins</a>
+</li>
+                                    
+<li >
+    <a href="21-appendices/">Grammar definition</a>
+</li>
+                                    
+<li >
+    <a href="22-changes/">Changes list</a>
 </li>
                                     
 <li class="active">
@@ -166,7 +178,7 @@
                             </a>
                         </li>
                             <li >
-                                <a rel="next" href="19-changes/">
+                                <a rel="next" href="22-changes/">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
@@ -186,32 +198,30 @@
         <li class="main active"><a href="#index">Index</a></li>
             <li><a href="#common-messages">Common messages</a></li>
             <li><a href="#effect-messages">Effect messages</a></li>
+            <li><a href="#faust-processor">Faust Processor</a></li>
+            <li><a href="#file-watcher">File Watcher</a></li>
+            <li><a href="#gesture-follower">Gesture follower</a></li>
             <li><a href="#graphic-signal">Graphic signal</a></li>
+            <li><a href="#httpd-server">Httpd Server</a></li>
             <li><a href="#itl-debug">ITL debug</a></li>
             <li><a href="#itl-log">ITL log</a></li>
             <li><a href="#itl-messages">ITL messages</a></li>
             <li><a href="#itl-plugin">ITL plugin</a></li>
             <li><a href="#itl-stat">ITL stat</a></li>
             <li><a href="#interaction">Interaction</a></li>
+            <li><a href="#math-expression">Math expression</a></li>
             <li><a href="#misc-messages">Misc messages</a></li>
             <li><a href="#position-messages">Position messages</a></li>
             <li><a href="#scene-messages">Scene messages</a></li>
             <li><a href="#scene-query">Scene query</a></li>
             <li><a href="#scripting">Scripting</a></li>
+            <li><a href="#sensors">Sensors</a></li>
             <li><a href="#set-type">Set type</a></li>
+            <li><a href="#signal">Signal</a></li>
             <li><a href="#specific-messages">Specific messages</a></li>
             <li><a href="#synchronization">Synchronization</a></li>
             <li><a href="#time-messages">Time messages</a></li>
             <li><a href="#transform-messages">Transform messages</a></li>
-            <li><a href="#faustprocessor">faustprocessor</a></li>
-            <li><a href="#filewatcher">fileWatcher</a></li>
-            <li><a href="#gesture-events">gesture events</a></li>
-            <li><a href="#gesture-follower">gesture follower</a></li>
-            <li><a href="#gesture-variables">gesture variables</a></li>
-            <li><a href="#gesture">gesture</a></li>
-            <li><a href="#httpdmessage">httpdmessage</a></li>
-            <li><a href="#httpdserver">httpdserver</a></li>
-            <li><a href="#signal">signal</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
@@ -222,7 +232,7 @@
  <a class="indexitem" href="12-mapping#12-mapping-map">map</a> 
  <a class="indexitem" href="12-mapping#12-mapping-map+">map+</a> 
  <a class="indexitem" href="12-mapping#12-mapping-mapf">mapf</a> 
- <a class="indexitem" href="15-interaction#15-interaction-event">event</a> 
+ <a class="indexitem" href="16-interaction#16-interaction-event">event</a> 
  <a class="indexitem" href="2-common#2-common-alpha">alpha</a> 
  <a class="indexitem" href="2-common#2-common-angle">angle</a> 
  <a class="indexitem" href="2-common#2-common-blue">blue</a> 
@@ -259,12 +269,47 @@
  <a class="indexitem" href="2-common#2-common-colorize">colorize</a> 
  <a class="indexitem" href="2-common#2-common-none">none</a> 
  <a class="indexitem" href="2-common#2-common-shadow">shadow</a> </p>
+<h2 id="faust-processor">Faust Processor</h2>
+<p><a class="indexitem" href="20-plugins#20-plugins-in">in</a> 
+ <a class="indexitem" href="20-plugins#20-plugins-max">max</a> 
+ <a class="indexitem" href="20-plugins#20-plugins-min">min</a> 
+ <a class="indexitem" href="20-plugins#20-plugins-out">out</a> 
+ <a class="indexitem" href="20-plugins#20-plugins-set (dsp file)">set (dsp file)</a> 
+ <a class="indexitem" href="20-plugins#20-plugins-set (dsp)">set (dsp)</a> 
+ <a class="indexitem" href="20-plugins#20-plugins-set (plugin)">set (plugin)</a> </p>
+<h2 id="file-watcher">File Watcher</h2>
+<p><a class="indexitem" href="16-interaction#16-interaction-watch">watch</a> 
+ <a class="indexitem" href="16-interaction#16-interaction-watch+">watch+</a> </p>
+<h2 id="gesture-follower">Gesture follower</h2>
+<p><a class="indexitem" href="20-plugins#20-plugins-Gesture follower">Gesture follower</a> 
+ <a class="indexitem" href="20-plugins#20-plugins-clear">clear</a> 
+ <a class="indexitem" href="20-plugins#20-plugins-follow">follow</a> 
+ <a class="indexitem" href="20-plugins#20-plugins-get">get</a> 
+ <a class="indexitem" href="20-plugins#20-plugins-gfActive">gfActive</a> 
+ <a class="indexitem" href="20-plugins#20-plugins-gfEnter">gfEnter</a> 
+ <a class="indexitem" href="20-plugins#20-plugins-gfIdle">gfIdle</a> 
+ <a class="indexitem" href="20-plugins#20-plugins-gfLeave">gfLeave</a> 
+ <a class="indexitem" href="20-plugins#20-plugins-gflikelihood">gflikelihood</a> 
+ <a class="indexitem" href="20-plugins#20-plugins-gfpos">gfpos</a> 
+ <a class="indexitem" href="20-plugins#20-plugins-gfspeed">gfspeed</a> 
+ <a class="indexitem" href="20-plugins#20-plugins-learn">learn</a> 
+ <a class="indexitem" href="20-plugins#20-plugins-learn">learn</a> 
+ <a class="indexitem" href="20-plugins#20-plugins-likelihoodThreshold">likelihoodThreshold</a> 
+ <a class="indexitem" href="20-plugins#20-plugins-likelihoodwindow">likelihoodwindow</a> 
+ <a class="indexitem" href="20-plugins#20-plugins-set">set</a> 
+ <a class="indexitem" href="20-plugins#20-plugins-size">size</a> 
+ <a class="indexitem" href="20-plugins#20-plugins-stop">stop</a> 
+ <a class="indexitem" href="20-plugins#20-plugins-tolerance">tolerance</a> 
+ <a class="indexitem" href="20-plugins#20-plugins-watch">watch</a> </p>
 <h2 id="graphic-signal">Graphic signal</h2>
 <p><a class="indexitem" href="14-graphsig#14-graphsig- dimension"> dimension</a> 
  <a class="indexitem" href="14-graphsig#14-graphsig-fastgraph">fastgraph</a> 
  <a class="indexitem" href="14-graphsig#14-graphsig-graph">graph</a> 
  <a class="indexitem" href="14-graphsig#14-graphsig-radialgraph">radialgraph</a> 
  <a class="indexitem" href="14-graphsig#14-graphsig-set">set</a> </p>
+<h2 id="httpd-server">Httpd Server</h2>
+<p><a class="indexitem" href="20-plugins#20-plugins-set">set</a> 
+ <a class="indexitem" href="20-plugins#20-plugins-status">status</a> </p>
 <h2 id="itl-debug">ITL debug</h2>
 <p><a class="indexitem" href="8-ITL#8-ITL-osc">osc</a> </p>
 <h2 id="itl-log">ITL log</h2>
@@ -303,46 +348,50 @@
 <p><a class="indexitem" href="8-ITL#8-ITL-get">get</a> 
  <a class="indexitem" href="8-ITL#8-ITL-reset">reset</a> </p>
 <h2 id="interaction">Interaction</h2>
-<p><a class="indexitem" href="15-interaction#15-interaction-absx">absx</a> 
- <a class="indexitem" href="15-interaction#15-interaction-absy">absy</a> 
- <a class="indexitem" href="15-interaction#15-interaction-address">address</a> 
- <a class="indexitem" href="15-interaction#15-interaction-cancel">cancel</a> 
- <a class="indexitem" href="15-interaction#15-interaction-date">date</a> 
- <a class="indexitem" href="15-interaction#15-interaction-doubleClick">doubleClick</a> 
- <a class="indexitem" href="15-interaction#15-interaction-durEnter">durEnter</a> 
- <a class="indexitem" href="15-interaction#15-interaction-durLeave">durLeave</a> 
- <a class="indexitem" href="15-interaction#15-interaction-end">end</a> 
- <a class="indexitem" href="15-interaction#15-interaction-endPaint">endPaint</a> 
- <a class="indexitem" href="15-interaction#15-interaction-error">error</a> 
- <a class="indexitem" href="15-interaction#15-interaction-error">error</a> 
- <a class="indexitem" href="15-interaction#15-interaction-event">event</a> 
- <a class="indexitem" href="15-interaction#15-interaction-export">export</a> 
- <a class="indexitem" href="15-interaction#15-interaction-mouseDown">mouseDown</a> 
- <a class="indexitem" href="15-interaction#15-interaction-mouseEnter">mouseEnter</a> 
- <a class="indexitem" href="15-interaction#15-interaction-mouseLeave">mouseLeave</a> 
- <a class="indexitem" href="15-interaction#15-interaction-mouseMove">mouseMove</a> 
- <a class="indexitem" href="15-interaction#15-interaction-mouseUp">mouseUp</a> 
- <a class="indexitem" href="15-interaction#15-interaction-name">name</a> 
- <a class="indexitem" href="15-interaction#15-interaction-newData">newData</a> 
- <a class="indexitem" href="15-interaction#15-interaction-newElement">newElement</a> 
- <a class="indexitem" href="15-interaction#15-interaction-pageCount">pageCount</a> 
- <a class="indexitem" href="15-interaction#15-interaction-pop">pop</a> 
- <a class="indexitem" href="15-interaction#15-interaction-push">push</a> 
- <a class="indexitem" href="15-interaction#15-interaction-rdate">rdate</a> 
- <a class="indexitem" href="15-interaction#15-interaction-ready">ready</a> 
- <a class="indexitem" href="15-interaction#15-interaction-scene">scene</a> 
- <a class="indexitem" href="15-interaction#15-interaction-success">success</a> 
- <a class="indexitem" href="15-interaction#15-interaction-sx">sx</a> 
- <a class="indexitem" href="15-interaction#15-interaction-sy">sy</a> 
- <a class="indexitem" href="15-interaction#15-interaction-timeEnter">timeEnter</a> 
- <a class="indexitem" href="15-interaction#15-interaction-timeLeave">timeLeave</a> 
- <a class="indexitem" href="15-interaction#15-interaction-touchBegin">touchBegin</a> 
- <a class="indexitem" href="15-interaction#15-interaction-touchEnd">touchEnd</a> 
- <a class="indexitem" href="15-interaction#15-interaction-touchUpdate">touchUpdate</a> 
- <a class="indexitem" href="15-interaction#15-interaction-watch">watch</a> 
- <a class="indexitem" href="15-interaction#15-interaction-watch+">watch+</a> 
- <a class="indexitem" href="15-interaction#15-interaction-x">x</a> 
- <a class="indexitem" href="15-interaction#15-interaction-y">y</a> </p>
+<p><a class="indexitem" href="16-interaction#16-interaction-absx">absx</a> 
+ <a class="indexitem" href="16-interaction#16-interaction-absy">absy</a> 
+ <a class="indexitem" href="16-interaction#16-interaction-address">address</a> 
+ <a class="indexitem" href="16-interaction#16-interaction-cancel">cancel</a> 
+ <a class="indexitem" href="16-interaction#16-interaction-date">date</a> 
+ <a class="indexitem" href="16-interaction#16-interaction-doubleClick">doubleClick</a> 
+ <a class="indexitem" href="16-interaction#16-interaction-durEnter">durEnter</a> 
+ <a class="indexitem" href="16-interaction#16-interaction-durLeave">durLeave</a> 
+ <a class="indexitem" href="16-interaction#16-interaction-end">end</a> 
+ <a class="indexitem" href="16-interaction#16-interaction-endPaint">endPaint</a> 
+ <a class="indexitem" href="16-interaction#16-interaction-error">error</a> 
+ <a class="indexitem" href="16-interaction#16-interaction-error">error</a> 
+ <a class="indexitem" href="16-interaction#16-interaction-event">event</a> 
+ <a class="indexitem" href="16-interaction#16-interaction-export">export</a> 
+ <a class="indexitem" href="16-interaction#16-interaction-mouseDown">mouseDown</a> 
+ <a class="indexitem" href="16-interaction#16-interaction-mouseEnter">mouseEnter</a> 
+ <a class="indexitem" href="16-interaction#16-interaction-mouseLeave">mouseLeave</a> 
+ <a class="indexitem" href="16-interaction#16-interaction-mouseMove">mouseMove</a> 
+ <a class="indexitem" href="16-interaction#16-interaction-mouseUp">mouseUp</a> 
+ <a class="indexitem" href="16-interaction#16-interaction-name">name</a> 
+ <a class="indexitem" href="16-interaction#16-interaction-newData">newData</a> 
+ <a class="indexitem" href="16-interaction#16-interaction-newElement">newElement</a> 
+ <a class="indexitem" href="16-interaction#16-interaction-pageCount">pageCount</a> 
+ <a class="indexitem" href="16-interaction#16-interaction-pop">pop</a> 
+ <a class="indexitem" href="16-interaction#16-interaction-push">push</a> 
+ <a class="indexitem" href="16-interaction#16-interaction-rdate">rdate</a> 
+ <a class="indexitem" href="16-interaction#16-interaction-ready">ready</a> 
+ <a class="indexitem" href="16-interaction#16-interaction-scene">scene</a> 
+ <a class="indexitem" href="16-interaction#16-interaction-success">success</a> 
+ <a class="indexitem" href="16-interaction#16-interaction-sx">sx</a> 
+ <a class="indexitem" href="16-interaction#16-interaction-sy">sy</a> 
+ <a class="indexitem" href="16-interaction#16-interaction-timeEnter">timeEnter</a> 
+ <a class="indexitem" href="16-interaction#16-interaction-timeLeave">timeLeave</a> 
+ <a class="indexitem" href="16-interaction#16-interaction-touchBegin">touchBegin</a> 
+ <a class="indexitem" href="16-interaction#16-interaction-touchEnd">touchEnd</a> 
+ <a class="indexitem" href="16-interaction#16-interaction-touchUpdate">touchUpdate</a> 
+ <a class="indexitem" href="16-interaction#16-interaction-watch">watch</a> 
+ <a class="indexitem" href="16-interaction#16-interaction-watch+">watch+</a> 
+ <a class="indexitem" href="16-interaction#16-interaction-x">x</a> 
+ <a class="indexitem" href="16-interaction#16-interaction-y">y</a> </p>
+<h2 id="math-expression">Math expression</h2>
+<p><a class="indexitem" href="18-mathExpr#18-mathExpr-arguments">arguments</a> 
+ <a class="indexitem" href="18-mathExpr#18-mathExpr-booleans">booleans</a> 
+ <a class="indexitem" href="18-mathExpr#18-mathExpr-operators">operators</a> </p>
 <h2 id="misc-messages">Misc messages</h2>
 <p><a class="indexitem" href="4-miscmsgs#4-miscmsgs-eval">eval</a> 
  <a class="indexitem" href="4-miscmsgs#4-miscmsgs-map">map</a> 
@@ -394,14 +443,35 @@
  <a class="indexitem" href="9-scene#9-scene-count">count</a> 
  <a class="indexitem" href="9-scene#9-scene-rcount">rcount</a> </p>
 <h2 id="scripting">Scripting</h2>
-<p><a class="indexitem" href="16-scripting#16-scripting- javascript"> javascript</a> 
- <a class="indexitem" href="16-scripting#16-scripting- lua"> lua</a> 
- <a class="indexitem" href="16-scripting#16-scripting- message based parameters"> message based parameters</a> 
- <a class="indexitem" href="16-scripting#16-scripting- run"> run</a> 
- <a class="indexitem" href="16-scripting#16-scripting- variable"> variable</a> 
- <a class="indexitem" href="16-scripting#16-scripting-expressions">expressions</a> 
- <a class="indexitem" href="16-scripting#16-scripting-javascript">javascript</a> 
- <a class="indexitem" href="16-scripting#16-scripting-lua">lua</a> </p>
+<p><a class="indexitem" href="17-scripting#17-scripting- javascript"> javascript</a> 
+ <a class="indexitem" href="17-scripting#17-scripting- lua"> lua</a> 
+ <a class="indexitem" href="17-scripting#17-scripting- message based parameters"> message based parameters</a> 
+ <a class="indexitem" href="17-scripting#17-scripting- run"> run</a> 
+ <a class="indexitem" href="17-scripting#17-scripting- variable"> variable</a> 
+ <a class="indexitem" href="17-scripting#17-scripting-expressions">expressions</a> 
+ <a class="indexitem" href="17-scripting#17-scripting-javascript">javascript</a> 
+ <a class="indexitem" href="17-scripting#17-scripting-lua">lua</a> </p>
+<h2 id="sensors">Sensors</h2>
+<p><a class="indexitem" href="15-sensors#15-sensors-accelerometer">accelerometer</a> 
+ <a class="indexitem" href="15-sensors#15-sensors-ambientlight">ambientlight</a> 
+ <a class="indexitem" href="15-sensors#15-sensors-autoscale">autoscale</a> 
+ <a class="indexitem" href="15-sensors#15-sensors-calibrate">calibrate</a> 
+ <a class="indexitem" href="15-sensors#15-sensors-compass">compass</a> 
+ <a class="indexitem" href="15-sensors#15-sensors-gyroscope">gyroscope</a> 
+ <a class="indexitem" href="15-sensors#15-sensors-hasZ">hasZ</a> 
+ <a class="indexitem" href="15-sensors#15-sensors-light">light</a> 
+ <a class="indexitem" href="15-sensors#15-sensors-magnetometer">magnetometer</a> 
+ <a class="indexitem" href="15-sensors#15-sensors-mode">mode</a> 
+ <a class="indexitem" href="15-sensors#15-sensors-mode">mode</a> 
+ <a class="indexitem" href="15-sensors#15-sensors-mode">mode</a> 
+ <a class="indexitem" href="15-sensors#15-sensors-orientation">orientation</a> 
+ <a class="indexitem" href="15-sensors#15-sensors-proximity">proximity</a> 
+ <a class="indexitem" href="15-sensors#15-sensors-reset">reset</a> 
+ <a class="indexitem" href="15-sensors#15-sensors-rotation">rotation</a> 
+ <a class="indexitem" href="15-sensors#15-sensors-run">run</a> 
+ <a class="indexitem" href="15-sensors#15-sensors-scale">scale</a> 
+ <a class="indexitem" href="15-sensors#15-sensors-smooth">smooth</a> 
+ <a class="indexitem" href="15-sensors#15-sensors-tilt">tilt</a> </p>
 <h2 id="set-type">Set type</h2>
 <p><a class="indexitem" href="5-setsect#5-setsect-arc">arc</a> 
  <a class="indexitem" href="5-setsect#5-setsect-curve">curve</a> 
@@ -436,6 +506,19 @@
  <a class="indexitem" href="5-setsect#5-setsect-url">url</a> 
  <a class="indexitem" href="5-setsect#5-setsect-video">video</a> 
  <a class="indexitem" href="5-setsect#5-setsect-websocket">websocket</a> </p>
+<h2 id="signal">Signal</h2>
+<p><a class="indexitem" href="14-graphsig#14-graphsig-Signal">Signal</a> 
+ <a class="indexitem" href="14-graphsig#14-graphsig-connect">connect</a> 
+ <a class="indexitem" href="14-graphsig#14-graphsig-connection">connection</a> 
+ <a class="indexitem" href="14-graphsig#14-graphsig-default">default</a> 
+ <a class="indexitem" href="14-graphsig#14-graphsig-del">del</a> 
+ <a class="indexitem" href="14-graphsig#14-graphsig-disconnect">disconnect</a> 
+ <a class="indexitem" href="14-graphsig#14-graphsig-get">get</a> 
+ <a class="indexitem" href="14-graphsig#14-graphsig-get">get</a> 
+ <a class="indexitem" href="14-graphsig#14-graphsig-parallel signal">parallel signal</a> 
+ <a class="indexitem" href="14-graphsig#14-graphsig-projection string">projection string</a> 
+ <a class="indexitem" href="14-graphsig#14-graphsig-reset">reset</a> 
+ <a class="indexitem" href="14-graphsig#14-graphsig-size">size</a> </p>
 <h2 id="specific-messages">Specific messages</h2>
 <p><a class="indexitem" href="2-common#2-common- dash"> dash</a> 
  <a class="indexitem" href="2-common#2-common- dashDot"> dashDot</a> 
@@ -546,58 +629,6 @@
 <p><a class="indexitem" href="2-common#2-common-dshear">dshear</a> 
  <a class="indexitem" href="2-common#2-common-rotate">rotate</a> 
  <a class="indexitem" href="2-common#2-common-shear">shear</a> </p>
-<h2 id="faustprocessor">faustprocessor</h2>
-<p><a class="indexitem" href="17-plugins#17-plugins-in">in</a> 
- <a class="indexitem" href="17-plugins#17-plugins-max">max</a> 
- <a class="indexitem" href="17-plugins#17-plugins-min">min</a> 
- <a class="indexitem" href="17-plugins#17-plugins-out">out</a> 
- <a class="indexitem" href="17-plugins#17-plugins-set">set</a> 
- <a class="indexitem" href="17-plugins#17-plugins-set">set</a> 
- <a class="indexitem" href="17-plugins#17-plugins-set">set</a> </p>
-<h2 id="filewatcher">fileWatcher</h2>
-<p><a class="indexitem" href="15-interaction#15-interaction-watch">watch</a> 
- <a class="indexitem" href="15-interaction#15-interaction-watch+">watch+</a> </p>
-<h2 id="gesture-events">gesture events</h2>
-<p><a class="indexitem" href="17-plugins#17-plugins-gfActive">gfActive</a> 
- <a class="indexitem" href="17-plugins#17-plugins-gfEnter">gfEnter</a> 
- <a class="indexitem" href="17-plugins#17-plugins-gfIdle">gfIdle</a> 
- <a class="indexitem" href="17-plugins#17-plugins-gfLeave">gfLeave</a> 
- <a class="indexitem" href="17-plugins#17-plugins-watch">watch</a> </p>
-<h2 id="gesture-follower">gesture follower</h2>
-<p><a class="indexitem" href="17-plugins#17-plugins-follow">follow</a> 
- <a class="indexitem" href="17-plugins#17-plugins-gesture follower">gesture follower</a> 
- <a class="indexitem" href="17-plugins#17-plugins-learn">learn</a> 
- <a class="indexitem" href="17-plugins#17-plugins-likelihoodwindow">likelihoodwindow</a> 
- <a class="indexitem" href="17-plugins#17-plugins-stop">stop</a> 
- <a class="indexitem" href="17-plugins#17-plugins-tolerance">tolerance</a> </p>
-<h2 id="gesture-variables">gesture variables</h2>
-<p><a class="indexitem" href="17-plugins#17-plugins-gflikelihood">gflikelihood</a> 
- <a class="indexitem" href="17-plugins#17-plugins-gfpos">gfpos</a> 
- <a class="indexitem" href="17-plugins#17-plugins-gfspeed">gfspeed</a> </p>
-<h2 id="gesture">gesture</h2>
-<p><a class="indexitem" href="17-plugins#17-plugins-clear">clear</a> 
- <a class="indexitem" href="17-plugins#17-plugins-get">get</a> 
- <a class="indexitem" href="17-plugins#17-plugins-learn">learn</a> 
- <a class="indexitem" href="17-plugins#17-plugins-likelihoodThreshold">likelihoodThreshold</a> 
- <a class="indexitem" href="17-plugins#17-plugins-set">set</a> 
- <a class="indexitem" href="17-plugins#17-plugins-size">size</a> </p>
-<h2 id="httpdmessage">httpdmessage</h2>
-<p><a class="indexitem" href="17-plugins#17-plugins-status">status</a> </p>
-<h2 id="httpdserver">httpdserver</h2>
-<p><a class="indexitem" href="17-plugins#17-plugins-set">set</a> </p>
-<h2 id="signal">signal</h2>
-<p><a class="indexitem" href="14-graphsig#14-graphsig-connect">connect</a> 
- <a class="indexitem" href="14-graphsig#14-graphsig-connection">connection</a> 
- <a class="indexitem" href="14-graphsig#14-graphsig-default">default</a> 
- <a class="indexitem" href="14-graphsig#14-graphsig-del">del</a> 
- <a class="indexitem" href="14-graphsig#14-graphsig-disconnect">disconnect</a> 
- <a class="indexitem" href="14-graphsig#14-graphsig-get">get</a> 
- <a class="indexitem" href="14-graphsig#14-graphsig-get">get</a> 
- <a class="indexitem" href="14-graphsig#14-graphsig-parallel signal">parallel signal</a> 
- <a class="indexitem" href="14-graphsig#14-graphsig-projection string">projection string</a> 
- <a class="indexitem" href="14-graphsig#14-graphsig-reset">reset</a> 
- <a class="indexitem" href="14-graphsig#14-graphsig-signal">signal</a> 
- <a class="indexitem" href="14-graphsig#14-graphsig-size">size</a> </p>
 </div></div>
         </div>
 

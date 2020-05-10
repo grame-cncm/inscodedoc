@@ -120,24 +120,36 @@
     <a href="../14-graphsig/">Graphic signals</a>
 </li>
                                     
+<li >
+    <a href="../15-sensors/">Sensors</a>
+</li>
+                                    
 <li class="active">
     <a href="./">Interaction</a>
 </li>
                                     
 <li >
-    <a href="../16-scripting/">Scripting</a>
+    <a href="../17-scripting/">Scripting</a>
 </li>
                                     
 <li >
-    <a href="../17-plugins/">Plugins</a>
+    <a href="../18-mathExpr/">Math Expressions</a>
 </li>
                                     
 <li >
-    <a href="../18-yacc/">Grammar definitions</a>
+    <a href="../19-scoreExpr/">Score Expressions</a>
 </li>
                                     
 <li >
-    <a href="../19-changes/">Changes list</a>
+    <a href="../20-plugins/">Plugins</a>
+</li>
+                                    
+<li >
+    <a href="../21-appendices/">Grammar definition</a>
+</li>
+                                    
+<li >
+    <a href="../22-changes/">Changes list</a>
 </li>
                                     
 <li >
@@ -166,12 +178,12 @@
                             </a>
                         </li>
                             <li >
-                                <a rel="next" href="../14-graphsig/">
+                                <a rel="next" href="../15-sensors/">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li >
-                                <a rel="prev" href="../16-scripting/">
+                                <a rel="prev" href="../17-scripting/">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -200,10 +212,10 @@
 <h1 id="events-and-interaction">Events and Interaction</h1>
 <p><a name="interaction"></a></p>
 <p>Interaction messages are user defined messages associated to <em>events</em> and triggered when these events occur. These messages accept variables as message arguments.</p>
-<p><em>Events</em> are typical user interface events (mouse or touch events), extended in the time domain and to specific objects or engine properties. Starting from INScore version 1.20, the modification of any object attribute may be viewed as an event and user defined events have also been introduced (see section <a href="../15-interaction#attributeevents">attributeevents</a> for more details). </p>
+<p><em>Events</em> are typical user interface events (mouse or touch events), extended in the time domain and to specific objects or engine properties. Starting from INScore version 1.20, the modification of any object attribute may be viewed as an event and user defined events have also been introduced (see section <a href="../16-interaction#attributeevents">attributeevents</a> for more details). </p>
 <p>The general form of the message to <em>watch</em> an event is the following:</p>
-<p><a name="15-interaction-watch"></a>
-<a name="15-interaction-watch+"></a></p>
+<p><a name="16-interaction-watch"></a>
+<a name="16-interaction-watch+"></a></p>
 <div class="rail">
 <span class="railtitle">interactMsg</span>
 <br /><script>
@@ -235,7 +247,7 @@ ComplexDiagram(
 </script>
 </div>
 
-<p>The associated messages are any valid OSC message (not restricted to the INScore message set), with an extended address scheme, supporting IP addresses or host names and udp port number to be specified as OSC addresses prefix. The message parameters are any valid OSC type or variable (see section <a href="../15-interaction#interactvar">interactvar</a>).</p>
+<p>The associated messages are any valid OSC message (not restricted to the INScore message set), with an extended address scheme, supporting IP addresses or host names and udp port number to be specified as OSC addresses prefix. The message parameters are any valid OSC type or variable (see section <a href="../16-interaction#interactvar">interactvar</a>).</p>
 <div class="rail">
 <span class="railtitle">addressPrefix</span>
 <br /><script>
@@ -257,12 +269,12 @@ An extended address to send messages to <span class="OSC">localhost</span> on po
 <h3 id="mouse-events">Mouse events</h3>
 <p><a name="uievents"></a></p>
 <p>User interface events are typical mouse events:</p>
-<p><a name="15-interaction-mouseDown"></a>
-<a name="15-interaction-mouseUp"></a>
-<a name="15-interaction-mouseEnter"></a>
-<a name="15-interaction-mouseLeave"></a>
-<a name="15-interaction-mouseMove"></a>
-<a name="15-interaction-doubleClick"></a></p>
+<p><a name="16-interaction-mouseDown"></a>
+<a name="16-interaction-mouseUp"></a>
+<a name="16-interaction-mouseEnter"></a>
+<a name="16-interaction-mouseLeave"></a>
+<a name="16-interaction-mouseMove"></a>
+<a name="16-interaction-doubleClick"></a></p>
 <div class="rail">
 <span class="railtitle">mouseEvent</span>
 <br /><script>
@@ -286,7 +298,7 @@ Triggering a message on mouse down but addressed to another host on udp port 121
 <p><span class="note">Note: </span> 
 UI events are not supported by objects that are synchronized as slave.</p>
 <p>Mouse events can be simulated using a <span class="OSC">event</span> message:</p>
-<p><a name="15-interaction-event"></a></p>
+<p><a name="16-interaction-event"></a></p>
 <div class="rail">
 <span class="railtitle">uievt</span>
 <br /><script>
@@ -306,9 +318,9 @@ Simulating a mouse down at position 10, 10 :</p>
 <h3 id="touch-events">Touch events</h3>
 <p><a name="touchevents"></a>
 Depending on the display device, multi-touch events are supported by INScore :</p>
-<p><a name="15-interaction-touchBegin"></a>
-<a name="15-interaction-touchEnd"></a>
-<a name="15-interaction-touchUpdate"></a></p>
+<p><a name="16-interaction-touchBegin"></a>
+<a name="16-interaction-touchEnd"></a>
+<a name="16-interaction-touchUpdate"></a></p>
 <div class="rail">
 <span class="railtitle">touchEvent</span>
 <br /><script>
@@ -323,10 +335,10 @@ ComplexDiagram(
 <h3 id="time-events">Time events</h3>
 <p><a name="timeevents"></a></p>
 <p>Events are also defined on the time domain:</p>
-<p><a name="15-interaction-timeEnter"></a>
-<a name="15-interaction-timeLeave"></a>
-<a name="15-interaction-durEnter"></a>
-<a name="15-interaction-durLeave"></a></p>
+<p><a name="16-interaction-timeEnter"></a>
+<a name="16-interaction-timeLeave"></a>
+<a name="16-interaction-durEnter"></a>
+<a name="16-interaction-durLeave"></a></p>
 <div class="rail">
 <span class="railtitle">timeEvent</span>
 <br /><script>
@@ -348,9 +360,9 @@ An object that moves a score to a given page number when it enters its time zone
 <h3 id="url-events">URL events</h3>
 <p><a name="urlevents"></a></p>
 <p><span class="OSC">url</span> objects (i.e. intermediate objects for URL based objects (see section <a href="../5-setsect#filebasedrsrc">filebasedrsrc</a>) support specific events, intended to reflect the transaction state:</p>
-<p><a name="15-interaction-success"></a>
-<a name="15-interaction-error"></a>
-<a name="15-interaction-cancel"></a></p>
+<p><a name="16-interaction-success"></a>
+<a name="16-interaction-error"></a>
+<a name="16-interaction-cancel"></a></p>
 <div class="rail">
 <span class="railtitle">urlEvent</span>
 <br /><script>
@@ -376,8 +388,8 @@ Triggering an error message in case of failure :</p>
 
 <h3 id="miscellaneous-events">Miscellaneous events</h3>
 <p><a name="miscevents"></a></p>
-<p><a name="15-interaction-export"></a>
-<a name="15-interaction-newData"></a></p>
+<p><a name="16-interaction-export"></a>
+<a name="16-interaction-newData"></a></p>
 <div class="rail">
 <span class="railtitle">miscEvent</span>
 <br /><script>
@@ -394,12 +406,12 @@ ComplexDiagram(
 </ul>
 <h3 id="type-specific-events">Type specific events</h3>
 <p><a name="typespecevents"></a></p>
-<p><a name="15-interaction-pageCount"></a>
-<a name="15-interaction-newElement"></a>
-<a name="15-interaction-endPaint"></a>
-<a name="15-interaction-error"></a>
-<a name="15-interaction-ready"></a>
-<a name="15-interaction-end"></a></p>
+<p><a name="16-interaction-pageCount"></a>
+<a name="16-interaction-newElement"></a>
+<a name="16-interaction-endPaint"></a>
+<a name="16-interaction-error"></a>
+<a name="16-interaction-ready"></a>
+<a name="16-interaction-end"></a></p>
 <div class="rail">
 <span class="railtitle">specificEvent</span>
 <br /><script>
@@ -435,7 +447,7 @@ Watching an object <span class="OSC">x</span> coordinate change:</p>
 <p><span class="note">Note:</span> 
 Watching the <span class="OSC">newData</span> event is equivalent to watch the <span class="OSC">set</span> attribute. However, the <span class="OSC">newData</span> event is triggered only when the object state is changed.</p>
 <p><span class="warning">Warning</span> 
-With the event's generalisation to any object attribute, a one tick delay has been introduced to all events. Thus the associated messages are not processed synchronously to the event but posted to be processed by the next time task. This delay has been introduced to avoid freezing the system in case of loops. However, it introduces also a pitfall in interaction design, when message based variables are used (see section <a href="../15-interaction#msgvar">msgvar</a>): message based variables are evaluated at the event time while messages are processed by the next time task, thus the following messages won't produce the expected result:</p>
+With the event's generalisation to any object attribute, a one tick delay has been introduced to all events. Thus the associated messages are not processed synchronously to the event but posted to be processed by the next time task. This delay has been introduced to avoid freezing the system in case of loops. However, it introduces also a pitfall in interaction design, when message based variables are used (see section <a href="../16-interaction#msgvar">msgvar</a>): message based variables are evaluated at the event time while messages are processed by the next time task, thus the following messages won't produce the expected result:</p>
 <pre><code>/ITL/scene/myObject watch x ( 
    /ITL/scene/A x '$(/ITL/scene/myObject get x)', 
    /ITL/scene/B x '$(/ITL/scene/A get x)' 
@@ -452,8 +464,8 @@ One workaround consists in splitting the interaction in several parts, making su
 <p><a name="userevents"></a></p>
 <p>INScore events supports user defined events. The name of user defined events must start with a capital letter and be composed of capital letters and/or numbers. Other characters are reserved for INScore use.</p>
 <p>Messages attached to user defined events accept regular variables (although the position variables are useless), 
-but they accept also any number of a variables which names are $1, ... $i and which values are taken from the event call arguments (see section <a href="../15-interaction#udevar">udevar</a>).</p>
-<p>User defined events can only be triggered using the <span class="OSC">event</span> message (see section <a href="../15-interaction#eventMsg">eventMsg</a>).</p>
+but they accept also any number of a variables which names are $1, ... $i and which values are taken from the event call arguments (see section <a href="../16-interaction#udevar">udevar</a>).</p>
+<p>User defined events can only be triggered using the <span class="OSC">event</span> message (see section <a href="../16-interaction#eventMsg">eventMsg</a>).</p>
 <p><span class="example">Example</span> 
 Watching and triggering a user defined event:</p>
 <pre><code>/ITL/scene/myObject watch MYEVENT (/ITL/scene/msg set txt &quot;MYEVENT occured!&quot;);
@@ -473,7 +485,7 @@ Watching and triggering a user defined event:</p>
 <p><a name="eventMsg"></a></p>
 <p>The <span class="OSC">event</span> message may be used to triggered events. It's the only way to trigger user defined events. 
 It may be used also to simulate user interface events (like mouse events).</p>
-<p><a name="15-interaction-event"></a></p>
+<p><a name="16-interaction-event"></a></p>
 <div class="rail">
 <span class="railtitle">eventMsg</span>
 <br /><script>
@@ -498,12 +510,12 @@ Time events are excluded from the <span class="OSC">event</span> message support
 <p><a name="posvar"></a></p>
 <p>Position variables reflects the current mouse position for mouse events or the current touch position for touch events. 
 For attribute based events, the <span class="OSC">x</span> and  <span class="OSC">y</span> variables are set to the target object current position and the other variables are undefined. For other events, the position variables are set to <span class="values">0</span>. </p>
-<p><a name="15-interaction-x"></a>
-<a name="15-interaction-y"></a>
-<a name="15-interaction-absx"></a>
-<a name="15-interaction-absy"></a>
-<a name="15-interaction-sx"></a>
-<a name="15-interaction-sy"></a></p>
+<p><a name="16-interaction-x"></a>
+<a name="16-interaction-y"></a>
+<a name="16-interaction-absx"></a>
+<a name="16-interaction-absy"></a>
+<a name="16-interaction-sx"></a>
+<a name="16-interaction-sy"></a></p>
 <div class="rail">
 <span class="railtitle">posVar</span>
 <br /><script>
@@ -562,8 +574,8 @@ ComplexDiagram(
 <p><a name="timevar"></a></p>
 <p>Time variables reflects the date corresponding to the current mouse position for mouse events. For attribute based events, the time variables are set to the target object current time position.
 They are set to <span class="values">0</span> for the other events. </p>
-<p><a name="15-interaction-date"></a>
-<a name="15-interaction-rdate"></a></p>
+<p><a name="16-interaction-date"></a>
+<a name="16-interaction-rdate"></a></p>
 <div class="rail">
 <span class="railtitle">timeVar</span>
 <br /><script>
@@ -587,9 +599,9 @@ Sending the current date as a float value to an external application:</p>
 
 <h3 id="miscellaneous-variables">Miscellaneous variables</h3>
 <p><a name="miscvar"></a></p>
-<p><a name="15-interaction-scene"></a>
-<a name="15-interaction-name"></a>
-<a name="15-interaction-address"></a></p>
+<p><a name="16-interaction-scene"></a>
+<a name="16-interaction-name"></a>
+<a name="16-interaction-address"></a></p>
 <div class="rail">
 <span class="railtitle">variable</span>
 <br /><script>
@@ -652,8 +664,8 @@ Requesting a set of objects to send a message to themselves on a mouse event:</p
 <h2 id="interaction-state-management">Interaction state management</h2>
 <p><a name="evtstate"></a></p>
 <p>For a given object, its <strong>interaction state</strong> (i.e. the watched events and the associated messages) can be saved and restored.</p>
-<p><a name="15-interaction-push"></a>
-<a name="15-interaction-pop"></a></p>
+<p><a name="16-interaction-push"></a>
+<a name="16-interaction-pop"></a></p>
 <div class="rail">
 <span class="railtitle">stateMsg</span>
 <br /><script>
@@ -686,9 +698,9 @@ The effect of a pop message addressed to an object with an empty stack is to cle
 <p><a name="filewatch"></a></p>
 <p>The <span class="OSC">fileWatcher</span> is a static node of a scene that is intended to watch file modifications. 
 It receives messages at the address <span class="OSC">/ITL/scene/fileWatcher</span>.</p>
-<p>The <span class="OSC">fileWatcher</span> support the <span class="OSC">watch</span> and <span class="OSC">watch+</span> messages as described in section <a href="../15-interaction#interaction">interaction</a> with a file name used in place of the <span class="OSC">what</span> parameter.</p>
-<p><a name="15-interaction-watch"></a>
-<a name="15-interaction-watch+"></a></p>
+<p>The <span class="OSC">fileWatcher</span> support the <span class="OSC">watch</span> and <span class="OSC">watch+</span> messages as described in section <a href="../16-interaction#interaction">interaction</a> with a file name used in place of the <span class="OSC">what</span> parameter.</p>
+<p><a name="16-interaction-watch"></a>
+<a name="16-interaction-watch+"></a></p>
 <div class="rail">
 <span class="railtitle">fileWatcher</span>
 <br /><script>

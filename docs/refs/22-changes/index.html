@@ -121,19 +121,31 @@
 </li>
                                     
 <li >
-    <a href="../15-interaction/">Interaction</a>
+    <a href="../15-sensors/">Sensors</a>
 </li>
                                     
 <li >
-    <a href="../16-scripting/">Scripting</a>
+    <a href="../16-interaction/">Interaction</a>
 </li>
                                     
 <li >
-    <a href="../17-plugins/">Plugins</a>
+    <a href="../17-scripting/">Scripting</a>
 </li>
                                     
 <li >
-    <a href="../18-yacc/">Grammar definitions</a>
+    <a href="../18-mathExpr/">Math Expressions</a>
+</li>
+                                    
+<li >
+    <a href="../19-scoreExpr/">Score Expressions</a>
+</li>
+                                    
+<li >
+    <a href="../20-plugins/">Plugins</a>
+</li>
+                                    
+<li >
+    <a href="../21-appendices/">Grammar definition</a>
 </li>
                                     
 <li class="active">
@@ -166,7 +178,7 @@
                             </a>
                         </li>
                             <li >
-                                <a rel="next" href="../18-yacc/">
+                                <a rel="next" href="../21-appendices/">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
@@ -226,12 +238,12 @@
 <p><a name="changes"></a></p>
 <h2 id="version-121-vs-version-118">Version 1.21 vs version 1.18</h2>
 <ul>
-<li>new set of sensor objects. See section \fullref{sensors}.</li>
+<li>new set of sensor objects. See section <a href="../15-sensors#sensors">sensors</a>.</li>
 <li>update to guido engine 1.63</li>
 <li>new <span class="OSC">preprocess</span> message supported at application and scene level intended to debug javascript sections or math expressions. Output of pre-processing is printed to the log window. See section <a href="../8-ITL#applmgmt">applmgmt</a> and  <a href="../9-scene#scene">scene</a>.</li>
-<li>environement variables introduced in scripting environment (OSName and OSId). See section <a href="../16-scripting#envvar">envvar</a>.</li>
+<li>environement variables introduced in scripting environment (OSName and OSId). See section <a href="../17-scripting#envvar">envvar</a>.</li>
 <li>
-<p>new math expressions introduced in scripting context. See section \fullref{mathExpr}.</p>
+<p>new math expressions introduced in scripting context. See section <a href="../18-mathExpr#mathExpr">mathExpr</a>.</p>
 </li>
 <li>
 <p>new <span class="OSC">syncFrame</span> synchronisation mode. See section <a href="../13-syncmsg#syncPos">syncPos</a> and <a href="../13-syncmsg#syncFrame">syncFrame</a>.</p>
@@ -239,7 +251,7 @@
 <li>the <span class="OSC">events</span> system has been extended to any object attribute and supports user defined events.
   This change comes also with a one tick delay introduced to handle all the events (i.e. the 
   event associated messages are processed by the next time task): this is intended to avoid
-  freezing the system in case of loops. See section <a href="../15-interaction#attributeevents">attributeevents</a> and  <a href="../15-interaction#userevents">userevents</a>.</li>
+  freezing the system in case of loops. See section <a href="../16-interaction#attributeevents">attributeevents</a> and  <a href="../16-interaction#userevents">userevents</a>.</li>
 <li>lua support has been dropped (compilation was optional, never embedded into a distribution)</li>
 <li>parser strategy changed: now each message is processed one by one to ensure the system
   consistency, especially for message based variables: an object state remains now consistent 
@@ -265,8 +277,8 @@
 <h2 id="version-118-vs-version-117">Version 1.18 vs version 1.17</h2>
 <ul>
 <li>new <span class="OSC">tempo</span> message supported by all objects. See section <a href="../3-time#tempo">tempo</a>.</li>
-<li>new <span class="OSC">pageCount</span> event supported by symbolic score objects. See section <a href="../15-interaction#typespecevents">typespecevents</a>.</li>
-<li>new <span class="OSC">error</span> event supported at application level. See section <a href="../15-interaction#typespecevents">typespecevents</a>.</li>
+<li>new <span class="OSC">pageCount</span> event supported by symbolic score objects. See section <a href="../16-interaction#typespecevents">typespecevents</a>.</li>
+<li>new <span class="OSC">error</span> event supported at application level. See section <a href="../16-interaction#typespecevents">typespecevents</a>.</li>
 <li>new <span class="OSC">browse</span> message at application level to open a document in a web browser. See section <a href="../8-ITL#system">system</a>.</li>
 <li>web api documentation included in package</li>
 </ul>
@@ -275,13 +287,13 @@
 <li>support animated svg using the new <span class="OSC">animate</span> message. See section <a href="../7-specificMsg#svgobjects">svgobjects</a>.</li>
 <li>messages list variables are exported to javascript as a string.</li>
 <li>Carlito Regular open source font is embedded in the application ressources and used as a default font. See at <a href="https://fontlibrary.org/fr/font/carlito">https://fontlibrary.org/fr/font/carlito</a> for more information.</li>
-<li>symbolic notation support extended with score expressions. See section \fullref{scoreExpr}.</li>
-<li>new <span class="OSC">newData</span> event. See section <a href="../15-interaction#miscevents">miscevents</a>.</li>
+<li>symbolic notation support extended with score expressions. See section <a href="../19-scoreExpr#scoreExpr">scoreExpr</a>.</li>
+<li>new <span class="OSC">newData</span> event. See section <a href="../16-interaction#miscevents">miscevents</a>.</li>
 <li>the javascript engine is shared between the application and the different scenes.
   Note that it may change a script behavior when exploiting the previous independance
   of the javascript engine environments.</li>
-<li>new javascript <span class="OSC">osname</span> function that gives the current operating system name. See section <a href="../16-scripting#jsobj">jsobj</a>.</li>
-<li>new javascript <span class="OSC">osid</span> function that gives the current operating system as an id. See section <a href="../16-scripting#jsobj">jsobj</a>.</li>
+<li>new javascript <span class="OSC">osname</span> function that gives the current operating system name. See section <a href="../17-scripting#jsobj">jsobj</a>.</li>
+<li>new javascript <span class="OSC">osid</span> function that gives the current operating system as an id. See section <a href="../17-scripting#jsobj">jsobj</a>.</li>
 <li><span class="OSC">rootPath</span> message can be called without parameter to clear a scene rootPath. See section <a href="../9-scene#scene">scene</a>.</li>
 <li>log window supports the <span class="OSC">foreground</span> message. See section <a href="../8-ITL#ITLlog">ITLlog</a>.</li>
 <li>user actions on windows are generating <span class="OSC">foreground</span> messages.</li>
@@ -292,7 +304,7 @@
 <p>crash bug corrected: outgoing OSC messages are now handling buffer overflow exceptions.</p>
 </li>
 <li>
-<p>support for multi touch events. See section <a href="../15-interaction#touchevents">touchevents</a>.</p>
+<p>support for multi touch events. See section <a href="../16-interaction#touchevents">touchevents</a>.</p>
 </li>
 <li>new <span class="OSC">radialgraph</span> signal representation. See section <a href="../14-graphsig#gsignal">gsignal</a>.</li>
 <li><span class="OSC">httpd</span> object is visible as a qrcode giving the server url.</li>
@@ -345,9 +357,9 @@
 </li>
 <li>new <span class="OSC">memimg</span> object that capture the image of any object hierarchy including scenes. See section <a href="../5-setsect#imgscore">imgscore</a>.</li>
 <li>supports relative OSC addresses that are evaluated in the context of the target object 
-  (i.e. a scene for drag and drop operations, arbitrary objects with the <span class="OSC">eval</span> method). See section <a href="../16-scripting#scriptmsgs">scriptmsgs</a>.</li>
+  (i.e. a scene for drag and drop operations, arbitrary objects with the <span class="OSC">eval</span> method). See section <a href="../17-scripting#scriptmsgs">scriptmsgs</a>.</li>
 <li>new <span class="OSC">eval</span> method that takes a message list as argument, provided as a context for relative addresses evaluation. See section <a href="../4-miscmsgs#miscmsgs">miscmsgs</a>.</li>
-<li>new <span class="OSC">httpd</span> object that implements an http server providing images of the scene to remote clients. See section <a href="../5-setsect#webobjects">webobjects</a> and section <a href="../17-plugins#Httpd">Httpd</a>.</li>
+<li>new <span class="OSC">httpd</span> object that implements an http server providing images of the scene to remote clients. See section <a href="../5-setsect#webobjects">webobjects</a> and section <a href="../20-plugins#Httpd">Httpd</a>.</li>
 <li>
 <p>new <span class="OSC">websocket</span> object that implements a websocket server providing images of the scene to remote clients but also changes notifications. See section <a href="../5-setsect#webobjects">webobjects</a>.</p>
 </li>
@@ -355,7 +367,7 @@
 <p>Files objects can receive URL as path. See section <a href="../5-setsect#filebasedrsrc">filebasedrsrc</a>.</p>
 </li>
 <li>new intermediate object for the URL (waiting for the data to be downloaded to create the real object)</li>
-<li>new events associated to url based objects: success, error, cancel. See section <a href="../15-interaction#urlevents">urlevents</a>.</li>
+<li>new events associated to url based objects: success, error, cancel. See section <a href="../16-interaction#urlevents">urlevents</a>.</li>
 <li>support for int values as parameters of the set method of rect shape and polygon objects</li>
 <li>
 <p>the <span class="OSC">clear</span> message addressed to a <span class="OSC">gmnstream</span> object clears also the view. The change was not previously reflected until a new valid string was posted to the object.</p>
@@ -371,7 +383,7 @@
 </ul>
 <h2 id="version-108-vs-version-107">Version 1.08 vs version 1.07</h2>
 <ul>
-<li>new <span class="OSC"><strong>END</strong></span> marker supported to end a script parsing at arbitrary location  (see section <a href="../16-scripting#scriptstatement">scriptstatement</a>).</li>
+<li>new <span class="OSC"><strong>END</strong></span> marker supported to end a script parsing at arbitrary location  (see section <a href="../17-scripting#scriptstatement">scriptstatement</a>).</li>
 <li>when displaying the mapping, the map dates are not printed any more by default (due to size and collisions).  The debug map parameter change from boolean to int value: 1 to activate the mapping display, 
 2 to have also the dates displayed  (see section <a href="../7-specificMsg#debugnode">debugnode</a>).</li>
 <li>the signal node is available at any level of the hierarchy (as well as the sync node)</li>
@@ -387,7 +399,7 @@
 <li>new <span class="OSC">faustdsp</span> object, charging libfaust as a plugin to compile faust DSP on-the-fly (see section <a href="../5-setsect#sigscore">sigscore</a>).</li>
 <li>exception catched when sending osc messages: was a potential crash, 
   e.g. in case of <span class="OSC">get</span> message sent to a signal with a large buffer -&gt; out of buffer memory</li>
-<li>new javascript 'post' function for posting delayed messages  (see section <a href="../16-scripting#jsobj">jsobj</a>)</li>
+<li>new javascript 'post' function for posting delayed messages  (see section <a href="../17-scripting#jsobj">jsobj</a>)</li>
 <li>new <span class="OSC">write</span> method supported by the 'log' window (see section <a href="../8-ITL#ITLlog">ITLlog</a>)</li>
 <li>variable addresses are evaluated in message based variables</li>
 <li>supports relative rotations on x and y axis</li>
@@ -403,23 +415,23 @@
 <h2 id="version-105-vs-version-103">Version 1.05 vs version 1.03</h2>
 <ul>
 <li>incorrect error message for watch messages corrected</li>
-<li>new javascript <span class="OSC">readfile</span> function (see section <a href="../16-scripting#jsobj">jsobj</a>)</li>
+<li>new javascript <span class="OSC">readfile</span> function (see section <a href="../17-scripting#jsobj">jsobj</a>)</li>
 <li>log window is now available from the application 'Tools' menu</li>
 <li>new <span class="OSC">brushStyle</span> attribute (see section <a href="../7-specificMsg#brush">brush</a>)</li>
 <li>new <span class="OSC">layer</span> object (see section <a href="../5-setsect#miscscore">miscscore</a>)</li>
 <li>new <span class="OSC">save</span> method specific to the log window: saves the window content to a file (see section <a href="../8-ITL#ITLlog">ITLlog</a>)</li>
 <li>new <span class="OSC">event</span> method supported at object level for UI events simulation</li>
-<li>new <span class="OSC">del</span> watchable event: sent when deleting an object (see section <a href="../15-interaction#miscevents">miscevents</a>)</li>
+<li>new <span class="OSC">del</span> watchable event: sent when deleting an object (see section <a href="../16-interaction#miscevents">miscevents</a>)</li>
 <li>new <span class="OSC">gmnstream</span> guido stream object (see section <a href="../5-setsect#symscore">symscore</a>)</li>
 </ul>
 <h2 id="version-103-vs-version-10">Version 1.03 vs version 1.0</h2>
 <ul>
 <li>log window utility provided as a new static node at application level (<span class="OSC">/ITL/log</span>) (see section <a href="../8-ITL#ITLlog">ITLlog</a>).</li>
 <li>new <span class="OSC">systemCount</span> read only attribute for Guido scores (see section <a href="../7-specificMsg#gmnpage">gmnpage</a>)</li>
-<li>IRCAM gesture follower support (see section <a href="../17-plugins#GF">GF</a>)</li>
-<li>javascript engine is available at the static address /ITL/scene/javascript and can be activated using a 'run' method  (see section <a href="../16-scripting#jsobj">jsobj</a>)</li>
-<li>new <span class="OSC">export</span> event (see section <a href="../15-interaction#miscevents">miscevents</a>)</li>
-<li>new <span class="OSC">endPaint</span> event at scene level  (see section <a href="../15-interaction#miscevents">miscevents</a>)</li>
+<li>IRCAM gesture follower support (see section <a href="../20-plugins#GF">GF</a>)</li>
+<li>javascript engine is available at the static address /ITL/scene/javascript and can be activated using a 'run' method  (see section <a href="../17-scripting#jsobj">jsobj</a>)</li>
+<li>new <span class="OSC">export</span> event (see section <a href="../16-interaction#miscevents">miscevents</a>)</li>
+<li>new <span class="OSC">endPaint</span> event at scene level  (see section <a href="../16-interaction#miscevents">miscevents</a>)</li>
 <li>new <span class="OSC">windowOpacity</span> method at scene level (see section <a href="../9-scene#scene">scene</a>)</li>
 <li>bug correction: error messages not generated for dropped files (actually for the scene load method)</li>
 <li>bug correction: possible infinite loop in QStretchTilerItem::paint method</li>
@@ -435,16 +447,16 @@
 <li>new 'relative | absolute' synchronization mode (see section <a href="../13-syncmsg#syncmode">syncmode</a>)</li>
 <li>'rename' message not supported any more</li>
 <li>a scene accepts multiple dropped files</li>
-<li>significant extension and syntax changes in inscore script files (see Scripting documentation section <a href="../16-scripting#scripting">scripting</a>)</li>
-<li>fileWatcher methods renamed and simplified (see section <a href="../15-interaction#filewatch">filewatch</a>)</li>
+<li>significant extension and syntax changes in inscore script files (see Scripting documentation section <a href="../17-scripting#scripting">scripting</a>)</li>
+<li>fileWatcher methods renamed and simplified (see section <a href="../16-interaction#filewatch">filewatch</a>)</li>
 <li>'click' and 'select' messages are not supported any more.</li>
 <li>new 'stats' virtual node at application level (address /ITL/stats), supports 'get' and 'reset' messages
   the node gives statistics about the incoming messages (see section <a href="../8-ITL#ITLdebug">ITLdebug</a>)</li>
 <li>crash bug in signal creation corrected: a signal size created with an incorrect stream 
   (e.g. a string value) was 0 and no buffer was allocated.</li>
-<li>extension of the time related events to duration: new 'durEnter' and 'durLeave' watchable events (see section <a href="../15-interaction#timeevents">timeevents</a>)</li>
+<li>extension of the time related events to duration: new 'durEnter' and 'durLeave' watchable events (see section <a href="../16-interaction#timeevents">timeevents</a>)</li>
 <li>new 'absolutexy' message at scene level to switch to absolute coordinates (in pixels) (see section <a href="../9-scene#scene">scene</a>)</li>
-<li>new 'push' and 'pop' messages to store and restore current watched events and associated messages (see section <a href="../15-interaction#evtstate">evtstate</a>)</li>
+<li>new 'push' and 'pop' messages to store and restore current watched events and associated messages (see section <a href="../16-interaction#evtstate">evtstate</a>)</li>
 <li>internal change: mappings are now implemented as a separable library strictly complying to the 
   mappings formalism.</li>
 <li>new </li>
@@ -462,7 +474,7 @@
 <li>osc error stream normalized: the message address is 'error:' or 'warning:'
    followed by a single message string.</li>
 <li>javascript and lua support: a single persistent context is created at application level and for each scene. 
-(see section <a href="../16-scripting#scriptlang">scriptlang</a>)</li>
+(see section <a href="../17-scripting#scriptlang">scriptlang</a>)</li>
 </ul>
 <h2 id="version-097-vs-version-096">Version 0.97 vs version 0.96</h2>
 <ul>
@@ -482,7 +494,7 @@
 <ul>
 <li>new 'mouse' 'show/hide' message supported at application level (see section <a href="../8-ITL#ITL">ITL</a>)</li>
 <li>graphic signal supports alpha messages at object level</li>
-<li>javascript and lua embedded and supported in inscore scripts  (see section <a href="../16-scripting#scriptlang">scriptlang</a>).</li>
+<li>javascript and lua embedded and supported in inscore scripts  (see section <a href="../17-scripting#scriptlang">scriptlang</a>).</li>
 <li>bug correction in sync delete (introduced with version 0.90)</li>
 </ul>
 <h2 id="version-092-vs-version-091">Version 0.92 vs version 0.91</h2>
@@ -498,7 +510,7 @@
 <h2 id="version-090-vs-version-082">Version 0.90 vs version 0.82</h2>
 <ul>
 <li>at application level: osc debug is now 'on' by default</li>
-<li>new scripting features (variables)  (see section <a href="../16-scripting#scriptvar">scriptvar</a>).</li>
+<li>new scripting features (variables)  (see section <a href="../17-scripting#scriptvar">scriptvar</a>).</li>
 <li>ITL file format change: </li>
 <li>semicolon added at the end of each message </li>
 <li>'//' comment not supported any more </li>
@@ -549,7 +561,7 @@
 <li>relaxed bool parameter policy: objects accept float values for bool parameters </li>
 <li>automatic numbering of exports when destination file is not completely specified 
   i.e. no name, no extension. (see section <a href="../2-common#common">common</a>).</li>
-<li>quantification introduced to $date variable (see section <a href="../15-interaction#interactvar">interactvar</a>).</li>
+<li>quantification introduced to $date variable (see section <a href="../16-interaction#interactvar">interactvar</a>).</li>
 <li><span class="OSC">reset</span> message addressed to a scene clears the scene rootPath</li>
 </ul>
 <h2 id="version-077-vs-version-076">Version 0.77 vs version 0.76</h2>
@@ -565,8 +577,8 @@
 <h2 id="version-076-vs-version-075">Version 0.76 vs version 0.75</h2>
 <ul>
 <li>new <span class="OSC">require</span> message supported by the <span class="OSC">/ITL</span> node (see section <a href="../8-ITL#ITL">ITL</a>).</li>
-<li>new event named <span class="OSC">newElement</span> supported at scene level (see section <a href="../15-interaction#timeevents">timeevents</a>).</li>
-<li>new <span class="OSC">name</span> and <span class="OSC">address</span> variables (see section <a href="../15-interaction#interactvar">interactvar</a>).</li>
+<li>new event named <span class="OSC">newElement</span> supported at scene level (see section <a href="../16-interaction#timeevents">timeevents</a>).</li>
+<li>new <span class="OSC">name</span> and <span class="OSC">address</span> variables (see section <a href="../16-interaction#interactvar">interactvar</a>).</li>
 <li>new system map computation making use of the new slices map provided by the guidolib version 1.42</li>
 <li>INScore API: the <span class="OSC">newMessage</span> method sets now the message src IP to localhost
   With the previous version and the lack of src IP, replies to queries or error 
@@ -588,22 +600,22 @@
 <li>x and y variables: automatic range type detection (int | float)</li>
 <li>set <span class="OSC">txt</span> message: accepts polymorphic stream like parameters (see section <a href="../5-setsect#setsect">setsect</a>).</li>
 <li>drag and drop files support in INScore viewer</li>
-<li>interaction variables extension: <span class="OSC">$sx</span>, <span class="OSC">$sy</span> variables added to support scene coordinate space (see section <a href="../15-interaction#interactvar">interactvar</a>).</li>
+<li>interaction variables extension: <span class="OSC">$sx</span>, <span class="OSC">$sy</span> variables added to support scene coordinate space (see section <a href="../16-interaction#interactvar">interactvar</a>).</li>
 <li>automatic range mapping for <span class="OSC">$x</span>, <span class="OSC">$y</span> variables.</li>
-<li>new <span class="OSC">$self</span> and <span class="OSC">$scene</span> variables in the address field (see section <a href="../15-interaction#oscvar">oscvar</a>).</li>
+<li>new <span class="OSC">$self</span> and <span class="OSC">$scene</span> variables in the address field (see section <a href="../16-interaction#oscvar">oscvar</a>).</li>
 <li>OSC identifiers characters set extended with '_' and '-' (see section <a href="../1-genformat#genformat">genformat</a>).</li>
 <li>support for multiple scenes: <span class="OSC">new</span>, <span class="OSC">del</span> and <span class="OSC">foreground</span> messages (see section <a href="../9-scene#scene">scene</a>).</li>
 <li><span class="OSC">load</span> message supported at scene level (see section <a href="../9-scene#scene">scene</a>).</li>
 <li><span class="OSC">get watch</span> implemented.</li>
-<li><span class="OSC">watch</span> message without argument to clear all the watched events (see section <a href="../15-interaction#interactvar">interactvar</a>).</li>
+<li><span class="OSC">watch</span> message without argument to clear all the watched events (see section <a href="../16-interaction#interactvar">interactvar</a>).</li>
 <li>order of rendering and width, height update corrected (may lead to incorrect rendering)</li>
 <li>bug with gmn score corrected: missing update for page, columns and rows changes.</li>
 <li>package delivered with the Guido Engine version 1.41 that corrects minimum staves distance and incorrect mapping when optimum page fill is off.</li>
 </ul>
 <h2 id="version-063-vs-version-060">Version 0.63 vs version 0.60</h2>
 <ul>
-<li>new 'mousemove' event (see section <a href="../15-interaction#uievents">uievents</a>).</li>
-<li>interaction messages accept variables ($x, $y, $date...) (see section <a href="../15-interaction#interactvar">interactvar</a>).</li>
+<li>new 'mousemove' event (see section <a href="../16-interaction#uievents">uievents</a>).</li>
+<li>interaction messages accept variables ($x, $y, $date...) (see section <a href="../16-interaction#interactvar">interactvar</a>).</li>
 <li>SVG code and files support (see section <a href="../5-setsect#setfile">setfile</a>).</li>
 <li>set line message change: the <span class="OSC">x y</span> form is deprecated, it is replaced by
   the following forms: 
@@ -619,7 +631,7 @@
 <h2 id="version-060-vs-version-055">Version 0.60 vs version 0.55</h2>
 <ul>
 <li>new 'xorigin' and 'yorigin' messages (section <a href="../2-common#origin">origin</a>).</li>
-<li>new interaction messages set (section <a href="../15-interaction#interaction">interaction</a>).</li>
+<li>new interaction messages set (section <a href="../16-interaction#interaction">interaction</a>).</li>
 <li>alpha channel handled by images and video</li>
 <li>bug correction in line creation corrected (false incorrect parameter returned)</li>
 <li>bug correction in line 'get' message handling</li>

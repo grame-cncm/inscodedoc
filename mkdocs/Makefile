@@ -4,14 +4,14 @@ AWK  ?= awk
 
 MKDIR := "./"
 
-SRCDIR := ../latex
-SRC := $(SRCDIR)/OSCMsg.tex
-OUT := 1-genformat.md 12-mapping.md 15-interaction.md 18-yacc.md 3-time.md 6-getsect.md 9-scene.md 10-forwarding.md 13-syncmsg.md 16-scripting.md 19-changes.md 4-miscmsgs.md 7-specificMsg.md 11-layers.md 14-graphsig.md 17-plugins.md 2-common.md 5-setsect.md 8-ITL.md
-TMP 	:= $(OUT:%.md=%.tmp)
-MD 		:= $(OUT:%=docs/refs/%)
-REFOUT 	:= $(OUT:%.md=%.refs)
-RAIL 	:= $(shell find rail -name "*.rail")
-RAILOUT := $(RAIL:rail/%.rail=docs/BNF/%.js)
+SRCDIR   := ../latex
+SRC      := $(SRCDIR)/OSCMsg.tex
+SPLIT    := $(wildcard *.tmp)
+SECTIONS := $(SPLIT:%.tmp=%.md)
+MD 		 := $(SPLIT:%.tmp=docs/refs/%.md)
+REFOUT 	 := $(SECTIONS:%.md=%.refs)
+RAIL 	 := $(shell find rail -name "*.rail")
+RAILOUT  := $(RAIL:rail/%.rail=docs/BNF/%.js)
 
 .PHONY: rail
 
@@ -44,16 +44,16 @@ serve:
 	cd $(MKDIR) && mkdocs serve
 
 menu:
-	@echo $(OUT) | tr " " "\n" | sort -n | sed -e 's/^/        - : /'
+	@echo $(SECTIONS) | tr " " "\n" | sort -n | sed -e 's/^/        - : refs\//'
 
 md: $(MD) docs/refs/index.md
 
 fullrefs: fullrefs.sed
-fullrefs.sed : $(TMP)
-	grep label $(TMP) | sed -f scripts/labels.sed > $@
+fullrefs.sed : $(SPLIT)
+	grep label $(SPLIT) | sed -f scripts/labels.sed > $@
 
 split :
-	$(AWK) -f scripts/split.awk $(SRC)
+	$(AWK) -f scripts/scan-input.awk $(SRC) | $(AWK) -f scripts/split.awk 
 
 refs: $(MD) fullrefs.sed
 
@@ -64,7 +64,7 @@ test:
 	@echo $(TMP)
 
 clean:
-	rm -f $(TMP)
+	rm -f $(SPLIT)
 	rm -f $(MD)
 	rm -f *.tmp
 	rm -f fullrefs.sed
@@ -77,13 +77,13 @@ docs/refs/%.md:%.tmp
 	| $(AWK) -f scripts/tables.awk | $(AWK) -f scripts/rail.awk FILE=$< \
 	| sed -f fullrefs.sed | sed -f index.sed | sed -f scripts/cleanup.sed  | grep -v __removed__ > $@
 
-docs/refs/18-yacc.md:18-yacc.tmp
-	$(AWK) -f scripts/scan-input.awk $< | sed -f scripts/tags.sed  \
-	| sed -f fullrefs.sed | sed -f scripts/cleanup.sed  | grep -v __removed__ > $@
+#docs/refs/18-yacc.md:18-yacc.tmp
+#	$(AWK) -f scripts/scan-input.awk $< | sed -f scripts/tags.sed  \
+#	| sed -f fullrefs.sed | sed -f scripts/cleanup.sed  | grep -v __removed__ > $@
 
-docs/refs/19-changes.md: 19-changes.tmp
-	$(AWK) -f scripts/scan-input.awk $< | sed -f scripts/tags.sed | $(AWK) -f scripts/tables.awk  \
- 	| sed -f fullrefs.sed | sed -f scripts/cleanup.sed  | grep -v __removed__ > $@
+# docs/refs/19-changes.md: 19-changes.tmp
+# 	$(AWK) -f scripts/scan-input.awk $< | sed -f scripts/tags.sed | $(AWK) -f scripts/tables.awk  \
+#  	| sed -f fullrefs.sed | sed -f scripts/cleanup.sed  | grep -v __removed__ > $@
 			
 docs/refs/index.md:index.md
 	sort $< | $(AWK) -f scripts/index.awk > $@

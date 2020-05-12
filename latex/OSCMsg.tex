@@ -230,21 +230,21 @@ alias : OSCAddress 'alias' (([1] OSCAlias ( (message ('[n,m]' |))+ | ) ) | [2])
 \note{} Regular expressions are not supported by the alias mechanism and could lead to unpredictable results.
 
 \example
-\sample{makes the address /ITL/scene/myobject available using /1/fader1\\
+\sample{\icomment\ makes the address /ITL/scene/myobject available using /1/fader1\\
 /ITL/scene/myobject alias '/1/fader1';\\
 \\
-the following input message:\\
+\icomment\ the following input message:\\
 /1/fader1 0.5;\\
-will be translated into:\\
+\icomment\ will be translated into:\\
 /ITL/scene/myobject 0.5;
 }
 
-\sample{create an alias with an implicit 'x' message\\
+\sample{\icomment\ create an alias with an implicit 'x' message\\
 /ITL/scene/myobject alias '/1/fader1' x;\\
 \\
-the following input message:\\
+\icomment\ the following input message:\\
 /1/fader1 0.5;\\
-will be translated into:\\
+\icomment\ will be translated into:\\
 /ITL/scene/myobject x 0.5;
 }
 
@@ -258,12 +258,12 @@ The general form of the scaling string is \OSC{[n,m]}, where $n$ and $m$ are 2 n
 \]
 
 \example
-\sample{create an alias with an implicit 'x' message using a scaling specification\\
+\sample{\icomment\ create an alias with an implicit 'x' message using a scaling specification\\
 /ITL/scene/myobject alias '/1/fader1' x[0,100];\\
 \\
-the following input message:\\
+\icomment\ the following input message:\\
 /1/fader1 5;\\
-will be translated into:\\
+\icomment\ will be translated into:\\
 /ITL/scene/myobject x -0.9;
 }
 
@@ -274,12 +274,12 @@ You can you any arbitrary number of message strings in an \OSC{alias} message. I
  
 
 \example
-\sample{create an alias with implicit 'x' 'y' and 'angle' messages using scaling\\
+\sample{\icomment\ create an alias with implicit 'x' 'y' and 'angle' messages using scaling\\
 /ITL/scene/myobject alias '/1/fader1' x[0,100] y[0,100] angle;\\
 \\
-the following input message:\\
+\icomment\ the following input message:\\
 /1/fader1 5 60 12;\\
-will be translated into:\\
+\icomment\ will be translated into:\\
 /ITL/scene/myobject x -0.9;\\
 /ITL/scene/myobject y  0.2;\\
 /ITL/scene/myobject angle 12;
@@ -866,9 +866,9 @@ time : (([1] int32 int32) | [2] int32 | [3] float32 | [4] 'n/d')
 \example \\
 Various ways to set an object date.
 \sample{/ITL/scene/myObject date 2 1 ;\\
-/ITL/scene/myObject date 2;     \hspace{1.2cm}! the denominator is 1 (implied) \\
-/ITL/scene/myObject date 0.5;   \hspace{7mm} ! equivalent to 1/2 \\
-/ITL/scene/myObject date '1/2'; \hspace{4mm} ! the string form
+/ITL/scene/myObject date 2;     \hspace{1.2cm}\icomment\  the denominator is 1 (implied) \\
+/ITL/scene/myObject date 0.5;   \hspace{7mm} \icomment\  equivalent to 1/2 \\
+/ITL/scene/myObject date '1/2'; \hspace{4mm} \icomment\  the string form
 }
 Similar ways to move an object date.
 \sample{/ITL/scene/myObject clock;   \\
@@ -1231,7 +1231,7 @@ The \OSC{url} intermediate object acts as a proxy for the target object and will
 \example \\
 Creating a score using an URL:
 \sample{/ITL/scene/score set gmnf "http://anyhost.adomain.org/score.gmn"; \\
-\hspace*{4mm} is equivalent to \\
+\icomment\  is equivalent to \\
 /ITL/scene/score set url gmnf "http://anyhost.adomain.org/score.gmn";
 }
 
@@ -1281,7 +1281,7 @@ file extension & translated type \\
 \example \\
 Creating an image using the \OSC{file} type.
 \sample{/ITL/scene/myObject set file "myImage.png"; \\
-\hspace*{4mm} is equivalent to \\
+\icomment\  is equivalent to \\
 /ITL/scene/myObject set img "myImage.png";
 }
 
@@ -2820,7 +2820,7 @@ Putting a signal \OSC{y} and constant signals 0.01 0. 1. 1. 1. in parallel:
 \sample{/ITL/scene/signal/mySig set y 0.01 0. 1. 1. 1. ;}
 Querying the previously defined parallel signal:
 \sample{/ITL/scene/signal/mySig get ;\\
-will give the following output: \\
+\icomment\ will give the following output: \\
 /ITL/scene/signal/mySig set y 0.01 0. 1. 1. 1.
 }
 
@@ -2926,7 +2926,7 @@ A connection can't cross the borders of a component i.e. the target object and t
 Connecting signals to attributes:
 \sample{\icomment connects the values of sig1 to the red attribute of the 'rect' object \\
 /ITL/scene/signal connect sig1 "rect:red"; \\
-\icomment connects the values of sig2 to several objects and attributes \\
+\icomment\ connects the values of sig2 to several objects and attributes \\
 /ITL/scene/signal connect sig2 "rect:blue:x:rotatey[0,360]" "cursor:date[0,15]";
 }
 Disconnecting some of the previous connections :
@@ -3000,7 +3000,7 @@ The signal representation type is among:
 \example \\
 Creating a signal and its graphic representation:
 \sample{/ITL/scene/signal/y size 200 ; \\
-\icomment use of constant anonymous signals for thickness and color\\
+\icomment\ use of constant anonymous signals for thickness and color\\
 /ITL/scene/signal/sig set y 0.1 0. 1. 1. 1. ; \\
 /ITL/scene/siggraph set graph sig ;
 }
@@ -3048,11 +3048,11 @@ When \textit{d} is not a mutiple of 6, then the last graphic signal makes use of
 Creating parallel graphic signals:
 \sample{/ITL/scene/signal/y1 size 200 ; \\
 /ITL/scene/signal/y2 size 200 ; \\
-\icomment use of constant anonymous signals for thickness and color\\
+\icomment\ use of constant anonymous signals for thickness and color\\
 /ITL/scene/signal/sig1 set y1 0.1 0. 1. 1. 1. ; \\
-\icomment use a different color for 'sig2'\\
+\icomment\ use a different color for 'sig2'\\
 /ITL/scene/signal/sig2 set y2 0.1 0.6 1. 1. 1. ; \\
-\icomment put 'sig1' and 'sig2' in parallel\\
+\icomment\ put 'sig1' and 'sig2' in parallel\\
 /ITL/scene/signal/sig set sig1 sig2;    \hspace{1CM}\icomment 'sig' dimension is 12\\
 /ITL/scene/siggraph set graph sig; 
 }
@@ -3869,19 +3869,6 @@ The Javascript engine is based on the Qt5 Javascrip engine, extended with additi
 \# or call the foo function using the run message \\
 /ITL/scene/javascript run "foo(1)";
 }
-
-
-%\note{}\\
-%The effect of \OSC{load} message is actually to push the messages on the system stack for evaluation by the next time task. Thus when including a file containing javascript (or lua), the new 
-%language context won't be available to the next messages in the script. The workaround 
-%for structured script consists in designing a top level script that only contains \OSC{load} messages.
-%
-%\example
-%\sample{
-%\hspace*{-3mm} /ITL load 'javascript-code.inscore';\\
-%/ITL load 'call-javascript.inscore';
-%}
-
 
 %===============================
 %:Math expressions

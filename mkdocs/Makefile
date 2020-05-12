@@ -71,19 +71,10 @@ clean:
 	rm -f index.sed index.md
 	rm -f rail/*.rail $(RAILOUT)
 
-	
 docs/refs/%.md:%.tmp
 	sed -f scripts/tags.sed $< | $(AWK) -f scripts/samples.awk | $(AWK) -f scripts/figures.awk  \
 	| $(AWK) -f scripts/tables.awk | $(AWK) -f scripts/rail.awk FILE=$< \
 	| sed -f fullrefs.sed | sed -f index.sed | sed -f scripts/cleanup.sed  | grep -v __removed__ > $@
-
-#docs/refs/18-yacc.md:18-yacc.tmp
-#	$(AWK) -f scripts/scan-input.awk $< | sed -f scripts/tags.sed  \
-#	| sed -f fullrefs.sed | sed -f scripts/cleanup.sed  | grep -v __removed__ > $@
-
-# docs/refs/19-changes.md: 19-changes.tmp
-# 	$(AWK) -f scripts/scan-input.awk $< | sed -f scripts/tags.sed | $(AWK) -f scripts/tables.awk  \
-#  	| sed -f fullrefs.sed | sed -f scripts/cleanup.sed  | grep -v __removed__ > $@
 			
 docs/refs/index.md:index.md
 	sort $< | $(AWK) -f scripts/index.awk > $@

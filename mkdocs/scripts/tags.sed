@@ -11,10 +11,13 @@ s/\\_/_/g
 s/\\&/\&/g
 s/\\lowTilde/~/g
 s/\\~{}/\~/g
+s/\\\#/\#/
+s/\\}/}/
+s/\\{/{/
 
 ############## handle verbatim sections
 s/\\begin{verbatim}/\
-~~~~~~~~~~~/
+~~~~~~~~~~~ inscore/
 s/\\end{verbatim}/~~~~~~~~~~~/
 
 
@@ -48,6 +51,7 @@ s/\\url{\([^}]*\)}/[\1](\1)/g
 s/\\seealso/<span class="seealso">See also:<\/span>/
 s/\\hspace\*{[^}]*}/  /
 s/\\hspace{[^}]*}/  /
+s/\\icomment\\/\#/
 s/\\icomment/\#/
 
 s/\\oscint\\*/<span class="terminal">int32<\/span>/
@@ -62,7 +66,7 @@ s/\$\([^ $]*\)\$/\\(\1\\)/g
 ############## handle single line samples
 # don't move, must be run after previous substitutions
 s/\\sample{\([^}]*\)}[ \t]*$/\
-~~~~~~~~~\
+~~~~~~~~~ inscore\
 \1\
 ~~~~~~~~~\
 /

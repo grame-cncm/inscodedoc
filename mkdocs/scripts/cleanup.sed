@@ -5,6 +5,7 @@ s/.*\\end{.*$/__removed__/
 s/\\index{[^}*}]/__removed__/
 s/\\input.*/__removed__/
 s/\\printindex/__removed__/
+s/\\newcommand..*$/__removed__/
 
 s/\\label{\([^}]*\)}/<a name="\1"><\/a>/g
 s/.*\\caption{.*$/__removed__/

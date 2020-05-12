@@ -14,7 +14,7 @@ END {
 ################# 
 # scan sample sections
 /\\sample{/ 	{
-		print "~~~~~~~";
+		print "~~~~~~~ inscore";
 		INSAMPLE = 1;
 }
 

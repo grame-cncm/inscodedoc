@@ -33,7 +33,11 @@ nav:
         - 'Pdf documentation' : rsrc/INScoreLang.pdf
     - About: about.md
 
-#theme: readthedocs
+theme: 
+    name: mkdocs
+    highlightjs: true
+#    hljs_languages: 
+#        - inscore
 
 site_dir: ../docs
 
@@ -55,8 +59,10 @@ extra_css:
 
 extra_javascript:
   - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML
+  - /js/inscore.js
 
 markdown_extensions:
     - mdx_math
     - markdown_include.include:
         base_path: './docs'
+

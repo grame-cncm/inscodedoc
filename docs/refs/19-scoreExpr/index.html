@@ -212,7 +212,7 @@
 <p><strong>Score expressions</strong> allows to defines score objects (<span class="OSC">gmn</span> or <span class="OSC">pianoroll</span>) by dynamically combine various resources using a formal expression. To define such object one should use the basic <span class="OSC">set</span> messages using a score expressions as arguments:</p>
 <p><span class="example">Example</span>
 The following example defines a <span class="OSC">gmn</span> and a <span class="OSC">pianoroll</span> object using score expressions, the meaning of the expression is explained further.</p>
-<pre><code>/ITL/scene/score set gmn expr(seq [a] [b]); 
+<pre><code class="inscore">/ITL/scene/score set gmn expr(seq [a] [b]); 
 /ITL/scene/pianoroll set pianoroll expr(score);
 </code></pre>
 
@@ -238,11 +238,11 @@ ComplexDiagram(
 <p>When defining an object using a score expressions, INScore will parse it, construct an internal representation and finally evaluate it, reducing the formal expressions to a valid GMN string.</p>
 <p><span class="example">Example</span> 
 Creating a guido object by sequencing two guido string</p>
-<pre><code>/ITL/scene/score set gmn expr( seq &quot;[c d e]&quot; &quot;[f g h]&quot;);
+<pre><code class="inscore">/ITL/scene/score set gmn expr( seq &quot;[c d e]&quot; &quot;[f g h]&quot;);
 </code></pre>
 
 <p>is equivalent to</p>
-<pre><code>/ITL/scene/score set gmn &quot;[c d e f g h]&quot;;
+<pre><code class="inscore">/ITL/scene/score set gmn &quot;[c d e f g h]&quot;;
 </code></pre>
 
 <h2 id="score-operators">Score Operators</h2>
@@ -374,7 +374,7 @@ ComplexDiagram(
 </ul>
 <p><span class="example">Example</span>
 Defining <span class="OSC">/ITL/scene/score</span> as a copy of <span class="OSC">/ITL/scene/simpleScore</span> duplicated 4 times.</p>
-<pre><code>/ITL/scene/simpleScore set gmn &quot;[e \{c,g\} |]&quot;;
+<pre><code class="inscore">/ITL/scene/simpleScore set gmn &quot;[e {c,g} |]&quot;;
 
 /ITL/scene/score set gmn expr( &amp;simpleScore );
 /ITL/scene/score set gmn expr( seq ~ score ~ score);
@@ -384,7 +384,7 @@ Defining <span class="OSC">/ITL/scene/score</span> as a copy of <span class="OSC
 <p><span class="OSC">/ITL/scene/score</span> should look like:
 <img alt="argsPrefix" src="../imgs/seqparEnhanced.png" />    </p>
 <p>Querying for the expanded expression of <span class="OSC">/ITL/scene/score</span> (see Section~<a href="../19-scoreExpr#exprCmd">exprCmd</a>) should return:</p>
-<pre><code>/ITL/scene/score expr
+<pre><code class="inscore">/ITL/scene/score expr
   expr( par
        ( seq
           &amp;simpleScore
@@ -421,7 +421,7 @@ Arguments using special characters (space, tabulation, parenthesis, braces...), 
 <p>Of course, the <span class="OSC">newData</span> event can be used together with <span class="OSC">reeval</span> to automatically update an object when the value of an other changes.</p>
 <p><span class="example">Example</span>
 Creating a copy of <span class="OSC">score</span>, and automatise its update when <span class="OSC">score</span> is changed</p>
-<pre><code>/ITL/scene/score set gmn &quot;[c e]&quot;;
+<pre><code class="inscore">/ITL/scene/score set gmn &quot;[c e]&quot;;
 /ITL/scene/copy set gmn expr(&amp;score);
 /ITL/scene/score watch newData (/ITL/scene/copy expr reeval);
 </code></pre>
@@ -433,7 +433,7 @@ Because newData event is delayed, if <span class="OSC">score</span> experiences 
 For the reasons raised in the previous note, one should be very careful to delayed update when automatise <span class="OSC">reeval</span> with <span class="OSC">newData</span>. Indeed, in some extreme case, executing a script one line after an other won't have the same result as executing the all script at once!!</p>
 <p><span class="example">Example</span>
 Creating a "score buffer", storing every state adopted by <span class="OSC">score</span></p>
-<pre><code>/ITL/scene/score set gmn &quot;[c]&quot;;
+<pre><code class="inscore">/ITL/scene/score set gmn &quot;[c]&quot;;
 
 /ITL/scene/buffer set gmn &quot;[]&quot;;
 /ITL/scene/buffer set gmn expr(seq &amp;buffer (seq &quot;[|]&quot; &amp;score));
@@ -441,7 +441,7 @@ Creating a "score buffer", storing every state adopted by <span class="OSC">scor
 
 /ITL/scene/score set gmn &quot;[e]&quot;;
 /ITL/scene/score set gmn &quot;[g]&quot;;
-/ITL/scene/score set gmn &quot;[\{c,e,g\}]&quot;;
+/ITL/scene/score set gmn &quot;[{c,e,g}]&quot;;
 </code></pre>
 
 <p>Won't have the same result if run line by line, or the all script as once:
@@ -463,6 +463,7 @@ Line by line:
         </script>
         <script src="../../js/base.js" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" defer></script>
+        <script src="/js/inscore.js" defer></script>
         <script src="../../search/main.js" defer></script>
 
         <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">

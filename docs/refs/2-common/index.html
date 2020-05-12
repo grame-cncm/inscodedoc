@@ -257,17 +257,17 @@ When the destination file is not completely specified (second form or missing ex
 </ul>
 <p><span class="example">Example</span> 
 Export of a scene to a given file as jpeg at the current root path:</p>
-<pre><code>/ITL/scene export 'myexport.jpg';
+<pre><code class="inscore">/ITL/scene export 'myexport.jpg';
 </code></pre>
 
 <p>Saving a scene to <span class="OSC">myScore.inscore</span> at the current root path, the second form saves only the <span class="OSC">x</span>, <span class="OSC">y</span> and <span class="OSC">z</span> attributes, the third form uses the append mode:</p>
-<pre><code>/ITL/scene save 'myScore.inscore';
+<pre><code class="inscore">/ITL/scene save 'myScore.inscore';
 /ITL/scene save x y z 'thePositions.inscore'; 
 /ITL/scene save 'myScore.inscore' '+';
 </code></pre>
 
 <p>Hiding an object:</p>
-<pre><code>/ITL/scene/myObject show 0;
+<pre><code class="inscore">/ITL/scene/myObject show 0;
 </code></pre>
 
 <h2 id="positioning">Positioning</h2>
@@ -318,7 +318,7 @@ Default angle value is 0.</li>
 </ul>
 <p><span class="example">Example</span> 
 Moving and scaling an object:</p>
-<pre><code>/ITL/scene/myObject x -0.9; 
+<pre><code class="inscore">/ITL/scene/myObject x -0.9; 
 /ITL/scene/myObject y 0.9; 
 /ITL/scene/myObject scale 2.0;
 </code></pre>
@@ -353,7 +353,7 @@ ComplexDiagram(
 </ul>
 <p><span class="example">Example</span> 
 Relative displacement of an object:</p>
-<pre><code>/ITL/scene/myObject dx 0.1;
+<pre><code class="inscore">/ITL/scene/myObject dx 0.1;
 </code></pre>
 
 <h3 id="components-origin">Components origin</h3>
@@ -379,7 +379,7 @@ ComplexDiagram(
 </ul>
 <p><span class="example">Example</span> 
 Setting an object graphic origin to the top left corner.</p>
-<pre><code>/ITL/scene/myObject xorigin -1. ;
+<pre><code class="inscore">/ITL/scene/myObject xorigin -1. ;
 /ITL/scene/myObject yorigin -1. ;
 </code></pre>
 
@@ -407,7 +407,7 @@ ComplexDiagram(
 </ul>
 <p><span class="example">Example</span> 
 Rotating an object graphic on the <span class="OSC">z</span> axis.</p>
-<pre><code>/ITL/scene/myObject rotatez 90. ;
+<pre><code class="inscore">/ITL/scene/myObject rotatez 90. ;
 </code></pre>
 
 <p><span class="note">Note: </span> <span class="OSC">angle</span> and <span class="OSC">rotatez</span> are equivalent. <span class="OSC">angle</span> has been introduced before the transformation messages and is maintained for compatibility reasons.</p>
@@ -512,7 +512,7 @@ When the alpha component is not specified, the color is assumed to be opaque. </
 <p><span class='caption'>Color components data ranges when expressed as integer or float.</span></p>
 <p><span class="example">Example</span> 
 The same alpha channel specified as integer value or as floating point value:</p>
-<pre><code>/ITL/scene/myObject alpha 51 ;
+<pre><code class="inscore">/ITL/scene/myObject alpha 51 ;
 /ITL/scene/myObject alpha 0.2 ;
 </code></pre>
 
@@ -579,7 +579,7 @@ ComplexDiagram(
 </ul>
 <p><span class="example">Example</span> 
 Moving a color in the RGBA space:</p>
-<pre><code>TL/scene/myObject dcolor 10 5 0 -10 ,
+<pre><code class="inscore">TL/scene/myObject dcolor 10 5 0 -10 ,
 </code></pre>
 
 <p>will increase the red component by 10, the blue component by 5, and decrease the transparency by 10.</p>
@@ -630,7 +630,7 @@ ComplexDiagram(
 <p>The pen style default value is <span class="OSC">solid</span>.</p>
 <p><span class="example">Example</span> 
 Setting a rectangle border width and color:</p>
-<pre><code>/ITL/scene/rect set rect 0.5 0.5 ;
+<pre><code class="inscore">/ITL/scene/rect set rect 0.5 0.5 ;
 /ITL/scene/rect penWidth 2. ;
 /ITL/scene/rect penColor 255 0 0 ;  
 </code></pre>
@@ -683,7 +683,7 @@ ComplexDiagram(
 <p>Use the <span class="OSC">performance</span> hint to say that you want a faster blur, the <span class="OSC">quality</span> hint to say that you prefer a higher quality blur, or the <span class="OSC">animation</span> when you want to animate the blur radius. The default hint value is <span class="OSC">performance</span>.</p>
 <p><span class="example">Example</span> 
 Setting a 8 pixels effect on <span class="OSC">myObject</span></p>
-<pre><code>/ITL/scene/myObject effect blur 8;
+<pre><code class="inscore">/ITL/scene/myObject effect blur 8;
 </code></pre>
 
 <h3 id="the-colorize-effect">The colorize effect</h3>
@@ -702,7 +702,7 @@ ComplexDiagram(
 The color is given as a RGB triplet (see section <a href="../2-common#colormsg">colormsg</a>) by default, the color value is light blue (0, 0, 192).</p>
 <p><span class="example">Example</span> 
 Setting a red colorize effect on <span class="OSC">myObject</span> with a 0.5 strength.</p>
-<pre><code>/ITL/scene/myObject effect colorize 0.5 200 0 0;
+<pre><code class="inscore">/ITL/scene/myObject effect colorize 0.5 200 0 0;
 </code></pre>
 
 <h3 id="the-shadow-effect">The shadow effect</h3>
@@ -723,7 +723,7 @@ The blur radius should be given as an int32 value. By default, the blur radius i
 <p><span class="example">Example</span> 
 Setting a shadow effect on <span class="OSC">myObject</span>. 
 The shadow offset is (10,10) pixels, the color is a transparent grey (100,100,100, 50) and the blur is 8 pixels.</p>
-<pre><code>/ITL/scene/myObject effect shadow 10 10 100 100 100 50 8;
+<pre><code class="inscore">/ITL/scene/myObject effect shadow 10 10 100 100 100 50 8;
 </code></pre>
 
 <h2 id="the-edit-message">The 'edit' message</h2>
@@ -750,11 +750,11 @@ ComplexDiagram(
 <p><span class="note">Note:</span> Although initialized with the target object attributes, the editor supports arbitrary INScore messages, i.e. addressed to any other object or even making use of extended OSC addresses.</p>
 <p><span class="example">Example</span> 
 Editing an object on double click:</p>
-<pre><code>/ITL/scene/myObject watch doubleClick (/ITL/scene/myObject edit);
+<pre><code class="inscore">/ITL/scene/myObject watch doubleClick (/ITL/scene/myObject edit);
 </code></pre>
 
 <p>Editing some specific attributes:</p>
-<pre><code>/ITL/scene/myObject watch doubleClick (/ITL/scene/myObject edit x y);
+<pre><code class="inscore">/ITL/scene/myObject watch doubleClick (/ITL/scene/myObject edit x y);
 </code></pre></div>
         </div>
 
@@ -769,6 +769,7 @@ Editing an object on double click:</p>
         </script>
         <script src="../../js/base.js" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" defer></script>
+        <script src="/js/inscore.js" defer></script>
         <script src="../../search/main.js" defer></script>
 
         <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">

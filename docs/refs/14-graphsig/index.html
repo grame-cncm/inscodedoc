@@ -218,20 +218,20 @@ A <span class="OSC">scene</span> includes a static signal node, which OSC addres
 <p>The <span class="OSC">signal</span> node supports the <span class="OSC">get</span> message that gives the list of the defined signals and also the <span class="OSC">get connect</span> message that gives a list of all connections, but doesn't take any argument.</p>
 <p><span class="example">Example</span> 
 Querying the signal node:</p>
-<pre><code>/ITL/scene/signal get;
+<pre><code class="inscore">/ITL/scene/signal get;
 </code></pre>
 
 <p>will give the enclosed signals definitions:</p>
-<pre><code>/ITL/scene/signal/y size 200 ;
+<pre><code class="inscore">/ITL/scene/signal/y size 200 ;
 /ITL/scene/signal/h size 200 ;
 </code></pre>
 
 <p>And :</p>
-<pre><code>/ITL/scene/signal get connect;
+<pre><code class="inscore">/ITL/scene/signal get connect;
 </code></pre>
 
 <p>will give the signal connections :</p>
-<pre><code>/ITL/scene/signal connect cos object1:method1 ;
+<pre><code class="inscore">/ITL/scene/signal connect cos object1:method1 ;
 /ITL/scene/signal connect sin object2:method2 ;
 </code></pre>
 
@@ -265,11 +265,11 @@ ComplexDiagram(
 </ul>
 <p><span class="example">Example</span> 
 Creating a signal with a given buffer size:</p>
-<pre><code>/ITL/scene/signal/mySig size 200;
+<pre><code class="inscore">/ITL/scene/signal/mySig size 200;
 </code></pre>
 
 <p>Creating a signal with a given set of data (the buffer size will be the data size):</p>
-<pre><code>/ITL/scene/signal/mySig 0.\ 0.1\ 0.2\ 0.3\ 0.4\ 0.5\ 0.4\ 0.3\ 0.2\ 0.1\ 0.\ -0.1\ -0.2 ;
+<pre><code class="inscore">/ITL/scene/signal/mySig 0.\ 0.1\ 0.2\ 0.3\ 0.4\ 0.5\ 0.4\ 0.3\ 0.2\ 0.1\ 0.\ -0.1\ -0.2 ;
 </code></pre>
 
 <h3 id="composing-signals-in-parallel">Composing signals in parallel.</h3>
@@ -316,12 +316,12 @@ ComplexDiagram(
 </ul>
 <p><span class="example">Example</span> 
 Putting a signal <span class="OSC">y</span> and constant signals 0.01 0. 1. 1. 1. in parallel:</p>
-<pre><code>/ITL/scene/signal/mySig set y 0.01 0. 1. 1. 1. ;
+<pre><code class="inscore">/ITL/scene/signal/mySig set y 0.01 0. 1. 1. 1. ;
 </code></pre>
 
 <p>Querying the previously defined parallel signal:</p>
-<pre><code>/ITL/scene/signal/mySig get ;
-will give the following output: 
+<pre><code class="inscore">/ITL/scene/signal/mySig get ;
+# will give the following output: 
 /ITL/scene/signal/mySig set y 0.01 0. 1. 1. 1.
 </code></pre>
 
@@ -350,11 +350,11 @@ ComplexDiagram(
 <p>The <strong>index value</strong> <span class="values">n</span> is the index of a target signal. When the <strong>parallel marker</strong> option is not present, the values are directed to the target signal. Indexes start at 0.</p>
 <p><span class="example">Example</span> 
 Sending data to the second component of a parallel signal:</p>
-<pre><code>/ITL/scene/signal/sig '[1]' 0.\ 0.1\ 0.2\ 0.3\ 0.4\ 0.5\ 0.4\ 0.3\ 0.2\ 0.1\ 0. ;
+<pre><code class="inscore">/ITL/scene/signal/sig '[1]' 0.\ 0.1\ 0.2\ 0.3\ 0.4\ 0.5\ 0.4\ 0.3\ 0.2\ 0.1\ 0. ;
 </code></pre>
 
 <p>is equivalent to the following message (assuming that the second signal name is 's2'):</p>
-<pre><code>/ITL/scene/signal/s2 0.\ 0.1\ 0.2\ 0.3\ 0.4\ 0.5\ 0.4\ 0.3\ 0.2\ 0.1\ 0. ;
+<pre><code class="inscore">/ITL/scene/signal/s2 0.\ 0.1\ 0.2\ 0.3\ 0.4\ 0.5\ 0.4\ 0.3\ 0.2\ 0.1\ 0. ;
 </code></pre>
 
 <p>Note that:</p>
@@ -365,16 +365,16 @@ Sending data to the second component of a parallel signal:</p>
 <p>The <strong>parallel marker</strong> (<span class="OSC">~</span>) and the <strong>step value</strong> <span class="values">w</span> options affect the target signals. Let's consider <span class="values">s[n]</span> as the signal at index <span class="values">n</span>. The values are distributed in sequence and in loop to the signals <span class="values">s[n], s[n+w]...s[m]</span> where <span class="values">m</span> is the greatest value of the index <span class="values">n+(w.i)</span> that is less than the signal dimension. The default  <strong>step value</strong> is <span class="values">1</span>.</p>
 <p><span class="example">Example</span> 
 Sending data to the second and third components of a set of 3 parallel signals:</p>
-<pre><code>/ITL/scene/signal/sig [1~] 0.1 0.2 ;
+<pre><code class="inscore">/ITL/scene/signal/sig [1~] 0.1 0.2 ;
 </code></pre>
 
 <p>is equivalent to the following messages (assuming that the signal dimension is 3):</p>
-<pre><code>/ITL/scene/signal/sig [1] 0.1 ;
+<pre><code class="inscore">/ITL/scene/signal/sig [1] 0.1 ;
 /ITL/scene/signal/sig [2] 0.2 ;
 </code></pre>
 
 <p>or to the following (assuming that the target signal names are 's2' and 's3'):</p>
-<pre><code>/ITL/scene/signal/s2 0.1;
+<pre><code class="inscore">/ITL/scene/signal/s2 0.1;
 /ITL/scene/signal/s3 0.2;
 </code></pre>
 
@@ -433,14 +433,14 @@ Connections are restricted to one-dimensional signals as source and to one-dimen
 A connection can't cross the borders of a component i.e. the target object and the signal node should have the same parent.</p>
 <p><span class="example">Example</span> 
 Connecting signals to attributes:</p>
-<pre><code># connects the values of sig1 to the red attribute of the 'rect' object 
+<pre><code class="inscore"># connects the values of sig1 to the red attribute of the 'rect' object 
 /ITL/scene/signal connect sig1 &quot;rect:red&quot;; 
 # connects the values of sig2 to several objects and attributes 
 /ITL/scene/signal connect sig2 &quot;rect:blue:x:rotatey[0,360]&quot; &quot;cursor:date[0,15]&quot;;
 </code></pre>
 
 <p>Disconnecting some of the previous connections :</p>
-<pre><code>/ITL/scene/signal disconnect sig2 &quot;cursor:date&quot; &quot;rect:rotatey:blue&quot;; 
+<pre><code class="inscore">/ITL/scene/signal disconnect sig2 &quot;cursor:date&quot; &quot;rect:rotatey:blue&quot;; 
 </code></pre>
 
 <h2 id="graphic-signals">Graphic signals.</h2>
@@ -524,7 +524,7 @@ ComplexDiagram(
 </ul>
 <p><span class="example">Example</span> 
 Creating a signal and its graphic representation:</p>
-<pre><code>/ITL/scene/signal/y size 200 ; 
+<pre><code class="inscore">/ITL/scene/signal/y size 200 ; 
 # use of constant anonymous signals for thickness and color
 /ITL/scene/signal/sig set y 0.1 0. 1. 1. 1. ; 
 /ITL/scene/siggraph set graph sig ;
@@ -590,7 +590,7 @@ where <em>d</em> is the dimension of the input signal.</p>
 <p>When <em>d</em> is not a mutiple of 6, then the last graphic signal makes use of the default values mentionned above.</p>
 <p><span class="example">Example</span> 
 Creating parallel graphic signals:</p>
-<pre><code>/ITL/scene/signal/y1 size 200 ; 
+<pre><code class="inscore">/ITL/scene/signal/y1 size 200 ; 
 /ITL/scene/signal/y2 size 200 ; 
 # use of constant anonymous signals for thickness and color
 /ITL/scene/signal/sig1 set y1 0.1 0. 1. 1. 1. ; 
@@ -616,6 +616,7 @@ Using data projection may be convenient when the input signal represents interle
         </script>
         <script src="../../js/base.js" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" defer></script>
+        <script src="/js/inscore.js" defer></script>
         <script src="../../search/main.js" defer></script>
 
         <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">

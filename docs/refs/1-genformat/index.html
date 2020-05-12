@@ -220,7 +220,7 @@ ComplexDiagram(
 </div>
 
 <p><span class="example">Example</span></p>
-<pre><code>/ITL/scene/score x 0.5;
+<pre><code class="inscore">/ITL/scene/score x 0.5;
 </code></pre>
 
 <p>sends the message <span class="OSC">x</span> to the object which address is <span class="OSC">/ITL/scene/score</span> with <span class="OSC">0.5</span> as parameter.</p>
@@ -311,21 +311,21 @@ ComplexDiagram(
 </ul>
 <p><span class="note">Note: </span> Regular expressions are not supported by the alias mechanism and could lead to unpredictable results.</p>
 <p><span class="example">Example</span></p>
-<pre><code>makes the address /ITL/scene/myobject available using /1/fader1
+<pre><code class="inscore"># makes the address /ITL/scene/myobject available using /1/fader1
 /ITL/scene/myobject alias '/1/fader1';
 
-the following input message:
+# the following input message:
 /1/fader1 0.5;
-will be translated into:
+# will be translated into:
 /ITL/scene/myobject 0.5;
 </code></pre>
 
-<pre><code>create an alias with an implicit 'x' message
+<pre><code class="inscore"># create an alias with an implicit 'x' message
 /ITL/scene/myobject alias '/1/fader1' x;
 
-the following input message:
+# the following input message:
 /1/fader1 0.5;
-will be translated into:
+# will be translated into:
 /ITL/scene/myobject x 0.5;
 </code></pre>
 
@@ -338,12 +338,12 @@ In INScore, the parameter values are generally in the range [-1, 1]. However, so
 </script>
 </p>
 <p><span class="example">Example</span></p>
-<pre><code>create an alias with an implicit 'x' message using a scaling specification
+<pre><code class="inscore"># create an alias with an implicit 'x' message using a scaling specification
 /ITL/scene/myobject alias '/1/fader1' x[0,100];
 
-the following input message:
+# the following input message:
 /1/fader1 5;
-will be translated into:
+# will be translated into:
 /ITL/scene/myobject x -0.9;
 </code></pre>
 
@@ -351,12 +351,12 @@ will be translated into:
 <p><a name="implicitmsg"></a>
 You can you any arbitrary number of message strings in an <span class="OSC">alias</span> message. In any case, an input message with the corresponding values is expected. For example, when the <span class="OSC">alias</span> message has 3 messages strings, input messages are expected to have 3 associated values. These values are distributed in sequence with each message string, which also means that the input message is translated into 3 different messages.</p>
 <p><span class="example">Example</span></p>
-<pre><code>create an alias with implicit 'x' 'y' and 'angle' messages using scaling
+<pre><code class="inscore"># create an alias with implicit 'x' 'y' and 'angle' messages using scaling
 /ITL/scene/myobject alias '/1/fader1' x[0,100] y[0,100] angle;
 
-the following input message:
+# the following input message:
 /1/fader1 5 60 12;
-will be translated into:
+# will be translated into:
 /ITL/scene/myobject x -0.9;
 /ITL/scene/myobject y  0.2;
 /ITL/scene/myobject angle 12;
@@ -374,6 +374,7 @@ will be translated into:
         </script>
         <script src="../../js/base.js" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" defer></script>
+        <script src="/js/inscore.js" defer></script>
         <script src="../../search/main.js" defer></script>
 
         <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">

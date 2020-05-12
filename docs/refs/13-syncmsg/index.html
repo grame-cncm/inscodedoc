@@ -241,12 +241,12 @@ ComplexDiagram(
 <p>Synchronization between components has no effect if any of the required mapping is missing (see table <a href="../12-mapping#maptable">maptable</a>).</p>
 <p><span class="example">Example</span> 
 Synchronizing an object on several masters:</p>
-<pre><code>/ITL/scene/myParent/sync mySlave myMaster1;
+<pre><code class="inscore">/ITL/scene/myParent/sync mySlave myMaster1;
 /ITL/scene/myParent/sync mySlave myMaster2;
 </code></pre>
 
 <p>Synchronizing two objects using a specific mapping (the second object is assumed to be a symbolic score (<span class="OSC">gmn</span>, <span class="OSC">gmnstream</span> or <span class="OSC">gmnf</span>) which <span class="OSC">system</span> mapping has been previously requested):</p>
-<pre><code>/ITL/scene/myParent/sync mySlave myMaster:system;
+<pre><code class="inscore">/ITL/scene/myParent/sync mySlave myMaster:system;
 </code></pre>
 
 <h2 id="synchronization-modes">Synchronization modes</h2>
@@ -294,7 +294,7 @@ Use of the <span class="OSC">absolute</span> mode may take sense with nested syn
 In <span class="OSC">relative</span> mode and if <span class="values">A</span> and <span class="values">B</span> receive the same <span class="OSC">clock</span> messages, <span class="values">A</span> will remain at a fixed position on <span class="values">B</span> although it is moving in time.</p>
 <p><span class="example">Example</span> 
 Describing nested synchronizations, the first one using the <span class="OSC">absolute</span> mode:</p>
-<pre><code>/ITL/scene/sync slave masterSlave absolute ;
+<pre><code class="inscore">/ITL/scene/sync slave masterSlave absolute ;
 /ITL/scene/sync masterSlave master ;
 </code></pre>
 
@@ -323,7 +323,7 @@ ComplexDiagram(
 <p>By default, no stretching is applied.</p>
 <p><span class="example">Example</span> 
 Synchronizing two objects, aligning the slave duration to the corresponding master space and stretching the slave to the master map vertical dimension:</p>
-<pre><code>/ITL/scene/sync mySlave myMaster hv ;
+<pre><code class="inscore">/ITL/scene/sync mySlave myMaster hv ;
 </code></pre>
 
 <h3 id="controlling-the-slave-position">Controlling the slave position</h3>
@@ -355,7 +355,7 @@ ComplexDiagram(
 The <span class="values">y</span> position of a synchronized object remains a free attribute. To control this position, you should send <span class="OSC">dy</span> messages.  </p>
 <p><span class="example">Example</span> 
 Synchronizing two objects, aligning the slave duration to the corresponding master space, the slave being below the master map:</p>
-<pre><code>/ITL/scene/sync mySlave myMaster h syncBottom;
+<pre><code class="inscore">/ITL/scene/sync mySlave myMaster h syncBottom;
 </code></pre>
 
 <h3 id="the-syncframe-mode">The syncFrame mode</h3>
@@ -375,6 +375,7 @@ Synchronizing two objects, aligning the slave duration to the corresponding mast
         </script>
         <script src="../../js/base.js" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" defer></script>
+        <script src="/js/inscore.js" defer></script>
         <script src="../../search/main.js" defer></script>
 
         <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">

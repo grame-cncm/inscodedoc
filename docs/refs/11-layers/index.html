@@ -211,18 +211,18 @@
 <p>A layer may be synchronized to other objects, including other layers. It includes a <span class="OSC">sync</span> node and supports synhcronization of the enclosed objects. However, synchronization is restricted to objects from the same layer and cannot cross the border of a layer. </p>
 <p><span class="example">Example</span> 
 Creating a layer and its content:</p>
-<pre><code>/ITL/scene/layer1 set layer;
+<pre><code class="inscore">/ITL/scene/layer1 set layer;
 /ITL/scene/layer1/score set gmnf 'myscore.gmn';
 /ITL/scene/layer1/cursor set rect 0.01 0.1;
 </code></pre>
 
 <p>Synchronizing 2 components of a layer :</p>
-<pre><code>#'score' and 'cursor' must be enclosed in layer1 
+<pre><code class="inscore">#'score' and 'cursor' must be enclosed in layer1 
 /ITL/scene/layer1/sync cursor score; 
 </code></pre>
 
 <p>Making a layer visible :</p>
-<pre><code>/ITL/scene/layer1 brushStyle solid; 
+<pre><code class="inscore">/ITL/scene/layer1 brushStyle solid; 
 /ITL/scene/layer1 color 120 120 120; 
 </code></pre>
 
@@ -243,6 +243,7 @@ Creating a layer and its content:</p>
         </script>
         <script src="../../js/base.js" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" defer></script>
+        <script src="/js/inscore.js" defer></script>
         <script src="../../search/main.js" defer></script>
 
         <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">

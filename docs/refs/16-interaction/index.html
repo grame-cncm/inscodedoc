@@ -260,7 +260,7 @@ ComplexDiagram(
 
 <p><span class="example">Example</span> 
 An extended address to send messages to <span class="OSC">localhost</span> on port <span class="OSC">12000</span>:</p>
-<pre><code>localhost:12000/your/osc/address;
+<pre><code class="inscore">localhost:12000/your/osc/address;
 </code></pre>
 
 <h2 id="internal-events">Internal events</h2>
@@ -287,12 +287,12 @@ ComplexDiagram(
 
 <p><span class="example">Example</span> 
 Triggering a message on mouse down:</p>
-<pre><code>/ITL/scene/myObject watch mouseDown (/ITL/scene/myObject show 0);
+<pre><code class="inscore">/ITL/scene/myObject watch mouseDown (/ITL/scene/myObject show 0);
 </code></pre>
 
 <p>the object hides itself on mouse click. 
 Triggering a message on mouse down but addressed to another host on udp port 12100:</p>
-<pre><code>/ITL/scene/myObject watch mouseDown (host.domain.org:12100/an/address start); 
+<pre><code class="inscore">/ITL/scene/myObject watch mouseDown (host.domain.org:12100/an/address start); 
 </code></pre>
 
 <p><span class="note">Note: </span> 
@@ -312,7 +312,7 @@ ComplexDiagram(
 <p>where <span class="OSC">mouseEvent</span> is one of the events described above, <span class="OSC">x</span> and <span class="OSC">y</span> are integer values giving the click position, expressed in pixels and relative to the target object.</p>
 <p><span class="example">Example</span> 
 Simulating a mouse down at position 10, 10 :</p>
-<pre><code>/ITL/scene/myObject event mouseDown 10 10;
+<pre><code class="inscore">/ITL/scene/myObject event mouseDown 10 10;
 </code></pre>
 
 <h3 id="touch-events">Touch events</h3>
@@ -380,7 +380,7 @@ ComplexDiagram(
 </ul>
 <p><span class="example">Example</span> 
 Triggering an error message in case of failure :</p>
-<pre><code>/ITL/scene/score set gmnf &quot;http://ahost.adomain.org/score.gmn&quot;;
+<pre><code class="inscore">/ITL/scene/score set gmnf &quot;http://ahost.adomain.org/score.gmn&quot;;
 /ITL/scene/score watch error(
   /ITL/scene/status set txt &quot;Failed to download file&quot;
 );
@@ -433,7 +433,7 @@ Typically you can use of this event to open the log window (<span class="OSC">/I
 </ul>
 <p><span class="example">Example</span> 
 Displaying a welcome message to new elements:</p>
-<pre><code>/ITL/scene watch newElement (/ITL/scene/msg set txt &quot;Welcome&quot;);
+<pre><code class="inscore">/ITL/scene watch newElement (/ITL/scene/msg set txt &quot;Welcome&quot;);
 </code></pre>
 
 <h2 id="attribute-based-events">Attribute based events</h2>
@@ -441,14 +441,14 @@ Displaying a welcome message to new elements:</p>
 <p>Attribute based events includes the whole set of messages that are supported by an object: <span class="OSC">x</span>, <span class="OSC">y</span>, <span class="OSC">color</span>, etc. but also type specific messages. These events are triggered when a message has been succesfully processed. However, you shouldn't assume that the attribute value has been changed: when a message sets an attribute to it's current value, it is succesully processed and the corresponding event - if any - is triggered. </p>
 <p><span class="example">Example</span> 
 Watching an object <span class="OSC">x</span> coordinate change:</p>
-<pre><code>/ITL/scene/myObject watch x (/ITL/scene/msg set txt &quot;myObject moved&quot;);
+<pre><code class="inscore">/ITL/scene/myObject watch x (/ITL/scene/msg set txt &quot;myObject moved&quot;);
 </code></pre>
 
 <p><span class="note">Note:</span> 
 Watching the <span class="OSC">newData</span> event is equivalent to watch the <span class="OSC">set</span> attribute. However, the <span class="OSC">newData</span> event is triggered only when the object state is changed.</p>
 <p><span class="warning">Warning</span> 
 With the event's generalisation to any object attribute, a one tick delay has been introduced to all events. Thus the associated messages are not processed synchronously to the event but posted to be processed by the next time task. This delay has been introduced to avoid freezing the system in case of loops. However, it introduces also a pitfall in interaction design, when message based variables are used (see section <a href="../16-interaction#msgvar">msgvar</a>): message based variables are evaluated at the event time while messages are processed by the next time task, thus the following messages won't produce the expected result:</p>
-<pre><code>/ITL/scene/myObject watch x ( 
+<pre><code class="inscore">/ITL/scene/myObject watch x ( 
    /ITL/scene/A x '$(/ITL/scene/myObject get x)', 
    /ITL/scene/B x '$(/ITL/scene/A get x)' 
 );
@@ -456,7 +456,7 @@ With the event's generalisation to any object attribute, a one tick delay has be
 
 <p>actually, when the <span class="OSC">$(/ITL/scene/A get x)</span> variable is evaluated, the preceding message that sets the x attribute of A has not been aready processed.
 One workaround consists in splitting the interaction in several parts, making sure that the messages are processed e.g.</p>
-<pre><code>/ITL/scene/myObject watch x ( /ITL/scene/A x '$(/ITL/scene/myObject get x)'); 
+<pre><code class="inscore">/ITL/scene/myObject watch x ( /ITL/scene/A x '$(/ITL/scene/myObject get x)'); 
 /ITL/scene/A watch x ( /ITL/scene/B x '$(/ITL/scene/A get x)' );
 </code></pre>
 
@@ -468,12 +468,12 @@ but they accept also any number of a variables which names are $1, ... $i and wh
 <p>User defined events can only be triggered using the <span class="OSC">event</span> message (see section <a href="../16-interaction#eventMsg">eventMsg</a>).</p>
 <p><span class="example">Example</span> 
 Watching and triggering a user defined event:</p>
-<pre><code>/ITL/scene/myObject watch MYEVENT (/ITL/scene/msg set txt &quot;MYEVENT occured!&quot;);
+<pre><code class="inscore">/ITL/scene/myObject watch MYEVENT (/ITL/scene/msg set txt &quot;MYEVENT occured!&quot;);
 /ITL/scene/myObject event MYEVENT;
 </code></pre>
 
 <p>Defining high level abstractions:</p>
-<pre><code>/ITL/scene/myObject watch MOVEABC ( 
+<pre><code class="inscore">/ITL/scene/myObject watch MOVEABC ( 
   /ITL/scene/a x $1,
   /ITL/scene/b x $2,
   /ITL/scene/C x $3
@@ -551,7 +551,7 @@ Note also that the values are not clipped to the object dimensions and could exc
 </ul>
 <p><span class="example">Example</span> 
 An object that follows mouse move.</p>
-<pre><code>/ITL/scene/myObject watch mouseDown ( 
+<pre><code class="inscore">/ITL/scene/myObject watch mouseDown ( 
   /ITL/scene/myObject x '$sx', 
   /ITL/scene/myObject y '$sy' );
 </code></pre>
@@ -594,7 +594,7 @@ ComplexDiagram(
 A variable can be used several times in a message, but several <span class="OSC">$date</span> variables must always refer to the same mapping.</p>
 <p><span class="example">Example</span> 
 Sending the current date as a float value to an external application:</p>
-<pre><code>/ITL/scene/myObject watch mouseDown ( targetHost:12000/date '$date
+<pre><code class="inscore">/ITL/scene/myObject watch mouseDown ( targetHost:12000/date '$date
 </code></pre>
 
 <h3 id="miscellaneous-variables">Miscellaneous variables</h3>
@@ -621,7 +621,7 @@ ComplexDiagram(
 For the <span class="OSC">newElement</span> event, the target object is the new element. </p>
 <p><span class="example">Example</span> 
 Using an object name:</p>
-<pre><code>/ITL/scene watch newElement (/ITL/scene/welcome set txt &quot;Welcome&quot; '$name');
+<pre><code class="inscore">/ITL/scene watch newElement (/ITL/scene/welcome set txt &quot;Welcome&quot; '$name');
 </code></pre>
 
 <h3 id="message-based-variables">Message based variables</h3>
@@ -641,7 +641,7 @@ ComplexDiagram(
 Note that all the 'get' messages attached to an event are evaluated at the same time.</p>
 <p><span class="example">Example</span> 
 An object that takes the <span class="values">x</span> position of another object on mouse down:</p>
-<pre><code>/ITL/scene/myObject watch mouseDown 
+<pre><code class="inscore">/ITL/scene/myObject watch mouseDown 
   (/ITL/scene/myObject x '$(/ITL/scene/obj get x)');
 </code></pre>
 
@@ -657,7 +657,7 @@ The OSC address of a message associated to an event supports the following varia
 </ul>
 <p><span class="example">Example</span> 
 Requesting a set of objects to send a message to themselves on a mouse event:</p>
-<pre><code>/ITL/scene/* watch mouseDown   # request all the objects of the scene 
+<pre><code class="inscore">/ITL/scene/* watch mouseDown   # request all the objects of the scene 
   (/ITL/scene/$self x '$sx'); # to send a message to themselves
 </code></pre>
 
@@ -713,7 +713,7 @@ ComplexDiagram(
 
 <p><span class="example">Example</span> 
 Reload aa INScore script on file modification:</p>
-<pre><code>
+<pre><code class="inscore">
 /ITL/scene/fileWatcher watch 'myScript.inscore' 
   ( /ITL/scene load 'myScript.inscore' );
 </code></pre></div>
@@ -730,6 +730,7 @@ Reload aa INScore script on file modification:</p>
         </script>
         <script src="../../js/base.js" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" defer></script>
+        <script src="/js/inscore.js" defer></script>
         <script src="../../search/main.js" defer></script>
 
         <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">

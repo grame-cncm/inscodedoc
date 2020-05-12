@@ -231,12 +231,12 @@ ComplexDiagram(
 <p><span class="example">Example</span>
 Forwarding messages handle by application to <span class="OSC">host1.adomain.org</span> using the default application listening port number (7000)
 and to <span class="OSC">host2.adomain.org</span> on port number 5100.</p>
-<pre><code>/ITL forward host1.adomain.org host2.adomain.org:5100;
+<pre><code class="inscore">/ITL forward host1.adomain.org host2.adomain.org:5100;
 </code></pre>
 
 <p>Forwarding messages handle by the scene <span class="OSC">scene1</span> to <span class="OSC">host3.adomain.org</span> using the default application listening port number (7000)
 and to <span class="OSC">host4.adomain.org</span> on port number 5100.</p>
-<pre><code>/ITL/scene1 forward host1.adomain.org host2.adomain.org:5100;
+<pre><code class="inscore">/ITL/scene1 forward host1.adomain.org host2.adomain.org:5100;
 </code></pre>
 
 <h2 id="filters">Filters</h2>
@@ -261,13 +261,13 @@ ComplexDiagram(
 <p>When a new message is incoming, if they match to an accepted item, filter is not apply. \
 <span class="example">Example</span>
 Filter at application level :</p>
-<pre><code>/ITL/filter reject /ITL/scene/line* /ITL/scene/rect; 
+<pre><code class="inscore">/ITL/filter reject /ITL/scene/line* /ITL/scene/rect; 
 /ITL/filter accept /ITL/scene/line2 scale arrows;
 </code></pre>
 
 <p>Message with OSC message with address starting with <span class="OSC">/ITL/scene/line</span> or with address <span class="OSC">/ITL/scene/rect</span> are filtered only if message address is not <span class="OSC">/ITL/scene/line2</span> or if the content is not <span class="OSC">scale</span> or <span class="OSC">arrows</span>.</p>
 <p>Filter at scene level :</p>
-<pre><code>/ITL/scene1/filter reject fontWeight /ITL/scene1/rect;
+<pre><code class="inscore">/ITL/scene1/filter reject fontWeight /ITL/scene1/rect;
 </code></pre>
 
 <p>The <span class="OSC">fontWeight</span> message and message for <span class="OSC">/ITL/scene1/rect</span> are rejected.</p></div>
@@ -284,6 +284,7 @@ Filter at application level :</p>
         </script>
         <script src="../../js/base.js" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" defer></script>
+        <script src="/js/inscore.js" defer></script>
         <script src="../../search/main.js" defer></script>
 
         <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">

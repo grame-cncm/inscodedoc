@@ -237,7 +237,7 @@ ComplexDiagram(
 </ul>
 <p><span class="example">Example</span>
 Some simple mathematical expressions used as message parameters:</p>
-<pre><code>/ITL/scene/myObject x 0.5 * 0.2;
+<pre><code class="inscore">/ITL/scene/myObject x 0.5 * 0.2;
 /ITL/scene/myObject y ($var ? 1 : -1);
 </code></pre>
 
@@ -264,7 +264,7 @@ ComplexDiagram(
 </ul>
 <p><span class="example">Example</span>
 Compare two variables:</p>
-<pre><code>/ITL/scene/myObject x ($var1 &gt; $var2 ? 1 : -1);
+<pre><code class="inscore">/ITL/scene/myObject x ($var1 &gt; $var2 ? 1 : -1);
 </code></pre>
 
 <h2 id="arguments">Arguments</h2>
@@ -464,6 +464,7 @@ or
         </script>
         <script src="../../js/base.js" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" defer></script>
+        <script src="/js/inscore.js" defer></script>
         <script src="../../search/main.js" defer></script>
 
         <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">

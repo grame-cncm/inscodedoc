@@ -283,11 +283,11 @@ The default <span class="OSC">rate</span> value is 10.</p>
 </ul>
 <p><span class="example">Example</span> 
 when sending the message:</p>
-<pre><code>/ITL hello;
+<pre><code class="inscore">/ITL hello;
 </code></pre>
 
 <p>the application will answer with the following message:</p>
-<pre><code>/ITL 192.168.0.5  7000 7001 7003
+<pre><code class="inscore">/ITL 192.168.0.5  7000 7001 7003
 </code></pre>
 
 <p>when it runs on a host which IP number is <span class="OSC">192.168.0.5</span> using the default port numbers.</p>
@@ -355,11 +355,11 @@ ComplexDiagram(
 </ul>
 <p><span class="example">Example</span> 
 Querying INScore version:</p>
-<pre><code>/ITL get version;
+<pre><code class="inscore">/ITL get version;
 </code></pre>
 
 <p>will give the following as output:</p>
-<pre><code>/ITL version 1.00
+<pre><code class="inscore">/ITL version 1.00
 </code></pre>
 
 <h2 id="application-static-nodes">Application static nodes</h2>
@@ -385,7 +385,7 @@ ComplexDiagram(
 </ul>
 <p><span class="example">Example</span> 
 Answer to a <span class="OSC">get</span> message addressed to <span class="OSC">/ITL/stats</span></p>
-<pre><code>/ITL/stats osc 15 udp 10
+<pre><code class="inscore">/ITL/stats osc 15 udp 10
 </code></pre>
 
 <h3 id="the-debug-nodes">The 'debug' nodes</h3>
@@ -407,7 +407,7 @@ ComplexDiagram(
 </ul>
 <p><span class="example">Example</span> 
 Error messages generated on error port in debug mode:</p>
-<pre><code>error:  incorrect OSC address: /ITL/stat
+<pre><code class="inscore">error:  incorrect OSC address: /ITL/stat
 error:  incorrect parameters: /ITL/scene/foo unknown 0.1
 error:  incorrect parameters: /ITL/scene/foo x &quot;incorrectType&quot;
 </code></pre>
@@ -478,6 +478,7 @@ ComplexDiagram(
         </script>
         <script src="../../js/base.js" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" defer></script>
+        <script src="/js/inscore.js" defer></script>
         <script src="../../search/main.js" defer></script>
 
         <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">

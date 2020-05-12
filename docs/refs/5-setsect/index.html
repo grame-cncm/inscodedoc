@@ -257,11 +257,11 @@ ComplexDiagram(
 </ul>
 <p><span class="example">Example</span> 
 Creating a music score using a Guido Music Notation language string.</p>
-<pre><code>/ITL/scene/myObject set gmn &quot;[ a b g ]&quot;;
+<pre><code class="inscore">/ITL/scene/myObject set gmn &quot;[ a b g ]&quot;;
 </code></pre>
 
 <p>Creating the same music score as a stream.</p>
-<pre><code>/ITL/scene/myObject set gmnstream &quot;[ a&quot;;
+<pre><code class="inscore">/ITL/scene/myObject set gmnstream &quot;[ a&quot;;
 /ITL/scene/myObject write &quot;b&quot;;
 /ITL/scene/myObject write &quot;g&quot;;
 </code></pre>
@@ -293,11 +293,11 @@ ComplexDiagram(
 </ul>
 <p><span class="example">Example</span> 
 Creating a pianoroll using a Guido Music Notation language string.</p>
-<pre><code>/ITL/scene/myObject set pianoroll &quot;[ a b g ]&quot;;
+<pre><code class="inscore">/ITL/scene/myObject set pianoroll &quot;[ a b g ]&quot;;
 </code></pre>
 
 <p>Creating the same piano roll as a stream.</p>
-<pre><code>/ITL/scene/myObject set pianorollstream &quot;[ a&quot;;
+<pre><code class="inscore">/ITL/scene/myObject set pianorollstream &quot;[ a&quot;;
 /ITL/scene/myObject write &quot;b&quot;;
 /ITL/scene/myObject write &quot;g&quot;;
 </code></pre>
@@ -337,11 +337,11 @@ ComplexDiagram(
 
 <p><span class="example">Example</span> 
 Creating a text object.</p>
-<pre><code>/ITL/scene/myObject set txt &quot;Hello ...    world!&quot;;
+<pre><code class="inscore">/ITL/scene/myObject set txt &quot;Hello ...    world!&quot;;
 </code></pre>
 
 <p>Setting the content of a text object using a values stream.</p>
-<pre><code>/ITL/scene/myObject set txt Hello 1 world and 0.5; 
+<pre><code class="inscore">/ITL/scene/myObject set txt Hello 1 world and 0.5; 
 </code></pre>
 
 <h2 id="vectorial-graphics">Vectorial graphics</h2>
@@ -376,11 +376,11 @@ ComplexDiagram(
 </ul>
 <p><span class="example">Example</span> 
 Creating a rectangle with a 0.5 width and a 1.5 height.</p>
-<pre><code>/ITL/scene/myObject set rect 0.5 1.5;
+<pre><code class="inscore">/ITL/scene/myObject set rect 0.5 1.5;
 </code></pre>
 
 <p>Creating a line specified using width and angle.</p>
-<pre><code>/ITL/scene/myObject set line wa 1. 45.;
+<pre><code class="inscore">/ITL/scene/myObject set line wa 1. 45.;
 </code></pre>
 
 <h2 id="signals-and-graphic-signals">Signals and graphic signals</h2>
@@ -432,16 +432,16 @@ ComplexDiagram(
 </ul>
 <p><span class="example">Example</span> 
 Creating an image.</p>
-<pre><code>/ITL/scene/myObject set img &quot;myImage.png&quot;;
+<pre><code class="inscore">/ITL/scene/myObject set img &quot;myImage.png&quot;;
 </code></pre>
 
 <p>Creating a memory image of a scene.</p>
-<pre><code>/ITL/scene/myObject set memimg &quot;/ITL/scene&quot;;
+<pre><code class="inscore">/ITL/scene/myObject set memimg &quot;/ITL/scene&quot;;
 </code></pre>
 
 <p><span class="note">Note: </span> 
 It is necessary to have an object or scene graphically rendered before a capture can be made. Since the actual graphic rendering is made asynchronously to the model update, a sequence of messages like the following:</p>
-<pre><code>/ITL/scene/myObject set gmn &quot;[a f g]&quot;;
+<pre><code class="inscore">/ITL/scene/myObject set gmn &quot;[a f g]&quot;;
 /ITL/scene/capture set memimg myObject;
 </code></pre>
 
@@ -484,8 +484,8 @@ ComplexDiagram(
 <p>The <span class="OSC">url</span> intermediate object acts as a proxy for the target object and will transfer all its properties once the data are ready. A client can thus interact transparently with the target adress, whatever the status of the download request.</p>
 <p><span class="example">Example</span> 
 Creating a score using an URL:</p>
-<pre><code>/ITL/scene/score set gmnf &quot;http://anyhost.adomain.org/score.gmn&quot;; 
-   is equivalent to 
+<pre><code class="inscore">/ITL/scene/score set gmnf &quot;http://anyhost.adomain.org/score.gmn&quot;; 
+#  is equivalent to 
 /ITL/scene/score set url gmnf &quot;http://anyhost.adomain.org/score.gmn&quot;;
 </code></pre>
 
@@ -557,8 +557,8 @@ ComplexDiagram(
 <p><span class='caption'>File extensions supported by the <span class="OSC">file</span> translation scheme.</span></p>
 <p><span class="example">Example</span> 
 Creating an image using the <span class="OSC">file</span> type.</p>
-<pre><code>/ITL/scene/myObject set file &quot;myImage.png&quot;; 
-   is equivalent to 
+<pre><code class="inscore">/ITL/scene/myObject set file &quot;myImage.png&quot;; 
+#  is equivalent to 
 /ITL/scene/myObject set img &quot;myImage.png&quot;;
 </code></pre>
 
@@ -587,7 +587,7 @@ ComplexDiagram(
 A busy port prevents the server to start. The server status can be checked with the <span class="OSC">get status</span> message.</p>
 <p><span class="example">Example</span> 
 Creating an websocket server using the port <span class="OSC">1234</span> and limiting the notifications rate to one per 500 milliseconds.</p>
-<pre><code>/ITL/scene/myObject set websocket 1234 500;
+<pre><code class="inscore">/ITL/scene/myObject set websocket 1234 500;
 </code></pre>
 
 <p><span class="seealso">See also:</span> the http web server plugin (section <a href="../20-plugins#Httpd">Httpd</a>).</p></div>
@@ -604,6 +604,7 @@ Creating an websocket server using the port <span class="OSC">1234</span> and li
         </script>
         <script src="../../js/base.js" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" defer></script>
+        <script src="/js/inscore.js" defer></script>
         <script src="../../search/main.js" defer></script>
 
         <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">

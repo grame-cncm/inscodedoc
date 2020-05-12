@@ -257,7 +257,7 @@ ComplexDiagram(
 For the <span class="OSC">layer</span> object, the brush style default value is <span class="OSC">none</span>.</p>
 <p><span class="example">Example</span> 
 Setting a rectangle style :</p>
-<pre><code>/ITL/scene/rect set rect 0.5 0.5 ;
+<pre><code class="inscore">/ITL/scene/rect set rect 0.5 0.5 ;
 /ITL/scene/rect brushStyle dense4; 
 </code></pre>
 
@@ -309,7 +309,7 @@ ComplexDiagram(
 </ul>
 <p><span class="example">Example</span> 
 Displaying a multi-pages score on two pages starting at page 3:</p>
-<pre><code>/ITL/scene/myScore columns 2 ;
+<pre><code class="inscore">/ITL/scene/myScore columns 2 ;
 /ITL/scene/myScore page 3 ;
 </code></pre>
 
@@ -331,7 +331,7 @@ ComplexDiagram(
 </ul>
 <p><span class="example">Example</span> 
 Writing a score in 3 steps:</p>
-<pre><code>/ITL/scene/myScore set gmnstream &quot;[ c&quot;; 
+<pre><code class="inscore">/ITL/scene/myScore set gmnstream &quot;[ c&quot;; 
 /ITL/scene/myScore write &quot; d e&quot;;
 /ITL/scene/myScore write &quot; f]&quot;;
 </code></pre>
@@ -367,12 +367,12 @@ ComplexDiagram(
 </ul>
 <p><span class="example">Example</span> 
 Set a color on voice 2 with transparency and display C and F pitch lines: </p>
-<pre><code>/ITL/scene/myPianoroll voiceColor 2 154 234 45 100;
+<pre><code class="inscore">/ITL/scene/myPianoroll voiceColor 2 154 234 45 100;
 /ITL/scene/myPianoroll pitchLines 'C' 'F';
 </code></pre>
 
 <p>Removes the pitch lines: </p>
-<pre><code>/ITL/scene/myPianoroll pitchLines empty;
+<pre><code class="inscore">/ITL/scene/myPianoroll pitchLines empty;
 </code></pre>
 
 <p>Piano roll streams support the same messages than Guido streams:</p>
@@ -394,7 +394,7 @@ ComplexDiagram(
 </ul>
 <p><span class="example">Example</span> 
 Writing a pianoroll in 3 steps:</p>
-<pre><code>/ITL/scene/myPianoroll set pianorollstream &quot;[ c&quot;; 
+<pre><code class="inscore">/ITL/scene/myPianoroll set pianorollstream &quot;[ c&quot;; 
 /ITL/scene/myPianoroll write &quot; d e&quot;;
 /ITL/scene/myPianoroll write &quot; f]&quot;;
 </code></pre>
@@ -450,7 +450,7 @@ ComplexDiagram(
 <p>A video object supports specific events (see section <a href="../16-interaction#typespecevents">typespecevents</a> for more details). </p>
 <p><span class="example">Example</span> 
 Playing a video at half speed:</p>
-<pre><code>/ITL/scene/video set video &quot;Video.mp4&quot;; 
+<pre><code class="inscore">/ITL/scene/video set video &quot;Video.mp4&quot;; 
 /ITL/scene/video rate 0.5;
 /ITL/scene/video play 1&quot;;
 </code></pre>
@@ -545,7 +545,7 @@ ComplexDiagram(
 </ul>
 <p><span class="example">Example</span> 
 Creating a 10 x 10 grid organized from top to bottom with a border:</p>
-<pre><code>/ITL/scene/grid set grid 10 10 ;
+<pre><code class="inscore">/ITL/scene/grid set grid 10 10 ;
 /ITL/scene/grid xborder 3. ;
 /ITL/scene/grid yborder 3. ;
 /ITL/scene/grid order topbottom ;
@@ -634,7 +634,7 @@ ComplexDiagram(
 </ul>
 <p><span class="example">Example</span> 
 Setting a text object with a font family Times and bold weight:</p>
-<pre><code>/ITL/scene/text set txt &quot;text sample&quot;;
+<pre><code class="inscore">/ITL/scene/text set txt &quot;text sample&quot;;
 /ITL/scene/text fontFamily Times;
 /ITL/scene/text fontWeight bold;  
 </code></pre>
@@ -657,7 +657,7 @@ ComplexDiagram(
 <li><span class="OSC">write</span>: append the <span class="OSC">arg</span> list formatted as a string to the textual content.</li>
 </ul>
 <p><span class="example">Example</span> </p>
-<pre><code>/ITL/scene/text set txt &quot;Hello&quot;;
+<pre><code class="inscore">/ITL/scene/text set txt &quot;Hello&quot;;
 /ITL/scene/text write &quot;world!&quot;;
 </code></pre>
 
@@ -693,6 +693,7 @@ ComplexDiagram(
         </script>
         <script src="../../js/base.js" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" defer></script>
+        <script src="/js/inscore.js" defer></script>
         <script src="../../search/main.js" defer></script>
 
         <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">

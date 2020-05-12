@@ -253,14 +253,14 @@ ComplexDiagram(
 </ul>
 <p><span class="example">Example</span> 
 Various ways to set an object date.</p>
-<pre><code>/ITL/scene/myObject date 2 1 ;
-/ITL/scene/myObject date 2;       ! the denominator is 1 (implied) 
-/ITL/scene/myObject date 0.5;      ! equivalent to 1/2 
-/ITL/scene/myObject date '1/2';    ! the string form
+<pre><code class="inscore">/ITL/scene/myObject date 2 1 ;
+/ITL/scene/myObject date 2;       #  the denominator is 1 (implied) 
+/ITL/scene/myObject date 0.5;      #  equivalent to 1/2 
+/ITL/scene/myObject date '1/2';    #  the string form
 </code></pre>
 
 <p>Similar ways to move an object date.</p>
-<pre><code>/ITL/scene/myObject clock;   
+<pre><code class="inscore">/ITL/scene/myObject clock;   
 /ITL/scene/myObject ddate '1/96';
 </code></pre>
 
@@ -284,7 +284,7 @@ ComplexDiagram(
 </ul>
 <p><span class="example">Example</span> 
 A cursor moving over a score using the <span class="OSC">tempo</span> message.</p>
-<pre><code>/ITL/scene/score set gmn &quot;[a a a a a a]&quot;;      # a short score 
+<pre><code class="inscore">/ITL/scene/score set gmn &quot;[a a a a a a]&quot;;      # a short score 
 /ITL/scene/cursor set ellipse 0.5 0.5;                 # a cursor 
 /ITL/scene/sync cursor score;                          # synchonizes the cursor to the score 
 /ITL/scene/cursor tempo 80;                            # an set the tempo
@@ -302,6 +302,7 @@ A cursor moving over a score using the <span class="OSC">tempo</span> message.</
         </script>
         <script src="../../js/base.js" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" defer></script>
+        <script src="/js/inscore.js" defer></script>
         <script src="../../search/main.js" defer></script>
 
         <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">

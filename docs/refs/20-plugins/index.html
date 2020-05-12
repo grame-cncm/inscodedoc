@@ -237,7 +237,7 @@ ComplexDiagram(
 </div>
 
 <p><span class="example">Example</span> </p>
-<pre><code>/ITL/scene/signal/myFaust set faust aFaustPlugin;
+<pre><code class="inscore">/ITL/scene/signal/myFaust set faust aFaustPlugin;
 </code></pre>
 
 <p><span class="note">Note: </span> 
@@ -269,7 +269,7 @@ ComplexDiagram(
 </div>
 
 <p><span class="example">Example</span> </p>
-<pre><code>/ITL/scene/signal/plus set faustdsp &quot;process=+;&quot;; 
+<pre><code class="inscore">/ITL/scene/signal/plus set faustdsp &quot;process=+;&quot;; 
 /ITL/scene/signal/mydsp set faustdspf &quot;mydsp.dsp&quot;;
 </code></pre>
 
@@ -296,16 +296,16 @@ ComplexDiagram(
 </ul>
 <p><span class="example">Example</span> 
 Querying a FAUST processor input and output count:</p>
-<pre><code>/ITL/scene/signal/myFaust get in out;
+<pre><code class="inscore">/ITL/scene/signal/myFaust get in out;
 </code></pre>
 
 <p>gives as output:</p>
-<pre><code>/ITL/scene/signal/myFaust in 2; 
+<pre><code class="inscore">/ITL/scene/signal/myFaust in 2; 
 /ITL/scene/signal/myFaust out 4;
 </code></pre>
 
 <p>Modifying the value of a FAUST processor parameter named <span class="OSC">volume</span>:</p>
-<pre><code>/ITL/scene/signal/myFaust volume 0.8
+<pre><code class="inscore">/ITL/scene/signal/myFaust volume 0.8
 </code></pre>
 
 <h3 id="feeding-and-composing-faust-processors">Feeding and composing FAUST processors</h3>
@@ -326,7 +326,7 @@ ComplexDiagram(
 <p>where <span class="values">n</span> selects the signal #n of a parallel signal. Note that indexes start at 0.</p>
 <p><span class="example">Example</span> 
 Creating 3 parallel signals using the 3 output channels of a FAUST processor named <span class="OSC">myFaust</span>:</p>
-<pre><code>/ITL/scene/signal/y1 set 'myFaust/0' 0.01 0. 1. 1. 1. ;
+<pre><code class="inscore">/ITL/scene/signal/y1 set 'myFaust/0' 0.01 0. 1. 1. 1. ;
 /ITL/scene/signal/y2 set 'myFaust/1' 0.01 0.5 1. 1. 1. ;
 /ITL/scene/signal/y3 set 'myFaust/2' 0.01 -0.5 1. 1. 1. ;
 </code></pre>
@@ -388,7 +388,7 @@ ComplexDiagram(
 </ul>
 <p><span class="example">Example</span> 
 Creating a gesture follower for 3 dimensional data and a typical learning sequence:</p>
-<pre><code>/ITL/scene/gf set imtrgf 3 1000 gestureA gestureB gestureC gestureD ;
+<pre><code class="inscore">/ITL/scene/gf set imtrgf 3 1000 gestureA gestureB gestureC gestureD ;
 /ITL/scene/gf learn gestureA ;
 /ITL/scene/gf 0.1 0.5 -0.2 ... 0.7; # the data size must be a multiple of 3
 /ITL/scene/gf stop;
@@ -517,7 +517,7 @@ ComplexDiagram(
 <li><span class="OSC">port</span> http port used by the server.</li>
 </ul>
 <p><span class="example">Example</span> </p>
-<pre><code>/ITL/scene/server set httpd 8000;
+<pre><code class="inscore">/ITL/scene/server set httpd 8000;
 </code></pre>
 
 <p><span class="note">Note: </span> 
@@ -538,7 +538,7 @@ ComplexDiagram(
 
 <p>A string corresponding to the server status ("started" or "stopped") is return.</p>
 <p><span class="example">Example</span> </p>
-<pre><code>/ITL/scene/server get status;
+<pre><code class="inscore">/ITL/scene/server get status;
 </code></pre></div>
         </div>
 
@@ -553,6 +553,7 @@ ComplexDiagram(
         </script>
         <script src="../../js/base.js" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" defer></script>
+        <script src="/js/inscore.js" defer></script>
         <script src="../../search/main.js" defer></script>
 
         <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">

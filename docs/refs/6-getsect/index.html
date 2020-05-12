@@ -222,27 +222,27 @@ ComplexDiagram(
 <p>The <span class="OSC">get frame</span> message is supported by all the components. An object frame is available for read only. It represents the polygon that encloses the object, taking account of scaling, rotations, and shear. The polygon is returned as a set of 4 points (x, y) expressed in the parent object coordinates space.</p>
 <p><span class="example">Example</span> 
 Sending the following request to an object which position is 0.3 0.5</p>
-<pre><code>/ITL/scene/myobject get x y;
+<pre><code class="inscore">/ITL/scene/myobject get x y;
 </code></pre>
 
 <p>will give the following messages on outpout port:
-~~~~~~~
+~~~~~~~ inscore
 /ITL/scene/myobject x 0.3; 
 /ITL/scene/myobject y 0.5;}
 Querying an object content</p>
-<pre><code>/ITL/scene/myobject get;
+<pre><code class="inscore">/ITL/scene/myobject get;
 </code></pre>
 
 <p>will give the corresponding <span class="OSC">set</span> message:</p>
-<pre><code>/ITL/scene/myobject set txt &quot;Hello world!&quot;;
+<pre><code class="inscore">/ITL/scene/myobject set txt &quot;Hello world!&quot;;
 </code></pre>
 
 <p>Querying an object frame</p>
-<pre><code>/ITL/scene/myobject get frame;
+<pre><code class="inscore">/ITL/scene/myobject get frame;
 </code></pre>
 
 <p>will give the corresponding <span class="OSC">frame</span> message:</p>
-<pre><code>/ITL/scene/myobject frame -0.5 -0.25 0.50 -0.25 0.50 0.25 -0.5 0.25;
+<pre><code class="inscore">/ITL/scene/myobject frame -0.5 -0.25 0.50 -0.25 0.50 0.25 -0.5 0.25;
 </code></pre>
 
 <p><span class="note">Note: </span> 
@@ -260,6 +260,7 @@ The <span class="OSC">get width</span> and <span class="OSC">get height</span> m
         </script>
         <script src="../../js/base.js" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" defer></script>
+        <script src="/js/inscore.js" defer></script>
         <script src="../../search/main.js" defer></script>
 
         <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">

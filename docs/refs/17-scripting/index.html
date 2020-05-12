@@ -240,13 +240,13 @@ Messages parameters can be replaced by variables that are evaluated at parsing l
 <p>Using the address extension scheme, a script may be designed to initialize an INScore scene and external applications as well, including on remote hosts.</p>
 <p><span class="example">Example</span>
 Initializing a score and an external application listening on port 12000 and running on a remote host named <span class="OSC">host.adomain.net</span>.</p>
-<pre><code>/ITL/scene/score set gmnf 'myscore.gmn';
+<pre><code class="inscore">/ITL/scene/score set gmnf 'myscore.gmn';
 host.adomain.net:12000/run 1;
 </code></pre>
 
 <p>Relative addresses have been introduced to provide more flexibility in the score design process. A relative address starts with '<span class="OSC">./</span>'. It is evaluated in the context of the message receiver: a legal OSC address is dynamically constructed using the receiver address that is used to prefix the relative address. </p>
 <p><span class="example">Example</span></p>
-<pre><code>the relative address   ./score 
+<pre><code class="inscore">the relative address   ./score 
 addressed to   /ITL/scene/layer
 will be evaluted as   /ITL/scene/layer/score
 </code></pre>
@@ -259,7 +259,7 @@ will be evaluted as   /ITL/scene/layer/score
 </ul>
 <p><span class="example">Example</span>
 Using a set of messages in different contexts:</p>
-<pre><code>score = (
+<pre><code class="inscore">score = (
   ./score set gmn '[a f g]', 
   ./score scale 2.
 );
@@ -280,7 +280,7 @@ A special attention must be given to strings in order to discriminate addresses 
 </ul>
 <p><span class="example">Example</span> 
 Different string parameter</p>
-<pre><code>/ITL/scene/text set txt &quot;Hello world&quot;;  # string including a space must be quoted 
+<pre><code class="inscore">/ITL/scene/text set txt &quot;Hello world&quot;;  # string including a space must be quoted 
 /ITL/scene/img set file 'anImage.png';  # dots must be quoted too 
 /ITL/scene/foo set txt no_quotes_needed;
 </code></pre>
@@ -302,7 +302,7 @@ ComplexDiagram(
 
 <p><span class="example">Example</span> 
 Variables declarations</p>
-<pre><code>color = 200 200 200; 
+<pre><code class="inscore">color = 200 200 200; 
 colorwithalpha = $color 100; # using another variable 
 msgsvar= (     # a variable referring to a message list 
    localhost:7001/world &quot;Hello world&quot;, 
@@ -312,7 +312,7 @@ msgsvar= (     # a variable referring to a message list
 <p>A variable may be used in place of any message parameter. A reference to a variable must have the form <span class="OSC">$ident</span> where <span class="OSC">ident</span> is a previously declared variable. A variable is evaluated at parsing level and replaced by its content.</p>
 <p><span class="example">Example</span> 
 Using a variable to share a common position:</p>
-<pre><code>x = 0.5;
+<pre><code class="inscore">x = 0.5;
 /ITL/scene/a x $x;
 /ITL/scene/b x $x;
 </code></pre>
@@ -320,7 +320,7 @@ Using a variable to share a common position:</p>
 <p>Variables can be used in interaction messages as well, which may also use the variables available in the interaction context (see section <a href="../16-interaction#interactvar">interactvar</a>). To differentiate between a <strong>script</strong> and an <strong>interaction</strong> variable, the latter must be quoted to be passed as strings and to prevent their evaluation by the parser. </p>
 <p><span class="example">Example</span> 
 Using variables in interaction messages: $sx is evaluated at event occurrence   and $y is evaluated at parsing level.</p>
-<pre><code>y = 0.5;
+<pre><code class="inscore">y = 0.5;
 /ITL/scene/foo watch mouseDown (/ITL/scene/foo &quot;$sx&quot; $y);
 </code></pre>
 
@@ -359,12 +359,12 @@ ComplexDiagram(
 
 <p><span class="example">Example</span> 
 Displaying INScore version using a message parameter:</p>
-<pre><code>/ITL/scene/version set  txt &quot;INScore version is&quot; $(/ITL get version);
+<pre><code class="inscore">/ITL/scene/version set  txt &quot;INScore version is&quot; $(/ITL get version);
 </code></pre>
 
 <p><span class="note">Note: </span>
 Message based parameters are evaluated by the parser. Thus when the system state is modified by a script before a message parameter, these modifications won't be visible at the time of the parameter evaluation because all the messages will be processed by the next time task. For example:</p>
-<pre><code>/ITL/scene/obj x 0.1;
+<pre><code class="inscore">/ITL/scene/obj x 0.1;
 /ITL/scene/foo x $(/ITL/scene/foo get x);
 </code></pre>
 
@@ -388,7 +388,7 @@ ComplexDiagram(
 These messages are then parsed as if replacing the corresponding script section.</p>
 <p>Note that INScore variables are exported to the current language environment.</p>
 <p><span class="example">Example</span></p>
-<pre><code>
+<pre><code class="inscore">
 &lt;?javascript 
    &quot;/ITL/scene/version set 'txt' 'Javascript v.&quot;  + version() + &quot;';&quot;; 
    ?&gt;
@@ -431,36 +431,29 @@ Actually, including a javascript section in a script is equivalent to send the <
 <li>5 for Windows, </li>
 </ul>
 <p><span class="example">Example</span></p>
-<pre><code>
+<pre><code class="inscore">
 &lt;?javascript 
    post (&quot;/ITL/scene/obj&quot;, &quot;dalpha&quot;, -1);&quot;; 
-   \# The message /ITL/scene/obj dalpha -1 
-   \# will be evaluated by the next time task. 
+   # The message /ITL/scene/obj dalpha -1 
+   # will be evaluated by the next time task. 
 ?&gt;
 </code></pre>
 
 <p><span class="example">Example</span></p>
-<pre><code>
+<pre><code class="inscore">
 &lt;?javascript 
-   \# declare a function foo() 
-   function foo(arg) \{ 
+   # declare a function foo() 
+   function foo(arg) { 
     return &quot;/ITL/scene/obj set txt foo called with &quot; + arg + &quot;;&quot;; 
-   \} 
+   } 
 ?&gt;
 
-\# call the foo function 
+# call the foo function 
 &lt;?javascript foo(1)?&gt;
 
-\# or call the foo function using the run message 
+# or call the foo function using the run message 
 /ITL/scene/javascript run &quot;foo(1)&quot;;
-</code></pre>
-
-<p>~~~~~~~</p>
-<p>\newcommand{\mathstring}[1]     {<em>string</em>(<span class="OSC">#1</span>)}
-\newcommand{\mathstrnum}[1]     {<em>length</em>(<span class="OSC">#1</span>)}
-\newcommand{\mathsize}[1]       {<em>size</em>(<span class="OSC">#1</span>)}
-\newcommand{\op}                {<script type="math/tex">op</script>}
-\newcommand{\todo}  [1]         {{\big [\texttt{<strong>#1</strong>}]}}</p></div>
+</code></pre></div>
         </div>
 
         <footer class="col-md-12">
@@ -474,6 +467,7 @@ Actually, including a javascript section in a script is equivalent to send the <
         </script>
         <script src="../../js/base.js" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" defer></script>
+        <script src="/js/inscore.js" defer></script>
         <script src="../../search/main.js" defer></script>
 
         <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">

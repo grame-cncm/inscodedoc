@@ -209,7 +209,7 @@
 <p><a name="appendices"></a></p>
 <h2 id="grammar-definition">Grammar definition</h2>
 <p><a name="yacc"></a></p>
-<pre><code>//_______________________________________________
+<pre><code class="inscore">//_______________________________________________
 // relaxed simple ITL format specification
 //_______________________________________________
 start        : expr
@@ -342,7 +342,7 @@ expression    : EXPRESSION
 
 <h2 id="lexical-tokens">Lexical tokens</h2>
 <p><a name="lex"></a></p>
-<pre><code>//_______________________________________________
+<pre><code class="inscore">//_______________________________________________
 // numbers
 //_______________________________________________
 INT       a signed integer
@@ -425,7 +425,7 @@ VARIABLEPREINC  : ++$VAR
 
 <h2 id="score-expressions-grammar">Score expressions grammar</h2>
 <p><a name="yaccexpr"></a></p>
-<pre><code>//_______________________________________________
+<pre><code class="inscore">//_______________________________________________
 // relaxed simple IExpression format specification
 //_______________________________________________
 start        : expression            
@@ -472,6 +472,7 @@ arg            : string
         </script>
         <script src="../../js/base.js" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" defer></script>
+        <script src="/js/inscore.js" defer></script>
         <script src="../../search/main.js" defer></script>
 
         <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">

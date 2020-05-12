@@ -253,20 +253,20 @@ ComplexDiagram(
 </ul>
 <p><span class="example">Example</span> 
 Setting a scene current path:</p>
-<pre><code>/ITL/scene rootPath &quot;/path/to/my/folder&quot;;
+<pre><code class="inscore">/ITL/scene rootPath &quot;/path/to/my/folder&quot;;
 </code></pre>
 
 <p>Loading an INScore file:</p>
-<pre><code>/ITL/scene load &quot;myscript.inscore&quot;;
+<pre><code class="inscore">/ITL/scene load &quot;myscript.inscore&quot;;
 </code></pre>
 
 <p>will load <span class="OSC">/path/to/my/folder/myscript.inscore</span> into the scene. </p>
 <p>Setting a scene to fullscreen:</p>
-<pre><code>/ITL/scene fullscreen 1;
+<pre><code class="inscore">/ITL/scene fullscreen 1;
 </code></pre>
 
 <p>Creating a new score named <span class="OSC">myScore</span>:</p>
-<pre><code>/ITL/myScore new;
+<pre><code class="inscore">/ITL/myScore new;
 </code></pre>
 
 <h2 id="opengl-rendering">OpenGl rendering</h2>
@@ -310,7 +310,7 @@ ComplexDiagram(
 </ul>
 <p><span class="example">Example</span> 
 Counting the elements in a scene:</p>
-<pre><code>/ITL/scene get count;
+<pre><code class="inscore">/ITL/scene get count;
   will give a message like the following as output: 
 /ITL/scene count 200;
 </code></pre></div>
@@ -327,6 +327,7 @@ Counting the elements in a scene:</p>
         </script>
         <script src="../../js/base.js" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" defer></script>
+        <script src="/js/inscore.js" defer></script>
         <script src="../../search/main.js" defer></script>
 
         <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">

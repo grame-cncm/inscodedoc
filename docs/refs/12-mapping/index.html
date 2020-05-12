@@ -407,7 +407,7 @@ ComplexDiagram(
 
 <p><span class="example">Example</span> 
 Mapping an image graphic space to time:</p>
-<pre><code>/ITL/scene/myImage map 
+<pre><code class="inscore">/ITL/scene/myImage map 
   &quot;( [0, 67[    [0, 86[ ) ( [0/2, 1/2[ ) 
   ( [67, 113[  [0, 86[ ) ( [1/2, 1/1[ ) 
   ( [113, 153[ [0, 86[ ) ( [1/1, 3/2[ ) 
@@ -417,7 +417,7 @@ Mapping an image graphic space to time:</p>
 
 <p>the image is horizontally segmented into 5 different graphic segments that express pixel positions. The vertical dimension of the segments remains the same and corresponds to the interval <span class="values">[0, 86[</span>. Each graphic segment is associated to a time interval which duration is 1/2 (a half note).</p>
 <p>The same mapping using absolute time assumes that 1 second is equal to 1 quarter note:</p>
-<pre><code>/ITL/scene/myImage map 
+<pre><code class="inscore">/ITL/scene/myImage map 
   &quot;( [0, 67[    [0, 86[ )   ( [0:0:0, 0:2:0[ ) 
   ( [67, 113[  [0, 86[ ) ( [0:2:0, 0:4:0[ ) 
   ( [113, 153[ [0, 86[ ) ( [0:4:0, 0:6:0[ ) 
@@ -489,11 +489,11 @@ ComplexDiagram(
 <p>The default mapping for a symbolic score is unnamed but equivalent to <span class="OSC">staff1</span>.</p>
 <p><span class="example">Example</span> 
 Requesting the mapping of the third staff of a score:</p>
-<pre><code>/ITL/scene/myScore map staff3;
+<pre><code class="inscore">/ITL/scene/myScore map staff3;
 </code></pre>
 
 <p>Requesting the system mapping :</p>
-<pre><code>/ITL/scene/myScore map system;
+<pre><code class="inscore">/ITL/scene/myScore map system;
 </code></pre>
 
 <p><span class="note">Note: </span> 
@@ -511,6 +511,7 @@ A voice may be distributed on several staves and thus a staff may contain severa
         </script>
         <script src="../../js/base.js" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" defer></script>
+        <script src="/js/inscore.js" defer></script>
         <script src="../../search/main.js" defer></script>
 
         <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">

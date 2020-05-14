@@ -220,7 +220,7 @@
 <span class="railtitle">interactMsg</span>
 <br /><script>
 ComplexDiagram(
-    Sequence (Choice (0, 'watch', 'watch+'), Choice (0, Comment ('1'), Sequence (NonTerminal('what'), Choice (0, Comment ('2'), Sequence (Comment ('3'), "(", Sequence (OneOrMore (NonTerminal('message')), ","), ")"), Sequence (Comment ('4'), NonTerminal('message'))))))
+    Sequence (Choice (0, 'watch', 'watch+'), Choice (0, Comment ('1'), Sequence (NonTerminal('what'), Choice (0, Comment ('2'), Sequence (Comment ('3'), "(", OneOrMore (NonTerminal('message'), ","), ")"), Sequence (Comment ('4'), NonTerminal('message'))))))
 ).addTo()
 
 </script>
@@ -705,7 +705,7 @@ It receives messages at the address <span class="OSC">/ITL/scene/fileWatcher</sp
 <span class="railtitle">fileWatcher</span>
 <br /><script>
 ComplexDiagram(
-    Sequence (Choice (0, 'watch', 'watch+'), Optional  ( Sequence (NonTerminal('filePath'), Optional  ( Sequence (OneOrMore (NonTerminal('message')), ",")))))
+    Sequence (Choice (0, 'watch', 'watch+'), Optional  ( Sequence (NonTerminal('filePath'), Optional  ( OneOrMore (NonTerminal('message'), ",")))))
 ).addTo()
 
 </script>

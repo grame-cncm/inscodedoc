@@ -28,4 +28,4 @@ clean:
 	-rm -f $(OBJS) rail2js gram.hpp gram.cpp lex.cpp $(TARGET)
 
 install:
-	cp rail2js $(HOME)/bin
+	cp $(TARGET) $(HOME)/bin

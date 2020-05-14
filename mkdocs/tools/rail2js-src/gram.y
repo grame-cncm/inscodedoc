@@ -25,7 +25,7 @@ extern char* yytext;
 %token IDENTIFIER
 %token NUMBER
 %token STRING
-%token OPENGROUP CLOSEGROUP OPENANN CLOSEANN CHOICE LOOP DEF ERROR
+%token OPENGROUP CLOSEGROUP OPENANN CLOSEANN CHOICE LOOP DEF ERROR ENDEXPR
 
 %right CHOICE  CLOSEGROUP OPENGROUP
 %left IDENTIFIER
@@ -44,7 +44,8 @@ extern char* yytext;
 
 %%
 
-rail : name DEF expression		{ gExpression = new TExpression($1->fValue, $3); delete $1;}
+rail : name DEF expression 			{ gExpression = new TExpression($1->fValue, $3); delete $1;}
+	| name DEF expression ENDEXPR	{ gExpression = new TExpression($1->fValue, $3); delete $1;}
 	;
 
 name : IDENTIFIER 	{ $$ = new TNode (kTerminal, yytext); }
@@ -84,7 +85,8 @@ sequence : expression expression	{
 } %prec IDENTIFIER
 	;
 
-loop : expression LOOP 		 { $$ = new TNode (kLoopNode, ""); $$->add ($1); delete $1; if (TRACE) cerr << "create loop" << endl; }
+loop : expression LOOP 		{ $$ = new TNode (kLoopNode, ""); $$->add ($1); delete $1; if (TRACE) cerr << "create loop" << endl; }
+	| loop expression		{ $$ = $1; $$->add ($2); delete $2; if (TRACE) cerr << "create loop expr" << endl; }
 	;
 
 %%

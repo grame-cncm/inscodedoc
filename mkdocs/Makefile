@@ -1,6 +1,7 @@
 
 MAKE ?= make
 AWK  ?= awk
+PIP  ?= pip
 
 MKDIR := "./"
 
@@ -46,8 +47,11 @@ serve:
 menu:
 	@echo $(SECTIONS) | tr " " "\n" | sort -n | sed -e 's/^/        - : refs\//'
 
-md: $(MD) docs/refs/index.md
+md: docs/refs $(MD) docs/refs/index.md
 
+docs/refs:
+	mkdir docs/refs
+	
 fullrefs: fullrefs.sed
 fullrefs.sed : $(SPLIT)
 	grep label $(SPLIT) | sed -f scripts/labels.sed > $@
@@ -87,7 +91,7 @@ tools/rail2js:
 	make -C tools/rail2js-src
 
 install:
-	pip install mkdocs
-	pip install markdown-include
-	pip install mkdocs-bootswatch
-	pip install python-markdown-math
+	$(PIP) install mkdocs
+	$(PIP) install markdown-include
+	$(PIP) install mkdocs-bootswatch
+	$(PIP) install python-markdown-math

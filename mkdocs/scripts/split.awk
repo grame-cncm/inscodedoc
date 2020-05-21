@@ -85,6 +85,7 @@ END {
 
 /\\label/ {
 	if (WAITLABEL) {
+		if (FILE) close(FILE);
 	 	FILE = N "-" getTagContent($2) ".tmp";
 	 	N += 1;
 	 	print "{!include.txt!}\n" > FILE;

@@ -3,8 +3,6 @@ site_description: INScore documentation.
 copyright: <a href="https://inscore.grame.fr">INscore projects</a> Copyright &copy; 2019-2020 <a href="http://www.grame.fr">Grame-CNCM</a>
 nav:
     - Home: index.md
-    - Tutorials:
-        - 'Introduction' : http://berio.grame.fr/MusicNotation/Introduction-to-INScore/
     - Reference:
         - 'Format of a message' : refs/1-genformat.md
         - 'Common Messages' : refs/2-common.md
@@ -29,8 +27,12 @@ nav:
         - 'Grammar definition' : refs/21-appendices.md
         - 'Changes list' : refs/22-changes.md
         - 'Index' : refs/index.md
+    - Documents:
+        - 'Tutorial' : http://berio.grame.fr/MusicNotation/Introduction-to-INScore/
+        - 'Papers' : papers.md
     - Download:
         - 'Pdf documentation' : rsrc/INScoreLang.pdf
+        - 'INScore' : https://github.com/grame-cncm/inscore/releases
     - About: about.md
 
 theme: 
@@ -55,11 +57,13 @@ plugins:
 
 extra_css:
     - '/css/inscore.css'
+    - '/css/pubs.css'
     - '/BNF/railroad-diagrams.css'
 
 extra_javascript:
   - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML
   - /js/inscore.js
+  - /js/pubs.js
 
 markdown_extensions:
     - mdx_math

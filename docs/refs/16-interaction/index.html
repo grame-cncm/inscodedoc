@@ -9,181 +9,177 @@
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
         <title>Interaction - INScore Documentation</title>
-        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
         <link href="/css/inscore.css" rel="stylesheet">
+        <link href="/css/pubs.css" rel="stylesheet">
         <link href="/BNF/railroad-diagrams.css" rel="stylesheet">
-        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!--[if lt IE 9]>
-            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-        <![endif]-->
 
         <script src="../../js/jquery-1.10.2.min.js" defer></script>
-        <script src="../../js/bootstrap-3.0.3.min.js" defer></script>
+        <script src="../../js/bootstrap.min.js" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
         <script>hljs.initHighlightingOnLoad();</script> 
     </head>
 
     <body>
-
-        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
             <div class="container">
-
-                <!-- Collapsed navigation -->
-                <div class="navbar-header">
-                    <!-- Expander button -->
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="../..">INScore Documentation</a>
-                </div>
+                <a class="navbar-brand" href="../..">INScore Documentation</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
                 <!-- Expanded navigation -->
-                <div class="navbar-collapse collapse">
+                <div id="navbar-collapse" class="navbar-collapse collapse">
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
-                            <li >
-                                <a href="../..">Home</a>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tutorials <b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    
-<li >
-    <a href="http://berio.grame.fr/MusicNotation/Introduction-to-INScore/">Introduction</a>
-</li>
-                                </ul>
+                            <li class="navitem">
+                                <a href="../.." class="nav-link">Home</a>
                             </li>
                             <li class="dropdown active">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Reference <b class="caret"></b></a>
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Reference <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
-<li >
-    <a href="../1-genformat/">Format of a message</a>
+<li>
+    <a href="../1-genformat/" class="dropdown-item">Format of a message</a>
 </li>
                                     
-<li >
-    <a href="../2-common/">Common Messages</a>
+<li>
+    <a href="../2-common/" class="dropdown-item">Common Messages</a>
 </li>
                                     
-<li >
-    <a href="../3-time/">Time Messages</a>
+<li>
+    <a href="../3-time/" class="dropdown-item">Time Messages</a>
 </li>
                                     
-<li >
-    <a href="../4-miscmsgs/">Miscellaneous</a>
+<li>
+    <a href="../4-miscmsgs/" class="dropdown-item">Miscellaneous</a>
 </li>
                                     
-<li >
-    <a href="../5-setsect/">The set Message</a>
+<li>
+    <a href="../5-setsect/" class="dropdown-item">The set Message</a>
 </li>
                                     
-<li >
-    <a href="../6-getsect/">The get Message</a>
+<li>
+    <a href="../6-getsect/" class="dropdown-item">The get Message</a>
 </li>
                                     
-<li >
-    <a href="../7-specificMsg/">Specific Messages</a>
+<li>
+    <a href="../7-specificMsg/" class="dropdown-item">Specific Messages</a>
 </li>
                                     
-<li >
-    <a href="../8-ITL/">Application Messages</a>
+<li>
+    <a href="../8-ITL/" class="dropdown-item">Application Messages</a>
 </li>
                                     
-<li >
-    <a href="../9-scene/">Scene Messages</a>
+<li>
+    <a href="../9-scene/" class="dropdown-item">Scene Messages</a>
 </li>
                                     
-<li >
-    <a href="../10-forwarding/">Messages Forwarding</a>
+<li>
+    <a href="../10-forwarding/" class="dropdown-item">Messages Forwarding</a>
 </li>
                                     
-<li >
-    <a href="../11-layers/">Layers</a>
+<li>
+    <a href="../11-layers/" class="dropdown-item">Layers</a>
 </li>
                                     
-<li >
-    <a href="../12-mapping/">Mapping</a>
+<li>
+    <a href="../12-mapping/" class="dropdown-item">Mapping</a>
 </li>
                                     
-<li >
-    <a href="../13-syncmsg/">Synchronization</a>
+<li>
+    <a href="../13-syncmsg/" class="dropdown-item">Synchronization</a>
 </li>
                                     
-<li >
-    <a href="../14-graphsig/">Graphic signals</a>
+<li>
+    <a href="../14-graphsig/" class="dropdown-item">Graphic signals</a>
 </li>
                                     
-<li >
-    <a href="../15-sensors/">Sensors</a>
+<li>
+    <a href="../15-sensors/" class="dropdown-item">Sensors</a>
 </li>
                                     
-<li class="active">
-    <a href="./">Interaction</a>
+<li>
+    <a href="./" class="dropdown-item active">Interaction</a>
 </li>
                                     
-<li >
-    <a href="../17-scripting/">Scripting</a>
+<li>
+    <a href="../17-scripting/" class="dropdown-item">Scripting</a>
 </li>
                                     
-<li >
-    <a href="../18-mathExpr/">Math Expressions</a>
+<li>
+    <a href="../18-mathExpr/" class="dropdown-item">Math Expressions</a>
 </li>
                                     
-<li >
-    <a href="../19-scoreExpr/">Score Expressions</a>
+<li>
+    <a href="../19-scoreExpr/" class="dropdown-item">Score Expressions</a>
 </li>
                                     
-<li >
-    <a href="../20-plugins/">Plugins</a>
+<li>
+    <a href="../20-plugins/" class="dropdown-item">Plugins</a>
 </li>
                                     
-<li >
-    <a href="../21-appendices/">Grammar definition</a>
+<li>
+    <a href="../21-appendices/" class="dropdown-item">Grammar definition</a>
 </li>
                                     
-<li >
-    <a href="../22-changes/">Changes list</a>
+<li>
+    <a href="../22-changes/" class="dropdown-item">Changes list</a>
 </li>
                                     
-<li >
-    <a href="../">Index</a>
+<li>
+    <a href="../" class="dropdown-item">Index</a>
 </li>
                                 </ul>
                             </li>
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Download <b class="caret"></b></a>
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Documents <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
-<li >
-    <a href="../../rsrc/INScoreLang.pdf">Pdf documentation</a>
+<li>
+    <a href="http://berio.grame.fr/MusicNotation/Introduction-to-INScore/" class="dropdown-item">Tutorial</a>
+</li>
+                                    
+<li>
+    <a href="../../papers/" class="dropdown-item">Papers</a>
 </li>
                                 </ul>
                             </li>
-                            <li >
-                                <a href="../../about/">About</a>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Download <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../rsrc/INScoreLang.pdf" class="dropdown-item">Pdf documentation</a>
+</li>
+                                    
+<li>
+    <a href="https://github.com/grame-cncm/inscore/releases" class="dropdown-item">INScore</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../about/" class="nav-link">About</a>
                             </li>
                         </ul>
 
-                    <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
                                 <i class="fa fa-search"></i> Search
                             </a>
                         </li>
-                            <li >
-                                <a rel="next" href="../15-sensors/">
+                            <li class="nav-item">
+                                <a rel="prev" href="../15-sensors/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
-                            <li >
-                                <a rel="prev" href="../17-scripting/">
+                            <li class="nav-item">
+                                <a rel="next" href="../17-scripting/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -193,19 +189,54 @@
         </div>
 
         <div class="container">
-                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
-    <ul class="nav bs-sidenav">
-        <li class="main active"><a href="#events-and-interaction">Events and Interaction</a></li>
-            <li><a href="#internal-events">Internal events</a></li>
-            <li><a href="#attribute-based-events">Attribute based events</a></li>
-            <li><a href="#user-defined-events">User defined events</a></li>
-            <li><a href="#the-event-message">The 'event' message</a></li>
-            <li><a href="#variables">Variables</a></li>
-            <li><a href="#interaction-state-management">Interaction state management</a></li>
-            <li><a href="#file-watcher">File watcher</a></li>
-    </ul>
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#events-and-interaction" class="nav-link">Events and Interaction</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#internal-events" class="nav-link">Internal events</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#attribute-based-events" class="nav-link">Attribute based events</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#user-defined-events" class="nav-link">User defined events</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#the-event-message" class="nav-link">The 'event' message</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#variables" class="nav-link">Variables</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#interaction-state-management" class="nav-link">Interaction state management</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#file-watcher" class="nav-link">File watcher</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
 </div></div>
-                <div class="col-md-9" role="main">
+                    <div class="col-md-9" role="main">
 
 <script src='/BNF/railroad-diagrams.js'></script>
 
@@ -260,9 +291,8 @@ ComplexDiagram(
 
 <p><span class="example">Example</span> 
 An extended address to send messages to <span class="OSC">localhost</span> on port <span class="OSC">12000</span>:</p>
-<pre><code class="inscore">localhost:12000/your/osc/address;
+<pre><code class="language-inscore">localhost:12000/your/osc/address;
 </code></pre>
-
 <h2 id="internal-events">Internal events</h2>
 <p><a name="defevents"></a></p>
 <p>Internal events are triggered by the user interaction (mouse or touch events) or by the engine internal functionning.</p>
@@ -287,14 +317,12 @@ ComplexDiagram(
 
 <p><span class="example">Example</span> 
 Triggering a message on mouse down:</p>
-<pre><code class="inscore">/ITL/scene/myObject watch mouseDown (/ITL/scene/myObject show 0);
+<pre><code class="language-inscore">/ITL/scene/myObject watch mouseDown (/ITL/scene/myObject show 0);
 </code></pre>
-
 <p>the object hides itself on mouse click. 
 Triggering a message on mouse down but addressed to another host on udp port 12100:</p>
-<pre><code class="inscore">/ITL/scene/myObject watch mouseDown (host.domain.org:12100/an/address start); 
+<pre><code class="language-inscore">/ITL/scene/myObject watch mouseDown (host.domain.org:12100/an/address start); 
 </code></pre>
-
 <p><span class="note">Note: </span> 
 UI events are not supported by objects that are synchronized as slave.</p>
 <p>Mouse events can be simulated using a <span class="OSC">event</span> message:</p>
@@ -312,9 +340,8 @@ ComplexDiagram(
 <p>where <span class="OSC">mouseEvent</span> is one of the events described above, <span class="OSC">x</span> and <span class="OSC">y</span> are integer values giving the click position, expressed in pixels and relative to the target object.</p>
 <p><span class="example">Example</span> 
 Simulating a mouse down at position 10, 10 :</p>
-<pre><code class="inscore">/ITL/scene/myObject event mouseDown 10 10;
+<pre><code class="language-inscore">/ITL/scene/myObject event mouseDown 10 10;
 </code></pre>
-
 <h3 id="touch-events">Touch events</h3>
 <p><a name="touchevents"></a>
 Depending on the display device, multi-touch events are supported by INScore :</p>
@@ -380,12 +407,11 @@ ComplexDiagram(
 </ul>
 <p><span class="example">Example</span> 
 Triggering an error message in case of failure :</p>
-<pre><code class="inscore">/ITL/scene/score set gmnf &quot;http://ahost.adomain.org/score.gmn&quot;;
+<pre><code class="language-inscore">/ITL/scene/score set gmnf &quot;http://ahost.adomain.org/score.gmn&quot;;
 /ITL/scene/score watch error(
   /ITL/scene/status set txt &quot;Failed to download file&quot;
 );
 </code></pre>
-
 <h3 id="miscellaneous-events">Miscellaneous events</h3>
 <p><a name="miscevents"></a></p>
 <p><a name="16-interaction-export"></a>
@@ -433,33 +459,29 @@ Typically you can use of this event to open the log window (<span class="OSC">/I
 </ul>
 <p><span class="example">Example</span> 
 Displaying a welcome message to new elements:</p>
-<pre><code class="inscore">/ITL/scene watch newElement (/ITL/scene/msg set txt &quot;Welcome&quot;);
+<pre><code class="language-inscore">/ITL/scene watch newElement (/ITL/scene/msg set txt &quot;Welcome&quot;);
 </code></pre>
-
 <h2 id="attribute-based-events">Attribute based events</h2>
 <p><a name="attributeevents"></a></p>
 <p>Attribute based events includes the whole set of messages that are supported by an object: <span class="OSC">x</span>, <span class="OSC">y</span>, <span class="OSC">color</span>, etc. but also type specific messages. These events are triggered when a message has been succesfully processed. However, you shouldn't assume that the attribute value has been changed: when a message sets an attribute to it's current value, it is succesully processed and the corresponding event - if any - is triggered. </p>
 <p><span class="example">Example</span> 
 Watching an object <span class="OSC">x</span> coordinate change:</p>
-<pre><code class="inscore">/ITL/scene/myObject watch x (/ITL/scene/msg set txt &quot;myObject moved&quot;);
+<pre><code class="language-inscore">/ITL/scene/myObject watch x (/ITL/scene/msg set txt &quot;myObject moved&quot;);
 </code></pre>
-
 <p><span class="note">Note:</span> 
 Watching the <span class="OSC">newData</span> event is equivalent to watch the <span class="OSC">set</span> attribute. However, the <span class="OSC">newData</span> event is triggered only when the object state is changed.</p>
 <p><span class="warning">Warning</span> 
 With the event's generalisation to any object attribute, a one tick delay has been introduced to all events. Thus the associated messages are not processed synchronously to the event but posted to be processed by the next time task. This delay has been introduced to avoid freezing the system in case of loops. However, it introduces also a pitfall in interaction design, when message based variables are used (see section <a href="../16-interaction#msgvar">msgvar</a>): message based variables are evaluated at the event time while messages are processed by the next time task, thus the following messages won't produce the expected result:</p>
-<pre><code class="inscore">/ITL/scene/myObject watch x ( 
+<pre><code class="language-inscore">/ITL/scene/myObject watch x ( 
    /ITL/scene/A x '$(/ITL/scene/myObject get x)', 
    /ITL/scene/B x '$(/ITL/scene/A get x)' 
 );
 </code></pre>
-
 <p>actually, when the <span class="OSC">$(/ITL/scene/A get x)</span> variable is evaluated, the preceding message that sets the x attribute of A has not been aready processed.
 One workaround consists in splitting the interaction in several parts, making sure that the messages are processed e.g.</p>
-<pre><code class="inscore">/ITL/scene/myObject watch x ( /ITL/scene/A x '$(/ITL/scene/myObject get x)'); 
+<pre><code class="language-inscore">/ITL/scene/myObject watch x ( /ITL/scene/A x '$(/ITL/scene/myObject get x)'); 
 /ITL/scene/A watch x ( /ITL/scene/B x '$(/ITL/scene/A get x)' );
 </code></pre>
-
 <h2 id="user-defined-events">User defined events</h2>
 <p><a name="userevents"></a></p>
 <p>INScore events supports user defined events. The name of user defined events must start with a capital letter and be composed of capital letters and/or numbers. Other characters are reserved for INScore use.</p>
@@ -468,19 +490,17 @@ but they accept also any number of a variables which names are $1, ... $i and wh
 <p>User defined events can only be triggered using the <span class="OSC">event</span> message (see section <a href="../16-interaction#eventMsg">eventMsg</a>).</p>
 <p><span class="example">Example</span> 
 Watching and triggering a user defined event:</p>
-<pre><code class="inscore">/ITL/scene/myObject watch MYEVENT (/ITL/scene/msg set txt &quot;MYEVENT occured!&quot;);
+<pre><code class="language-inscore">/ITL/scene/myObject watch MYEVENT (/ITL/scene/msg set txt &quot;MYEVENT occured!&quot;);
 /ITL/scene/myObject event MYEVENT;
 </code></pre>
-
 <p>Defining high level abstractions:</p>
-<pre><code class="inscore">/ITL/scene/myObject watch MOVEABC ( 
+<pre><code class="language-inscore">/ITL/scene/myObject watch MOVEABC ( 
   /ITL/scene/a x $1,
   /ITL/scene/b x $2,
   /ITL/scene/C x $3
 ); 
 /ITL/scene/myObject event MOVEABC -0.4 0.1 0.6;
 </code></pre>
-
 <h2 id="the-event-message">The 'event' message</h2>
 <p><a name="eventMsg"></a></p>
 <p>The <span class="OSC">event</span> message may be used to triggered events. It's the only way to trigger user defined events. 
@@ -551,11 +571,10 @@ Note also that the values are not clipped to the object dimensions and could exc
 </ul>
 <p><span class="example">Example</span> 
 An object that follows mouse move.</p>
-<pre><code class="inscore">/ITL/scene/myObject watch mouseDown ( 
+<pre><code class="language-inscore">/ITL/scene/myObject watch mouseDown ( 
   /ITL/scene/myObject x '$sx', 
   /ITL/scene/myObject y '$sy' );
 </code></pre>
-
 <h3 id="sensor-variables">Sensor variables</h3>
 <p><a name="sensorvar"></a></p>
 <p>Sensors values are available using the <span class="OSC">$x</span>, <span class="OSC">$y</span> and <span class="OSC">$z</span> variables, for events generated in the context of a sensor.</p>
@@ -568,7 +587,6 @@ ComplexDiagram(
 
 </script>
 </div>
-
 <p>Note that depending on the sensor type, the <span class="OSC">$y</span> and <span class="OSC">$z</span> variables may be useless.</p>
 <h3 id="time-variables">Time variables</h3>
 <p><a name="timevar"></a></p>
@@ -594,9 +612,8 @@ ComplexDiagram(
 A variable can be used several times in a message, but several <span class="OSC">$date</span> variables must always refer to the same mapping.</p>
 <p><span class="example">Example</span> 
 Sending the current date as a float value to an external application:</p>
-<pre><code class="inscore">/ITL/scene/myObject watch mouseDown ( targetHost:12000/date '$date
+<pre><code class="language-inscore">/ITL/scene/myObject watch mouseDown ( targetHost:12000/date '$date
 </code></pre>
-
 <h3 id="miscellaneous-variables">Miscellaneous variables</h3>
 <p><a name="miscvar"></a></p>
 <p><a name="16-interaction-scene"></a>
@@ -621,9 +638,8 @@ ComplexDiagram(
 For the <span class="OSC">newElement</span> event, the target object is the new element. </p>
 <p><span class="example">Example</span> 
 Using an object name:</p>
-<pre><code class="inscore">/ITL/scene watch newElement (/ITL/scene/welcome set txt &quot;Welcome&quot; '$name');
+<pre><code class="language-inscore">/ITL/scene watch newElement (/ITL/scene/welcome set txt &quot;Welcome&quot; '$name');
 </code></pre>
-
 <h3 id="message-based-variables">Message based variables</h3>
 <p><a name="msgvar"></a></p>
 <p>A message based variable is a variable containing an OSC message which will be evaluated at the time of the event. They are supported by all kind of events. Like  the variables above, a message based variable starts with a '$' sign followed by a valid 'get' message enclosed in parenthesis:</p>
@@ -641,10 +657,9 @@ ComplexDiagram(
 Note that all the 'get' messages attached to an event are evaluated at the same time.</p>
 <p><span class="example">Example</span> 
 An object that takes the <span class="values">x</span> position of another object on mouse down:</p>
-<pre><code class="inscore">/ITL/scene/myObject watch mouseDown 
+<pre><code class="language-inscore">/ITL/scene/myObject watch mouseDown 
   (/ITL/scene/myObject x '$(/ITL/scene/obj get x)');
 </code></pre>
-
 <h3 id="variables-for-user-defined-events">Variables for user defined events</h3>
 <p><a name="udevar"></a></p>
 <p>Messages associated to user defined events accept any number of a variables which names are $1, ... $i and which values are taken from the event call arguments. These events may be viewed as functions with arbitrary parameters; however parameters count and type is not checked: arguments in excess are ignored and variables without corresponding argument (e.g. $3 when only 2 arguments are available) are left unexpanded.</p>
@@ -657,10 +672,9 @@ The OSC address of a message associated to an event supports the following varia
 </ul>
 <p><span class="example">Example</span> 
 Requesting a set of objects to send a message to themselves on a mouse event:</p>
-<pre><code class="inscore">/ITL/scene/* watch mouseDown   # request all the objects of the scene 
+<pre><code class="language-inscore">/ITL/scene/* watch mouseDown   # request all the objects of the scene 
   (/ITL/scene/$self x '$sx'); # to send a message to themselves
 </code></pre>
-
 <h2 id="interaction-state-management">Interaction state management</h2>
 <p><a name="evtstate"></a></p>
 <p>For a given object, its <strong>interaction state</strong> (i.e. the watched events and the associated messages) can be saved and restored.</p>
@@ -713,10 +727,11 @@ ComplexDiagram(
 
 <p><span class="example">Example</span> 
 Reload aa INScore script on file modification:</p>
-<pre><code class="inscore">
+<pre><code class="language-inscore">
 /ITL/scene/fileWatcher watch 'myScript.inscore' 
   ( /ITL/scene load 'myScript.inscore' );
 </code></pre></div>
+            </div>
         </div>
 
         <footer class="col-md-12">
@@ -731,23 +746,24 @@ Reload aa INScore script on file modification:</p>
         <script src="../../js/base.js" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" defer></script>
         <script src="/js/inscore.js" defer></script>
+        <script src="/js/pubs.js" defer></script>
         <script src="../../search/main.js" defer></script>
 
-        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
-    <div class="modal-dialog">
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
             </div>
             <div class="modal-body">
                 <p>
                     From here you can search these documents. Enter
                     your search terms below.
                 </p>
-                <form role="form">
+                <form>
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
                     </div>
                 </form>
                 <div id="mkdocs-search-results"></div>
@@ -756,12 +772,12 @@ Reload aa INScore script on file modification:</p>
             </div>
         </div>
     </div>
-</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
             </div>
             <div class="modal-body">
               <table class="table">

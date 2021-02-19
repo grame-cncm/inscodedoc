@@ -9,181 +9,177 @@
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
         <title>Graphic signals - INScore Documentation</title>
-        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
         <link href="/css/inscore.css" rel="stylesheet">
+        <link href="/css/pubs.css" rel="stylesheet">
         <link href="/BNF/railroad-diagrams.css" rel="stylesheet">
-        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!--[if lt IE 9]>
-            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-        <![endif]-->
 
         <script src="../../js/jquery-1.10.2.min.js" defer></script>
-        <script src="../../js/bootstrap-3.0.3.min.js" defer></script>
+        <script src="../../js/bootstrap.min.js" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
         <script>hljs.initHighlightingOnLoad();</script> 
     </head>
 
     <body>
-
-        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
             <div class="container">
-
-                <!-- Collapsed navigation -->
-                <div class="navbar-header">
-                    <!-- Expander button -->
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="../..">INScore Documentation</a>
-                </div>
+                <a class="navbar-brand" href="../..">INScore Documentation</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
                 <!-- Expanded navigation -->
-                <div class="navbar-collapse collapse">
+                <div id="navbar-collapse" class="navbar-collapse collapse">
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
-                            <li >
-                                <a href="../..">Home</a>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tutorials <b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    
-<li >
-    <a href="http://berio.grame.fr/MusicNotation/Introduction-to-INScore/">Introduction</a>
-</li>
-                                </ul>
+                            <li class="navitem">
+                                <a href="../.." class="nav-link">Home</a>
                             </li>
                             <li class="dropdown active">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Reference <b class="caret"></b></a>
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Reference <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
-<li >
-    <a href="../1-genformat/">Format of a message</a>
+<li>
+    <a href="../1-genformat/" class="dropdown-item">Format of a message</a>
 </li>
                                     
-<li >
-    <a href="../2-common/">Common Messages</a>
+<li>
+    <a href="../2-common/" class="dropdown-item">Common Messages</a>
 </li>
                                     
-<li >
-    <a href="../3-time/">Time Messages</a>
+<li>
+    <a href="../3-time/" class="dropdown-item">Time Messages</a>
 </li>
                                     
-<li >
-    <a href="../4-miscmsgs/">Miscellaneous</a>
+<li>
+    <a href="../4-miscmsgs/" class="dropdown-item">Miscellaneous</a>
 </li>
                                     
-<li >
-    <a href="../5-setsect/">The set Message</a>
+<li>
+    <a href="../5-setsect/" class="dropdown-item">The set Message</a>
 </li>
                                     
-<li >
-    <a href="../6-getsect/">The get Message</a>
+<li>
+    <a href="../6-getsect/" class="dropdown-item">The get Message</a>
 </li>
                                     
-<li >
-    <a href="../7-specificMsg/">Specific Messages</a>
+<li>
+    <a href="../7-specificMsg/" class="dropdown-item">Specific Messages</a>
 </li>
                                     
-<li >
-    <a href="../8-ITL/">Application Messages</a>
+<li>
+    <a href="../8-ITL/" class="dropdown-item">Application Messages</a>
 </li>
                                     
-<li >
-    <a href="../9-scene/">Scene Messages</a>
+<li>
+    <a href="../9-scene/" class="dropdown-item">Scene Messages</a>
 </li>
                                     
-<li >
-    <a href="../10-forwarding/">Messages Forwarding</a>
+<li>
+    <a href="../10-forwarding/" class="dropdown-item">Messages Forwarding</a>
 </li>
                                     
-<li >
-    <a href="../11-layers/">Layers</a>
+<li>
+    <a href="../11-layers/" class="dropdown-item">Layers</a>
 </li>
                                     
-<li >
-    <a href="../12-mapping/">Mapping</a>
+<li>
+    <a href="../12-mapping/" class="dropdown-item">Mapping</a>
 </li>
                                     
-<li >
-    <a href="../13-syncmsg/">Synchronization</a>
+<li>
+    <a href="../13-syncmsg/" class="dropdown-item">Synchronization</a>
 </li>
                                     
-<li class="active">
-    <a href="./">Graphic signals</a>
+<li>
+    <a href="./" class="dropdown-item active">Graphic signals</a>
 </li>
                                     
-<li >
-    <a href="../15-sensors/">Sensors</a>
+<li>
+    <a href="../15-sensors/" class="dropdown-item">Sensors</a>
 </li>
                                     
-<li >
-    <a href="../16-interaction/">Interaction</a>
+<li>
+    <a href="../16-interaction/" class="dropdown-item">Interaction</a>
 </li>
                                     
-<li >
-    <a href="../17-scripting/">Scripting</a>
+<li>
+    <a href="../17-scripting/" class="dropdown-item">Scripting</a>
 </li>
                                     
-<li >
-    <a href="../18-mathExpr/">Math Expressions</a>
+<li>
+    <a href="../18-mathExpr/" class="dropdown-item">Math Expressions</a>
 </li>
                                     
-<li >
-    <a href="../19-scoreExpr/">Score Expressions</a>
+<li>
+    <a href="../19-scoreExpr/" class="dropdown-item">Score Expressions</a>
 </li>
                                     
-<li >
-    <a href="../20-plugins/">Plugins</a>
+<li>
+    <a href="../20-plugins/" class="dropdown-item">Plugins</a>
 </li>
                                     
-<li >
-    <a href="../21-appendices/">Grammar definition</a>
+<li>
+    <a href="../21-appendices/" class="dropdown-item">Grammar definition</a>
 </li>
                                     
-<li >
-    <a href="../22-changes/">Changes list</a>
+<li>
+    <a href="../22-changes/" class="dropdown-item">Changes list</a>
 </li>
                                     
-<li >
-    <a href="../">Index</a>
+<li>
+    <a href="../" class="dropdown-item">Index</a>
 </li>
                                 </ul>
                             </li>
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Download <b class="caret"></b></a>
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Documents <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
-<li >
-    <a href="../../rsrc/INScoreLang.pdf">Pdf documentation</a>
+<li>
+    <a href="http://berio.grame.fr/MusicNotation/Introduction-to-INScore/" class="dropdown-item">Tutorial</a>
+</li>
+                                    
+<li>
+    <a href="../../papers/" class="dropdown-item">Papers</a>
 </li>
                                 </ul>
                             </li>
-                            <li >
-                                <a href="../../about/">About</a>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Download <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../rsrc/INScoreLang.pdf" class="dropdown-item">Pdf documentation</a>
+</li>
+                                    
+<li>
+    <a href="https://github.com/grame-cncm/inscore/releases" class="dropdown-item">INScore</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../about/" class="nav-link">About</a>
                             </li>
                         </ul>
 
-                    <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
                                 <i class="fa fa-search"></i> Search
                             </a>
                         </li>
-                            <li >
-                                <a rel="next" href="../13-syncmsg/">
+                            <li class="nav-item">
+                                <a rel="prev" href="../13-syncmsg/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
-                            <li >
-                                <a rel="prev" href="../15-sensors/">
+                            <li class="nav-item">
+                                <a rel="next" href="../15-sensors/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -193,15 +189,38 @@
         </div>
 
         <div class="container">
-                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
-    <ul class="nav bs-sidenav">
-        <li class="main active"><a href="#signals-and-graphic-signals">Signals and graphic signals</a></li>
-            <li><a href="#the-signal-static-node">The 'signal' static node.</a></li>
-            <li><a href="#connecting-signals-to-graphic-attributes">Connecting signals to graphic attributes.</a></li>
-            <li><a href="#graphic-signals">Graphic signals.</a></li>
-    </ul>
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#signals-and-graphic-signals" class="nav-link">Signals and graphic signals</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#the-signal-static-node" class="nav-link">The 'signal' static node.</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#connecting-signals-to-graphic-attributes" class="nav-link">Connecting signals to graphic attributes.</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#graphic-signals" class="nav-link">Graphic signals.</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
 </div></div>
-                <div class="col-md-9" role="main">
+                    <div class="col-md-9" role="main">
 
 <script src='/BNF/railroad-diagrams.js'></script>
 
@@ -218,23 +237,19 @@ A <span class="OSC">scene</span> includes a static signal node, which OSC addres
 <p>The <span class="OSC">signal</span> node supports the <span class="OSC">get</span> message that gives the list of the defined signals and also the <span class="OSC">get connect</span> message that gives a list of all connections, but doesn't take any argument.</p>
 <p><span class="example">Example</span> 
 Querying the signal node:</p>
-<pre><code class="inscore">/ITL/scene/signal get;
+<pre><code class="language-inscore">/ITL/scene/signal get;
 </code></pre>
-
 <p>will give the enclosed signals definitions:</p>
-<pre><code class="inscore">/ITL/scene/signal/y size 200 ;
+<pre><code class="language-inscore">/ITL/scene/signal/y size 200 ;
 /ITL/scene/signal/h size 200 ;
 </code></pre>
-
 <p>And :</p>
-<pre><code class="inscore">/ITL/scene/signal get connect;
+<pre><code class="language-inscore">/ITL/scene/signal get connect;
 </code></pre>
-
 <p>will give the signal connections :</p>
-<pre><code class="inscore">/ITL/scene/signal connect cos object1:method1 ;
+<pre><code class="language-inscore">/ITL/scene/signal connect cos object1:method1 ;
 /ITL/scene/signal connect sin object2:method2 ;
 </code></pre>
-
 <h3 id="signal-messages">Signal messages.</h3>
 <p><a name="ssignal"></a>
 Signal messages can be sent to any address with the form <span class="OSC">/ITL/<em>scene</span>/signal/\textit{identifier</em>}, where <span class="OSC"><em>identifier</span></em> is a unique signal identifier.
@@ -265,13 +280,11 @@ ComplexDiagram(
 </ul>
 <p><span class="example">Example</span> 
 Creating a signal with a given buffer size:</p>
-<pre><code class="inscore">/ITL/scene/signal/mySig size 200;
+<pre><code class="language-inscore">/ITL/scene/signal/mySig size 200;
 </code></pre>
-
 <p>Creating a signal with a given set of data (the buffer size will be the data size):</p>
-<pre><code class="inscore">/ITL/scene/signal/mySig 0.\ 0.1\ 0.2\ 0.3\ 0.4\ 0.5\ 0.4\ 0.3\ 0.2\ 0.1\ 0.\ -0.1\ -0.2 ;
+<pre><code class="language-inscore">/ITL/scene/signal/mySig 0.\ 0.1\ 0.2\ 0.3\ 0.4\ 0.5\ 0.4\ 0.3\ 0.2\ 0.1\ 0.\ -0.1\ -0.2 ;
 </code></pre>
-
 <h3 id="composing-signals-in-parallel">Composing signals in parallel.</h3>
 <p><a name="parcomp"></a>
 Composing signals in parallel produces a signal which value at a time <span class="values">t</span> is a vector of the composed signals values. Thus an additional read-only attribute is defined on <strong>parallel signals</strong> : the signal <strong>dimension</strong> which is size of the signals vector. Note that the dimension property holds also for simple signals.</p>
@@ -316,15 +329,13 @@ ComplexDiagram(
 </ul>
 <p><span class="example">Example</span> 
 Putting a signal <span class="OSC">y</span> and constant signals 0.01 0. 1. 1. 1. in parallel:</p>
-<pre><code class="inscore">/ITL/scene/signal/mySig set y 0.01 0. 1. 1. 1. ;
+<pre><code class="language-inscore">/ITL/scene/signal/mySig set y 0.01 0. 1. 1. 1. ;
 </code></pre>
-
 <p>Querying the previously defined parallel signal:</p>
-<pre><code class="inscore">/ITL/scene/signal/mySig get ;
+<pre><code class="language-inscore">/ITL/scene/signal/mySig get ;
 # will give the following output: 
 /ITL/scene/signal/mySig set y 0.01 0. 1. 1. 1.
 </code></pre>
-
 <p><span class="note">Note: </span> 
 For a parallel signal:</p>
 <ul>
@@ -350,13 +361,11 @@ ComplexDiagram(
 <p>The <strong>index value</strong> <span class="values">n</span> is the index of a target signal. When the <strong>parallel marker</strong> option is not present, the values are directed to the target signal. Indexes start at 0.</p>
 <p><span class="example">Example</span> 
 Sending data to the second component of a parallel signal:</p>
-<pre><code class="inscore">/ITL/scene/signal/sig '[1]' 0.\ 0.1\ 0.2\ 0.3\ 0.4\ 0.5\ 0.4\ 0.3\ 0.2\ 0.1\ 0. ;
+<pre><code class="language-inscore">/ITL/scene/signal/sig '[1]' 0.\ 0.1\ 0.2\ 0.3\ 0.4\ 0.5\ 0.4\ 0.3\ 0.2\ 0.1\ 0. ;
 </code></pre>
-
 <p>is equivalent to the following message (assuming that the second signal name is 's2'):</p>
-<pre><code class="inscore">/ITL/scene/signal/s2 0.\ 0.1\ 0.2\ 0.3\ 0.4\ 0.5\ 0.4\ 0.3\ 0.2\ 0.1\ 0. ;
+<pre><code class="language-inscore">/ITL/scene/signal/s2 0.\ 0.1\ 0.2\ 0.3\ 0.4\ 0.5\ 0.4\ 0.3\ 0.2\ 0.1\ 0. ;
 </code></pre>
-
 <p>Note that:</p>
 <ul>
 <li>the message is ignored when <span class="values">n</span> is greater than the number of signals in parallel. Default <span class="values">n</span> value is <span class="values">0</span>. </li>
@@ -365,19 +374,16 @@ Sending data to the second component of a parallel signal:</p>
 <p>The <strong>parallel marker</strong> (<span class="OSC">~</span>) and the <strong>step value</strong> <span class="values">w</span> options affect the target signals. Let's consider <span class="values">s[n]</span> as the signal at index <span class="values">n</span>. The values are distributed in sequence and in loop to the signals <span class="values">s[n], s[n+w]...s[m]</span> where <span class="values">m</span> is the greatest value of the index <span class="values">n+(w.i)</span> that is less than the signal dimension. The default  <strong>step value</strong> is <span class="values">1</span>.</p>
 <p><span class="example">Example</span> 
 Sending data to the second and third components of a set of 3 parallel signals:</p>
-<pre><code class="inscore">/ITL/scene/signal/sig [1~] 0.1 0.2 ;
+<pre><code class="language-inscore">/ITL/scene/signal/sig [1~] 0.1 0.2 ;
 </code></pre>
-
 <p>is equivalent to the following messages (assuming that the signal dimension is 3):</p>
-<pre><code class="inscore">/ITL/scene/signal/sig [1] 0.1 ;
+<pre><code class="language-inscore">/ITL/scene/signal/sig [1] 0.1 ;
 /ITL/scene/signal/sig [2] 0.2 ;
 </code></pre>
-
 <p>or to the following (assuming that the target signal names are 's2' and 's3'):</p>
-<pre><code class="inscore">/ITL/scene/signal/s2 0.1;
+<pre><code class="language-inscore">/ITL/scene/signal/s2 0.1;
 /ITL/scene/signal/s3 0.2;
 </code></pre>
-
 <h2 id="connecting-signals-to-graphic-attributes">Connecting signals to graphic attributes.</h2>
 <p><a name="signalcnx"></a></p>
 <p>A signal may be connected to one or several graphic attributes of an object. Only the common attributes  (see section <a href="../2-common#common">common</a>) support this mechanism.
@@ -433,16 +439,14 @@ Connections are restricted to one-dimensional signals as source and to one-dimen
 A connection can't cross the borders of a component i.e. the target object and the signal node should have the same parent.</p>
 <p><span class="example">Example</span> 
 Connecting signals to attributes:</p>
-<pre><code class="inscore"># connects the values of sig1 to the red attribute of the 'rect' object 
+<pre><code class="language-inscore"># connects the values of sig1 to the red attribute of the 'rect' object 
 /ITL/scene/signal connect sig1 &quot;rect:red&quot;; 
 # connects the values of sig2 to several objects and attributes 
 /ITL/scene/signal connect sig2 &quot;rect:blue:x:rotatey[0,360]&quot; &quot;cursor:date[0,15]&quot;;
 </code></pre>
-
 <p>Disconnecting some of the previous connections :</p>
-<pre><code class="inscore">/ITL/scene/signal disconnect sig2 &quot;cursor:date&quot; &quot;rect:rotatey:blue&quot;; 
+<pre><code class="language-inscore">/ITL/scene/signal disconnect sig2 &quot;cursor:date&quot; &quot;rect:rotatey:blue&quot;; 
 </code></pre>
-
 <h2 id="graphic-signals">Graphic signals.</h2>
 <p><a name="gsignal"></a></p>
 <p>A graphic signal is the graphic representation of a set of parallel signals. It is created in the standard scene address space. A simple graphic signal is defined by a parallel signal controling the <span class="values">y</span> deviation value, the thickness and the color at each time position. The color is encoded as HSBA colors (Hue, Saturation, Brightness, Transparency). The mapping of a signal value  (<span class="values">[-1,1]</span>) to the HSBA color space is given by the table <a href="../14-graphsig#hsbamap">hsbamap</a>. </p>
@@ -524,12 +528,11 @@ ComplexDiagram(
 </ul>
 <p><span class="example">Example</span> 
 Creating a signal and its graphic representation:</p>
-<pre><code class="inscore">/ITL/scene/signal/y size 200 ; 
+<pre><code class="language-inscore">/ITL/scene/signal/y size 200 ; 
 # use of constant anonymous signals for thickness and color
 /ITL/scene/signal/sig set y 0.1 0. 1. 1. 1. ; 
 /ITL/scene/siggraph set graph sig ;
 </code></pre>
-
 <h3 id="graphic-signal-default-values">Graphic signal default values.</h3>
 <p><a name="gsigdefault"></a></p>
 <p>As mentionned above, a graphic signal expects to be connected to parallel signals having at least an <span class="values">y</span> component, a graphic thickness component and HSBA components. Thus, from graphic signal viewpoint, the expected dimension of a signal should be equal or greater than 6. In case the <span class="OSC">signalIdentifier</span> dimension is less than 6, the graphic signal will use the default values defined in table <a href="../14-graphsig#gsigdefault">gsigdefault</a>.</p>
@@ -590,7 +593,7 @@ where <em>d</em> is the dimension of the input signal.</p>
 <p>When <em>d</em> is not a mutiple of 6, then the last graphic signal makes use of the default values mentionned above.</p>
 <p><span class="example">Example</span> 
 Creating parallel graphic signals:</p>
-<pre><code class="inscore">/ITL/scene/signal/y1 size 200 ; 
+<pre><code class="language-inscore">/ITL/scene/signal/y1 size 200 ; 
 /ITL/scene/signal/y2 size 200 ; 
 # use of constant anonymous signals for thickness and color
 /ITL/scene/signal/sig1 set y1 0.1 0. 1. 1. 1. ; 
@@ -600,9 +603,9 @@ Creating parallel graphic signals:</p>
 /ITL/scene/signal/sig set sig1 sig2;      # 'sig' dimension is 12
 /ITL/scene/siggraph set graph sig; 
 </code></pre>
-
 <p><span class="note">Note: </span> 
 Using data projection may be convenient when the input signal represents interleaved data. For example, the projection string <span class="OSC">[n~6]</span> distribute data over similar components of a set of graphic signals, where <span class="OSC">n</span> represents the index of the graphic signal target component.</p></div>
+            </div>
         </div>
 
         <footer class="col-md-12">
@@ -617,23 +620,24 @@ Using data projection may be convenient when the input signal represents interle
         <script src="../../js/base.js" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" defer></script>
         <script src="/js/inscore.js" defer></script>
+        <script src="/js/pubs.js" defer></script>
         <script src="../../search/main.js" defer></script>
 
-        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
-    <div class="modal-dialog">
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
             </div>
             <div class="modal-body">
                 <p>
                     From here you can search these documents. Enter
                     your search terms below.
                 </p>
-                <form role="form">
+                <form>
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
                     </div>
                 </form>
                 <div id="mkdocs-search-results"></div>
@@ -642,12 +646,12 @@ Using data projection may be convenient when the input signal represents interle
             </div>
         </div>
     </div>
-</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
             </div>
             <div class="modal-body">
               <table class="table">

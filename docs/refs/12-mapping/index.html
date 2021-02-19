@@ -9,181 +9,177 @@
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
         <title>Mapping - INScore Documentation</title>
-        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
         <link href="/css/inscore.css" rel="stylesheet">
+        <link href="/css/pubs.css" rel="stylesheet">
         <link href="/BNF/railroad-diagrams.css" rel="stylesheet">
-        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!--[if lt IE 9]>
-            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-        <![endif]-->
 
         <script src="../../js/jquery-1.10.2.min.js" defer></script>
-        <script src="../../js/bootstrap-3.0.3.min.js" defer></script>
+        <script src="../../js/bootstrap.min.js" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
         <script>hljs.initHighlightingOnLoad();</script> 
     </head>
 
     <body>
-
-        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
             <div class="container">
-
-                <!-- Collapsed navigation -->
-                <div class="navbar-header">
-                    <!-- Expander button -->
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="../..">INScore Documentation</a>
-                </div>
+                <a class="navbar-brand" href="../..">INScore Documentation</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
                 <!-- Expanded navigation -->
-                <div class="navbar-collapse collapse">
+                <div id="navbar-collapse" class="navbar-collapse collapse">
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
-                            <li >
-                                <a href="../..">Home</a>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tutorials <b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    
-<li >
-    <a href="http://berio.grame.fr/MusicNotation/Introduction-to-INScore/">Introduction</a>
-</li>
-                                </ul>
+                            <li class="navitem">
+                                <a href="../.." class="nav-link">Home</a>
                             </li>
                             <li class="dropdown active">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Reference <b class="caret"></b></a>
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Reference <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
-<li >
-    <a href="../1-genformat/">Format of a message</a>
+<li>
+    <a href="../1-genformat/" class="dropdown-item">Format of a message</a>
 </li>
                                     
-<li >
-    <a href="../2-common/">Common Messages</a>
+<li>
+    <a href="../2-common/" class="dropdown-item">Common Messages</a>
 </li>
                                     
-<li >
-    <a href="../3-time/">Time Messages</a>
+<li>
+    <a href="../3-time/" class="dropdown-item">Time Messages</a>
 </li>
                                     
-<li >
-    <a href="../4-miscmsgs/">Miscellaneous</a>
+<li>
+    <a href="../4-miscmsgs/" class="dropdown-item">Miscellaneous</a>
 </li>
                                     
-<li >
-    <a href="../5-setsect/">The set Message</a>
+<li>
+    <a href="../5-setsect/" class="dropdown-item">The set Message</a>
 </li>
                                     
-<li >
-    <a href="../6-getsect/">The get Message</a>
+<li>
+    <a href="../6-getsect/" class="dropdown-item">The get Message</a>
 </li>
                                     
-<li >
-    <a href="../7-specificMsg/">Specific Messages</a>
+<li>
+    <a href="../7-specificMsg/" class="dropdown-item">Specific Messages</a>
 </li>
                                     
-<li >
-    <a href="../8-ITL/">Application Messages</a>
+<li>
+    <a href="../8-ITL/" class="dropdown-item">Application Messages</a>
 </li>
                                     
-<li >
-    <a href="../9-scene/">Scene Messages</a>
+<li>
+    <a href="../9-scene/" class="dropdown-item">Scene Messages</a>
 </li>
                                     
-<li >
-    <a href="../10-forwarding/">Messages Forwarding</a>
+<li>
+    <a href="../10-forwarding/" class="dropdown-item">Messages Forwarding</a>
 </li>
                                     
-<li >
-    <a href="../11-layers/">Layers</a>
+<li>
+    <a href="../11-layers/" class="dropdown-item">Layers</a>
 </li>
                                     
-<li class="active">
-    <a href="./">Mapping</a>
+<li>
+    <a href="./" class="dropdown-item active">Mapping</a>
 </li>
                                     
-<li >
-    <a href="../13-syncmsg/">Synchronization</a>
+<li>
+    <a href="../13-syncmsg/" class="dropdown-item">Synchronization</a>
 </li>
                                     
-<li >
-    <a href="../14-graphsig/">Graphic signals</a>
+<li>
+    <a href="../14-graphsig/" class="dropdown-item">Graphic signals</a>
 </li>
                                     
-<li >
-    <a href="../15-sensors/">Sensors</a>
+<li>
+    <a href="../15-sensors/" class="dropdown-item">Sensors</a>
 </li>
                                     
-<li >
-    <a href="../16-interaction/">Interaction</a>
+<li>
+    <a href="../16-interaction/" class="dropdown-item">Interaction</a>
 </li>
                                     
-<li >
-    <a href="../17-scripting/">Scripting</a>
+<li>
+    <a href="../17-scripting/" class="dropdown-item">Scripting</a>
 </li>
                                     
-<li >
-    <a href="../18-mathExpr/">Math Expressions</a>
+<li>
+    <a href="../18-mathExpr/" class="dropdown-item">Math Expressions</a>
 </li>
                                     
-<li >
-    <a href="../19-scoreExpr/">Score Expressions</a>
+<li>
+    <a href="../19-scoreExpr/" class="dropdown-item">Score Expressions</a>
 </li>
                                     
-<li >
-    <a href="../20-plugins/">Plugins</a>
+<li>
+    <a href="../20-plugins/" class="dropdown-item">Plugins</a>
 </li>
                                     
-<li >
-    <a href="../21-appendices/">Grammar definition</a>
+<li>
+    <a href="../21-appendices/" class="dropdown-item">Grammar definition</a>
 </li>
                                     
-<li >
-    <a href="../22-changes/">Changes list</a>
+<li>
+    <a href="../22-changes/" class="dropdown-item">Changes list</a>
 </li>
                                     
-<li >
-    <a href="../">Index</a>
+<li>
+    <a href="../" class="dropdown-item">Index</a>
 </li>
                                 </ul>
                             </li>
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Download <b class="caret"></b></a>
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Documents <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
-<li >
-    <a href="../../rsrc/INScoreLang.pdf">Pdf documentation</a>
+<li>
+    <a href="http://berio.grame.fr/MusicNotation/Introduction-to-INScore/" class="dropdown-item">Tutorial</a>
+</li>
+                                    
+<li>
+    <a href="../../papers/" class="dropdown-item">Papers</a>
 </li>
                                 </ul>
                             </li>
-                            <li >
-                                <a href="../../about/">About</a>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Download <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../rsrc/INScoreLang.pdf" class="dropdown-item">Pdf documentation</a>
+</li>
+                                    
+<li>
+    <a href="https://github.com/grame-cncm/inscore/releases" class="dropdown-item">INScore</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../about/" class="nav-link">About</a>
                             </li>
                         </ul>
 
-                    <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
                                 <i class="fa fa-search"></i> Search
                             </a>
                         </li>
-                            <li >
-                                <a rel="next" href="../11-layers/">
+                            <li class="nav-item">
+                                <a rel="prev" href="../11-layers/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
-                            <li >
-                                <a rel="prev" href="../13-syncmsg/">
+                            <li class="nav-item">
+                                <a rel="next" href="../13-syncmsg/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -193,16 +189,42 @@
         </div>
 
         <div class="container">
-                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
-    <ul class="nav bs-sidenav">
-        <li class="main active"><a href="#mapping-graphic-space-to-time-space">Mapping graphic space to time space</a></li>
-            <li><a href="#the-map-message">The 'map' message</a></li>
-            <li><a href="#the-map-message_1">The 'map+' message</a></li>
-            <li><a href="#mapping-files">Mapping files</a></li>
-            <li><a href="#symbolic-score-mappings">Symbolic score mappings</a></li>
-    </ul>
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#mapping-graphic-space-to-time-space" class="nav-link">Mapping graphic space to time space</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#the-map-message" class="nav-link">The 'map' message</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#the-map-message_1" class="nav-link">The 'map+' message</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#mapping-files" class="nav-link">Mapping files</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#symbolic-score-mappings" class="nav-link">Symbolic score mappings</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
 </div></div>
-                <div class="col-md-9" role="main">
+                    <div class="col-md-9" role="main">
 
 <script src='/BNF/railroad-diagrams.js'></script>
 
@@ -407,24 +429,22 @@ ComplexDiagram(
 
 <p><span class="example">Example</span> 
 Mapping an image graphic space to time:</p>
-<pre><code class="inscore">/ITL/scene/myImage map 
+<pre><code class="language-inscore">/ITL/scene/myImage map 
   &quot;( [0, 67[    [0, 86[ ) ( [0/2, 1/2[ ) 
   ( [67, 113[  [0, 86[ ) ( [1/2, 1/1[ ) 
   ( [113, 153[ [0, 86[ ) ( [1/1, 3/2[ ) 
   ( [153, 190[ [0, 86[ ) ( [3/2, 2/1[ ) 
   ( [190, 235[ [0, 86[ ) ( [2/1, 5/2[ )&quot; ;
 </code></pre>
-
 <p>the image is horizontally segmented into 5 different graphic segments that express pixel positions. The vertical dimension of the segments remains the same and corresponds to the interval <span class="values">[0, 86[</span>. Each graphic segment is associated to a time interval which duration is 1/2 (a half note).</p>
 <p>The same mapping using absolute time assumes that 1 second is equal to 1 quarter note:</p>
-<pre><code class="inscore">/ITL/scene/myImage map 
+<pre><code class="language-inscore">/ITL/scene/myImage map 
   &quot;( [0, 67[    [0, 86[ )   ( [0:0:0, 0:2:0[ ) 
   ( [67, 113[  [0, 86[ ) ( [0:2:0, 0:4:0[ ) 
   ( [113, 153[ [0, 86[ ) ( [0:4:0, 0:6:0[ ) 
   ( [153, 190[ [0, 86[ ) ( [0:6:0, 0:8:0[ ) 
   ( [190, 235[ [0, 86[ ) ( [0:8:0, 0:10:0[ )&quot; ;
 </code></pre>
-
 <p><span class="note">Note: about local spaces</span></p>
 <ul>
 <li>Text objects (<span class="OSC">txt txtf</span>) local space is expressed by intervals on columns and rows.</li>
@@ -489,15 +509,14 @@ ComplexDiagram(
 <p>The default mapping for a symbolic score is unnamed but equivalent to <span class="OSC">staff1</span>.</p>
 <p><span class="example">Example</span> 
 Requesting the mapping of the third staff of a score:</p>
-<pre><code class="inscore">/ITL/scene/myScore map staff3;
+<pre><code class="language-inscore">/ITL/scene/myScore map staff3;
 </code></pre>
-
 <p>Requesting the system mapping :</p>
-<pre><code class="inscore">/ITL/scene/myScore map system;
+<pre><code class="language-inscore">/ITL/scene/myScore map system;
 </code></pre>
-
 <p><span class="note">Note: </span> 
 A voice may be distributed on several staves and thus a staff may contain several voices.</p></div>
+            </div>
         </div>
 
         <footer class="col-md-12">
@@ -512,23 +531,24 @@ A voice may be distributed on several staves and thus a staff may contain severa
         <script src="../../js/base.js" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" defer></script>
         <script src="/js/inscore.js" defer></script>
+        <script src="/js/pubs.js" defer></script>
         <script src="../../search/main.js" defer></script>
 
-        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
-    <div class="modal-dialog">
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
             </div>
             <div class="modal-body">
                 <p>
                     From here you can search these documents. Enter
                     your search terms below.
                 </p>
-                <form role="form">
+                <form>
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
                     </div>
                 </form>
                 <div id="mkdocs-search-results"></div>
@@ -537,12 +557,12 @@ A voice may be distributed on several staves and thus a staff may contain severa
             </div>
         </div>
     </div>
-</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
             </div>
             <div class="modal-body">
               <table class="table">

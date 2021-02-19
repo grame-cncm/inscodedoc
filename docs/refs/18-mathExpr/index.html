@@ -9,181 +9,177 @@
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
         <title>Math Expressions - INScore Documentation</title>
-        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
         <link href="/css/inscore.css" rel="stylesheet">
+        <link href="/css/pubs.css" rel="stylesheet">
         <link href="/BNF/railroad-diagrams.css" rel="stylesheet">
-        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!--[if lt IE 9]>
-            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-        <![endif]-->
 
         <script src="../../js/jquery-1.10.2.min.js" defer></script>
-        <script src="../../js/bootstrap-3.0.3.min.js" defer></script>
+        <script src="../../js/bootstrap.min.js" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
         <script>hljs.initHighlightingOnLoad();</script> 
     </head>
 
     <body>
-
-        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
             <div class="container">
-
-                <!-- Collapsed navigation -->
-                <div class="navbar-header">
-                    <!-- Expander button -->
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="../..">INScore Documentation</a>
-                </div>
+                <a class="navbar-brand" href="../..">INScore Documentation</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
                 <!-- Expanded navigation -->
-                <div class="navbar-collapse collapse">
+                <div id="navbar-collapse" class="navbar-collapse collapse">
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
-                            <li >
-                                <a href="../..">Home</a>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tutorials <b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    
-<li >
-    <a href="http://berio.grame.fr/MusicNotation/Introduction-to-INScore/">Introduction</a>
-</li>
-                                </ul>
+                            <li class="navitem">
+                                <a href="../.." class="nav-link">Home</a>
                             </li>
                             <li class="dropdown active">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Reference <b class="caret"></b></a>
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Reference <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
-<li >
-    <a href="../1-genformat/">Format of a message</a>
+<li>
+    <a href="../1-genformat/" class="dropdown-item">Format of a message</a>
 </li>
                                     
-<li >
-    <a href="../2-common/">Common Messages</a>
+<li>
+    <a href="../2-common/" class="dropdown-item">Common Messages</a>
 </li>
                                     
-<li >
-    <a href="../3-time/">Time Messages</a>
+<li>
+    <a href="../3-time/" class="dropdown-item">Time Messages</a>
 </li>
                                     
-<li >
-    <a href="../4-miscmsgs/">Miscellaneous</a>
+<li>
+    <a href="../4-miscmsgs/" class="dropdown-item">Miscellaneous</a>
 </li>
                                     
-<li >
-    <a href="../5-setsect/">The set Message</a>
+<li>
+    <a href="../5-setsect/" class="dropdown-item">The set Message</a>
 </li>
                                     
-<li >
-    <a href="../6-getsect/">The get Message</a>
+<li>
+    <a href="../6-getsect/" class="dropdown-item">The get Message</a>
 </li>
                                     
-<li >
-    <a href="../7-specificMsg/">Specific Messages</a>
+<li>
+    <a href="../7-specificMsg/" class="dropdown-item">Specific Messages</a>
 </li>
                                     
-<li >
-    <a href="../8-ITL/">Application Messages</a>
+<li>
+    <a href="../8-ITL/" class="dropdown-item">Application Messages</a>
 </li>
                                     
-<li >
-    <a href="../9-scene/">Scene Messages</a>
+<li>
+    <a href="../9-scene/" class="dropdown-item">Scene Messages</a>
 </li>
                                     
-<li >
-    <a href="../10-forwarding/">Messages Forwarding</a>
+<li>
+    <a href="../10-forwarding/" class="dropdown-item">Messages Forwarding</a>
 </li>
                                     
-<li >
-    <a href="../11-layers/">Layers</a>
+<li>
+    <a href="../11-layers/" class="dropdown-item">Layers</a>
 </li>
                                     
-<li >
-    <a href="../12-mapping/">Mapping</a>
+<li>
+    <a href="../12-mapping/" class="dropdown-item">Mapping</a>
 </li>
                                     
-<li >
-    <a href="../13-syncmsg/">Synchronization</a>
+<li>
+    <a href="../13-syncmsg/" class="dropdown-item">Synchronization</a>
 </li>
                                     
-<li >
-    <a href="../14-graphsig/">Graphic signals</a>
+<li>
+    <a href="../14-graphsig/" class="dropdown-item">Graphic signals</a>
 </li>
                                     
-<li >
-    <a href="../15-sensors/">Sensors</a>
+<li>
+    <a href="../15-sensors/" class="dropdown-item">Sensors</a>
 </li>
                                     
-<li >
-    <a href="../16-interaction/">Interaction</a>
+<li>
+    <a href="../16-interaction/" class="dropdown-item">Interaction</a>
 </li>
                                     
-<li >
-    <a href="../17-scripting/">Scripting</a>
+<li>
+    <a href="../17-scripting/" class="dropdown-item">Scripting</a>
 </li>
                                     
-<li class="active">
-    <a href="./">Math Expressions</a>
+<li>
+    <a href="./" class="dropdown-item active">Math Expressions</a>
 </li>
                                     
-<li >
-    <a href="../19-scoreExpr/">Score Expressions</a>
+<li>
+    <a href="../19-scoreExpr/" class="dropdown-item">Score Expressions</a>
 </li>
                                     
-<li >
-    <a href="../20-plugins/">Plugins</a>
+<li>
+    <a href="../20-plugins/" class="dropdown-item">Plugins</a>
 </li>
                                     
-<li >
-    <a href="../21-appendices/">Grammar definition</a>
+<li>
+    <a href="../21-appendices/" class="dropdown-item">Grammar definition</a>
 </li>
                                     
-<li >
-    <a href="../22-changes/">Changes list</a>
+<li>
+    <a href="../22-changes/" class="dropdown-item">Changes list</a>
 </li>
                                     
-<li >
-    <a href="../">Index</a>
+<li>
+    <a href="../" class="dropdown-item">Index</a>
 </li>
                                 </ul>
                             </li>
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Download <b class="caret"></b></a>
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Documents <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
-<li >
-    <a href="../../rsrc/INScoreLang.pdf">Pdf documentation</a>
+<li>
+    <a href="http://berio.grame.fr/MusicNotation/Introduction-to-INScore/" class="dropdown-item">Tutorial</a>
+</li>
+                                    
+<li>
+    <a href="../../papers/" class="dropdown-item">Papers</a>
 </li>
                                 </ul>
                             </li>
-                            <li >
-                                <a href="../../about/">About</a>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Download <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../rsrc/INScoreLang.pdf" class="dropdown-item">Pdf documentation</a>
+</li>
+                                    
+<li>
+    <a href="https://github.com/grame-cncm/inscore/releases" class="dropdown-item">INScore</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../about/" class="nav-link">About</a>
                             </li>
                         </ul>
 
-                    <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
                                 <i class="fa fa-search"></i> Search
                             </a>
                         </li>
-                            <li >
-                                <a rel="next" href="../17-scripting/">
+                            <li class="nav-item">
+                                <a rel="prev" href="../17-scripting/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
-                            <li >
-                                <a rel="prev" href="../19-scoreExpr/">
+                            <li class="nav-item">
+                                <a rel="next" href="../19-scoreExpr/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -193,15 +189,38 @@
         </div>
 
         <div class="container">
-                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
-    <ul class="nav bs-sidenav">
-        <li class="main active"><a href="#mathematical-expressions">Mathematical expressions</a></li>
-            <li><a href="#operators">Operators</a></li>
-            <li><a href="#arguments">Arguments</a></li>
-            <li><a href="#polymorphism">Polymorphism</a></li>
-    </ul>
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#mathematical-expressions" class="nav-link">Mathematical expressions</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#operators" class="nav-link">Operators</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#arguments" class="nav-link">Arguments</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#polymorphism" class="nav-link">Polymorphism</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
 </div></div>
-                <div class="col-md-9" role="main">
+                    <div class="col-md-9" role="main">
 
 <script src='/BNF/railroad-diagrams.js'></script>
 
@@ -237,10 +256,9 @@ ComplexDiagram(
 </ul>
 <p><span class="example">Example</span>
 Some simple mathematical expressions used as message parameters:</p>
-<pre><code class="inscore">/ITL/scene/myObject x 0.5 * 0.2;
+<pre><code class="language-inscore">/ITL/scene/myObject x 0.5 * 0.2;
 /ITL/scene/myObject y ($var ? 1 : -1);
 </code></pre>
-
 <p>Boolean operations are the following:</p>
 <p><a name="18-mathExpr-booleans"></a></p>
 <div class="rail">
@@ -264,9 +282,8 @@ ComplexDiagram(
 </ul>
 <p><span class="example">Example</span>
 Compare two variables:</p>
-<pre><code class="inscore">/ITL/scene/myObject x ($var1 &gt; $var2 ? 1 : -1);
+<pre><code class="language-inscore">/ITL/scene/myObject x ($var1 &gt; $var2 ? 1 : -1);
 </code></pre>
-
 <h2 id="arguments">Arguments</h2>
 <p><a name="mathargs"></a></p>
 <p>Arguments of mathematical operations are the following:</p>
@@ -451,6 +468,7 @@ or
 </script>
 </p>
 <p>Boolean operations on arrays are evaluated as the logical <script type="math/tex">and</script> of it's element's boolean values and generate an error when the arrays sizes differ.</p></div>
+            </div>
         </div>
 
         <footer class="col-md-12">
@@ -465,23 +483,24 @@ or
         <script src="../../js/base.js" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" defer></script>
         <script src="/js/inscore.js" defer></script>
+        <script src="/js/pubs.js" defer></script>
         <script src="../../search/main.js" defer></script>
 
-        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
-    <div class="modal-dialog">
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
             </div>
             <div class="modal-body">
                 <p>
                     From here you can search these documents. Enter
                     your search terms below.
                 </p>
-                <form role="form">
+                <form>
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
                     </div>
                 </form>
                 <div id="mkdocs-search-results"></div>
@@ -490,12 +509,12 @@ or
             </div>
         </div>
     </div>
-</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
             </div>
             <div class="modal-body">
               <table class="table">

@@ -9,181 +9,177 @@
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
         <title>The set Message - INScore Documentation</title>
-        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
         <link href="/css/inscore.css" rel="stylesheet">
+        <link href="/css/pubs.css" rel="stylesheet">
         <link href="/BNF/railroad-diagrams.css" rel="stylesheet">
-        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!--[if lt IE 9]>
-            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-        <![endif]-->
 
         <script src="../../js/jquery-1.10.2.min.js" defer></script>
-        <script src="../../js/bootstrap-3.0.3.min.js" defer></script>
+        <script src="../../js/bootstrap.min.js" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
         <script>hljs.initHighlightingOnLoad();</script> 
     </head>
 
     <body>
-
-        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
             <div class="container">
-
-                <!-- Collapsed navigation -->
-                <div class="navbar-header">
-                    <!-- Expander button -->
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="../..">INScore Documentation</a>
-                </div>
+                <a class="navbar-brand" href="../..">INScore Documentation</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
                 <!-- Expanded navigation -->
-                <div class="navbar-collapse collapse">
+                <div id="navbar-collapse" class="navbar-collapse collapse">
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
-                            <li >
-                                <a href="../..">Home</a>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tutorials <b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    
-<li >
-    <a href="http://berio.grame.fr/MusicNotation/Introduction-to-INScore/">Introduction</a>
-</li>
-                                </ul>
+                            <li class="navitem">
+                                <a href="../.." class="nav-link">Home</a>
                             </li>
                             <li class="dropdown active">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Reference <b class="caret"></b></a>
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Reference <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
-<li >
-    <a href="../1-genformat/">Format of a message</a>
+<li>
+    <a href="../1-genformat/" class="dropdown-item">Format of a message</a>
 </li>
                                     
-<li >
-    <a href="../2-common/">Common Messages</a>
+<li>
+    <a href="../2-common/" class="dropdown-item">Common Messages</a>
 </li>
                                     
-<li >
-    <a href="../3-time/">Time Messages</a>
+<li>
+    <a href="../3-time/" class="dropdown-item">Time Messages</a>
 </li>
                                     
-<li >
-    <a href="../4-miscmsgs/">Miscellaneous</a>
+<li>
+    <a href="../4-miscmsgs/" class="dropdown-item">Miscellaneous</a>
 </li>
                                     
-<li class="active">
-    <a href="./">The set Message</a>
+<li>
+    <a href="./" class="dropdown-item active">The set Message</a>
 </li>
                                     
-<li >
-    <a href="../6-getsect/">The get Message</a>
+<li>
+    <a href="../6-getsect/" class="dropdown-item">The get Message</a>
 </li>
                                     
-<li >
-    <a href="../7-specificMsg/">Specific Messages</a>
+<li>
+    <a href="../7-specificMsg/" class="dropdown-item">Specific Messages</a>
 </li>
                                     
-<li >
-    <a href="../8-ITL/">Application Messages</a>
+<li>
+    <a href="../8-ITL/" class="dropdown-item">Application Messages</a>
 </li>
                                     
-<li >
-    <a href="../9-scene/">Scene Messages</a>
+<li>
+    <a href="../9-scene/" class="dropdown-item">Scene Messages</a>
 </li>
                                     
-<li >
-    <a href="../10-forwarding/">Messages Forwarding</a>
+<li>
+    <a href="../10-forwarding/" class="dropdown-item">Messages Forwarding</a>
 </li>
                                     
-<li >
-    <a href="../11-layers/">Layers</a>
+<li>
+    <a href="../11-layers/" class="dropdown-item">Layers</a>
 </li>
                                     
-<li >
-    <a href="../12-mapping/">Mapping</a>
+<li>
+    <a href="../12-mapping/" class="dropdown-item">Mapping</a>
 </li>
                                     
-<li >
-    <a href="../13-syncmsg/">Synchronization</a>
+<li>
+    <a href="../13-syncmsg/" class="dropdown-item">Synchronization</a>
 </li>
                                     
-<li >
-    <a href="../14-graphsig/">Graphic signals</a>
+<li>
+    <a href="../14-graphsig/" class="dropdown-item">Graphic signals</a>
 </li>
                                     
-<li >
-    <a href="../15-sensors/">Sensors</a>
+<li>
+    <a href="../15-sensors/" class="dropdown-item">Sensors</a>
 </li>
                                     
-<li >
-    <a href="../16-interaction/">Interaction</a>
+<li>
+    <a href="../16-interaction/" class="dropdown-item">Interaction</a>
 </li>
                                     
-<li >
-    <a href="../17-scripting/">Scripting</a>
+<li>
+    <a href="../17-scripting/" class="dropdown-item">Scripting</a>
 </li>
                                     
-<li >
-    <a href="../18-mathExpr/">Math Expressions</a>
+<li>
+    <a href="../18-mathExpr/" class="dropdown-item">Math Expressions</a>
 </li>
                                     
-<li >
-    <a href="../19-scoreExpr/">Score Expressions</a>
+<li>
+    <a href="../19-scoreExpr/" class="dropdown-item">Score Expressions</a>
 </li>
                                     
-<li >
-    <a href="../20-plugins/">Plugins</a>
+<li>
+    <a href="../20-plugins/" class="dropdown-item">Plugins</a>
 </li>
                                     
-<li >
-    <a href="../21-appendices/">Grammar definition</a>
+<li>
+    <a href="../21-appendices/" class="dropdown-item">Grammar definition</a>
 </li>
                                     
-<li >
-    <a href="../22-changes/">Changes list</a>
+<li>
+    <a href="../22-changes/" class="dropdown-item">Changes list</a>
 </li>
                                     
-<li >
-    <a href="../">Index</a>
+<li>
+    <a href="../" class="dropdown-item">Index</a>
 </li>
                                 </ul>
                             </li>
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Download <b class="caret"></b></a>
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Documents <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
-<li >
-    <a href="../../rsrc/INScoreLang.pdf">Pdf documentation</a>
+<li>
+    <a href="http://berio.grame.fr/MusicNotation/Introduction-to-INScore/" class="dropdown-item">Tutorial</a>
+</li>
+                                    
+<li>
+    <a href="../../papers/" class="dropdown-item">Papers</a>
 </li>
                                 </ul>
                             </li>
-                            <li >
-                                <a href="../../about/">About</a>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Download <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../rsrc/INScoreLang.pdf" class="dropdown-item">Pdf documentation</a>
+</li>
+                                    
+<li>
+    <a href="https://github.com/grame-cncm/inscore/releases" class="dropdown-item">INScore</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../about/" class="nav-link">About</a>
                             </li>
                         </ul>
 
-                    <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
                                 <i class="fa fa-search"></i> Search
                             </a>
                         </li>
-                            <li >
-                                <a rel="next" href="../4-miscmsgs/">
+                            <li class="nav-item">
+                                <a rel="prev" href="../4-miscmsgs/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
-                            <li >
-                                <a rel="prev" href="../6-getsect/">
+                            <li class="nav-item">
+                                <a rel="next" href="../6-getsect/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -193,22 +189,66 @@
         </div>
 
         <div class="container">
-                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
-    <ul class="nav bs-sidenav">
-        <li class="main active"><a href="#the-set-message">The 'set' message</a></li>
-            <li><a href="#symbolic-music-notation">Symbolic music notation</a></li>
-            <li><a href="#piano-roll-music-notation">Piano roll music notation</a></li>
-            <li><a href="#textual-components">Textual components</a></li>
-            <li><a href="#vectorial-graphics">Vectorial graphics</a></li>
-            <li><a href="#signals-and-graphic-signals">Signals and graphic signals</a></li>
-            <li><a href="#images-and-video">Images and video</a></li>
-            <li><a href="#miscellaneous">Miscellaneous</a></li>
-            <li><a href="#file-based-resources">File based resources</a></li>
-            <li><a href="#the-file-type">The file type</a></li>
-            <li><a href="#web-objects">Web objects</a></li>
-    </ul>
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#the-set-message" class="nav-link">The 'set' message</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#symbolic-music-notation" class="nav-link">Symbolic music notation</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#piano-roll-music-notation" class="nav-link">Piano roll music notation</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#textual-components" class="nav-link">Textual components</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#vectorial-graphics" class="nav-link">Vectorial graphics</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#signals-and-graphic-signals" class="nav-link">Signals and graphic signals</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#images-and-video" class="nav-link">Images and video</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#miscellaneous" class="nav-link">Miscellaneous</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#file-based-resources" class="nav-link">File based resources</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#the-file-type" class="nav-link">The file type</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#web-objects" class="nav-link">Web objects</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
 </div></div>
-                <div class="col-md-9" role="main">
+                    <div class="col-md-9" role="main">
 
 <script src='/BNF/railroad-diagrams.js'></script>
 
@@ -257,15 +297,13 @@ ComplexDiagram(
 </ul>
 <p><span class="example">Example</span> 
 Creating a music score using a Guido Music Notation language string.</p>
-<pre><code class="inscore">/ITL/scene/myObject set gmn &quot;[ a b g ]&quot;;
+<pre><code class="language-inscore">/ITL/scene/myObject set gmn &quot;[ a b g ]&quot;;
 </code></pre>
-
 <p>Creating the same music score as a stream.</p>
-<pre><code class="inscore">/ITL/scene/myObject set gmnstream &quot;[ a&quot;;
+<pre><code class="language-inscore">/ITL/scene/myObject set gmnstream &quot;[ a&quot;;
 /ITL/scene/myObject write &quot;b&quot;;
 /ITL/scene/myObject write &quot;g&quot;;
 </code></pre>
-
 <p><span class="note">Note: </span> For compatibility with previous versions, passing a MusicXML string to a <span class="OSC">gmn</span> object or a MusicXML file to a <span class="OSC">gmnf</span> object may succed since the system tries to parse the content as GMN content or as MusicXML content when the former fails.</p>
 <p><span class="note">Note: </span> Conversion from MusicXML to GMN could be achieved manually using a command line tool that is distributed with the MusicXML library (see at <a href="https://github.com/dfober/libmusicxml">https://github.com/dfober/libmusicxml</a>). It allows to improve the output GMN code afterhand.</p>
 <h2 id="piano-roll-music-notation">Piano roll music notation</h2>
@@ -293,15 +331,13 @@ ComplexDiagram(
 </ul>
 <p><span class="example">Example</span> 
 Creating a pianoroll using a Guido Music Notation language string.</p>
-<pre><code class="inscore">/ITL/scene/myObject set pianoroll &quot;[ a b g ]&quot;;
+<pre><code class="language-inscore">/ITL/scene/myObject set pianoroll &quot;[ a b g ]&quot;;
 </code></pre>
-
 <p>Creating the same piano roll as a stream.</p>
-<pre><code class="inscore">/ITL/scene/myObject set pianorollstream &quot;[ a&quot;;
+<pre><code class="language-inscore">/ITL/scene/myObject set pianorollstream &quot;[ a&quot;;
 /ITL/scene/myObject write &quot;b&quot;;
 /ITL/scene/myObject write &quot;g&quot;;
 </code></pre>
-
 <h2 id="textual-components">Textual components</h2>
 <p><a name="textscore"></a></p>
 <p><a name="5-setsect-txt"></a>
@@ -337,13 +373,11 @@ ComplexDiagram(
 
 <p><span class="example">Example</span> 
 Creating a text object.</p>
-<pre><code class="inscore">/ITL/scene/myObject set txt &quot;Hello ...    world!&quot;;
+<pre><code class="language-inscore">/ITL/scene/myObject set txt &quot;Hello ...    world!&quot;;
 </code></pre>
-
 <p>Setting the content of a text object using a values stream.</p>
-<pre><code class="inscore">/ITL/scene/myObject set txt Hello 1 world and 0.5; 
+<pre><code class="language-inscore">/ITL/scene/myObject set txt Hello 1 world and 0.5; 
 </code></pre>
-
 <h2 id="vectorial-graphics">Vectorial graphics</h2>
 <p><a name="vgraphscore"></a></p>
 <p><a name="5-setsect-svg"></a>
@@ -376,13 +410,11 @@ ComplexDiagram(
 </ul>
 <p><span class="example">Example</span> 
 Creating a rectangle with a 0.5 width and a 1.5 height.</p>
-<pre><code class="inscore">/ITL/scene/myObject set rect 0.5 1.5;
+<pre><code class="language-inscore">/ITL/scene/myObject set rect 0.5 1.5;
 </code></pre>
-
 <p>Creating a line specified using width and angle.</p>
-<pre><code class="inscore">/ITL/scene/myObject set line wa 1. 45.;
+<pre><code class="language-inscore">/ITL/scene/myObject set line wa 1. 45.;
 </code></pre>
-
 <h2 id="signals-and-graphic-signals">Signals and graphic signals</h2>
 <p><a name="sigscore"></a></p>
 <p>Signals are special objects that are stored in a special <span class="OSC">signal</span> node and that may be composed in parallel to produce graphic signals. Signals and graphic signals are decribed in section <a href="../14-graphsig#graphsig">graphsig</a>.</p>
@@ -432,19 +464,16 @@ ComplexDiagram(
 </ul>
 <p><span class="example">Example</span> 
 Creating an image.</p>
-<pre><code class="inscore">/ITL/scene/myObject set img &quot;myImage.png&quot;;
+<pre><code class="language-inscore">/ITL/scene/myObject set img &quot;myImage.png&quot;;
 </code></pre>
-
 <p>Creating a memory image of a scene.</p>
-<pre><code class="inscore">/ITL/scene/myObject set memimg &quot;/ITL/scene&quot;;
+<pre><code class="language-inscore">/ITL/scene/myObject set memimg &quot;/ITL/scene&quot;;
 </code></pre>
-
 <p><span class="note">Note: </span> 
 It is necessary to have an object or scene graphically rendered before a capture can be made. Since the actual graphic rendering is made asynchronously to the model update, a sequence of messages like the following:</p>
-<pre><code class="inscore">/ITL/scene/myObject set gmn &quot;[a f g]&quot;;
+<pre><code class="language-inscore">/ITL/scene/myObject set gmn &quot;[a f g]&quot;;
 /ITL/scene/capture set memimg myObject;
 </code></pre>
-
 <p>won't work if the messages are handled by the same time task. A delay is necessary between the two messages. To make sure all the objects have been rendered, you can use the scene <span class="OSC">endPaint</span> event.</p>
 <h2 id="miscellaneous">Miscellaneous</h2>
 <p><a name="miscscore"></a></p>
@@ -484,11 +513,10 @@ ComplexDiagram(
 <p>The <span class="OSC">url</span> intermediate object acts as a proxy for the target object and will transfer all its properties once the data are ready. A client can thus interact transparently with the target adress, whatever the status of the download request.</p>
 <p><span class="example">Example</span> 
 Creating a score using an URL:</p>
-<pre><code class="inscore">/ITL/scene/score set gmnf &quot;http://anyhost.adomain.org/score.gmn&quot;; 
+<pre><code class="language-inscore">/ITL/scene/score set gmnf &quot;http://anyhost.adomain.org/score.gmn&quot;; 
 #  is equivalent to 
 /ITL/scene/score set url gmnf &quot;http://anyhost.adomain.org/score.gmn&quot;;
 </code></pre>
-
 <p><span class="note">Note: </span> The <span class="OSC">url</span> object handles specific events : <span class="OSC">success</span>, <span class="OSC">error</span> and <span class="OSC">cancel</span> (see the section <a href="../16-interaction#urlevents">urlevents</a>).</p>
 <h2 id="the-file-type">The file type</h2>
 <p><a name="fileset"></a>
@@ -557,11 +585,10 @@ ComplexDiagram(
 <p><span class='caption'>File extensions supported by the <span class="OSC">file</span> translation scheme.</span></p>
 <p><span class="example">Example</span> 
 Creating an image using the <span class="OSC">file</span> type.</p>
-<pre><code class="inscore">/ITL/scene/myObject set file &quot;myImage.png&quot;; 
+<pre><code class="language-inscore">/ITL/scene/myObject set file &quot;myImage.png&quot;; 
 #  is equivalent to 
 /ITL/scene/myObject set img &quot;myImage.png&quot;;
 </code></pre>
-
 <h2 id="web-objects">Web objects</h2>
 <p><a name="webobjects"></a></p>
 <p>A score can make its content available to the Internet using specific components that provide an image of the scene over http or websocket protocols.</p>
@@ -587,10 +614,10 @@ ComplexDiagram(
 A busy port prevents the server to start. The server status can be checked with the <span class="OSC">get status</span> message.</p>
 <p><span class="example">Example</span> 
 Creating an websocket server using the port <span class="OSC">1234</span> and limiting the notifications rate to one per 500 milliseconds.</p>
-<pre><code class="inscore">/ITL/scene/myObject set websocket 1234 500;
+<pre><code class="language-inscore">/ITL/scene/myObject set websocket 1234 500;
 </code></pre>
-
 <p><span class="seealso">See also:</span> the http web server plugin (section <a href="../20-plugins#Httpd">Httpd</a>).</p></div>
+            </div>
         </div>
 
         <footer class="col-md-12">
@@ -605,23 +632,24 @@ Creating an websocket server using the port <span class="OSC">1234</span> and li
         <script src="../../js/base.js" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" defer></script>
         <script src="/js/inscore.js" defer></script>
+        <script src="/js/pubs.js" defer></script>
         <script src="../../search/main.js" defer></script>
 
-        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
-    <div class="modal-dialog">
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
             </div>
             <div class="modal-body">
                 <p>
                     From here you can search these documents. Enter
                     your search terms below.
                 </p>
-                <form role="form">
+                <form>
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
                     </div>
                 </form>
                 <div id="mkdocs-search-results"></div>
@@ -630,12 +658,12 @@ Creating an websocket server using the port <span class="OSC">1234</span> and li
             </div>
         </div>
     </div>
-</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
             </div>
             <div class="modal-body">
               <table class="table">

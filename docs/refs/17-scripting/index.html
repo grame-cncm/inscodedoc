@@ -9,181 +9,177 @@
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
         <title>Scripting - INScore Documentation</title>
-        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
         <link href="/css/inscore.css" rel="stylesheet">
+        <link href="/css/pubs.css" rel="stylesheet">
         <link href="/BNF/railroad-diagrams.css" rel="stylesheet">
-        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!--[if lt IE 9]>
-            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-        <![endif]-->
 
         <script src="../../js/jquery-1.10.2.min.js" defer></script>
-        <script src="../../js/bootstrap-3.0.3.min.js" defer></script>
+        <script src="../../js/bootstrap.min.js" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
         <script>hljs.initHighlightingOnLoad();</script> 
     </head>
 
     <body>
-
-        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
             <div class="container">
-
-                <!-- Collapsed navigation -->
-                <div class="navbar-header">
-                    <!-- Expander button -->
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="../..">INScore Documentation</a>
-                </div>
+                <a class="navbar-brand" href="../..">INScore Documentation</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
                 <!-- Expanded navigation -->
-                <div class="navbar-collapse collapse">
+                <div id="navbar-collapse" class="navbar-collapse collapse">
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
-                            <li >
-                                <a href="../..">Home</a>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tutorials <b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    
-<li >
-    <a href="http://berio.grame.fr/MusicNotation/Introduction-to-INScore/">Introduction</a>
-</li>
-                                </ul>
+                            <li class="navitem">
+                                <a href="../.." class="nav-link">Home</a>
                             </li>
                             <li class="dropdown active">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Reference <b class="caret"></b></a>
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Reference <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
-<li >
-    <a href="../1-genformat/">Format of a message</a>
+<li>
+    <a href="../1-genformat/" class="dropdown-item">Format of a message</a>
 </li>
                                     
-<li >
-    <a href="../2-common/">Common Messages</a>
+<li>
+    <a href="../2-common/" class="dropdown-item">Common Messages</a>
 </li>
                                     
-<li >
-    <a href="../3-time/">Time Messages</a>
+<li>
+    <a href="../3-time/" class="dropdown-item">Time Messages</a>
 </li>
                                     
-<li >
-    <a href="../4-miscmsgs/">Miscellaneous</a>
+<li>
+    <a href="../4-miscmsgs/" class="dropdown-item">Miscellaneous</a>
 </li>
                                     
-<li >
-    <a href="../5-setsect/">The set Message</a>
+<li>
+    <a href="../5-setsect/" class="dropdown-item">The set Message</a>
 </li>
                                     
-<li >
-    <a href="../6-getsect/">The get Message</a>
+<li>
+    <a href="../6-getsect/" class="dropdown-item">The get Message</a>
 </li>
                                     
-<li >
-    <a href="../7-specificMsg/">Specific Messages</a>
+<li>
+    <a href="../7-specificMsg/" class="dropdown-item">Specific Messages</a>
 </li>
                                     
-<li >
-    <a href="../8-ITL/">Application Messages</a>
+<li>
+    <a href="../8-ITL/" class="dropdown-item">Application Messages</a>
 </li>
                                     
-<li >
-    <a href="../9-scene/">Scene Messages</a>
+<li>
+    <a href="../9-scene/" class="dropdown-item">Scene Messages</a>
 </li>
                                     
-<li >
-    <a href="../10-forwarding/">Messages Forwarding</a>
+<li>
+    <a href="../10-forwarding/" class="dropdown-item">Messages Forwarding</a>
 </li>
                                     
-<li >
-    <a href="../11-layers/">Layers</a>
+<li>
+    <a href="../11-layers/" class="dropdown-item">Layers</a>
 </li>
                                     
-<li >
-    <a href="../12-mapping/">Mapping</a>
+<li>
+    <a href="../12-mapping/" class="dropdown-item">Mapping</a>
 </li>
                                     
-<li >
-    <a href="../13-syncmsg/">Synchronization</a>
+<li>
+    <a href="../13-syncmsg/" class="dropdown-item">Synchronization</a>
 </li>
                                     
-<li >
-    <a href="../14-graphsig/">Graphic signals</a>
+<li>
+    <a href="../14-graphsig/" class="dropdown-item">Graphic signals</a>
 </li>
                                     
-<li >
-    <a href="../15-sensors/">Sensors</a>
+<li>
+    <a href="../15-sensors/" class="dropdown-item">Sensors</a>
 </li>
                                     
-<li >
-    <a href="../16-interaction/">Interaction</a>
+<li>
+    <a href="../16-interaction/" class="dropdown-item">Interaction</a>
 </li>
                                     
-<li class="active">
-    <a href="./">Scripting</a>
+<li>
+    <a href="./" class="dropdown-item active">Scripting</a>
 </li>
                                     
-<li >
-    <a href="../18-mathExpr/">Math Expressions</a>
+<li>
+    <a href="../18-mathExpr/" class="dropdown-item">Math Expressions</a>
 </li>
                                     
-<li >
-    <a href="../19-scoreExpr/">Score Expressions</a>
+<li>
+    <a href="../19-scoreExpr/" class="dropdown-item">Score Expressions</a>
 </li>
                                     
-<li >
-    <a href="../20-plugins/">Plugins</a>
+<li>
+    <a href="../20-plugins/" class="dropdown-item">Plugins</a>
 </li>
                                     
-<li >
-    <a href="../21-appendices/">Grammar definition</a>
+<li>
+    <a href="../21-appendices/" class="dropdown-item">Grammar definition</a>
 </li>
                                     
-<li >
-    <a href="../22-changes/">Changes list</a>
+<li>
+    <a href="../22-changes/" class="dropdown-item">Changes list</a>
 </li>
                                     
-<li >
-    <a href="../">Index</a>
+<li>
+    <a href="../" class="dropdown-item">Index</a>
 </li>
                                 </ul>
                             </li>
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Download <b class="caret"></b></a>
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Documents <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
-<li >
-    <a href="../../rsrc/INScoreLang.pdf">Pdf documentation</a>
+<li>
+    <a href="http://berio.grame.fr/MusicNotation/Introduction-to-INScore/" class="dropdown-item">Tutorial</a>
+</li>
+                                    
+<li>
+    <a href="../../papers/" class="dropdown-item">Papers</a>
 </li>
                                 </ul>
                             </li>
-                            <li >
-                                <a href="../../about/">About</a>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Download <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../rsrc/INScoreLang.pdf" class="dropdown-item">Pdf documentation</a>
+</li>
+                                    
+<li>
+    <a href="https://github.com/grame-cncm/inscore/releases" class="dropdown-item">INScore</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../about/" class="nav-link">About</a>
                             </li>
                         </ul>
 
-                    <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
                                 <i class="fa fa-search"></i> Search
                             </a>
                         </li>
-                            <li >
-                                <a rel="next" href="../16-interaction/">
+                            <li class="nav-item">
+                                <a rel="prev" href="../16-interaction/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
-                            <li >
-                                <a rel="prev" href="../18-mathExpr/">
+                            <li class="nav-item">
+                                <a rel="next" href="../18-mathExpr/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -193,19 +189,54 @@
         </div>
 
         <div class="container">
-                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
-    <ul class="nav bs-sidenav">
-        <li class="main active"><a href="#scripting">Scripting</a></li>
-            <li><a href="#statements">Statements</a></li>
-            <li><a href="#messages">Messages</a></li>
-            <li><a href="#types">Types</a></li>
-            <li><a href="#variables">Variables</a></li>
-            <li><a href="#environnement-variables">Environnement variables</a></li>
-            <li><a href="#message-based-parameters">Message based parameters</a></li>
-            <li><a href="#languages">Languages</a></li>
-    </ul>
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#scripting" class="nav-link">Scripting</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#statements" class="nav-link">Statements</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#messages" class="nav-link">Messages</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#types" class="nav-link">Types</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#variables" class="nav-link">Variables</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#environnement-variables" class="nav-link">Environnement variables</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#message-based-parameters" class="nav-link">Message based parameters</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#languages" class="nav-link">Languages</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
 </div></div>
-                <div class="col-md-9" role="main">
+                    <div class="col-md-9" role="main">
 
 <script src='/BNF/railroad-diagrams.js'></script>
 
@@ -240,17 +271,15 @@ Messages parameters can be replaced by variables that are evaluated at parsing l
 <p>Using the address extension scheme, a script may be designed to initialize an INScore scene and external applications as well, including on remote hosts.</p>
 <p><span class="example">Example</span>
 Initializing a score and an external application listening on port 12000 and running on a remote host named <span class="OSC">host.adomain.net</span>.</p>
-<pre><code class="inscore">/ITL/scene/score set gmnf 'myscore.gmn';
+<pre><code class="language-inscore">/ITL/scene/score set gmnf 'myscore.gmn';
 host.adomain.net:12000/run 1;
 </code></pre>
-
 <p>Relative addresses have been introduced to provide more flexibility in the score design process. A relative address starts with '<span class="OSC">./</span>'. It is evaluated in the context of the message receiver: a legal OSC address is dynamically constructed using the receiver address that is used to prefix the relative address. </p>
 <p><span class="example">Example</span></p>
-<pre><code class="inscore">the relative address   ./score 
+<pre><code class="language-inscore">the relative address   ./score 
 addressed to   /ITL/scene/layer
 will be evaluted as   /ITL/scene/layer/score
 </code></pre>
-
 <p>The receiver context may be:</p>
 <ul>
 <li>the INScore application address (i.e. <span class="OSC">/ITL</span>) for messages enclosed in a file loaded at application level (using the <span class="OSC">load</span> message addressed to the application) or for files dropped to the application or given as arguments of the INScoreViewer application.</li>
@@ -259,14 +288,13 @@ will be evaluted as   /ITL/scene/layer/score
 </ul>
 <p><span class="example">Example</span>
 Using a set of messages in different contexts:</p>
-<pre><code class="inscore">score = (
+<pre><code class="language-inscore">score = (
   ./score set gmn '[a f g]', 
   ./score scale 2.
 );
 /ITL/scene/l1 eval $score;
 /ITL/scene/l2 eval $score;
 </code></pre>
-
 <p><span class="note">Note: </span>
 Legal OSC addresses that are given as argument of an <span class="OSC">eval</span> message are not affected by the evaluation.</p>
 <h2 id="types">Types</h2>
@@ -280,11 +308,10 @@ A special attention must be given to strings in order to discriminate addresses 
 </ul>
 <p><span class="example">Example</span> 
 Different string parameter</p>
-<pre><code class="inscore">/ITL/scene/text set txt &quot;Hello world&quot;;  # string including a space must be quoted 
+<pre><code class="language-inscore">/ITL/scene/text set txt &quot;Hello world&quot;;  # string including a space must be quoted 
 /ITL/scene/img set file 'anImage.png';  # dots must be quoted too 
 /ITL/scene/foo set txt no_quotes_needed;
 </code></pre>
-
 <h2 id="variables">Variables</h2>
 <p><a name="scriptvar"></a></p>
 <p>A variable declaration associates a name with a list of parameters or a list of messages.
@@ -302,28 +329,25 @@ ComplexDiagram(
 
 <p><span class="example">Example</span> 
 Variables declarations</p>
-<pre><code class="inscore">color = 200 200 200; 
+<pre><code class="language-inscore">color = 200 200 200; 
 colorwithalpha = $color 100; # using another variable 
 msgsvar= (     # a variable referring to a message list 
    localhost:7001/world &quot;Hello world&quot;, 
    localhost:7001/world &quot;how are you ?&quot; );
 </code></pre>
-
 <p>A variable may be used in place of any message parameter. A reference to a variable must have the form <span class="OSC">$ident</span> where <span class="OSC">ident</span> is a previously declared variable. A variable is evaluated at parsing level and replaced by its content.</p>
 <p><span class="example">Example</span> 
 Using a variable to share a common position:</p>
-<pre><code class="inscore">x = 0.5;
+<pre><code class="language-inscore">x = 0.5;
 /ITL/scene/a x $x;
 /ITL/scene/b x $x;
 </code></pre>
-
 <p>Variables can be used in interaction messages as well, which may also use the variables available in the interaction context (see section <a href="../16-interaction#interactvar">interactvar</a>). To differentiate between a <strong>script</strong> and an <strong>interaction</strong> variable, the latter must be quoted to be passed as strings and to prevent their evaluation by the parser. </p>
 <p><span class="example">Example</span> 
 Using variables in interaction messages: $sx is evaluated at event occurrence   and $y is evaluated at parsing level.</p>
-<pre><code class="inscore">y = 0.5;
+<pre><code class="language-inscore">y = 0.5;
 /ITL/scene/foo watch mouseDown (/ITL/scene/foo &quot;$sx&quot; $y);
 </code></pre>
-
 <h2 id="environnement-variables">Environnement variables</h2>
 <p><a name="envvar"></a></p>
 <p>Environnement variables are predefined variables available in a script context. They provide information related to the current context. Current environment variables are:</p>
@@ -359,15 +383,13 @@ ComplexDiagram(
 
 <p><span class="example">Example</span> 
 Displaying INScore version using a message parameter:</p>
-<pre><code class="inscore">/ITL/scene/version set  txt &quot;INScore version is&quot; $(/ITL get version);
+<pre><code class="language-inscore">/ITL/scene/version set  txt &quot;INScore version is&quot; $(/ITL get version);
 </code></pre>
-
 <p><span class="note">Note: </span>
 Message based parameters are evaluated by the parser. Thus when the system state is modified by a script before a message parameter, these modifications won't be visible at the time of the parameter evaluation because all the messages will be processed by the next time task. For example:</p>
-<pre><code class="inscore">/ITL/scene/obj x 0.1;
+<pre><code class="language-inscore">/ITL/scene/obj x 0.1;
 /ITL/scene/foo x $(/ITL/scene/foo get x);
 </code></pre>
-
 <p>x position of <span class="OSC">/ITL/scene/foo</span> will be set to x position of <span class="OSC">/ITL/scene/obj</span> at the time of the script evaluation (that may be different to 0.1).</p>
 <h2 id="languages">Languages</h2>
 <p><a name="scriptlang"></a></p>
@@ -388,12 +410,11 @@ ComplexDiagram(
 These messages are then parsed as if replacing the corresponding script section.</p>
 <p>Note that INScore variables are exported to the current language environment.</p>
 <p><span class="example">Example</span></p>
-<pre><code class="inscore">
+<pre><code class="language-inscore">
 &lt;?javascript 
    &quot;/ITL/scene/version set 'txt' 'Javascript v.&quot;  + version() + &quot;';&quot;; 
    ?&gt;
 </code></pre>
-
 <p>A single persistent context is created at application level and shared to each scene.</p>
 <p><span class="note">Note:</span> Lua support is going to be deprecated and should be removed in a future release.</p>
 <h3 id="the-javascript-object">The Javascript object</h3>
@@ -431,16 +452,15 @@ Actually, including a javascript section in a script is equivalent to send the <
 <li>5 for Windows, </li>
 </ul>
 <p><span class="example">Example</span></p>
-<pre><code class="inscore">
+<pre><code class="language-inscore">
 &lt;?javascript 
    post (&quot;/ITL/scene/obj&quot;, &quot;dalpha&quot;, -1);&quot;; 
    # The message /ITL/scene/obj dalpha -1 
    # will be evaluated by the next time task. 
 ?&gt;
 </code></pre>
-
 <p><span class="example">Example</span></p>
-<pre><code class="inscore">
+<pre><code class="language-inscore">
 &lt;?javascript 
    # declare a function foo() 
    function foo(arg) { 
@@ -454,6 +474,7 @@ Actually, including a javascript section in a script is equivalent to send the <
 # or call the foo function using the run message 
 /ITL/scene/javascript run &quot;foo(1)&quot;;
 </code></pre></div>
+            </div>
         </div>
 
         <footer class="col-md-12">
@@ -468,23 +489,24 @@ Actually, including a javascript section in a script is equivalent to send the <
         <script src="../../js/base.js" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" defer></script>
         <script src="/js/inscore.js" defer></script>
+        <script src="/js/pubs.js" defer></script>
         <script src="../../search/main.js" defer></script>
 
-        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
-    <div class="modal-dialog">
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
             </div>
             <div class="modal-body">
                 <p>
                     From here you can search these documents. Enter
                     your search terms below.
                 </p>
-                <form role="form">
+                <form>
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
                     </div>
                 </form>
                 <div id="mkdocs-search-results"></div>
@@ -493,12 +515,12 @@ Actually, including a javascript section in a script is equivalent to send the <
             </div>
         </div>
     </div>
-</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
             </div>
             <div class="modal-body">
               <table class="table">

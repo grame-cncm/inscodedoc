@@ -91,3 +91,9 @@ install:
 	pip install markdown-include
 	pip install mkdocs-bootswatch
 	pip install python-markdown-math
+
+upgrade:
+	pip install mkdocs --upgrade
+	pip install markdown-include --upgrade
+	pip install mkdocs-bootswatch --upgrade
+	pip install python-markdown-math --upgrade

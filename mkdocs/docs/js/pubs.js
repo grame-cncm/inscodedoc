@@ -107,13 +107,9 @@ function getPublications (url, destdiv) {
     });
 }
 
-const tmp = document.getElementById("scientific-publications");
-if (tmp) {
-    let parent = tmp.parentElement;
-    let pubs = document.createElement ('div');
-    pubs.className = "publications"
-    parent.appendChild (pubs);
+const pubdiv = document.getElementById("publications");
+if (pubdiv) {
     const url = "http://api.archives-ouvertes.fr/search/INSCORE" 
     const options = "indent=true&wt=json&rows=2000&fl=*&sort=publicationDateY_i%20desc";
-    getPublications(url + "?" + options).then ( (result) => { display(result, pubs); });
+    getPublications(url + "?" + options).then ( (result) => { display(result, pubdiv); });
 }

@@ -1,15 +1,17 @@
 
-DOC 	= OSCMsg.pdf
+
+NAME  := OSCMsg
+OUT   := $(NAME).pdf
 
 
-all: $(DOC)
+all: $(OUT)
 	
-OSCMsg.pdf : OSCMsg.rao OSCMsg.ind
+$(NAME).pdf : $(NAME).rao $(NAME).ind
 
 clean:
 	rm -f *.aux *.bbl *.blg *.log *.dvi *.rai *.ilg *.idx *.ind *.toc 
-	rm -f *.4* *.out *.tmp *.xref *.idv *.lg *.rao *.css
-	rm -f $(DOC)
+	rm -f *.4* *.out *.tmp *.xref *.idv *.lg *.rao *.css *.synctex.gz
+	rm -f $(OUT)
 
 
 %.bbl: %.bib

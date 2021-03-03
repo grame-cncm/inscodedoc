@@ -12,7 +12,7 @@ all: $(OUT)
 	make -C ScoreExpressionDoc
 	
 $(OSC).pdf  : $(OSCDEPS) $(OSC).rao $(OSC).ind
-$(LANG).pdf : $(LANGDEPS) $(LANG).rao $(LANG).ind
+$(LANG).pdf : $(LANGDEPS) $(LANG).rao
 
 clean:
 	rm -f *.aux *.bbl *.blg *.log *.dvi *.rai *.ilg *.idx *.ind *.toc 

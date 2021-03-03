@@ -111,6 +111,7 @@ Argument: 	 GmnCode
 
 \end{itemize}
 
+\selayout
 \example\\
 Defining \OSC{/ITL/scene/score} as a copy of \OSC{/ITL/scene/simpleScore} duplicated 4 times.
 \sample{/ITL/scene/simpleScore set gmn "[e \{c,g\} |]";\\
@@ -120,7 +121,7 @@ Defining \OSC{/ITL/scene/score} as a copy of \OSC{/ITL/scene/simpleScore} duplic
 /ITL/scene/score set gmn expr( par \lowTilde score \lowTilde score);\\
 }
 \OSC{/ITL/scene/score} should look like:\\
-\begin{figure}
+\begin{figure}[H]
 \begin{center}
  \includegraphics[scale=0.1]{imgs/seqparEnhanced}
 \end{center}
@@ -177,6 +178,7 @@ The \OSC{renew} command reset the internal state of the evaluated variable, forc
 
 Of course, the \OSC{newData} event can be used together with \OSC{reeval} to automatically update an object when the value of an other changes.
 
+\selayout
 \example\\
 Creating a copy of \OSC{score}, and automatise its update when \OSC{score} is changed
 \sample{/ITL/scene/score set gmn "[c e]";\\
@@ -192,6 +194,7 @@ Because newData event is delayed, if \OSC{score} experiences multiple modificati
 \note{when automatizing update}\\
 For the reasons raised in the previous note, one should be very careful to delayed update when automatise \OSC{reeval} with \OSC{newData}. Indeed, in some extreme case, executing a script one line after an other won't have the same result as executing the all script at once!!
 
+\selayout
 \example\\
 Creating a "score buffer", storing every state adopted by \OSC{score}
 \sample{/ITL/scene/score set gmn "[c]";\\
@@ -204,16 +207,16 @@ Creating a "score buffer", storing every state adopted by \OSC{score}
 /ITL/scene/score set gmn "[g]";\\
 /ITL/scene/score set gmn "[\{c,e,g\}]";
 }
-Won't have the same result if run line by line, or the all script as once:
+Won't have the same result if run line by line, or the all script as once:\\
 Line by line:
-\begin{figure}
+\begin{figure}[H]
 \begin{center}
  \includegraphics[scale=0.3]{imgs/autoSingleLine}
 \end{center}
 \end{figure}
 
-All script at once:
-\begin{figure}
+All script lines at once:
+\begin{figure}[H]
 \begin{center}
  \includegraphics[scale=0.3]{imgs/autoAllScript}
 \end{center}

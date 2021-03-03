@@ -6,7 +6,7 @@ OUT   := $(EXPR).pdf
 EXPRDEPS := $(EXPR).tex ../scorexpressions.tex ../yaccexpr.tex
 
 
-all: $(OUT)
+$(EXPR): $(OUT)
 	
 $(EXPR).pdf : $(EXPRDEPS) $(EXPR).rao
 

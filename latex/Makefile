@@ -10,8 +10,9 @@ OSCDEPS := $(OSC).tex changelist.tex Sensors/sensors.tex scorexpressions.tex
 
 all: $(OUT)
 	make -C ScoreExpressionDoc
+	make -C INScoreWeb
 	
-$(OSC).pdf  : $(OSCDEPS) $(OSC).rao $(OSC).ind
+$(OSC).pdf  : $(OSCDEPS) $(OSC).rao $(OSC).idx
 $(LANG).pdf : $(LANGDEPS) $(LANG).rao
 
 clean:

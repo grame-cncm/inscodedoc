@@ -34,6 +34,7 @@ s/\\OSC{\([^}]*\)}/<span class="OSC">\1<\/span>/g
 
 s/\\sampleindent/  /
 s/\\\\//
+s/\\op\\*/*op*/g
 
 s/\\textbf{\([^}]*\)}/**\1**/g
 s/\\textit{\([^}]*\)}/_\1_/g
@@ -46,6 +47,7 @@ s/\\firstnote{\([^}]*\)}/<span class="note">Note <\/span>\1/g
 s/\\warning{\([^}]*\)}/<span class="warning">Warning \1<\/span>/g
 s/\\warning/<span class="warning">Warning<\/span>/g
 s/\\href{\([^}]*\)}{\([^}]*\)}/<a href=\1>\2<\/a>/g
+s/\\\mathstring{\([^}]*\)}/*string*(\1)/g
 
 
 s/\\values{\([^}]*\)}/<span class="values">\1<\/span>/g

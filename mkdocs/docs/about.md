@@ -4,7 +4,7 @@
 
 The [INScore](https://inscore.grame.fr) Project is an open source project hosted on [github](https://github.com/grame-cncm/inscore). INScore is an environment for the design of interactive augmented music scores that runs on Linux, MacOS, Windows, iOS and Android. Recently, an online version of the environment is also available.
 
-This site documents the version 1.25 of the INScore scripting language.
+This site documents the version 1.27 of the INScore scripting language.
 
 ------
 

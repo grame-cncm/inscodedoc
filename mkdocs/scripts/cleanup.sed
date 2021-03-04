@@ -16,6 +16,7 @@ s/.*\\hline.*$/__removed__/
 s/\\sample{//g
 s/\\railalias.*$//g
 s/\\smallbreak//
+s/\\selayout//
 
 ############## remove comments
 s/%.*//

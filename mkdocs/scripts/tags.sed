@@ -14,6 +14,7 @@ s/\\~{}/\~/g
 s/\\\#/\#/
 s/\\}/}/
 s/\\{/{/
+s/\\ / /
 
 ############## handle verbatim sections
 s/\\begin{verbatim}/\
@@ -40,9 +41,12 @@ s/\\emph{\([^}]*\)}/**\1**/g
 
 s/\\note{\([^}]*\)}/<span class="note">Note: \1<\/span>/g
 s/\\note/<span class="note">Note:<\/span>/g
+s/\\firstnote{\([^}]*\)}/<span class="note">Note <\/span>\1/g
 
 s/\\warning{\([^}]*\)}/<span class="warning">Warning \1<\/span>/g
 s/\\warning/<span class="warning">Warning<\/span>/g
+s/\\href{\([^}]*\)}{\([^}]*\)}/<a href=\1>\2<\/a>/g
+
 
 s/\\values{\([^}]*\)}/<span class="values">\1<\/span>/g
 

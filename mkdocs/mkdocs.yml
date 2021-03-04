@@ -1,31 +1,29 @@
 site_name: INScore Documentation
 site_description: INScore documentation.
-copyright: <a href="https://inscore.grame.fr">INscore projects</a> Copyright &copy; 2019-2020 <a href="http://www.grame.fr">Grame-CNCM</a>
+copyright: <a href="https://inscore.grame.fr">INscore projects</a> Copyright &copy; 2019-2021 <a href="http://www.grame.fr">Grame-CNCM</a>
 nav:
     - Home: index.md
     - Reference:
-        - 'Format of a message' : refs/1-genformat.md
-        - 'Common Messages' : refs/2-common.md
-        - 'Time Messages' : refs/3-time.md
-        - 'Miscellaneous' : refs/4-miscmsgs.md
-        - 'The set Message': refs/5-setsect.md
-        - 'The get Message' : refs/6-getsect.md
-        - 'Specific Messages' : refs/7-specificMsg.md
-        - 'Application Messages': refs/8-ITL.md
-        - 'Scene Messages' : refs/9-scene.md
-        - 'Messages Forwarding' : refs/10-forwarding.md
-        - 'Layers' : refs/11-layers.md
-        - 'Mapping' : refs/12-mapping.md
-        - 'Synchronization' : refs/13-syncmsg.md
-        - 'Graphic signals' : refs/14-graphsig.md
-        - 'Sensors' : refs/15-sensors.md
-        - 'Interaction' : refs/16-interaction.md
-        - 'Scripting' : refs/17-scripting.md
-        - 'Math Expressions' : refs/18-mathExpr.md
-        - 'Score Expressions' : refs/19-scoreExpr.md
-        - 'Plugins' : refs/20-plugins.md
-        - 'Grammar definition' : refs/21-appendices.md
-        - 'Changes list' : refs/22-changes.md
+        - 'Introduction' : refs/1-introduction.md
+        - 'Format of a message' : refs/2-genformat.md
+        - 'Common Messages' : refs/3-common.md
+        - 'Time Messages' : refs/4-time.md
+        - 'Miscellaneous' : refs/5-miscmsgs.md
+        - 'The set Message': refs/6-setsect.md
+        - 'The get Message' : refs/7-getsect.md
+        - 'Specific Messages' : refs/8-specificMsg.md
+        - 'Application Messages': refs/9-ITL.md
+        - 'Scene Messages' : refs/10-scene.md
+        - 'Messages Forwarding' : refs/11-forwarding.md
+        - 'Layers' : refs/12-layers.md
+        - 'Mapping' : refs/13-mapping.md
+        - 'Synchronization' : refs/14-syncmsg.md
+        - 'Graphic signals' : refs/15-graphsig.md
+        - 'Sensors' : refs/16-sensors.md
+        - 'Interaction' : refs/17-interaction.md
+        - 'Score Expressions' : refs/18-scoreExpr.md
+        - 'Plugins' : refs/19-plugins.md
+        - 'Changes list' : refs/20-changes.md
         - 'Index' : refs/index.md
     - Documents:
         - 'Tutorial' : http://berio.grame.fr/MusicNotation/Introduction-to-INScore/

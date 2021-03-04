@@ -1,7 +1,9 @@
 
 MAKE ?= make
-PDF     := latex/OSCMsg.pdf
-PDFDEST := mkdocs/docs/rsrc/INScoreLang.pdf
+MSGPDF   := latex/OSCMsg.pdf
+LANGPDF  := latex/INScoreLang.pdf
+MSGDEST  := mkdocs/docs/rsrc/INScoreMessages.pdf
+LANGDEST := mkdocs/docs/rsrc/INScoreLang.pdf
 
 
 ####################################################################
@@ -18,7 +20,8 @@ help:
 ####################################################################
 pdf:
 	$(MAKE) -C latex
-	cp $(PDF) $(PDFDEST)
+	cp $(MSGPDF)  $(MSGDEST)
+	cp $(LANGPDF) $(LANGDEST)
 
 mkdocs:
 	$(MAKE) -C mkdocs all

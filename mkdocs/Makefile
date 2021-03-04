@@ -2,24 +2,33 @@
 MAKE ?= make
 AWK  ?= awk
 
-MKDIR := "./"
+MKDIR 		:= .
+DOCSDIR		:= $(MKDIR)/docs
+OSCDIR 		:= refs
+LANGDIR 	:= lang
 
-SRCDIR   := ../latex
-SRC      := $(SRCDIR)/OSCMsg.tex
-SPLIT    := $(wildcard *.tmp)
-SECTIONS := $(SPLIT:%.tmp=%.md)
-MD 		 := $(SPLIT:%.tmp=docs/refs/%.md)
-REFOUT 	 := $(SECTIONS:%.md=%.refs)
-RAIL 	 := $(shell find rail -name "*.rail")
-RAILOUT  := $(RAIL:rail/%.rail=docs/BNF/%.js)
+SRCDIR   	:= ../latex
+MSGSRC   	:= $(SRCDIR)/OSCMsg.tex
+LANGSRC  	:= $(SRCDIR)/INScoreLang.tex
+
+OSCSPLIT 	:= $(wildcard $(OSCDIR)/*.tmp)
+LANGSPLIT	:= $(wildcard $(LANGDIR)/*.tmp)
+
+OSCSECTIONS := $(OSCSPLIT:%.tmp=%.md)
+LANGSECTIONS:= $(LANGSPLIT:%.tmp=%.md)
+
+RAIL 	 	:= $(shell find rail -name "*.rail")
+RAILOUT  	:= $(RAIL:rail/%.rail=$(DOCSDIR)/BNF/%.js)
 
 .PHONY: rail
 
 all:
-	$(MAKE) split
-	$(MAKE) fullrefs
-	$(MAKE) md
+	$(MAKE) one SRCFILE=$(MSGSRC) OUTDIR=$(OSCDIR) INDEX=yes
+	$(MAKE) one SRCFILE=$(LANGSRC) OUTDIR=$(LANGDIR) INDEX=no
 	$(MAKE) rail
+
+one:
+	$(MAKE) -f Make.one
 
 
 ####################################################################
@@ -35,6 +44,9 @@ help:
 	@echo "  all      : generates all the necessary files from the latex documentation"
 	@echo "Development specific targets are available:"
 
+test:
+	echo OSCDIR $(OSCDIR)
+
 ####################################################################
 build:
 	cd $(MKDIR) && mkdocs build
@@ -44,42 +56,19 @@ serve:
 	cd $(MKDIR) && mkdocs serve
 
 menu:
-	@echo $(SECTIONS) | tr " " "\n" | sort -n | sed -e 's/^/        - : refs\//'
-
-md: $(MD) docs/refs/index.md
-
-fullrefs: fullrefs.sed
-fullrefs.sed : $(SPLIT)
-	grep label $(SPLIT) | sed -f scripts/labels.sed > $@
-
-split :
-	$(AWK) -f scripts/scan-input.awk $(SRC) | $(AWK) -f scripts/split.awk 
-
-refs: $(MD) fullrefs.sed
-
+	@echo Messages
+	@echo $(OSCSECTIONS) | tr " " "\n"  | sed -e 's/^/        - : \//' | sort -n
+	@echo Scripting language
+	@echo $(LANGSECTIONS) | tr " " "\n" | sed -e 's/^/        - : \//' | sort -n
 
 rail: tools/rail2js $(RAILOUT)
 
-test:
-	@echo $(TMP)
-
 clean:
-	rm -f $(SPLIT)
-	rm -f $(MD)
-	rm -f *.tmp
-	rm -f fullrefs.sed
-	rm -f index.sed index.md
+	rm -rf $(OSCDIR) $(LANGDIR)
 	rm -f rail/*.rail $(RAILOUT)
 
-docs/refs/%.md:%.tmp
-	sed -f scripts/tags.sed $< | $(AWK) -f scripts/samples.awk | $(AWK) -f scripts/figures.awk  \
-	| $(AWK) -f scripts/tables.awk | $(AWK) -f scripts/rail.awk FILE=$< \
-	| sed -f fullrefs.sed | sed -f index.sed | sed -f scripts/cleanup.sed  | grep -v __removed__ > $@
-			
-docs/refs/index.md:index.md
-	sort $< | $(AWK) -f scripts/index.awk > $@
-	
-docs/BNF/%.js: rail/%.rail
+				
+$(DOCSDIR)/BNF/%.js: rail/%.rail
 	@[ -d $(@D) ] || mkdir -p $(@D)
 	tools/rail2js $< | sed -f scripts/rail.sed > $@ 
 

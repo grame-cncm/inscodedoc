@@ -3,6 +3,7 @@ fullrefs.sed
 index.sed
 index.md
 docs/refs
+docs/lang
 rail/[0-9]*
 tools/rail2js
 

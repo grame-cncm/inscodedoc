@@ -4,32 +4,40 @@ copyright: <a href="https://inscore.grame.fr">INscore projects</a> Copyright &co
 nav:
     - Home: index.md
     - Reference:
-        - 'Introduction' : refs/1-introduction.md
-        - 'Format of a message' : refs/2-genformat.md
-        - 'Common Messages' : refs/3-common.md
-        - 'Time Messages' : refs/4-time.md
-        - 'Miscellaneous' : refs/5-miscmsgs.md
-        - 'The set Message': refs/6-setsect.md
-        - 'The get Message' : refs/7-getsect.md
-        - 'Specific Messages' : refs/8-specificMsg.md
-        - 'Application Messages': refs/9-ITL.md
-        - 'Scene Messages' : refs/10-scene.md
-        - 'Messages Forwarding' : refs/11-forwarding.md
-        - 'Layers' : refs/12-layers.md
-        - 'Mapping' : refs/13-mapping.md
-        - 'Synchronization' : refs/14-syncmsg.md
-        - 'Graphic signals' : refs/15-graphsig.md
-        - 'Sensors' : refs/16-sensors.md
-        - 'Interaction' : refs/17-interaction.md
-        - 'Score Expressions' : refs/18-scoreExpr.md
-        - 'Plugins' : refs/19-plugins.md
-        - 'Changes list' : refs/20-changes.md
-        - 'Index' : refs/index.md
+        - 'Messages':
+            - 'Introduction' :          refs/1-introduction.md
+            - 'Format of a message' :   refs/2-genformat.md
+            - 'Common Messages' :       refs/3-common.md
+            - 'Time Messages' :         refs/4-time.md
+            - 'Miscellaneous' :         refs/5-miscmsgs.md
+            - 'The set Message':        refs/6-setsect.md
+            - 'The get Message' :       refs/7-getsect.md
+            - 'Specific Messages' :     refs/8-specificMsg.md
+            - 'Application Messages':   refs/9-ITL.md
+            - 'Scene Messages' :        refs/10-scene.md
+            - 'Messages Forwarding' :   refs/11-forwarding.md
+            - 'Layers' :                refs/12-layers.md
+            - 'Mapping' :           refs/13-mapping.md
+            - 'Synchronization' :   refs/14-syncmsg.md
+            - 'Graphic signals' :   refs/15-graphsig.md
+            - 'Sensors' :           refs/16-sensors.md
+            - 'Interaction' :       refs/17-interaction.md
+            - 'Score Expressions' : refs/18-scoreExpr.md
+            - 'Plugins' :           refs/19-plugins.md
+            - 'Changes list' :      refs/20-changes.md
+            - 'Index' :             refs/index.md
+        - 'Scripting language':
+            - 'Language' :          lang/1-scripting.md
+            - 'Math. expressions' : lang/2-mathExpr.md
+            - 'Grammar' :           lang/3-appendices.md
+        
     - Documents:
         - 'Tutorial' : http://berio.grame.fr/MusicNotation/Introduction-to-INScore/
+        - 'Messages reference' : rsrc/INScoreMessages.pdf
+        - 'Language reference' : rsrc/INScoreLang.pdf
         - 'Papers' : papers.md
+
     - Download:
-        - 'Pdf documentation' : rsrc/INScoreLang.pdf
         - 'INScore' : https://github.com/grame-cncm/inscore/releases
     - About: about.md
 

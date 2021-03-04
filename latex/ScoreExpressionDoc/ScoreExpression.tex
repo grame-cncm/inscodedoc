@@ -3,6 +3,14 @@
 
 \usepackage{../INScore}
 
+\fancypagestyle{mystyle}{%
+  \fancyhf{}.          % Clear header and footer
+  \fancyhead[LO,RE]{\textsc{INScore Score Expressions}}
+  \fancyfoot[LO,RE]{\thepage}
+  \renewcommand{\headrulewidth}{0.4pt}% Line at the header visible
+%  \renewcommand{\footrulewidth}{0.4pt}% Line at the footer visible
+}
+
 \makeatletter
 
 \newcommand{\toplevel}[1]	{\section{#1}}
@@ -17,8 +25,28 @@
 \begin{document}
 
 \title{\vspace*{7cm}INScore \\ Evaluable Score Expressions Reference \\v.1.0}
-\author{G. Lepetit-Aimon - D. Fober\\ GRAME\\ Centre national de création musicale\\
+\author{G. Lepetit-Aimon - D. Fober\\ 
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\includegraphics[width=30mm]{../imgs/Logo_Grame}\\
+Centre national de création musicale\\
 }
+\date{}
 
 \maketitle
 \thispagestyle{empty}
@@ -28,7 +56,8 @@
 \newpage
 \setcounter{page}{1}
 
-\pagestyle{plain}
+\pagestyle{mystyle}
+
 
 \input{../scorexpressions.tex}
 

@@ -18,18 +18,21 @@
 
 \geometry{
  a4paper,
- total={160mm,250mm},
- left=30mm,
+ total={158mm,250mm},
+ right=20mm,
  top=25mm,
 }
 
-\definecolor{lcolor}{rgb}{0.384,0.0,0.145}
+\def \inscoreversion {1.27}
+
+\definecolor{lcolor}{rgb}{0.0,0.0,0.145}
 \hypersetup{
 	colorlinks=true,
 	linkcolor= lcolor
 }
 
-\setlength\parskip{2pt}
+\setlength\parskip{3pt}
+\setlength{\parindent}{0pt}
 
 \def\title#1{\gdef\@title{\Huge{#1}}}
 
@@ -44,9 +47,9 @@
 
 \newcommand{\OSC}[1]		{\texttt{#1}}
 \newcommand{\values}[1]		{\texttt{#1}}
-\newcommand{\example}		{\textbf{\hspace{-1.5cm}\textbf{\textsc{Example }}}}
-\newcommand{\note}	[1]		{\vspace{2mm}\textbf{\hspace{-1.03cm}\textbf{\textsc{Note #1}}}}
-\newcommand{\warning}[1]	{\vspace{2mm}\textbf{\hspace{-1.5cm}\textbf{\textsc{Warning #1}}}}
+\newcommand{\example}		{\textbf{\hspace{-1.0cm}\textbf{\textsc{Example }}}}
+\newcommand{\note}	[1]		{\vspace{2mm}\textbf{\hspace{-1.0cm}\textbf{\textsc{Note #1}}}}
+\newcommand{\warning}[1]	{\vspace{2mm}\textbf{\hspace{-1.0cm}\textbf{\textsc{Warning #1}}}}
 
 \newcommand{\osctype}[1]	{\textbf{\texttt{{\small #1}}}}
 \newcommand{\oscint}		{\osctype{int32}}
@@ -59,8 +62,8 @@
 \providecommand{\boldsymbol}[1]{\mbox{\boldmath $#1$}}
 
 \definecolor{mygrey}{gray}{0.93}
-\newcommand{\sample}	[1]			{\vspace{-2mm}\begin{center}\colorbox{mygrey}{
-								\begin{minipage}[t]{0.9\columnwidth} 
+\newcommand{\sample}	[1]		{\vspace{-2mm}\begin{center}\colorbox{mygrey}{
+								\begin{minipage}[t]{0.95\columnwidth} 
 								{\small \texttt{#1}}
 								\end{minipage}}\end{center}}
 

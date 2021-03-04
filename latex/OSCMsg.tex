@@ -27,11 +27,20 @@
 
 \newcommand{\icomment} 		{\#}
 \newcommand{\selayout}		{ }  % used only by the score expressions standalone version
-\newcommand{\samplev}[1]	{\begin{center}\colorbox{mygrey}{
-							\begin{minipage}[t]{\columnwidth} 
-							{\small \texttt{#1}}
-							\end{minipage}}\end{center}}
 \newcommand{\sampleindent}	{ \hspace{0.5cm} }
+
+
+\newcommand{\firstnote}[1]	{
+	\vspace{12cm}
+	\vspace{2mm}
+	\noindent\makebox[\textwidth][c]{%
+    \begin{minipage}{1.0\textwidth}
+	{\Large \textbf{Note }}
+	\noindent\hrulefill\par
+	\vspace{2mm}
+	#1
+	\end{minipage}}
+}
 
 \makeatother
 \makeindex
@@ -40,7 +49,7 @@
 \begin{document}
 
 \title{\vspace*{5cm}
-INScore \\ OSC Messages Reference \\v.1.27}
+INScore \\ OSC Messages Reference \\v.\inscoreversion}
 
 \author{D. Fober\\ 
 {\small <fober@grame.fr>} \\
@@ -102,20 +111,7 @@ INScore is an environment for the design of augmented, interactive, dynamic  mus
 
 A scripting language has been defined as an extended textual version of OSC messages that allows you to design scores in a modular and incremental way. This language is close to the present specification. Its syntax and grammar are described in a separate document.
 
-
-\vspace*{10cm}
-
-
-%\noindent\hrulefill\par
-\vspace*{2mm}
-\noindent\makebox[\textwidth][c]{%
-    \begin{minipage}{1.0\textwidth}
-{\Large \textbf{Note }}
-\noindent\hrulefill\par
-
-\vspace*{2mm}
-Throughout the documentation, the sample code are given using scripting syntax i.e. that OSC messages are suffixed with a semi-colon ';'. This semi-colon is used as a message separator in INScore scripts and is not needed when sending messages over a network. See the INScore language reference for more information.
-\end{minipage}}
+\firstnote{Throughout the documentation, the sample code are given using scripting syntax i.e. that OSC messages are suffixed with a semi-colon ';'. This semi-colon is used as a message separator in INScore scripts and is not needed when sending messages over a network. See the INScore language reference for more information.}
 
 
 %===============================
@@ -2277,7 +2273,8 @@ ITLFilteringForward : [1] ('accept' (|item +)) | [2] ('reject' (|item +))
 \item 2) Remplace the actual accepted list by the new list or by an empty list. Item in reject list are filtered if they not match the accept list.
 \end{itemize}
 
-When a new message is incoming, if they match to an accepted item, filter is not apply.\\ \\
+When a new message is incoming, if they match to an accepted item, filter is not apply.\\
+
 \example\\
 Filter at application level :
 \sample{/ITL/filter reject /ITL/scene/line* /ITL/scene/rect; \\
@@ -3208,7 +3205,7 @@ Each event takes a time interval as parameter, defined by two \OSC{time} specifi
 
 \example \\
 An object that moves a score to a given page number when it enters its time zone.
-\samplev{/ITL/scene/myObject watch timeEnter 10/1 18/1 (/ITL/scene/score page 2);}
+\sample{/ITL/scene/myObject watch timeEnter 10/1 18/1 (/ITL/scene/score page 2);}
 
 %===============================
 %:       URL events
@@ -3622,7 +3619,7 @@ The plugins are shared libraries which extension is platform dependent. The plug
 \sublevel{FAUST plugins}
 \label{faust}
 
-FAUST [Functional Audio Stream]\footnote{\url{http://faust.grame.fr}} is a functional programming language specifically designed for real-time signal processing and synthesis. A FAUST/INScore architecture allows to embed FAUST processors in INScore, for the purpose of signals computation. A FAUST plugin is viewed as a parallel signal and thus it is created in the \OSC{signal} address space. Similarly to signals, it is associated to an OSC address in the form \OSC{/ITL/\emph{scene}/signal/\emph{name}} where \OSC{\emph{name}} is a user defined name.
+\href{http://faust.grame.fr}{FAUST} [Functional Audio Stream] is a functional programming language specifically designed for real-time signal processing and synthesis. A FAUST/INScore architecture allows to embed FAUST processors in INScore, for the purpose of signals computation. A FAUST plugin is viewed as a parallel signal and thus it is created in the \OSC{signal} address space. Similarly to signals, it is associated to an OSC address in the form \OSC{/ITL/\emph{scene}/signal/\emph{name}} where \OSC{\emph{name}} is a user defined name.
 
 \subsublevel{Set Message}
 \label{faustsetmsg}
@@ -3922,7 +3919,7 @@ A gesture follower object has a graphic appearance and supports all the standard
 \sublevel{Httpd server plugin}
 \label{Httpd}
 
-INScore can embed Http server to expose real time screenshot image of a scene to the web. This feature is based on libmicrohttpd \footnote{\url{http://www.gnu.org/software/libmicrohttpd/}} and is available as a plugin that is included in the INScore distribution (version 1.11 or greater). The Url to get the image is the base url of the server.
+INScore can embed Http server to expose real time screenshot image of a scene to the web. This feature is based on \href{http://www.gnu.org/software/libmicrohttpd/}{libmicrohttpd} and is available as a plugin that is included in the INScore distribution (version 1.11 or greater). The Url to get the image is the base url of the server.
 
 %===============================
 %:      Set messages
@@ -3963,16 +3960,6 @@ A string corresponding to the server status ("started" or "stopped") is return.
 
 \example \\
 \sample{/ITL/scene/server get status;}
-
-%===============================
-%:Appendix
-%\toplevel{Appendices}
-%\label{appendices}
-%\input{yacc.tex}
-%
-%\input{tokens.tex}
-%
-%\input{yaccexpr.tex}
 
 
 %===============================

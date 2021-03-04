@@ -3,6 +3,20 @@
 
 \usepackage{INScore}
 
+\fancypagestyle{mystyle}{%
+  \fancyhf{}.          % Clear header and footer
+  \fancyhead[LE,RO]{\textsc{INScore Scripting Language}}
+  \fancyfoot[RO,LE]{\thepage}
+  \renewcommand{\headrulewidth}{0.4pt}% Line at the header visible
+%  \renewcommand{\footrulewidth}{0.4pt}% Line at the footer visible
+}
+\fancypagestyle{plain}{%
+  \fancyhf{}%
+  \fancyfoot[LE,RO]{\thepage}
+  \renewcommand{\headrulewidth}{0pt}
+%  \fancyhead[LE,RO]{\textsc{INScore OSC Messages Reference}}
+}
+
 
 \makeatletter
 \newcommand{\toplevel}[1]	{\chapter{#1}}
@@ -13,35 +27,44 @@
 \newcommand{\inscoreend}  {\_\_END\_\_}
 
 \makeatother
-\makeindex
-
+\pagestyle{empty}
 
 \begin{document}
 
-\title{INScore v.1.27 \\ - \\ Scripting language}
-
-\author{D. Fober\\ GRAME\\ Centre national de création musicale\\
-{\small <fober@grame.fr>} \\
+\title{\vspace*{5cm}INScore v.\inscoreversion \\ - \\ Scripting language}
+\author{D. Fober\\ 
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\includegraphics[width=30mm]{imgs/Logo_Grame}\\
+Centre national de création musicale\\
 }
+\date{}
 
 \maketitle
+\thispagestyle{empty}
 
-%\vspace*{17.5cm}
- 
-
-{\small INScore research and development has been funded by the French National Research Agency [ANR]\\ Interlude project [ANR- 08-CORD-010] and INEDIT project [ANR-12-CORD-0009].}
-  
-
-\pagestyle{empty}
 \cleardoublepage
 \tableofcontents
-
 \thispagestyle{empty}
-\pagestyle{plain}
 
-\newpage
-
+\pagestyle{mystyle}
 \setcounter{page}{1}
+
 
 
 %===============================

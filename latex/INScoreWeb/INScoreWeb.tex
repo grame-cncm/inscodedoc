@@ -1,0 +1,76 @@
+
+\documentclass[a4paper,twoside]{article}
+\usepackage{../INScore}
+
+
+\makeatletter
+
+\newcommand{\toplevel}[1]	{\section{#1}}
+\newcommand{\sublevel}[1]	{\subsection{#1}}
+\newcommand{\subsublevel}[1]	{\subsubsection{#1}}
+
+\makeatother
+\pagestyle{empty}
+
+
+\begin{document}
+\title{\vspace*{8cm}INScore Web \\ Version \inscoreversion}
+\author{D. Fober\\ 
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\includegraphics[width=30mm]{../imgs/Logo_Grame}\\
+Centre national de création musicale\\
+}
+\date{}
+
+
+\maketitle
+\thispagestyle{empty}
+ 
+\cleardoublepage
+\tableofcontents
+\newpage
+\setcounter{page}{1}
+\pagestyle{plain}
+
+
+%===============================
+%:Introduction
+\toplevel{Introduction}
+\label{introduction}
+
+Since version 1.27, the INScore engine is available as Javascript libraries:
+\begin{itemize}
+\item a WebAssembly [WASM] library providing all the services of the abstract INScore model,
+\item a Javascript library providing an HTML view of the INScore model.
+\end{itemize}
+
+The web environment provides a very different runtime context than a native application: 
+it is much more modular; due to the absence of a 'concrete machine' a number of INScore primitives do not make sense in a web environment; finally it provides new rendering capabilities with CSS. 
+
+This document is intended to present the differences between the native and web versions of INScore. 
+A special section is also devoted to the implementation of INScore Web in standalone HTML pages.
+
+%===============================
+%:Unsupported
+\toplevel{Unsupported messages}
+\label{unsupported}
+
+
+
+\end{document}

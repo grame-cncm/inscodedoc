@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Changes list - INScore Documentation</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+        <link href="/css/inscore.css" rel="stylesheet">
+        <link href="/css/pubs.css" rel="stylesheet">
+        <link href="/BNF/railroad-diagrams.css" rel="stylesheet">
+
+        <script src="../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">INScore Documentation</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href="../.." class="nav-link">Home</a>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Reference <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">Messages</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../1-introduction/" class="dropdown-item">Introduction</a>
+</li>
+            
+<li>
+    <a href="../2-genformat/" class="dropdown-item">Format of a message</a>
+</li>
+            
+<li>
+    <a href="../3-common/" class="dropdown-item">Common Messages</a>
+</li>
+            
+<li>
+    <a href="../4-time/" class="dropdown-item">Time Messages</a>
+</li>
+            
+<li>
+    <a href="../5-miscmsgs/" class="dropdown-item">Miscellaneous</a>
+</li>
+            
+<li>
+    <a href="../6-setsect/" class="dropdown-item">The set Message</a>
+</li>
+            
+<li>
+    <a href="../7-getsect/" class="dropdown-item">The get Message</a>
+</li>
+            
+<li>
+    <a href="../8-specificMsg/" class="dropdown-item">Specific Messages</a>
+</li>
+            
+<li>
+    <a href="../9-ITL/" class="dropdown-item">Application Messages</a>
+</li>
+            
+<li>
+    <a href="../10-scene/" class="dropdown-item">Scene Messages</a>
+</li>
+            
+<li>
+    <a href="../11-forwarding/" class="dropdown-item">Messages Forwarding</a>
+</li>
+            
+<li>
+    <a href="../12-layers/" class="dropdown-item">Layers</a>
+</li>
+            
+<li>
+    <a href="../13-mapping/" class="dropdown-item">Mapping</a>
+</li>
+            
+<li>
+    <a href="../14-syncmsg/" class="dropdown-item">Synchronization</a>
+</li>
+            
+<li>
+    <a href="../15-graphsig/" class="dropdown-item">Graphic signals</a>
+</li>
+            
+<li>
+    <a href="../16-sensors/" class="dropdown-item">Sensors</a>
+</li>
+            
+<li>
+    <a href="../17-interaction/" class="dropdown-item">Interaction</a>
+</li>
+            
+<li>
+    <a href="../18-scoreExpr/" class="dropdown-item">Score Expressions</a>
+</li>
+            
+<li>
+    <a href="../19-plugins/" class="dropdown-item">Plugins</a>
+</li>
+            
+<li>
+    <a href="./" class="dropdown-item active">Changes list</a>
+</li>
+            
+<li>
+    <a href="../" class="dropdown-item">Index</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">Scripting language</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../../lang/1-scripting/" class="dropdown-item">Language</a>
+</li>
+            
+<li>
+    <a href="../../lang/2-mathExpr/" class="dropdown-item">Math. expressions</a>
+</li>
+            
+<li>
+    <a href="../../lang/3-appendices/" class="dropdown-item">Grammar</a>
+</li>
+    </ul>
+  </li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Documents <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="http://berio.grame.fr/MusicNotation/Introduction-to-INScore/" class="dropdown-item">Tutorial</a>
+</li>
+                                    
+<li>
+    <a href="../../papers/" class="dropdown-item">Papers</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Download <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../rsrc/INScoreLang.pdf" class="dropdown-item">Pdf documentation</a>
+</li>
+                                    
+<li>
+    <a href="https://github.com/grame-cncm/inscore/releases" class="dropdown-item">INScore</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../about/" class="nav-link">About</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../19-plugins/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#changes-list" class="nav-link">Changes list</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#version-127-vs-version-124" class="nav-link">Version 1.27 vs version 1.24</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#version-124-vs-version-122" class="nav-link">Version 1.24 vs version 1.22</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#version-122-vs-version-121" class="nav-link">Version 1.22 vs version 1.21</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#version-121-vs-version-118" class="nav-link">Version 1.21 vs version 1.18</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#version-118-vs-version-117" class="nav-link">Version 1.18 vs version 1.17</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#version-117-vs-version-115" class="nav-link">Version 1.17 vs version 1.15</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#version-115-vs-version-112" class="nav-link">Version 1.15 vs version 1.12</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#version-112-vs-version-108" class="nav-link">Version 1.12 vs version 1.08</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#version-108-vs-version-107" class="nav-link">Version 1.08 vs version 1.07</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#version-107-vs-version-106" class="nav-link">Version 1.07 vs version 1.06</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#version-106-vs-version-105" class="nav-link">Version 1.06 vs version 1.05</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#version-105-vs-version-103" class="nav-link">Version 1.05 vs version 1.03</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#version-103-vs-version-10" class="nav-link">Version 1.03 vs version 1.0</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#version-100-vs-version-098" class="nav-link">Version 1.00 vs version 0.98</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#version-098-vs-version-097" class="nav-link">Version 0.98 vs version 0.97</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#version-097-vs-version-096" class="nav-link">Version 0.97 vs version 0.96</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#version-096-vs-version-095" class="nav-link">Version 0.96 vs version 0.95</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#version-095-vs-version-092" class="nav-link">Version 0.95 vs version 0.92</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#version-092-vs-version-091" class="nav-link">Version 0.92 vs version 0.91</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#version-091-vs-version-090" class="nav-link">Version 0.91 vs version 0.90</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#version-090-vs-version-082" class="nav-link">Version 0.90 vs version 0.82</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#version-082-vs-version-081" class="nav-link">Version 0.82 vs version 0.81</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#version-081-vs-version-080" class="nav-link">Version 0.81 vs version 0.80</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#version-080-vs-version-079" class="nav-link">Version 0.80 vs version 0.79</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#version-079-vs-version-078" class="nav-link">Version 0.79 vs version 0.78</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#version-078-vs-version-077" class="nav-link">Version 0.78 vs version 0.77</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#version-077-vs-version-076" class="nav-link">Version 0.77 vs version 0.76</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#version-076-vs-version-075" class="nav-link">Version 0.76 vs version 0.75</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#version-075-vs-version-074" class="nav-link">Version 0.75 vs version 0.74</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#version-074-vs-version-063" class="nav-link">Version 0.74 vs version 0.63</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#version-063-vs-version-060" class="nav-link">Version 0.63 vs version 0.60</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#version-060-vs-version-055" class="nav-link">Version 0.60 vs version 0.55</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#version-055-vs-version-053" class="nav-link">Version 0.55 vs version 0.53</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#version-053-vs-version-050" class="nav-link">Version 0.53 vs version 0.50</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#version-050-vs-version-042" class="nav-link">Version 0.50 vs version 0.42</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<script src='/BNF/railroad-diagrams.js'></script>
+
+<h1 id="changes-list">Changes list</h1>
+<p><a name="changes"></a></p>
+<h2 id="version-127-vs-version-124">Version 1.27 vs version 1.24</h2>
+<ul>
+<li>INScore Web version</li>
+<li>new <span class="OSC">faust</span> object (web version)</li>
+<li>new <span class="OSC">connect</span> method (web version)</li>
+<li>forwarding mechanism extended with http and ws support. See section <a href="../11-forwarding#ITLForward">ITLForward</a></li>
+</ul>
+<h2 id="version-124-vs-version-122">Version 1.24 vs version 1.22</h2>
+<ul>
+<li>new inscore2 scripting language</li>
+<li>log window supports the <span class="OSC">scale</span> message. See section <a href="../9-ITL#ITLlog">ITLlog</a></li>
+<li>colors: supports html color names and hex values with 0x as prefix. See section <a href="../3-common#colormsg">colormsg</a></li>
+<li>supports absolute time segments in mappings. See section <a href="../13-mapping#segdefs">segdefs</a></li>
+<li><span class="OSC">tempo</span> is now a floating point value</li>
+<li>fix touch events with edit dialog</li>
+<li>add 'inscore2' extension to files filter (mobile version)</li>
+<li>update to guido engine 1.66</li>
+<li>edit message supports <span class="OSC">set</span> as argument. See section <a href="../3-common#editmsg">editmsg</a></li>
+<li>edit new <span class="OSC">reset</span> argument to clear the edit string in the object cache. See section <a href="../3-common#editmsg">editmsg</a></li>
+<li>new <span class="OSC">dshear</span> method. See section <a href="../3-common#transform">transform</a></li>
+<li>fix bug with javascript runtime variable (passed as argument to run)</li>
+<li>fix synchronization issue with arcs (not visible when synchronized)</li>
+<li>fix crash bug with <span class="OSC">set</span> messages addressed to /ITL/*/anobject</li>
+</ul>
+<h2 id="version-122-vs-version-121">Version 1.22 vs version 1.21</h2>
+<ul>
+<li>new <span class="OSC">opengl</span> message supported at scene level for optional OpenGl graphics rendering. Improves significantly the cpu use for graphics operations but at the cost of poorer rendering for text and symbolic scores </li>
+<li>fix potential issue with dates: dates expressed with big values for the numerator or the denominator may result in overflow</li>
+</ul>
+<h2 id="version-121-vs-version-118">Version 1.21 vs version 1.18</h2>
+<ul>
+<li>new set of sensor objects. See section <a href="../16-sensors#sensors">sensors</a>.</li>
+<li>update to guido engine 1.63</li>
+<li>new <span class="OSC">preprocess</span> message supported at application and scene level intended to debug javascript sections or math expressions. Output of pre-processing is printed to the log window. See section <a href="../9-ITL#applmgmt">applmgmt</a> and  <a href="../10-scene#scene">scene</a>.</li>
+<li>environement variables introduced in scripting environment (OSName and OSId). See section \fullref{envvar}.</li>
+<li>
+<p>new math expressions introduced in scripting context. See section \fullref{mathExpr}.</p>
+</li>
+<li>
+<p>new <span class="OSC">syncFrame</span> synchronisation mode. See section <a href="../14-syncmsg#syncPos">syncPos</a> and <a href="../14-syncmsg#syncFrame">syncFrame</a>.</p>
+</li>
+<li>the <span class="OSC">events</span> system has been extended to any object attribute and supports user defined events.
+  This change comes also with a one tick delay introduced to handle all the events (i.e. the 
+  event associated messages are processed by the next time task): this is intended to avoid
+  freezing the system in case of loops. See section <a href="../17-interaction#attributeevents">attributeevents</a> and  <a href="../17-interaction#userevents">userevents</a>.</li>
+<li>lua support has been dropped (compilation was optional, never embedded into a distribution)</li>
+<li>parser strategy changed: now each message is processed one by one to ensure the system
+  consistency, especially for message based variables: an object state remains now consistent 
+  from one message to another.</li>
+<li>new <span class="OSC">arc</span> object. See section <a href="../6-setsect#vgraphscore">vgraphscore</a> and  <a href="../8-specificMsg#arcobjects">arcobjects</a>.</li>
+<li>new <span class="OSC">radius</span> message supported by rectangles. See section <a href="../8-specificMsg#rectobjects">rectobjects</a>.</li>
+<li>new <span class="OSC">edit</span> message supported by all objects: opens a small messages editor. See section <a href="../3-common#editmsg">editmsg</a>.</li>
+<li>new <span class="OSC">level</span> message supported by the log window and extended debugging support. See section <a href="../9-ITL#ITLlog">ITLlog</a>.</li>
+<li>new video specific messages and management: the video time is now independent from the 
+  inscore object time. See section <a href="../8-specificMsg#video">video</a>.</li>
+<li>gmn objects <span class="OSC">set</span>: output correct error message in case of syntax error</li>
+<li>save msg output changed: a scene emit the <span class="OSC">new</span> message, static info nodes (log, stat, javascript...)</li>
+<li>bug in debug name corrected (was not removed from graphic space)</li>
+<li>bug in polygon and curve position corrected (was not centered on 0 0) - use <span class="OSC">/ITL compatibility</span> 
+  to preserve previous behaviour</li>
+<li>
+<p>crash bug corrected: occured when lauching inscore from a secondary screen</p>
+</li>
+<li>
+<p>new <span class="OSC">write</span> message supported by text based objects. See section <a href="../8-specificMsg#txtwrite">txtwrite</a>.</p>
+</li>
+</ul>
+<h2 id="version-118-vs-version-117">Version 1.18 vs version 1.17</h2>
+<ul>
+<li>new <span class="OSC">tempo</span> message supported by all objects. See section <a href="../4-time#tempo">tempo</a>.</li>
+<li>new <span class="OSC">pageCount</span> event supported by symbolic score objects. See section <a href="../17-interaction#typespecevents">typespecevents</a>.</li>
+<li>new <span class="OSC">error</span> event supported at application level. See section <a href="../17-interaction#typespecevents">typespecevents</a>.</li>
+<li>new <span class="OSC">browse</span> message at application level to open a document in a web browser. See section <a href="../9-ITL#system">system</a>.</li>
+<li>web api documentation included in package</li>
+</ul>
+<h2 id="version-117-vs-version-115">Version 1.17 vs version 1.15</h2>
+<ul>
+<li>support animated svg using the new <span class="OSC">animate</span> message. See section <a href="../8-specificMsg#svgobjects">svgobjects</a>.</li>
+<li>messages list variables are exported to javascript as a string.</li>
+<li>Carlito Regular open source font is embedded in the application ressources and used as a default font. See at <a href="https://fontlibrary.org/fr/font/carlito">https://fontlibrary.org/fr/font/carlito</a> for more information.</li>
+<li>symbolic notation support extended with score expressions. See section <a href="../18-scoreExpr#scoreExpr">scoreExpr</a>.</li>
+<li>new <span class="OSC">newData</span> event. See section <a href="../17-interaction#miscevents">miscevents</a>.</li>
+<li>the javascript engine is shared between the application and the different scenes.
+  Note that it may change a script behavior when exploiting the previous independance
+  of the javascript engine environments.</li>
+<li>new javascript <span class="OSC">osname</span> function that gives the current operating system name. See section \fullref{jsobj}.</li>
+<li>new javascript <span class="OSC">osid</span> function that gives the current operating system as an id. See section \fullref{jsobj}.</li>
+<li><span class="OSC">rootPath</span> message can be called without parameter to clear a scene rootPath. See section <a href="../10-scene#scene">scene</a>.</li>
+<li>log window supports the <span class="OSC">foreground</span> message. See section <a href="../9-ITL#ITLlog">ITLlog</a>.</li>
+<li>user actions on windows are generating <span class="OSC">foreground</span> messages.</li>
+<li>application quit when the last scene is closed (even when the log window is opened) </li>
+<li>new <span class="OSC">lock</span> message supported by all objects to prevent an object deletion. See section <a href="../3-common#common">common</a>.</li>
+<li>OSC output buffer has been enlarged to 32768. Note that sending large messages works on localhost but are likely to face the MTU on real network. </li>
+<li>
+<p>crash bug corrected: outgoing OSC messages are now handling buffer overflow exceptions.</p>
+</li>
+<li>
+<p>support for multi touch events. See section <a href="../17-interaction#touchevents">touchevents</a>.</p>
+</li>
+<li>new <span class="OSC">radialgraph</span> signal representation. See section <a href="../15-graphsig#gsignal">gsignal</a>.</li>
+<li><span class="OSC">httpd</span> object is visible as a qrcode giving the server url.</li>
+<li><span class="OSC">httpd</span> object is now part of the library (not a plugin any more) (not available on Windows, Android and iOS)</li>
+<li><span class="OSC">frameless</span> and <span class="OSC">fullscreen</span> modes management revised at view level and are now now exclusive at model level</li>
+<li>String without spaces in INScore scripts no longer need to be quoted.</li>
+</ul>
+<h2 id="version-115-vs-version-112">Version 1.15 vs version 1.12</h2>
+<ul>
+<li>new <span class="OSC">frame</span> query method: <span class="OSC">get frame</span> gives the coordinates of 4 points that represent the 
+  object frame, expressed in the scene local coordinates system and including all the graphic 
+  transformations (scaling, rotations on the 3 axis, shear etc.)</li>
+<li>pen messages are now accepted by all the components. Thie extension is provided to display
+  any object bounding box. Note that for rects, ellipses etc. the previous behavior is preserved.</li>
+<li><span class="OSC">pianoroll</span> support. See section <a href="../6-setsect#pianorollscore">pianorollscore</a> and <a href="../8-specificMsg#pianoroll">pianoroll</a>.</li>
+<li>Add web Api to expose inscore on the web with websocket or http.</li>
+<li>Add change tab on mobile with three digits gesture.</li>
+<li>add new object <span class="OSC">filter</span> at application and scene level to filter forwarded messages.</li>
+<li>sending to broadcast address is enabled</li>
+<li>add <span class="OSC">forward</span> and <span class="OSC">filter</span> messages to the scene to handle messages forwarding at scene level. See section <a href="../11-forwarding#forwarding">forwarding</a>.</li>
+<li>default port to forward messages is now 7000.</li>
+<li>add new optional tab at startup with a menu for ios and android.</li>
+<li>add zoom and move capabilities at scene level using <span class="OSC">scale</span>, OSC{xorigin} and OSC{yorigin}. This is intended to support two fingers gesture on mobile device.</li>
+<li>bug with lines corrected: a line in non-square parent was rotated when the parent's width 
+  was smaller than its height.</li>
+<li>bug with <span class="OSC">eval</span> forwarding corrected: forwarded messages were triggering a syntax error due to 
+  a misinterpreted incorrect args count </li>
+</ul>
+<h2 id="version-112-vs-version-108">Version 1.12 vs version 1.08</h2>
+<ul>
+<li><span class="OSC">line</span> objects: <span class="OSC">color</span> message is now an alias of <span class="OSC">penColor</span>. </li>
+<li><span class="OSC">foreground</span> method at scene level to put a scene window in foreground. See section <a href="../10-scene#scene">scene</a>.</li>
+<li>text items support font spec with new <span class="OSC">fontSize</span>, <span class="OSC">fontFamily</span>, <span class="OSC">fontStyle</span> and <span class="OSC">fontWeight</span> messages. See section <a href="../8-specificMsg#fontctrl">fontctrl</a>.</li>
+<li>new <span class="OSC">compatibility</span> method at application level, provided to preserve previous behaviors. See section <a href="../9-ITL#applmgmt">applmgmt</a>.</li>
+<li>default size of guido item is increased: the ratio to the previous size is 8.</li>
+<li>force default size and font to text items in order to get equivelent rendering on different platforms (default to Arial 13px).</li>
+<li>new <span class="OSC">arrows</span> attribute for <span class="OSC">line</span> objects. See section <a href="../8-specificMsg#arrows">arrows</a>.</li>
+<li>the <span class="OSC">export</span> message supports multiple file paths. See section <a href="../3-common#common">common</a>.</li>
+<li>
+<p>new <span class="OSC">exportAll</span> message to export an object with its children. See section <a href="../3-common#common">common</a>.</p>
+</li>
+<li>
+<p>incoming messages buffer size increased to 10.000</p>
+</li>
+<li>
+<p>url support for inscore files (<span class="OSC">load</span> message)</p>
+</li>
+<li>
+<p>new common queries (<span class="OSC">get</span> message) : <span class="OSC">count</span> and <span class="OSC">rcount</span> that give the enclosed objects count and recursive count. The messages are supported at scene and application level as well. See section <a href="../10-scene#scenequery">scenequery</a>.</p>
+</li>
+<li>new <span class="OSC">memimg</span> object that capture the image of any object hierarchy including scenes. See section <a href="../6-setsect#imgscore">imgscore</a>.</li>
+<li>supports relative OSC addresses that are evaluated in the context of the target object 
+  (i.e. a scene for drag and drop operations, arbitrary objects with the <span class="OSC">eval</span> method). See section \fullref{scriptmsgs}.</li>
+<li>new <span class="OSC">eval</span> method that takes a message list as argument, provided as a context for relative addresses evaluation. See section <a href="../5-miscmsgs#miscmsgs">miscmsgs</a>.</li>
+<li>new <span class="OSC">httpd</span> object that implements an http server providing images of the scene to remote clients. See section <a href="../6-setsect#webobjects">webobjects</a> and section <a href="../19-plugins#Httpd">Httpd</a>.</li>
+<li>
+<p>new <span class="OSC">websocket</span> object that implements a websocket server providing images of the scene to remote clients but also changes notifications. See section <a href="../6-setsect#webobjects">webobjects</a>.</p>
+</li>
+<li>
+<p>Files objects can receive URL as path. See section <a href="../6-setsect#filebasedrsrc">filebasedrsrc</a>.</p>
+</li>
+<li>new intermediate object for the URL (waiting for the data to be downloaded to create the real object)</li>
+<li>new events associated to url based objects: success, error, cancel. See section <a href="../17-interaction#urlevents">urlevents</a>.</li>
+<li>support for int values as parameters of the set method of rect shape and polygon objects</li>
+<li>
+<p>the <span class="OSC">clear</span> message addressed to a <span class="OSC">gmnstream</span> object clears also the view. The change was not previously reflected until a new valid string was posted to the object.</p>
+</li>
+<li>
+<p>bug in export item corrected : child scaling was not applied.</p>
+</li>
+<li>bug correction: for multiple exports, only the last one was done.</li>
+<li>bug in extended address support corrected: extended address was ignored for messages dropped to a scene .</li>
+<li>bug in window color corrected: black color was not correctly set due to an incorrect color 
+  information returned by Qt.</li>
+<li>bug with 'line' initialization corrected: wrong position and orientation with negative coordinates (was previously corrected but reintroduced), incorrect initialization in layers.</li>
+</ul>
+<h2 id="version-108-vs-version-107">Version 1.08 vs version 1.07</h2>
+<ul>
+<li>new <span class="OSC"><strong>END</strong></span> marker supported to end a script parsing at arbitrary location  (see section \fullref{scriptstatement}).</li>
+<li>when displaying the mapping, the map dates are not printed any more by default (due to size and collisions).  The debug map parameter change from boolean to int value: 1 to activate the mapping display, 
+2 to have also the dates displayed  (see section <a href="../8-specificMsg#debugnode">debugnode</a>).</li>
+<li>the signal node is available at any level of the hierarchy (as well as the sync node)</li>
+<li>new <span class="OSC">connect</span> and <span class="OSC">disconnect</span> messages for the signal node to support signal connection to objects graphic attributes (see section <a href="../15-graphsig#signalcnx">signalcnx</a>).</li>
+<li>a slave can have several masters</li>
+<li>no more side effects for synchronized objects (position change, scaling)</li>
+</ul>
+<h2 id="version-107-vs-version-106">Version 1.07 vs version 1.06</h2>
+<ul>
+<li>bug with 'line' initialization corrected: wrong position and orientation with negative coordinates.</li>
+<li>new <span class="OSC">plugins</span> static node at application level to provide a user path to look for pugins (see section <a href="../9-ITL#ITLplugins">ITLplugins</a>).</li>
+<li>explicit objects for musicxml scores (<span class="OSC">musicxml</span> and <span class="OSC">musicxmlf</span> types) (see section <a href="../6-setsect#symscore">symscore</a>).</li>
+<li>new <span class="OSC">faustdsp</span> object, charging libfaust as a plugin to compile faust DSP on-the-fly (see section <a href="../6-setsect#sigscore">sigscore</a>).</li>
+<li>exception catched when sending osc messages: was a potential crash, 
+  e.g. in case of <span class="OSC">get</span> message sent to a signal with a large buffer -&gt; out of buffer memory</li>
+<li>new javascript 'post' function for posting delayed messages  (see section \fullref{jsobj})</li>
+<li>new <span class="OSC">write</span> method supported by the 'log' window (see section <a href="../9-ITL#ITLlog">ITLlog</a>)</li>
+<li>variable addresses are evaluated in message based variables</li>
+<li>supports relative rotations on x and y axis</li>
+</ul>
+<h2 id="version-106-vs-version-105">Version 1.06 vs version 1.05</h2>
+<ul>
+<li><span class="OSC">save</span> message can now take an optional list of attributes to be saved  (see section <a href="../3-common#common">common</a>)</li>
+<li>variables are now evaluated and expanded inside strings. Thus interaction variables can now be passed as argument of javascript functions.</li>
+<li>corrects musicxml-version output</li>
+<li>log window is put to front when the show menu is recalled</li>
+<li>object aliases are removed when the object is deleted</li>
+</ul>
+<h2 id="version-105-vs-version-103">Version 1.05 vs version 1.03</h2>
+<ul>
+<li>incorrect error message for watch messages corrected</li>
+<li>new javascript <span class="OSC">readfile</span> function (see section \fullref{jsobj})</li>
+<li>log window is now available from the application 'Tools' menu</li>
+<li>new <span class="OSC">brushStyle</span> attribute (see section <a href="../8-specificMsg#brush">brush</a>)</li>
+<li>new <span class="OSC">layer</span> object (see section <a href="../6-setsect#miscscore">miscscore</a>)</li>
+<li>new <span class="OSC">save</span> method specific to the log window: saves the window content to a file (see section <a href="../9-ITL#ITLlog">ITLlog</a>)</li>
+<li>new <span class="OSC">event</span> method supported at object level for UI events simulation</li>
+<li>new <span class="OSC">del</span> watchable event: sent when deleting an object (see section <a href="../17-interaction#miscevents">miscevents</a>)</li>
+<li>new <span class="OSC">gmnstream</span> guido stream object (see section <a href="../6-setsect#symscore">symscore</a>)</li>
+</ul>
+<h2 id="version-103-vs-version-10">Version 1.03 vs version 1.0</h2>
+<ul>
+<li>log window utility provided as a new static node at application level (<span class="OSC">/ITL/log</span>) (see section <a href="../9-ITL#ITLlog">ITLlog</a>).</li>
+<li>new <span class="OSC">systemCount</span> read only attribute for Guido scores (see section <a href="../8-specificMsg#gmnpage">gmnpage</a>)</li>
+<li>IRCAM gesture follower support (see section <a href="../19-plugins#GF">GF</a>)</li>
+<li>javascript engine is available at the static address /ITL/scene/javascript and can be activated using a 'run' method  (see section \fullref{jsobj})</li>
+<li>new <span class="OSC">export</span> event (see section <a href="../17-interaction#miscevents">miscevents</a>)</li>
+<li>new <span class="OSC">endPaint</span> event at scene level  (see section <a href="../17-interaction#miscevents">miscevents</a>)</li>
+<li>new <span class="OSC">windowOpacity</span> method at scene level (see section <a href="../10-scene#scene">scene</a>)</li>
+<li>bug correction: error messages not generated for dropped files (actually for the scene load method)</li>
+<li>bug correction: possible infinite loop in QStretchTilerItem::paint method</li>
+<li>bug correction: incorrect get alias output (all the aliases were dumped out in a single message)</li>
+</ul>
+<h2 id="version-100-vs-version-098">Version 1.00 vs version 0.98</h2>
+<ul>
+<li>bug correction in streching very small objects (due to approximations)</li>
+<li>bug correction in $sx and $sy computation (xorigin and yorigin was not taken into account)</li>
+<li>new 'ticks' message at application level for querying or setting the current count of time tasks (see section <a href="../9-ITL#applmgmt">applmgmt</a>)</li>
+<li>new 'time' message at application level for querying or setting the current time (see section <a href="../9-ITL#applmgmt">applmgmt</a>)</li>
+<li>new 'forward' message at application level for messages forwarding to remote hosts (see section <a href="../9-ITL#applmgmt">applmgmt</a>)</li>
+<li>new 'relative | absolute' synchronization mode (see section <a href="../14-syncmsg#syncmode">syncmode</a>)</li>
+<li>'rename' message not supported any more</li>
+<li>a scene accepts multiple dropped files</li>
+<li>significant extension and syntax changes in inscore script files (see Scripting documentation section \fullref{scripting})</li>
+<li>fileWatcher methods renamed and simplified (see section <a href="../17-interaction#filewatch">filewatch</a>)</li>
+<li>'click' and 'select' messages are not supported any more.</li>
+<li>new 'stats' virtual node at application level (address /ITL/stats), supports 'get' and 'reset' messages
+  the node gives statistics about the incoming messages (see section <a href="../9-ITL#ITLdebug">ITLdebug</a>)</li>
+<li>crash bug in signal creation corrected: a signal size created with an incorrect stream 
+  (e.g. a string value) was 0 and no buffer was allocated.</li>
+<li>extension of the time related events to duration: new 'durEnter' and 'durLeave' watchable events (see section <a href="../17-interaction#timeevents">timeevents</a>)</li>
+<li>new 'absolutexy' message at scene level to switch to absolute coordinates (in pixels) (see section <a href="../10-scene#scene">scene</a>)</li>
+<li>new 'push' and 'pop' messages to store and restore current watched events and associated messages (see section <a href="../17-interaction#evtstate">evtstate</a>)</li>
+<li>internal change: mappings are now implemented as a separable library strictly complying to the 
+  mappings formalism.</li>
+<li>new </li>
+<li>dates may be specified as rational strings (see section <a href="../4-time#time">time</a>).</li>
+<li>interaction messages are not any more generated when the date can't be resolved.</li>
+<li>new <span class="OSC">rate</span> message at application level to control the time task rate (see section <a href="../9-ITL#ITL">ITL</a>)</li>
+<li>new <span class="OSC">frameless</span> message at scene level to switch to frameless or normal window (see section <a href="../10-scene#scene">scene</a>)</li>
+</ul>
+<h2 id="version-098-vs-version-097">Version 0.98 vs version 0.97</h2>
+<ul>
+<li>new <span class="OSC">fastgraph</span> object for graphic signals fast rendering (see section <a href="../6-setsect#setsect">setsect</a>)</li>
+<li>$date variable overflow catched</li>
+<li>files dropped on application icon correctly opened when the application is not running</li>
+<li>supports drag and drop of textual osc message strings</li>
+<li>osc error stream normalized: the message address is 'error:' or 'warning:'
+   followed by a single message string.</li>
+<li>javascript and lua support: a single persistent context is created at application level and for each scene. 
+(see section \fullref{scriptlang})</li>
+</ul>
+<h2 id="version-097-vs-version-096">Version 0.97 vs version 0.96</h2>
+<ul>
+<li>objects position, date and watched events preserved through type change</li>
+<li>bug in quantified dates corrected (null denominator set to the quantified value)</li>
+<li>new 'alias' message providing arbitrary OSC addresses support</li>
+<li>bug in parser corrected: \ escape only ' and " chars, otherwise it is literal</li>
+<li>guido score map makes use of the new guidolib extended mapping API for staff and system</li>
+<li>chords map correction (corrected by guido engine) </li>
+</ul>
+<h2 id="version-096-vs-version-095">Version 0.96 vs version 0.95</h2>
+<ul>
+<li>switch to v8 javascript engine</li>
+<li>lua not embedded by default</li>
+</ul>
+<h2 id="version-095-vs-version-092">Version 0.95 vs version 0.92</h2>
+<ul>
+<li>new 'mouse' 'show/hide' message supported at application level (see section <a href="../9-ITL#ITL">ITL</a>)</li>
+<li>graphic signal supports alpha messages at object level</li>
+<li>javascript and lua embedded and supported in inscore scripts  (see section \fullref{scriptlang}).</li>
+<li>bug correction in sync delete (introduced with version 0.90)</li>
+</ul>
+<h2 id="version-092-vs-version-091">Version 0.92 vs version 0.91</h2>
+<ul>
+<li>bug corrected: crash with messages addressed to a signal without argument</li>
+<li>date and duration messages support one arg form using 1 as implicit denominator value 
+  the one arg form accepts float values  (see section <a href="../4-time#time">time</a>).</li>
+</ul>
+<h2 id="version-091-vs-version-090">Version 0.91 vs version 0.90</h2>
+<ul>
+<li>bug in sync management corrected (introduced with the new sync parsing scheme)</li>
+</ul>
+<h2 id="version-090-vs-version-082">Version 0.90 vs version 0.82</h2>
+<ul>
+<li>at application level: osc debug is now 'on' by default</li>
+<li>new scripting features (variables)  (see section \fullref{scriptvar}).</li>
+<li>ITL file format change: </li>
+<li>semicolon added at the end of each message </li>
+<li>'//' comment not supported any more </li>
+<li>'</li>
+<li>new variables scripting features </li>
+<li>single quote support for strings </li>
+<li>messages addressed to sync node must use the string format</li>
+<li>new 'grid' object for automatic segmentation and mapping</li>
+</ul>
+<h2 id="version-082-vs-version-081">Version 0.82 vs version 0.81</h2>
+<ul>
+<li>new Faust plugins for signals processing</li>
+<li>colors management change: all the color models (RGBA and HSBA) accept now
+  float values that are interpreted in the common [-1,1] range. For the
+  hue value, 0 always corresponds to 'red' whatever the scale used.</li>
+<li>stretch adjustment for video objects (corrects gaps in sync h mode)</li>
+<li>support for opening inscore files on the command line</li>
+<li>system mapping correction</li>
+<li>splash screen and about menu implemented by the viewer</li>
+</ul>
+<h2 id="version-081-vs-version-080">Version 0.81 vs version 0.80</h2>
+<ul>
+<li>behavior change with synchronization without stretch: now the system looks also in the
+  slave map for a segment corresponding to the master date.</li>
+<li><span class="OSC">$date</span> variable change: the value is now (0,0) when no date is available and <span class="OSC">$date</span> is time shifted according to the object date.</li>
+<li><span class="OSC">date</span> message change: the date 0 0 is ignored</li>
+</ul>
+<h2 id="version-080-vs-version-079">Version 0.80 vs version 0.79</h2>
+<ul>
+<li>corrects the map not saved by the <span class="OSC">save</span> message issue</li>
+<li>corrects <span class="OSC">get map</span> output: 2D segments were not correctly converted to string</li>
+</ul>
+<h2 id="version-079-vs-version-078">Version 0.79 vs version 0.78</h2>
+<ul>
+<li>crash bug corrected for the 'save' message addressed to '/ITL'</li>
+<li>message policy change: relaxed numeric parameters policy (float are accepted for int and int for float)</li>
+<li>bug in <span class="OSC">get watch</span> for time events corrected (incorrect reply)</li>
+</ul>
+<p>Known issues:</p>
+<ul>
+<li>map not saved by the <span class="OSC">save</span> message </li>
+</ul>
+<h2 id="version-078-vs-version-077">Version 0.78 vs version 0.77</h2>
+<ul>
+<li>guido system map extended: supports flat map or subdivided map (see section <a href="../13-mapping#guidomap">guidomap</a>).</li>
+<li>new <span class="OSC">shear</span> and <span class="OSC">rotate</span> transformations messages (see section <a href="../3-common#transform">transform</a>).</li>
+<li>new <span class="OSC">rename</span> message to change an object name (and thus its OSC address) (see section <a href="../3-common#common">common</a>).</li>
+<li>relaxed bool parameter policy: objects accept float values for bool parameters </li>
+<li>automatic numbering of exports when destination file is not completely specified 
+  i.e. no name, no extension. (see section <a href="../3-common#common">common</a>).</li>
+<li>quantification introduced to $date variable (see section <a href="../17-interaction#interactvar">interactvar</a>).</li>
+<li><span class="OSC">reset</span> message addressed to a scene clears the scene rootPath</li>
+</ul>
+<h2 id="version-077-vs-version-076">Version 0.77 vs version 0.76</h2>
+<ul>
+<li>get <span class="OSC">guido-version</span> and <span class="OSC">musicxml-version</span> messages supported by the application (see section <a href="../9-ITL#ITL">ITL</a>).</li>
+<li><span class="OSC">save</span> message bug correction - introduced with version 0.70: only partial state of objects was saved</li>
+<li><span class="OSC">rootPath</span> message introduced at scene level (see section <a href="../10-scene#scene">scene</a>).</li>
+<li>scene name translation strategy change: only the explicit 'scene' name is 
+  translated by the scene load message handler into the current scene name, 
+  other names are left unchanged.</li>
+<li>bitmap copy adjustment in sync stretched mode is now only made for images</li>
+</ul>
+<h2 id="version-076-vs-version-075">Version 0.76 vs version 0.75</h2>
+<ul>
+<li>new <span class="OSC">require</span> message supported by the <span class="OSC">/ITL</span> node (see section <a href="../9-ITL#ITL">ITL</a>).</li>
+<li>new event named <span class="OSC">newElement</span> supported at scene level (see section <a href="../17-interaction#timeevents">timeevents</a>).</li>
+<li>new <span class="OSC">name</span> and <span class="OSC">address</span> variables (see section <a href="../17-interaction#interactvar">interactvar</a>).</li>
+<li>new system map computation making use of the new slices map provided by the guidolib version 1.42</li>
+<li>INScore API: the <span class="OSC">newMessage</span> method sets now the message src IP to localhost
+  With the previous version and the lack of src IP, replies to queries or error 
+  messages could be sent to undefined addresses (and mostly lost).</li>
+<li>bug corrected with ellipse and rect : integer graphic size computation changed 
+  to float (prevents objects disappearance with small width or height)</li>
+<li>bug in scene export: left and right borders could be cut, depending  on the scene size
+  corrected by rendering the QGraphicsView container instead the QGraphicsScene</li>
+<li>crash bug with $date:name corrected: crashed when there is no mapping named <span class="OSC">name</span>.</li>
+</ul>
+<h2 id="version-075-vs-version-074">Version 0.75 vs version 0.74</h2>
+<ul>
+<li>new <span class="OSC">map+</span> message  (see section <a href="../13-mapping#mapAddMsg">mapAddMsg</a>).</li>
+<li>the <span class="OSC">click</span> and <span class="OSC">select</span> messages are deprecated (but still supported). They will be removed in a future version.</li>
+</ul>
+<h2 id="version-074-vs-version-063">Version 0.74 vs version 0.63</h2>
+<ul>
+<li>new <span class="OSC">dpage</span> message accepted by <span class="OSC">gmn</span> objects (see section <a href="../8-specificMsg#gmnpage">gmnpage</a>).</li>
+<li>x and y variables: automatic range type detection (int | float)</li>
+<li>set <span class="OSC">txt</span> message: accepts polymorphic stream like parameters (see section <a href="../6-setsect#setsect">setsect</a>).</li>
+<li>drag and drop files support in INScore viewer</li>
+<li>interaction variables extension: <span class="OSC">$sx</span>, <span class="OSC">$sy</span> variables added to support scene coordinate space (see section <a href="../17-interaction#interactvar">interactvar</a>).</li>
+<li>automatic range mapping for <span class="OSC">$x</span>, <span class="OSC">$y</span> variables.</li>
+<li>new <span class="OSC">$self</span> and <span class="OSC">$scene</span> variables in the address field (see section <a href="../17-interaction#oscvar">oscvar</a>).</li>
+<li>OSC identifiers characters set extended with '_' and '-' (see section <a href="../2-genformat#genformat">genformat</a>).</li>
+<li>support for multiple scenes: <span class="OSC">new</span>, <span class="OSC">del</span> and <span class="OSC">foreground</span> messages (see section <a href="../10-scene#scene">scene</a>).</li>
+<li><span class="OSC">load</span> message supported at scene level (see section <a href="../10-scene#scene">scene</a>).</li>
+<li><span class="OSC">get watch</span> implemented.</li>
+<li><span class="OSC">watch</span> message without argument to clear all the watched events (see section <a href="../17-interaction#interactvar">interactvar</a>).</li>
+<li>order of rendering and width, height update corrected (may lead to incorrect rendering)</li>
+<li>bug with gmn score corrected: missing update for page, columns and rows changes.</li>
+<li>package delivered with the Guido Engine version 1.41 that corrects minimum staves distance and incorrect mapping when optimum page fill is off.</li>
+</ul>
+<h2 id="version-063-vs-version-060">Version 0.63 vs version 0.60</h2>
+<ul>
+<li>new 'mousemove' event (see section <a href="../17-interaction#uievents">uievents</a>).</li>
+<li>interaction messages accept variables ($x, $y, $date...) (see section <a href="../17-interaction#interactvar">interactvar</a>).</li>
+<li>SVG code and files support (see section <a href="../6-setsect#setfile">setfile</a>).</li>
+<li>set line message change: the <span class="OSC">x y</span> form is deprecated, it is replaced by
+  the following forms: 
+  <span class="OSC">'xy' x y</span> (equivalent to the former form) 
+  and <span class="OSC">'wa' width angle</span> <br />
+  (see section <a href="../6-setsect#setsect">setsect</a>).</li>
+<li>new 'effect' message  (section <a href="../3-common#effectmsg">effectmsg</a>).</li>
+<li>utf8 support on windows corrected</li>
+<li>transparency support for stretched synchronized objects corrected</li>
+<li>multiple application instances supported with dynamic udp port number allocation.</li>
+<li>command line option with --port portnumber option to set the receive udp port number at startup.</li>
+</ul>
+<h2 id="version-060-vs-version-055">Version 0.60 vs version 0.55</h2>
+<ul>
+<li>new 'xorigin' and 'yorigin' messages (section <a href="../3-common#origin">origin</a>).</li>
+<li>new interaction messages set (section <a href="../17-interaction#interaction">interaction</a>).</li>
+<li>alpha channel handled by images and video</li>
+<li>bug correction in line creation corrected (false incorrect parameter returned)</li>
+<li>bug correction in line 'get' message handling</li>
+<li>memory leak correction (messages not deleted)</li>
+</ul>
+<p>Known issues: </p>
+<ul>
+<li>incorrect graphic rendering when 'sync a b' is changed to 'sync b a' in the same update loop</li>
+<li>incorrect nested synchronization when master is horizontaly stretched,</li>
+</ul>
+<h2 id="version-055-vs-version-053">Version 0.55 vs version 0.53</h2>
+<ul>
+<li>ITL parser corrected to support regexp in message string (used by messages addressed to sync node)</li>
+<li>format of mapping files and strings changed (section <a href="../13-mapping#mapMsg">mapMsg</a>).</li>
+<li>format of sync messages extended to include map name (section <a href="../14-syncmsg#syncmsg">syncmsg</a>).</li>
+<li>signal node: 'garbage' message removed</li>
+<li>new 'reset' message for the scene (/ITL/scene) (section <a href="../10-scene#scene">scene</a>).</li>
+<li>new 'version' message for the application (/ITL) (section <a href="../9-ITL#ITL">ITL</a>).</li>
+<li>new 'reset' message for signals (section <a href="../15-graphsig#ssignal">ssignal</a>).</li>
+<li>bug parsing messages without params corrected</li>
+<li>slave segmentation used for synchronization</li>
+<li>new H synchronization mode (preserves slave segmentation)</li>
+<li>crash bug corrected for load message and missing ITL files</li>
+</ul>
+<h2 id="version-053-vs-version-050">Version 0.53 vs version 0.50</h2>
+<ul>
+<li>Graphic signal thickness is now symmetrically drawn around y position.</li>
+<li>ITL file format supports regular expressions in OSC addresses.</li>
+<li>IP of a message sender is now used for the reply or for error reporting.</li>
+<li>new <span class="OSC">line</span> object (section <a href="../6-setsect#setsect">setsect</a>).</li>
+<li>new <span class="OSC">penStyle</span> message for vectorial graphics (section <a href="../8-specificMsg#specificMsg">specificMsg</a>).</li>
+<li>new color messages <span class="OSC">red, green, blue, alpha, dcolor, dred, dgreen, dblue</span> (section <a href="../3-common#common">common</a> and  <a href="../3-common#relpos">relpos</a>).</li>
+<li>color values for objects are bounded to [0,255]</li>
+<li><span class="OSC">get map</span> message behaves according to new map message (section <a href="../7-getsect#getsect">getsect</a>).</li>
+<li><span class="OSC">get width</span> and  <span class="OSC">get height</span> is now supported by all objects (section <a href="../7-getsect#getsect">getsect</a>).</li>
+<li>bug in signal projection corrected (index 0 rejected)</li>
+<li>bug in signals default value delivery corrected</li>
+<li>new <span class="OSC">pageCount</span> message for guido scores</li>
+<li>debug nodes modified state propagated to parent node (corrects the debug informations graphic update issue)</li>
+<li>rational values catch null denominator (to prevents divide by zero exceptions).</li>
+</ul>
+<h2 id="version-050-vs-version-042">Version 0.50 vs version 0.42</h2>
+<ul>
+<li><span class="OSC">identifier</span> specification change (section <a href="../2-genformat#genformat">genformat</a>).</li>
+<li>new application <span class="OSC">hello</span> and  <span class="OSC">defaultShow</span> messages (section <a href="../9-ITL#ITL">ITL</a>).</li>
+<li>new <span class="OSC">load</span> and <span class="OSC">save</span> messages  (sections <a href="../9-ITL#ITL">ITL</a> and  <a href="../3-common#common">common</a>).</li>
+<li>
+<p><span class="OSC">click</span> and <span class="OSC">select</span> messages:</p>
+</li>
+<li>
+<p><span class="OSC">rightbottom</span> and <span class="OSC">leftbottom</span> modes renamed to <span class="OSC">bottomright</span> and <span class="OSC">bottomleft</span></p>
+</li>
+<li>new <span class="OSC">center</span> mode for the <span class="OSC">click</span> message</li>
+<li>
+<p>query mode sent back with the reply both for <span class="OSC">click</span> and  <span class="OSC">select</span> messages</p>
+</li>
+<li>
+<p>new <span class="OSC">file</span>, <span class="OSC">html</span> and  <span class="OSC">htmlf</span> types for the <span class="OSC">set</span> message (section <a href="../6-setsect#setsect">setsect</a>).</p>
+</li>
+<li><span class="OSC">get</span> syntax change for the <span class="OSC">scene</span>.</li>
+<li><span class="OSC">fileWatcher</span> messages completely redesigned.</li>
+<li>mappings can be identified by names (section <a href="../13-mapping#mapMsg">mapMsg</a>).</li>
+<li>rect, ellipse, curve, line and polygon object support graphic to relative-time mapping</li>
+<li>new synchronization modes for Guido scores: voice1, voice2, ... , staff1, staff2, ... , system, page.</li>
+<li>Guido mapping manages repeat bars.</li>
+<li>Graphic signals messages design (section <a href="../15-graphsig#gsignal">gsignal</a>).</li>
+</ul></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+                <p><a href="https://inscore.grame.fr">INscore projects</a> Copyright &copy; 2019-2021 <a href="http://www.grame.fr">Grame-CNCM</a></p>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" defer></script>
+        <script src="/js/inscore.js" defer></script>
+        <script src="/js/pubs.js" defer></script>
+        <script src="../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

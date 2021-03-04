@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Sensors - INScore Documentation</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+        <link href="/css/inscore.css" rel="stylesheet">
+        <link href="/css/pubs.css" rel="stylesheet">
+        <link href="/BNF/railroad-diagrams.css" rel="stylesheet">
+
+        <script src="../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">INScore Documentation</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href="../.." class="nav-link">Home</a>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Reference <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">Messages</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../1-introduction/" class="dropdown-item">Introduction</a>
+</li>
+            
+<li>
+    <a href="../2-genformat/" class="dropdown-item">Format of a message</a>
+</li>
+            
+<li>
+    <a href="../3-common/" class="dropdown-item">Common Messages</a>
+</li>
+            
+<li>
+    <a href="../4-time/" class="dropdown-item">Time Messages</a>
+</li>
+            
+<li>
+    <a href="../5-miscmsgs/" class="dropdown-item">Miscellaneous</a>
+</li>
+            
+<li>
+    <a href="../6-setsect/" class="dropdown-item">The set Message</a>
+</li>
+            
+<li>
+    <a href="../7-getsect/" class="dropdown-item">The get Message</a>
+</li>
+            
+<li>
+    <a href="../8-specificMsg/" class="dropdown-item">Specific Messages</a>
+</li>
+            
+<li>
+    <a href="../9-ITL/" class="dropdown-item">Application Messages</a>
+</li>
+            
+<li>
+    <a href="../10-scene/" class="dropdown-item">Scene Messages</a>
+</li>
+            
+<li>
+    <a href="../11-forwarding/" class="dropdown-item">Messages Forwarding</a>
+</li>
+            
+<li>
+    <a href="../12-layers/" class="dropdown-item">Layers</a>
+</li>
+            
+<li>
+    <a href="../13-mapping/" class="dropdown-item">Mapping</a>
+</li>
+            
+<li>
+    <a href="../14-syncmsg/" class="dropdown-item">Synchronization</a>
+</li>
+            
+<li>
+    <a href="../15-graphsig/" class="dropdown-item">Graphic signals</a>
+</li>
+            
+<li>
+    <a href="./" class="dropdown-item active">Sensors</a>
+</li>
+            
+<li>
+    <a href="../17-interaction/" class="dropdown-item">Interaction</a>
+</li>
+            
+<li>
+    <a href="../18-scoreExpr/" class="dropdown-item">Score Expressions</a>
+</li>
+            
+<li>
+    <a href="../19-plugins/" class="dropdown-item">Plugins</a>
+</li>
+            
+<li>
+    <a href="../20-changes/" class="dropdown-item">Changes list</a>
+</li>
+            
+<li>
+    <a href="../" class="dropdown-item">Index</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">Scripting language</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../../lang/1-scripting/" class="dropdown-item">Language</a>
+</li>
+            
+<li>
+    <a href="../../lang/2-mathExpr/" class="dropdown-item">Math. expressions</a>
+</li>
+            
+<li>
+    <a href="../../lang/3-appendices/" class="dropdown-item">Grammar</a>
+</li>
+    </ul>
+  </li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Documents <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="http://berio.grame.fr/MusicNotation/Introduction-to-INScore/" class="dropdown-item">Tutorial</a>
+</li>
+                                    
+<li>
+    <a href="../../papers/" class="dropdown-item">Papers</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Download <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../rsrc/INScoreLang.pdf" class="dropdown-item">Pdf documentation</a>
+</li>
+                                    
+<li>
+    <a href="https://github.com/grame-cncm/inscore/releases" class="dropdown-item">INScore</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../about/" class="nav-link">About</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../15-graphsig/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../17-interaction/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#sensors" class="nav-link">Sensors</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#sensors-as-signals" class="nav-link">Sensors as signals</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#sensors-as-nodes" class="nav-link">Sensors as nodes</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#values" class="nav-link">Values</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#calibration" class="nav-link">Calibration</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#sensor-common-messages" class="nav-link">Sensor common messages</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#sensor-specific-messages" class="nav-link">Sensor specific messages</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<script src='/BNF/railroad-diagrams.js'></script>
+
+<h1 id="sensors">Sensors</h1>
+<p><a name="sensors"></a></p>
+<p>INScore supports various sensors, which can be viewed as objects or as signals. When created as a signal node, a sensor behaves like any signal but may provide some additional features (like calibration). When created as a score element, a sensor has no graphical appearance and provides specific sensor events and features.</p>
+<p>Table <a href="../16-sensors#tab:sensors">tab:sensors</a> gives the list of supported sensors names.</p>
+<p><a name="tab:sensors"></a></p>
+<table>
+<thead>
+<tr>
+<th align="right">name</th>
+<th>values</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right">accelerometer</td>
+<td>x, y, z</td>
+<td>acceleration on the x, y, and z axis</td>
+</tr>
+<tr>
+<td align="right">ambient light</td>
+<td>light level</td>
+<td>ambient light value</td>
+</tr>
+<tr>
+<td align="right">compass</td>
+<td>azimuth,</td>
+<td>azimuth is in degrees from magnetic north in a clockwise direction</td>
+</tr>
+<tr>
+<td align="right">gyroscope</td>
+<td>x, y, z</td>
+<td>the angular velocity around the x, y, and z axis</td>
+</tr>
+<tr>
+<td align="right">light</td>
+<td>lux</td>
+<td>the light level measured as lux</td>
+</tr>
+<tr>
+<td align="right">magnetometer</td>
+<td>x, y, z</td>
+<td>the raw magnetic flux density measured on th x, y and z axis</td>
+</tr>
+<tr>
+<td align="right">orientation</td>
+<td>orientation</td>
+<td>the device orientation</td>
+</tr>
+<tr>
+<td align="right">proximity</td>
+<td>close</td>
+<td>a boolean value</td>
+</tr>
+<tr>
+<td align="right">rotation</td>
+<td>x, y, z</td>
+<td>the rotation around the x, y and z axis</td>
+</tr>
+<tr>
+<td align="right">tilt</td>
+<td>x, y</td>
+<td>the amount of tilt on the x and y axis.</td>
+</tr>
+</tbody>
+</table>
+<p><span class='caption'>Sensors names and description</span></p>
+<p><span class="note">Note:</span>
+All the sensors won't likely be available on a given device. In case a sensor is not supported, an error message is generated at creation request and the creation process fails.</p>
+<h2 id="sensors-as-signals">Sensors as signals</h2>
+<p><a name="sensorSignal"></a></p>
+<p>A sensor is viewed as a signal when created in a <span class="OSC">signal</span> node using pre-defined signal names which are listed in table <a href="../16-sensors#tab:sensorsig">tab:sensorsig</a>. Values provided on different axis (e.g. acceleration on the x, y, and z axis) are available from the sensor subnodes, also listed this table. </p>
+<p><a name="tab:sensorsig"></a></p>
+<table>
+<thead>
+<tr>
+<th align="right">sensor</th>
+<th>signal name</th>
+<th>subnodes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right">accelerometer</td>
+<td>accelerometer</td>
+<td>x, y, z</td>
+</tr>
+<tr>
+<td align="right">ambient light</td>
+<td>ambientlight</td>
+<td><em>none</em></td>
+</tr>
+<tr>
+<td align="right">compass</td>
+<td>compass</td>
+<td><em>none</em></td>
+</tr>
+<tr>
+<td align="right">gyroscope</td>
+<td>gyroscope</td>
+<td>x, y, z</td>
+</tr>
+<tr>
+<td align="right">light</td>
+<td>light</td>
+<td><em>none</em></td>
+</tr>
+<tr>
+<td align="right">magnetometer</td>
+<td>magnetometer</td>
+<td>x, y, z</td>
+</tr>
+<tr>
+<td align="right">orientation</td>
+<td>orientation</td>
+<td><em>none</em></td>
+</tr>
+<tr>
+<td align="right">proximity</td>
+<td>proximity</td>
+<td><em>none</em></td>
+</tr>
+<tr>
+<td align="right">rotation</td>
+<td>rotation</td>
+<td>x, y, [z]</td>
+</tr>
+<tr>
+<td align="right">tilt</td>
+<td>tilt</td>
+<td>x, y</td>
+</tr>
+</tbody>
+</table>
+<p><span class='caption'>Sensor's signal names and subnodes</span></p>
+<p><span class="example">Example</span> 
+Creating a rotation sensor with a 200 values buffer size.</p>
+<pre><code class="language-inscore">/ITL/scene/signal/rotation size 200;
+</code></pre>
+<p>Getting accelerometer values on the x axis.</p>
+<pre><code class="language-inscore">/ITL/scene/signal/accelerometer/x get;
+</code></pre>
+<p><span class="note">Note:</span>
+The <span class="OSC">rotation</span> sensor may or may not have a <span class="OSC">z</span> component however, the <em>z</em> signal is always present but set to 0 when no <span class="OSC">z</span> component is available. A specific message is provided to get the <span class="OSC">z</span> component status (see section <a href="../16-sensors#Rotation">Rotation</a>).</p>
+<h2 id="sensors-as-nodes">Sensors as nodes</h2>
+<p><a name="sensorNode"></a></p>
+<p>A sensor is viewed as a regular INScore node when created outside a <span class="OSC">signal</span> node and using one of the sensors types defined below. A sensor node has no graphical appearance but has the position attributes of an INScore object (x, y, z and scale). </p>
+<p><a name="16-sensors-accelerometer"></a>
+<a name="16-sensors-ambientlight"></a>
+<a name="16-sensors-compass"></a>
+<a name="16-sensors-gyroscope"></a>
+<a name="16-sensors-light"></a>
+<a name="16-sensors-magnetometer"></a>
+<a name="16-sensors-orientation"></a>
+<a name="16-sensors-proximity"></a>
+<a name="16-sensors-rotation"></a>
+<a name="16-sensors-tilt"></a></p>
+<div class="rail">
+<span class="railtitle">sensorSet</span>
+<br /><script>
+ComplexDiagram(
+    Sequence (NonTerminal('set'), Choice (0, 'accelerometer', 'ambientlight', 'compass', 'gyroscope', 'light', 'magnetometer', 'orientation', 'proximity', 'rotation', 'tilt'))
+).addTo()
+
+</script>
+</div>
+
+<p>Values generated by a sensor are available using its <span class="OSC">x</span>, <span class="OSC">y</span> and <span class="OSC">z</span> attributes. Depending on the sensor type, <span class="OSC">y</span> and <span class="OSC">z</span> may be useless. Note also that events generated in the context of a sensor have the variables <span class="OSC">$x</span>, <span class="OSC">$y</span> and <span class="OSC">$z</span> set with the current sensor values (see section <a href="../17-interaction#sensorvar">sensorvar</a>). </p>
+<p><span class="example">Example</span> 
+Creating a proximity sensor, querying it's value and watching the value changes.</p>
+<pre><code class="language-inscore">/ITL/scene/sensor set proximity;
+/ITL/scene/sensor get x;
+/ITL/scene/sensor watch newData (/ITL/scene/score show '$x');
+</code></pre>
+<h2 id="values">Values</h2>
+<p><a name="sensorValues"></a></p>
+<p>Values generated by the sensors depends on the sensor type and on the the sensor instance (i.e. whether created as signal or as node). Table <a href="../16-sensors#tab:sensorsval">tab:sensorsval</a> presents the values range for the node and the signal instances.
+The rationale is that nodes values are raw sensor values while signal values are mapped to the signal range i.e. [-1,1]. 
+Actually, the mapping of the raw values depends on the sensor calibration that can be automatically or manually adjusted. See the section about calibration below.</p>
+<p><a name="tab:sensorsval"></a></p>
+<table>
+<thead>
+<tr>
+<th align="right">sensor</th>
+<th>node values</th>
+<th align="center">signal values</th>
+<th>comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right">accelerometer</td>
+<td>[-v,v]</td>
+<td align="center">[-1,1]</td>
+<td>depends on the calibration</td>
+</tr>
+<tr>
+<td align="right">ambient light</td>
+<td>{0,1,2,3,4,5}</td>
+<td align="center">[-1,1]</td>
+<td>see the note about ambient light below</td>
+</tr>
+<tr>
+<td align="right">compass</td>
+<td>[-180,180]</td>
+<td align="center">[-1,1]</td>
+<td></td>
+</tr>
+<tr>
+<td align="right">gyroscope</td>
+<td>[-v,v]</td>
+<td align="center">[-1,1]</td>
+<td>depends on the calibration</td>
+</tr>
+<tr>
+<td align="right">light</td>
+<td>[0,v]</td>
+<td align="center">[-1,1]</td>
+<td>depends on the calibration</td>
+</tr>
+<tr>
+<td align="right">magnetometer</td>
+<td>[-v,v]</td>
+<td align="center">[-1,1]</td>
+<td></td>
+</tr>
+<tr>
+<td align="right">orientation</td>
+<td>{0,1,2,3,4,5,6}</td>
+<td align="center">[-1,1]</td>
+<td>see the note about orientation below</td>
+</tr>
+<tr>
+<td align="right">proximity</td>
+<td>{0,1}</td>
+<td align="center">[-1,1]</td>
+<td>a boolean value mapped to -1, 1</td>
+</tr>
+<tr>
+<td align="right">rotation</td>
+<td>x [-90, 90]</td>
+<td align="center">[-1,1]</td>
+<td></td>
+</tr>
+<tr>
+<td align="right"></td>
+<td>y [-180, 180]</td>
+<td align="center">[-1,1]</td>
+<td></td>
+</tr>
+<tr>
+<td align="right"></td>
+<td>z [-180, 180]</td>
+<td align="center">[-1,1]</td>
+<td></td>
+</tr>
+<tr>
+<td align="right">tilt</td>
+<td>[-90,90]</td>
+<td align="center">[-1,1]</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><span class='caption'>Sensor's values as node and as signal</span></p>
+<p><span class="note">Note: About ambient light</span>
+Ambient light is measured using discrete values ranging from 0 to 5, where 0 means undefined and 1 to 5 goes from dark to very bright. 
+A value <script type="math/tex">v</script> is mapped to $(v * 0.4 - 1)$</p>
+<p><span class="note">Note: About orientation</span>
+Orientation is measured using discrete values ranging from 0 to 6, where 0 means undefined and 1 to 6 represents the following orientations:</p>
+<ul>
+<li>1: the Top edge of the device is pointing up.</li>
+<li>2: the Face of the device is pointing up.</li>
+<li>3: the Left edge of the device is pointing up. </li>
+<li>4: the Face of the device is pointing down.</li>
+<li>5: the Right edge of the device is pointing up.</li>
+<li>6: the Top edge of the device is pointing down.</li>
+</ul>
+<p>A value <script type="math/tex">v</script> is mapped to $(v / 3 - 1)$
+In a given way and from values 2 to 5, the device may be viewed as rotating clockwise. A counter-clockwise option is also supported, see section <a href="../16-sensors#Orientation">Orientation</a>.</p>
+<h2 id="calibration">Calibration</h2>
+<p><a name="sensorCalibration"></a></p>
+<p>Calibration of sensor values may be viewed as scaling and makes use of the common object's <span class="OSC">scale</span> attribute. By default, the scale value is 1.0 when the sensor is a regular node. For signal nodes, the default scale value is given by the table <a href="../16-sensors#tab:sensorsscales">tab:sensorsscales</a>. These values have been choosen to map the raw values to the signal range but of course this mapping depends on the device and may greatly vary. In order to accommodate these variations but also to cope with different requirements, scaling can be manually adjusted to any arbitrary value using the <span class="OSC">scale</span> message, or automatically adjusted to measured peak values using the <span class="OSC">autoscale</span> message. </p>
+<p><a name="tab:sensorsscales"></a></p>
+<table>
+<thead>
+<tr>
+<th align="right">sensor</th>
+<th align="center">signal scale</th>
+<th>comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right">accelerometer</td>
+<td align="center">1/g</td>
+<td>where g is the gravity on earth i.e. 9.81</td>
+</tr>
+<tr>
+<td align="right">ambient light</td>
+<td align="center">0.4</td>
+<td>see the note about ambient light above</td>
+</tr>
+<tr>
+<td align="right">compass</td>
+<td align="center">1 / 180</td>
+<td></td>
+</tr>
+<tr>
+<td align="right">gyroscope</td>
+<td align="center">1 / 90</td>
+<td></td>
+</tr>
+<tr>
+<td align="right">light</td>
+<td align="center">1 / 200</td>
+<td>an arbitrary lux value (considered as</td>
+</tr>
+<tr>
+<td align="right">magnetometer</td>
+<td align="center">10000</td>
+<td></td>
+</tr>
+<tr>
+<td align="right">orientation</td>
+<td align="center">1/3</td>
+<td>see the note about orientation above</td>
+</tr>
+<tr>
+<td align="right">proximity</td>
+<td align="center">1.0</td>
+<td>the <span class="OSC">false</span> value is shifted to -1</td>
+</tr>
+<tr>
+<td align="right">rotation</td>
+<td align="center">1 / 180</td>
+<td>for the x value, the scale is multiplied by 2</td>
+</tr>
+<tr>
+<td align="right">tilt</td>
+<td align="center">1 / 90</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><span class='caption'>Sensor as signal default scaling</span></p>
+<p><span class="note">Note: About auto-scaling</span>
+Auto-scaling consists in measuring the peak of the absolute values of a sensor during a period. The sensor <span class="OSC">scale</span> value is next adjusted to $1 / peak$ (see also the sensor common messages in section <a href="../16-sensors#sensorCommonMsgs">sensorCommonMsgs</a>). Auto-scaling is supported by all the sensors, although </p>
+<h2 id="sensor-common-messages">Sensor common messages</h2>
+<p><a name="sensorCommonMsgs"></a></p>
+<p>All sensors support a common set of message. </p>
+<p><a name="16-sensors-run"></a>
+<a name="16-sensors-smooth"></a>
+<a name="16-sensors-scale"></a>
+<a name="16-sensors-autoscale"></a>
+<a name="16-sensors-reset"></a></p>
+<div class="rail">
+<span class="railtitle">sensorCommon</span>
+<br /><script>
+ComplexDiagram(
+    Choice (0, Sequence ('run', NonTerminal('int32')), Sequence ('smooth', NonTerminal('float32')), Sequence ('scale', NonTerminal('float32')), Sequence ('autoscale', NonTerminal('int32')), 'reset')
+).addTo()
+
+</script>
+</div>
+
+<ul>
+<li><span class="OSC">run</span>: takes a boolean value as parameter. When true, the sensor starts to generate values. Default value is false.</li>
+<li><span class="OSC">smooth</span>: applies exponential smoothing to the sensor values. At a time <script type="math/tex">t</script>, the sensor value is computed as:
+$s_t = \alpha.v_t + (1-\alpha).s_{t-1}$ where <script type="math/tex">v_t</script> is the current sensor value and $0 \leqslant \alpha \leqslant 1$.
+The parameter is the smoothing factor <script type="math/tex">\alpha</script>. Default value is 1.</li>
+<li><span class="OSC">scale</span>: sensor values are multiplied by the scale. Default scale is dependent on the sensor type. See table <a href="../16-sensors#tab:sensorsscales">tab:sensorsscales</a> for the default scale values.</li>
+<li><span class="OSC">autoscale</span>: start or stop the auto-scaling process. Default value is false. See the note about auto scaling above. Note that a sensor must be running for the auto-scaling process to take effect.</li>
+<li><span class="OSC">reset</span>: reset the smoothing factor and the scale to their default values.</li>
+</ul>
+<h2 id="sensor-specific-messages">Sensor specific messages</h2>
+<p><a name="sensorSpecifcMsgs"></a></p>
+<h3 id="accelerometer-sensor">Accelerometer sensor</h3>
+<p><a name="Accelerometer"></a></p>
+<p><a name="16-sensors-mode"></a></p>
+<div class="rail">
+<span class="railtitle">accelerometerMsg</span>
+<br /><script>
+ComplexDiagram(
+    Sequence ('mode', Choice (0, 'combined', 'gravity', 'user'))
+).addTo()
+
+</script>
+</div>
+
+<ul>
+<li>
+<p><span class="OSC">mode</span>: the acceleration mode controls how acceleration values are reported. </p>
+</li>
+<li>
+<p><span class="OSC">gravity</span>: only the acceleration caused by gravity is reported. Movements of the device caused by the user have no effect other than changing the direction when the device is rotated. </p>
+</li>
+<li><span class="OSC">user</span>: only the acceleration caused by the user moving the device is reported, the effect of gravity is canceled out. A device at rest therefore should report values of, or close to, zero. </li>
+<li><span class="OSC">combined</span>: both the acceleration caused by gravity and the acceleration caused by the user moving the device is reported combined. </li>
+</ul>
+<p>Default value is <span class="OSC">combined</span>.</p>
+<p><span class="note">Note: About modes</span>
+Acceleration caused by gravity and acceleration caused by the user moving the device are physically impossible to distinguish because of general relativity. Most devices use sensor fusion to figure out which parts of the acceleration is caused by gravity, for example by using a rotation sensor to calculate the gravity direction and assuming a fixed magnitude for gravity. Therefore the result is only an approximation and may be inaccurate. The <span class="OSC">combined</span> mode is the most accurate one, as it does not involve approximating the gravity.</p>
+<h3 id="magnetometer-sensor">Magnetometer sensor</h3>
+<p><a name="Magnetometer"></a></p>
+<p><a name="16-sensors-mode"></a></p>
+<div class="rail">
+<span class="railtitle">magnetometerMsg</span>
+<br /><script>
+ComplexDiagram(
+    Sequence ('mode', Choice (0, 'raw', 'geomagnetic'))
+).addTo()
+
+</script>
+</div>
+
+<p>The magnetometer can report on either raw magnetic flux values or geomagnetic flux values. 
+The primary difference between raw and geomagnetic values is that extra processing is done to eliminate local magnetic interference from the geomagnetic values so they represent only the effect of the Earth's magnetic field. This process is not perfect and the accuracy of each reading may change.
+Default value is <span class="OSC">raw</span>.</p>
+<h3 id="rotation-sensor">Rotation sensor</h3>
+<p><a name="Rotation"></a></p>
+<p><a name="16-sensors-hasZ"></a></p>
+<div class="rail">
+<span class="railtitle">rotationMsg</span>
+<br /><script>
+ComplexDiagram(
+    Sequence ('get', 'hasZ')
+).addTo()
+
+</script>
+</div>
+
+<p>z angle availability of the rotation sensor can be queried using <span class="OSC">hasZ</span>. The returned value is a boolean value.</p>
+<h3 id="orientation-sensor">Orientation sensor</h3>
+<p><a name="Orientation"></a></p>
+<p><a name="16-sensors-mode"></a></p>
+<div class="rail">
+<span class="railtitle">orientationMsg</span>
+<br /><script>
+ComplexDiagram(
+    Sequence ('mode', Choice (0, 'clockwise', 'counterClockwise'))
+).addTo()
+
+</script>
+</div>
+
+<ul>
+<li><span class="OSC">mode</span>: selects how the device position is mapped to successive values. Default value is <span class="OSC">clockwise</span>. See table <a href="../16-sensors#tab:orientations">tab:orientations</a> for the detail of the positions and values. </li>
+</ul>
+<p><a name="tab:orientations"></a></p>
+<table>
+<thead>
+<tr>
+<th align="center">value</th>
+<th>clockwise</th>
+<th>counter clockwise</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">1</td>
+<td>Top edge up</td>
+<td>Top edge up</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td>Face up</td>
+<td>Face up</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td><strong>Left</strong> edge up</td>
+<td><strong>Right</strong> edge up</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td>Face down</td>
+<td>Face down</td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td><strong>Right</strong> edge up</td>
+<td><strong>Left</strong> edge up</td>
+</tr>
+<tr>
+<td align="center">6</td>
+<td>Top edge down</td>
+<td>Top edge down</td>
+</tr>
+</tbody>
+</table>
+<p><span class='caption'>Device positions and values in different modes.</span></p>
+<h3 id="tilt-sensor">Tilt sensor</h3>
+<p><a name="Tilt"></a></p>
+<p><a name="16-sensors-calibrate"></a></p>
+<div class="rail">
+<span class="railtitle">tiltMsg</span>
+<br /><script>
+ComplexDiagram(
+    'calibrate'
+).addTo()
+
+</script>
+</div>
+
+<ul>
+<li><span class="OSC">calibrate</span>: calibrates the tilt sensor: uses the current tilt angles as 0. </li>
+</ul></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+                <p><a href="https://inscore.grame.fr">INscore projects</a> Copyright &copy; 2019-2021 <a href="http://www.grame.fr">Grame-CNCM</a></p>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" defer></script>
+        <script src="/js/inscore.js" defer></script>
+        <script src="/js/pubs.js" defer></script>
+        <script src="../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

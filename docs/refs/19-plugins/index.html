@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Plugins - INScore Documentation</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+        <link href="/css/inscore.css" rel="stylesheet">
+        <link href="/css/pubs.css" rel="stylesheet">
+        <link href="/BNF/railroad-diagrams.css" rel="stylesheet">
+
+        <script src="../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">INScore Documentation</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href="../.." class="nav-link">Home</a>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Reference <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">Messages</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../1-introduction/" class="dropdown-item">Introduction</a>
+</li>
+            
+<li>
+    <a href="../2-genformat/" class="dropdown-item">Format of a message</a>
+</li>
+            
+<li>
+    <a href="../3-common/" class="dropdown-item">Common Messages</a>
+</li>
+            
+<li>
+    <a href="../4-time/" class="dropdown-item">Time Messages</a>
+</li>
+            
+<li>
+    <a href="../5-miscmsgs/" class="dropdown-item">Miscellaneous</a>
+</li>
+            
+<li>
+    <a href="../6-setsect/" class="dropdown-item">The set Message</a>
+</li>
+            
+<li>
+    <a href="../7-getsect/" class="dropdown-item">The get Message</a>
+</li>
+            
+<li>
+    <a href="../8-specificMsg/" class="dropdown-item">Specific Messages</a>
+</li>
+            
+<li>
+    <a href="../9-ITL/" class="dropdown-item">Application Messages</a>
+</li>
+            
+<li>
+    <a href="../10-scene/" class="dropdown-item">Scene Messages</a>
+</li>
+            
+<li>
+    <a href="../11-forwarding/" class="dropdown-item">Messages Forwarding</a>
+</li>
+            
+<li>
+    <a href="../12-layers/" class="dropdown-item">Layers</a>
+</li>
+            
+<li>
+    <a href="../13-mapping/" class="dropdown-item">Mapping</a>
+</li>
+            
+<li>
+    <a href="../14-syncmsg/" class="dropdown-item">Synchronization</a>
+</li>
+            
+<li>
+    <a href="../15-graphsig/" class="dropdown-item">Graphic signals</a>
+</li>
+            
+<li>
+    <a href="../16-sensors/" class="dropdown-item">Sensors</a>
+</li>
+            
+<li>
+    <a href="../17-interaction/" class="dropdown-item">Interaction</a>
+</li>
+            
+<li>
+    <a href="../18-scoreExpr/" class="dropdown-item">Score Expressions</a>
+</li>
+            
+<li>
+    <a href="./" class="dropdown-item active">Plugins</a>
+</li>
+            
+<li>
+    <a href="../20-changes/" class="dropdown-item">Changes list</a>
+</li>
+            
+<li>
+    <a href="../" class="dropdown-item">Index</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">Scripting language</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../../lang/1-scripting/" class="dropdown-item">Language</a>
+</li>
+            
+<li>
+    <a href="../../lang/2-mathExpr/" class="dropdown-item">Math. expressions</a>
+</li>
+            
+<li>
+    <a href="../../lang/3-appendices/" class="dropdown-item">Grammar</a>
+</li>
+    </ul>
+  </li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Documents <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="http://berio.grame.fr/MusicNotation/Introduction-to-INScore/" class="dropdown-item">Tutorial</a>
+</li>
+                                    
+<li>
+    <a href="../../papers/" class="dropdown-item">Papers</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Download <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../rsrc/INScoreLang.pdf" class="dropdown-item">Pdf documentation</a>
+</li>
+                                    
+<li>
+    <a href="https://github.com/grame-cncm/inscore/releases" class="dropdown-item">INScore</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../about/" class="nav-link">About</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../18-scoreExpr/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../20-changes/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#plugins" class="nav-link">Plugins</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#faust-plugins" class="nav-link">FAUST plugins</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#gesture-follower" class="nav-link">Gesture Follower</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#httpd-server-plugin" class="nav-link">Httpd server plugin</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<script src='/BNF/railroad-diagrams.js'></script>
+
+<h1 id="plugins">Plugins</h1>
+<p><a name="plugins"></a></p>
+<p>A plugin is an external library that is dynamically loaded when an object that need it is created.
+The system looks for plugins in the following locations:</p>
+<ul>
+<li>in the current folder first</li>
+<li>in the PlugIns folder, located in the application bundle on macos, in the application folder on other systems</li>
+<li>in the system default locations for shared libraries</li>
+</ul>
+<p>Additionaly, a user path can be set, where the system will look for plugins in first position. See section <a href="../9-ITL#ITLplugins">ITLplugins</a>.</p>
+<p>The plugins are shared libraries which extension is platform dependent. The plugin name should not include the extension. The expected extensions are the following: .dylib on MacOS and Linux, .dll on Windows.</p>
+<h2 id="faust-plugins">FAUST plugins</h2>
+<p><a name="faust"></a></p>
+<p><a href=http://faust.grame.fr>FAUST</a> [Functional Audio Stream] is a functional programming language specifically designed for real-time signal processing and synthesis. A FAUST/INScore architecture allows to embed FAUST processors in INScore, for the purpose of signals computation. A FAUST plugin is viewed as a parallel signal and thus it is created in the <span class="OSC">signal</span> address space. Similarly to signals, it is associated to an OSC address in the form <span class="OSC">/ITL/<strong>scene</span>/signal/\emph{name</strong>} where <span class="OSC"><strong>name</span></strong> is a user defined name.</p>
+<h3 id="set-message">Set Message</h3>
+<p><a name="faustsetmsg"></a></p>
+<p>There are two ways to create a FAUST Processor : </p>
+<ul>
+<li>[1]- By charging a DSP as a plugin already compiled </li>
+</ul>
+<p><a name="19-plugins-set (plugin)"></a></p>
+<div class="rail">
+<span class="railtitle">faustprocessor</span>
+<br /><script>
+ComplexDiagram(
+    Sequence ('set', 'faust', NonTerminal('path'))
+).addTo()
+
+</script>
+</div>
+
+<p><span class="example">Example</span> </p>
+<pre><code class="language-inscore">/ITL/scene/signal/myFaust set faust aFaustPlugin;
+</code></pre>
+<p><span class="note">Note: </span> 
+The plugin name should not include the extension. The expected extensions are the following: .dylib on MacOS and Linux, .dll on Windows. </p>
+<ul>
+<li>[2]- By charging libfaust as a plugin to compile a DSP on-the-fly  (as a string or a file). </li>
+</ul>
+<p><a name="19-plugins-set (dsp)"></a></p>
+<div class="rail">
+<span class="railtitle">faustdsp</span>
+<br /><script>
+ComplexDiagram(
+    Sequence ('set', 'faustdsp', NonTerminal('faustcode'))
+).addTo()
+
+</script>
+</div>
+
+<p>\vspace{0.3cm}</p>
+<p><a name="19-plugins-set (dsp file)"></a></p>
+<div class="rail">
+<span class="railtitle">faustdspfile</span>
+<br /><script>
+ComplexDiagram(
+    Sequence ('set', 'faustdspf', NonTerminal('faustfile'))
+).addTo()
+
+</script>
+</div>
+
+<p><span class="example">Example</span> </p>
+<pre><code class="language-inscore">/ITL/scene/signal/plus set faustdsp &quot;process=+;&quot;; 
+/ITL/scene/signal/mydsp set faustdspf &quot;mydsp.dsp&quot;;
+</code></pre>
+<h3 id="specific-messages">Specific messages</h3>
+<p><a name="faustmsg"></a>
+A FAUST processor is characterized by the numbers of input and output channels and by a set of parameters. Each parameter carries a name defined by the FAUST processor. The set of messages supported by a FAUST processor is the set of signals messages extended with the parameters names and with specific query messages. </p>
+<p><a name="19-plugins-in"></a>
+<a name="19-plugins-out"></a>
+<a name="19-plugins-min"></a>
+<a name="19-plugins-max"></a></p>
+<div class="rail">
+<span class="railtitle">faustmessage</span>
+<br /><script>
+ComplexDiagram(
+    Choice (0, NonTerminal('signalMsgs'), Sequence (Comment ('1'), 'msg', NonTerminal('float32')), Sequence (Comment ('2'), 'get', Choice (0, 'in', 'out')))
+).addTo()
+
+</script>
+</div>
+
+<ul>
+<li>[1] <span class="OSC"><strong>msg</span></strong> is any of the FAUST processor parameters, which are defined by the FAUST processor.</li>
+<li>[2] the <span class="OSC">get</span> message is extended to query the FAUST processor: <span class="OSC">in</span> and <span class="OSC">out</span> give the number of input and output channels.</li>
+</ul>
+<p><span class="example">Example</span> 
+Querying a FAUST processor input and output count:</p>
+<pre><code class="language-inscore">/ITL/scene/signal/myFaust get in out;
+</code></pre>
+<p>gives as output:</p>
+<pre><code class="language-inscore">/ITL/scene/signal/myFaust in 2; 
+/ITL/scene/signal/myFaust out 4;
+</code></pre>
+<p>Modifying the value of a FAUST processor parameter named <span class="OSC">volume</span>:</p>
+<pre><code class="language-inscore">/ITL/scene/signal/myFaust volume 0.8
+</code></pre>
+<h3 id="feeding-and-composing-faust-processors">Feeding and composing FAUST processors</h3>
+<p><a name="composefaust"></a></p>
+<p>A FAUST processor accepts float values as input, which are taken as interleaved data and distributed to the input channels.</p>
+<p>From composition viewpoint, a FAUST processor is a parallel signal which dimension is the number of output channels. 
+Thus, a FAUST processor can be used like any parallel signal. However, the signal identifier defined in <a href="../15-graphsig#parcomp">parcomp</a> is extended to support adressing single components of parallel signal as follows:</p>
+<div class="rail">
+<span class="railtitle">signal</span>
+<br /><script>
+ComplexDiagram(
+    Choice (0, Sequence (NonTerminal('identifier'), Optional  ( Sequence ("/", NonTerminal('n')))), NonTerminal('float32'))
+).addTo()
+
+</script>
+</div>
+<p>where <span class="values">n</span> selects the signal #n of a parallel signal. Note that indexes start at 0.</p>
+<p><span class="example">Example</span> 
+Creating 3 parallel signals using the 3 output channels of a FAUST processor named <span class="OSC">myFaust</span>:</p>
+<pre><code class="language-inscore">/ITL/scene/signal/y1 set 'myFaust/0' 0.01 0. 1. 1. 1. ;
+/ITL/scene/signal/y2 set 'myFaust/1' 0.01 0.5 1. 1. 1. ;
+/ITL/scene/signal/y3 set 'myFaust/2' 0.01 -0.5 1. 1. 1. ;
+</code></pre>
+<h2 id="gesture-follower">Gesture Follower</h2>
+<p><a name="GF"></a></p>
+<p>INScore supports gesture following using the technology developed by the IRCAM IMTR team. These features are available as a plugin that is included in the INScore distribution (version 1.03 or greater) or available from the IRCAM.</p>
+<h3 id="basic-principle">Basic principle</h3>
+<p><a name="gfbasic"></a>
+Gesture following is provided as a mean to interact with a score. From input viewpoint, the gesture follower is similar to signals (see section <a href="../15-graphsig#ssignal">ssignal</a>): it accepts data stream as input both in learning and following modes. It implements a specific set of events related to gesture following and can generate message streams parametrized with the gesture follower current state.</p>
+<p>A gesture follower is setup to handle a given count of gestures, which are actually denoted by streams of float vectors. We'll refer to the size of the float vector as the <strong>gesture dimension</strong>. For example, the dimension of a gesture captured from x, y and z accelerometers is 3.</p>
+<p>A gesture follower operates in two distinct phases: a <strong>learning phase</strong> where it actually stores the gestures data, and a <strong>following phase</strong> where it tries to match incoming data to the stored gestures data. When not learning nor following, we'll talk of an idle phase. </p>
+<p>In the <strong>following phase</strong>, the system maintains a list of likelihood for the learned gestures, a list of positions in the gestures and a list of speeds representing how fast the gestures are made. Of course, the higher the likelihood, the more these data are meaningfull. It's the user responsability to decide on the meaningfull likelihood threshold value. Interaction events are triggered only in the <strong>following phase</strong> and for meaningfull likelihoods.</p>
+<h3 id="messages">Messages</h3>
+<p><a name="gfmessages"></a>
+A gesture follower is created in a scene using the <span class="OSC">imtrgf</span> type. It has a graphic appearance that may be used for debug purpose but it is hidden by default.</p>
+<p><a name="19-plugins-Gesture follower"></a></p>
+<div class="rail">
+<span class="railtitle">gesturefollower</span>
+<br /><script>
+ComplexDiagram(
+    Sequence ('set', 'imtrgf', NonTerminal('gesturedimension'), NonTerminal('bufsize'), OneOrMore (NonTerminal('name')))
+).addTo()
+
+</script>
+</div>
+
+<p>The parameters are:</p>
+<ul>
+<li><span class="OSC">gesturedimension</span>: the size of the gestures data vector.</li>
+<li><span class="OSC">bufsize</span>: the size of the gesture data storage.</li>
+<li><span class="OSC">name</span>: a list of names to be used to refer to the learned gestures.</li>
+</ul>
+<p><span class="note">Note: </span> 
+A gesture follower is created with a fixed count of gestures that can be learned and decoded. These gestures are named gestures and can be addressed at <span class="OSC">/ITL/<em>scene</span>/\textit{myfollower</em>/<em>gesturename</em>} where the part in italic are user defined names and where <span class="OSC">myfollower</span> is a gesture follower.</p>
+<p><a name="19-plugins-learn"></a>
+<a name="19-plugins-follow"></a>
+<a name="19-plugins-stop"></a>
+<a name="19-plugins-likelihoodwindow"></a>
+<a name="19-plugins-tolerance"></a></p>
+<div class="rail">
+<span class="railtitle">gesturefollowerMsgs</span>
+<br /><script>
+ComplexDiagram(
+    Choice (0, Sequence (Comment ('1'), OneOrMore (NonTerminal('float32'))), Sequence (Comment ('2'), Sequence ('learn', NonTerminal('name'))), Sequence (Comment ('3'), 'follow'), Sequence (Comment ('4'), 'stop'), Sequence (Comment ('5'), 'clear'), Sequence (Comment ('6'), Sequence ('likelihoodwindow', NonTerminal('float32'))), Sequence (Comment ('7'), Sequence ('tolerance', NonTerminal('float32'))))
+).addTo()
+
+</script>
+</div>
+
+<ul>
+<li><strong>[1]</strong> input data into the gesture follower. The data are interpreted according to the current operating mode i.e. learning, following or idle.</li>
+<li><strong>[2]</strong> starts to learn the gesture designated by <strong>name</strong>. Actually records the next input data to the gesture. </li>
+<li><strong>[3]</strong> starts following i.e. trying to match the next input data to the recorded gestures.</li>
+<li><strong>[4]</strong> stops learning or following. Actually puts the system in idle phase.</li>
+<li><strong>[5]</strong> clear all the gestures data. This is equivalent to send the <span class="OSC">clear</span> message to all the gestures. </li>
+<li><strong>[6]</strong> sets the size of the window that contains the history of the likelihoods. May be viewed as how fast the likelihoods  will change.</li>
+<li><strong>[7]</strong> sets the follower tolerance. </li>
+</ul>
+<p><span class="example">Example</span> 
+Creating a gesture follower for 3 dimensional data and a typical learning sequence:</p>
+<pre><code class="language-inscore">/ITL/scene/gf set imtrgf 3 1000 gestureA gestureB gestureC gestureD ;
+/ITL/scene/gf learn gestureA ;
+/ITL/scene/gf 0.1 0.5 -0.2 ... 0.7; # the data size must be a multiple of 3
+/ITL/scene/gf stop;
+</code></pre>
+<h3 id="gestures-management">Gestures management</h3>
+<p><a name="gfgestures"></a></p>
+<p>Messages can also be sent to gestures i.e. to addresses in the form <span class="OSC">/ITL/<em>scene</span>/\textit{myfollower</em>/<em>gesturename</em>} where <span class="OSC">myfollower</span> is a gesture follower.</p>
+<p>A gesture could be in two states:</p>
+<ul>
+<li>an active state: when its likelihood is greater or equal to the likelihood threshold.</li>
+<li>an idle state: when its likelihood is lower than the likelihood threshold.</li>
+</ul>
+<p><a name="19-plugins-set"></a>
+<a name="19-plugins-likelihoodThreshold"></a>
+<a name="19-plugins-learn"></a>
+<a name="19-plugins-clear"></a></p>
+<div class="rail">
+<span class="railtitle">gesture</span>
+<br /><script>
+ComplexDiagram(
+    Choice (0, Sequence ('set', OneOrMore (NonTerminal('float32'))), 'clear', 'learn', Sequence ('likelihoodThreshold', NonTerminal('float32')))
+).addTo()
+
+</script>
+</div>
+
+<ul>
+<li><span class="OSC">set</span>: sets the gesture data. This is equivalent to learn the corresponding data. The <span class="OSC">set</span> message could be used to restored previously saved gesture data.</li>
+<li><span class="OSC">clear</span>: clears the gesture data. </li>
+<li><span class="OSC">learn</span>: puts the gestures follower in learning mode and starts learning the corresponding gesture. This is equivalent to send OSC{learn <em>gesturename</em>} to the parent gesture follower.</li>
+<li><span class="OSC">likelihoodThreshold</span>: sets the gesture likelihood threshold. The parameter is a float value in the range <span class="values">[0,1]</span>. Default value is <span class="values">0.5</span>.</li>
+</ul>
+<p>Gestures supports also specific queries :</p>
+<p><a name="19-plugins-get"></a>
+<a name="19-plugins-size"></a></p>
+<div class="rail">
+<span class="railtitle">gestureget</span>
+<br /><script>
+ComplexDiagram(
+    Sequence ('get', Optional  ( Choice (0, 'likelihoodThreshold', 'size')))
+).addTo()
+
+</script>
+</div>
+
+<ul>
+<li><span class="OSC">get</span>: without parameter, returns a set message when the gesture is not empty.</li>
+<li><span class="OSC">size</span>: gives the current size of the gesture, actually the number of recorded frames. </li>
+</ul>
+<h3 id="events-and-interaction">Events and interaction</h3>
+<p><a name="gfevents"></a></p>
+<p>Events are defined at gesture level and events management messages should be addressed to gestures. </p>
+<p><a name="19-plugins-watch"></a>
+<a name="19-plugins-gfEnter"></a>
+<a name="19-plugins-gfLeave"></a>
+<a name="19-plugins-gfActive"></a>
+<a name="19-plugins-gfIdle"></a></p>
+<div class="rail">
+<span class="railtitle">gestureevents</span>
+<br /><script>
+ComplexDiagram(
+    Sequence ('watch', Optional  ( Choice (0, 'gfEnter', 'gfLeave', 'gfActive', 'gfIdle')), Optional  ( NonTerminal('messages')))
+).addTo()
+
+</script>
+</div>
+
+<ul>
+<li><span class="OSC">gfEnter</span> triggered when the gesture state changes from idle to active.</li>
+<li><span class="OSC">gfLeave</span> triggered when the gesture state changes from active to idle.</li>
+<li><span class="OSC">gfActive</span> triggered in active state each time the gesture likelihood is refreshed.</li>
+<li><span class="OSC">gfIdle</span> triggered in idle state each time the gesture likelihood is refreshed.</li>
+</ul>
+<p>A message associated to a gesture supports the following specific variables:</p>
+<p><a name="19-plugins-gflikelihood"></a>
+<a name="19-plugins-gfpos"></a>
+<a name="19-plugins-gfspeed"></a></p>
+<div class="rail">
+<span class="railtitle">gesturevariable</span>
+<br /><script>
+ComplexDiagram(
+    Sequence (Choice (0, 'gflikelihood', 'gfpos', 'gfspeed'), Optional  ( '[low,high]'))
+).addTo()
+
+</script>
+</div>
+
+<p>These variables support the scaling feature associated to position variables and described in section <a href="../17-interaction#posvar">posvar</a>.</p>
+<ul>
+<li><span class="OSC">gflikelihood</span> indicates the current likelihood </li>
+<li><span class="OSC">gfpos</span> indicates the current position in the gesture </li>
+<li><span class="OSC">gfspeed</span> indicates the current gesture execution speed </li>
+</ul>
+<p><span class="note">Note: </span>
+Variables described in section <a href="../17-interaction#interactvar">interactvar</a> may also be used but they are meaningless and contains default values.</p>
+<h3 id="gesture-follower-appearance">Gesture Follower Appearance</h3>
+<p><a name="gfgraphs"></a></p>
+<p>A gesture follower object has a graphic appearance and supports all the standard objects properties, including mapping and synchronization. This graphic appearance is provided mainly for debug purpose and by default, the object is hidden. Figure  <a href="../19-plugins#fig:gfgraph">fig:gfgraph</a> shows the gesture follower appearance in its different phases:</p>
+<ul>
+<li>when idle, the upper part of the graphic indicates the buffer state of the different gestures. It also includes the gestures likelihood threshold.</li>
+<li>when learning, a red frame and a grey background indicates that a learning a gesture is currently in progress. The gesture buffer state is refreshed while learning.</li>
+<li>when following, the upper part indicates each gesture current likelihood and the lower part indicates the current estimated positions.</li>
+</ul>
+<p><a name="fig:gfgraph"></a>
+<img alt="fig:gfgraph" src="../imgs/gesture-follower.png" />  <br />
+<span class='caption'>The gesture follower appearance in its different phases.</span></p>
+<h2 id="httpd-server-plugin">Httpd server plugin</h2>
+<p><a name="Httpd"></a></p>
+<p>INScore can embed Http server to expose real time screenshot image of a scene to the web. This feature is based on <a href=http://www.gnu.org/software/libmicrohttpd/>libmicrohttpd</a> and is available as a plugin that is included in the INScore distribution (version 1.11 or greater). The Url to get the image is the base url of the server.</p>
+<h3 id="set-message_1">Set Message</h3>
+<p><a name="httpdsetmsg"></a></p>
+<p>The http server object is created in a scene like other objects and served image of his scene.</p>
+<p><a name="19-plugins-set"></a></p>
+<div class="rail">
+<span class="railtitle">httpdserver</span>
+<br /><script>
+ComplexDiagram(
+    Sequence ('set', 'httpd', NonTerminal('port'))
+).addTo()
+
+</script>
+</div>
+
+<ul>
+<li><span class="OSC">port</span> http port used by the server.</li>
+</ul>
+<p><span class="example">Example</span> </p>
+<pre><code class="language-inscore">/ITL/scene/server set httpd 8000;
+</code></pre>
+<p><span class="note">Note: </span> 
+If the http port is already used, the server cannot start.</p>
+<h3 id="specific-messages_1">Specific messages</h3>
+<p><a name="httpdmsg"></a>
+The http server status can be delivered with a specific message.</p>
+<p><a name="19-plugins-status"></a></p>
+<div class="rail">
+<span class="railtitle">httpdmessage</span>
+<br /><script>
+ComplexDiagram(
+    Sequence ('get', NonTerminal('status'))
+).addTo()
+
+</script>
+</div>
+
+<p>A string corresponding to the server status ("started" or "stopped") is return.</p>
+<p><span class="example">Example</span> </p>
+<pre><code class="language-inscore">/ITL/scene/server get status;
+</code></pre></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+                <p><a href="https://inscore.grame.fr">INscore projects</a> Copyright &copy; 2019-2021 <a href="http://www.grame.fr">Grame-CNCM</a></p>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" defer></script>
+        <script src="/js/inscore.js" defer></script>
+        <script src="/js/pubs.js" defer></script>
+        <script src="../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

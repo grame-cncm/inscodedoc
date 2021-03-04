@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Mapping - INScore Documentation</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+        <link href="/css/inscore.css" rel="stylesheet">
+        <link href="/css/pubs.css" rel="stylesheet">
+        <link href="/BNF/railroad-diagrams.css" rel="stylesheet">
+
+        <script src="../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">INScore Documentation</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href="../.." class="nav-link">Home</a>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Reference <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">Messages</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../1-introduction/" class="dropdown-item">Introduction</a>
+</li>
+            
+<li>
+    <a href="../2-genformat/" class="dropdown-item">Format of a message</a>
+</li>
+            
+<li>
+    <a href="../3-common/" class="dropdown-item">Common Messages</a>
+</li>
+            
+<li>
+    <a href="../4-time/" class="dropdown-item">Time Messages</a>
+</li>
+            
+<li>
+    <a href="../5-miscmsgs/" class="dropdown-item">Miscellaneous</a>
+</li>
+            
+<li>
+    <a href="../6-setsect/" class="dropdown-item">The set Message</a>
+</li>
+            
+<li>
+    <a href="../7-getsect/" class="dropdown-item">The get Message</a>
+</li>
+            
+<li>
+    <a href="../8-specificMsg/" class="dropdown-item">Specific Messages</a>
+</li>
+            
+<li>
+    <a href="../9-ITL/" class="dropdown-item">Application Messages</a>
+</li>
+            
+<li>
+    <a href="../10-scene/" class="dropdown-item">Scene Messages</a>
+</li>
+            
+<li>
+    <a href="../11-forwarding/" class="dropdown-item">Messages Forwarding</a>
+</li>
+            
+<li>
+    <a href="../12-layers/" class="dropdown-item">Layers</a>
+</li>
+            
+<li>
+    <a href="./" class="dropdown-item active">Mapping</a>
+</li>
+            
+<li>
+    <a href="../14-syncmsg/" class="dropdown-item">Synchronization</a>
+</li>
+            
+<li>
+    <a href="../15-graphsig/" class="dropdown-item">Graphic signals</a>
+</li>
+            
+<li>
+    <a href="../16-sensors/" class="dropdown-item">Sensors</a>
+</li>
+            
+<li>
+    <a href="../17-interaction/" class="dropdown-item">Interaction</a>
+</li>
+            
+<li>
+    <a href="../18-scoreExpr/" class="dropdown-item">Score Expressions</a>
+</li>
+            
+<li>
+    <a href="../19-plugins/" class="dropdown-item">Plugins</a>
+</li>
+            
+<li>
+    <a href="../20-changes/" class="dropdown-item">Changes list</a>
+</li>
+            
+<li>
+    <a href="../" class="dropdown-item">Index</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">Scripting language</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../../lang/1-scripting/" class="dropdown-item">Language</a>
+</li>
+            
+<li>
+    <a href="../../lang/2-mathExpr/" class="dropdown-item">Math. expressions</a>
+</li>
+            
+<li>
+    <a href="../../lang/3-appendices/" class="dropdown-item">Grammar</a>
+</li>
+    </ul>
+  </li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Documents <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="http://berio.grame.fr/MusicNotation/Introduction-to-INScore/" class="dropdown-item">Tutorial</a>
+</li>
+                                    
+<li>
+    <a href="../../papers/" class="dropdown-item">Papers</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Download <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../rsrc/INScoreLang.pdf" class="dropdown-item">Pdf documentation</a>
+</li>
+                                    
+<li>
+    <a href="https://github.com/grame-cncm/inscore/releases" class="dropdown-item">INScore</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../about/" class="nav-link">About</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../12-layers/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../14-syncmsg/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#mapping-graphic-space-to-time-space" class="nav-link">Mapping graphic space to time space</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#the-map-message" class="nav-link">The 'map' message</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#the-map-message_1" class="nav-link">The 'map+' message</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#mapping-files" class="nav-link">Mapping files</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#symbolic-score-mappings" class="nav-link">Symbolic score mappings</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<script src='/BNF/railroad-diagrams.js'></script>
+
+<h1 id="mapping-graphic-space-to-time-space">Mapping graphic space to time space</h1>
+<p><a name="mapping"></a></p>
+<p>Time to space mapping refers to the description of relationship between an object local graphic space and its time space. A mapping consists in a set of relations between the two spaces. INScore provides specific messages to describes mappings and to synchronize arbitrary objects i.e. to display their time relationships in the graphic space.</p>
+<h2 id="the-map-message">The 'map' message</h2>
+<p><a name="mapMsg"></a></p>
+<p>The <span class="OSC">map</span> messages can be sent to any address with the form <span class="OSC">/ITL/<em>scene</span>/\textit{identifier</em>}. It is intended to describe the target object relation to time and sets a relation between an object segmentation and a time segmentation. 
+The global form of the message is:</p>
+<p><a name="13-mapping-map"></a></p>
+<div class="rail">
+<span class="railtitle">mapMsg</span>
+<br /><script>
+ComplexDiagram(
+    Sequence ('map', Optional  ( NonTerminal('mapName')), Choice (0, NonTerminal('relation'), NonTerminal('del')))
+).addTo()
+
+</script>
+</div>
+
+<p>The <span class="OSC">relation</span> parameter must be sent as a single string which format is described below. It consists in a list of associations between the object local space and its time space expressed as segments.</p>
+<div class="rail">
+<span class="railtitle">relation</span>
+<br /><script>
+ComplexDiagram(
+    Choice (0, OneOrMore (Sequence (Comment ('1'), NonTerminal('float2DSegment'), NonTerminal('timeSegment'))), OneOrMore (Sequence (Comment ('2'), NonTerminal('int2DSegment'), NonTerminal('timeSegment'))), OneOrMore (Sequence (Comment ('3'), NonTerminal('int1DSegment'), NonTerminal('timeSegment'))))
+).addTo()
+
+</script>
+</div>
+
+<p>Segments are expressed as a list of intervals. For a 1 dimension resource, a segment is a made of a single interval. For a 2 dimensions resource, a segment is a made of 2 intervals: an interval on the <span class="values">x</span>-axis and one on the <span class="values">y</span>-axis for graphic based resource, or an interval on columns and one on lines for text based resources. Intervals are right-opened.</p>
+<p>The different kind of relations corresponds to:</p>
+<ul>
+<li><strong>[1]</strong> a relation between a 2 dimensions segmentation expressed in float values and a relative time segmentation. These segmentations are used by <span class="OSC">rect, ellipse, polygon, curve, line</span> components.</li>
+<li><strong>[2]</strong> a relation between a 2 dimensions segmentation expressed in integer values and a relative time segmentation. These segmentations are used by <span class="OSC">txt, txtf, img</span> components. </li>
+<li><strong>[3]</strong> a relation between a 1 dimension segmentation expressed in integer values and a relative time segmentation. These segmentations are used by the <span class="OSC">graph</span> component and express a relation between a signal space and time.</li>
+</ul>
+<p>Table <a href="../13-mapping#maptable">maptable</a> summarizes the specific local segmentation used by each component type. </p>
+<p>The specified <span class="OSC">map</span> can be named with an optional <span class="OSC">mapName</span> string; this name can be further reused, during object synchronization, to specify the mapping to use. When <span class="OSC">mapName</span> is not specified, the mapping has a default <strong>empty name</strong>.</p>
+<p>The <span class="OSC">del</span> command deletes the mapping specified with <span class="OSC">mapName</span>, or the <strong>'empty name'</strong> mapping if no map name is specified.</p>
+<table>
+<thead>
+<tr>
+<th align="right">component type</th>
+<th>segmentation type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right"><span class="OSC">txt, txtf</span></td>
+<td>int2DSegments</td>
+</tr>
+<tr>
+<td align="right"><span class="OSC">img</span></td>
+<td>int2DSegments</td>
+</tr>
+<tr>
+<td align="right"></td>
+<td></td>
+</tr>
+<tr>
+<td align="right"><span class="OSC">rect, ellipse, polygon, curve</span></td>
+<td>float2DSegments</td>
+</tr>
+<tr>
+<td align="right"><span class="OSC">graph</span></td>
+<td>int1DSegments</td>
+</tr>
+<tr>
+<td align="right"><a name="maptable"></a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><span class='caption'>Local segmentation type for each component</span></p>
+<h3 id="segments-definitions">Segments definitions</h3>
+<p><a name="segdefs"></a></p>
+<div class="rail">
+<span class="railtitle">timeSegment</span>
+<br /><script>
+ComplexDiagram(
+    Choice (0, NonTerminal('relativeTimeSegment'), NonTerminal('absoluteTimeSegment'))
+).addTo()
+
+</script>
+</div>
+
+<div class="rail">
+<span class="railtitle">relativeTimeSegment</span>
+<br /><script>
+ComplexDiagram(
+    Sequence ('(', NonTerminal('relativeTimeInterval'), ')')
+).addTo()
+
+</script>
+</div>
+
+<div class="rail">
+<span class="railtitle">absoluteTimeSegment</span>
+<br /><script>
+ComplexDiagram(
+    Sequence ('(', NonTerminal('absoluteTimeInterval'), ')')
+).addTo()
+
+</script>
+</div>
+
+<div class="rail">
+<span class="railtitle">float2DSegment</span>
+<br /><script>
+ComplexDiagram(
+    Sequence ('(', NonTerminal('floatInterval'), NonTerminal('floatInterval'), ')')
+).addTo()
+
+</script>
+</div>
+
+<div class="rail">
+<span class="railtitle">int2DSegment</span>
+<br /><script>
+ComplexDiagram(
+    Sequence ('(', NonTerminal('intInterval'), NonTerminal('intInterval'), ')')
+).addTo()
+
+</script>
+</div>
+
+<div class="rail">
+<span class="railtitle">int1DSegment</span>
+<br /><script>
+ComplexDiagram(
+    Sequence ('(', NonTerminal('intInterval'), ')')
+).addTo()
+
+</script>
+</div>
+
+<div class="rail">
+<span class="railtitle">relativeTimeInterval</span>
+<br /><script>
+ComplexDiagram(
+    Sequence ('[', NonTerminal('rational'), ',', NonTerminal('rational'), '[')
+).addTo()
+
+</script>
+</div>
+
+<div class="rail">
+<span class="railtitle">absoluteTimeInterval</span>
+<br /><script>
+ComplexDiagram(
+    Sequence ('[', NonTerminal('absoluteTime'), ',', NonTerminal('absoluteTime'), '[')
+).addTo()
+
+</script>
+</div>
+
+<div class="rail">
+<span class="railtitle">floatInterval</span>
+<br /><script>
+ComplexDiagram(
+    Sequence ('[', NonTerminal('float32'), ',', NonTerminal('float32'), '[')
+).addTo()
+
+</script>
+</div>
+
+<div class="rail">
+<span class="railtitle">intInterval</span>
+<br /><script>
+ComplexDiagram(
+    Sequence ('[', NonTerminal('int32'), ',', NonTerminal('int32'), '[')
+).addTo()
+
+</script>
+</div>
+
+<p>Relative time is expressed as <span class="OSC">rational</span> values where <span class="values">1</span> represents a whole note.</p>
+<div class="rail">
+<span class="railtitle">rational</span>
+<br /><script>
+ComplexDiagram(
+    Sequence (NonTerminal('int32'), '/', NonTerminal('int32'))
+).addTo()
+
+</script>
+</div>
+
+<p>Absolute time is expressed in minutes, seconds and cents. It is automatically converted to relative time, assuming that the 
+tempo is 60 quarter notes per minute.</p>
+<div class="rail">
+<span class="railtitle">absoluteTime</span>
+<br /><script>
+ComplexDiagram(
+    Sequence ("min", ":", "sec", ":", "cents")
+).addTo()
+
+</script>
+</div>
+
+<p><span class="example">Example</span> 
+Mapping an image graphic space to time:</p>
+<pre><code class="language-inscore">/ITL/scene/myImage map 
+  &quot;( [0, 67[    [0, 86[ ) ( [0/2, 1/2[ ) 
+  ( [67, 113[  [0, 86[ ) ( [1/2, 1/1[ ) 
+  ( [113, 153[ [0, 86[ ) ( [1/1, 3/2[ ) 
+  ( [153, 190[ [0, 86[ ) ( [3/2, 2/1[ ) 
+  ( [190, 235[ [0, 86[ ) ( [2/1, 5/2[ )&quot; ;
+</code></pre>
+<p>the image is horizontally segmented into 5 different graphic segments that express pixel positions. The vertical dimension of the segments remains the same and corresponds to the interval <span class="values">[0, 86[</span>. Each graphic segment is associated to a time interval which duration is 1/2 (a half note).</p>
+<p>The same mapping using absolute time assumes that 1 second is equal to 1 quarter note:</p>
+<pre><code class="language-inscore">/ITL/scene/myImage map 
+  &quot;( [0, 67[    [0, 86[ )   ( [0:0:0, 0:2:0[ ) 
+  ( [67, 113[  [0, 86[ ) ( [0:2:0, 0:4:0[ ) 
+  ( [113, 153[ [0, 86[ ) ( [0:4:0, 0:6:0[ ) 
+  ( [153, 190[ [0, 86[ ) ( [0:6:0, 0:8:0[ ) 
+  ( [190, 235[ [0, 86[ ) ( [0:8:0, 0:10:0[ )&quot; ;
+</code></pre>
+<p><span class="note">Note: about local spaces</span></p>
+<ul>
+<li>Text objects (<span class="OSC">txt txtf</span>) local space is expressed by intervals on columns and rows.</li>
+<li>Html object (<span class="OSC">html, htmlf</span>) do not support mapping because there is not correspondence between the text and the graphic space.</li>
+<li>Vectorial objects (<span class="OSC">rect, ellipse, polygon, curve, svg,...</span>) express their local graphic space in internal coordinates system i.e. on the [-1.,1.] interval.</li>
+<li>Bitmap objects (<span class="OSC">img</span>) express their local graphic space in pixels.</li>
+</ul>
+<h2 id="the-map-message_1">The 'map+' message</h2>
+<p><a name="mapAddMsg"></a>
+The <span class="OSC">map+</span> messages is similar to the <span class="OSC">map</span> message but doesn't replace the existing mapping data: the specified relations are added to the existing one.</p>
+<p><a name="13-mapping-map+"></a></p>
+<div class="rail">
+<span class="railtitle">mapAddMsg</span>
+<br /><script>
+ComplexDiagram(
+    Sequence ('map+', Optional  ( NonTerminal('mapName')), NonTerminal('relation'))
+).addTo()
+
+</script>
+</div>
+
+<h2 id="mapping-files">Mapping files</h2>
+<p><a name="mapFileMsg"></a>
+The <span class="OSC">mapf</span> messages is similar to the <span class="OSC">map</span> message but gives the path name of a file containing the mapping data, along with the optional map name.</p>
+<p><a name="13-mapping-mapf"></a></p>
+<div class="rail">
+<span class="railtitle">mapfMsg</span>
+<br /><script>
+ComplexDiagram(
+    Sequence ('mapf', Optional  ( NonTerminal('mapName')), NonTerminal('mapFilePath'))
+).addTo()
+
+</script>
+</div>
+
+<h2 id="symbolic-score-mappings">Symbolic score mappings</h2>
+<p><a name="guidomap"></a></p>
+<p>Mapping between the graphic and time space is automatically computed for symbolic score <span class="OSC">gmn, gmnstream, gmnf</span>. However and depending on the application, the graphic space may be segmented in different ways, for instance: different graphic segments for different staves, a single graphic segment traversing all a system, etc. Thus for a symbolic score, the <span class="OSC">map</span> message different and is only intended to select one king mapping supported by the system.</p>
+<p><a name="13-mapping-Guido map"></a>
+<a name="13-mapping-page"></a>
+<a name="13-mapping-system"></a>
+<a name="13-mapping-systemflat"></a>
+<a name="13-mapping-staff"></a>
+<a name="13-mapping-voice"></a></p>
+<div class="rail">
+<span class="railtitle">scoreMap</span>
+<br /><script>
+ComplexDiagram(
+    Sequence ('map', Choice (0, 'page', 'system', 'systemflat', 'staffn', 'voicen'))
+).addTo()
+
+</script>
+</div>
+
+<ul>
+<li><span class="OSC">page</span>: a page level mapping</li>
+<li><span class="OSC">system</span>: a system level mapping</li>
+<li><span class="OSC">systemflat</span>: a system level mapping without system subdivision (one graphic segment per system)</li>
+<li><span class="OSC">staff_n</span>_: a staff level mapping: the staff number is indicated by <span class="OSC">n</span>, a number between 1 and the score staves count.</li>
+<li><span class="OSC">voice_n</span>_: a voice level mapping: the voice number is indicated by <span class="OSC">n</span>, a number between 1 and the score voices count.</li>
+</ul>
+<p>The default mapping for a symbolic score is unnamed but equivalent to <span class="OSC">staff1</span>.</p>
+<p><span class="example">Example</span> 
+Requesting the mapping of the third staff of a score:</p>
+<pre><code class="language-inscore">/ITL/scene/myScore map staff3;
+</code></pre>
+<p>Requesting the system mapping :</p>
+<pre><code class="language-inscore">/ITL/scene/myScore map system;
+</code></pre>
+<p><span class="note">Note: </span> 
+A voice may be distributed on several staves and thus a staff may contain several voices.</p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+                <p><a href="https://inscore.grame.fr">INscore projects</a> Copyright &copy; 2019-2021 <a href="http://www.grame.fr">Grame-CNCM</a></p>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" defer></script>
+        <script src="/js/inscore.js" defer></script>
+        <script src="/js/pubs.js" defer></script>
+        <script src="../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

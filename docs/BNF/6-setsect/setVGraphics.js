@@ -1,0 +1,4 @@
+ComplexDiagram(
+	Sequence ('set', Choice (0, Sequence ('svg', NonTerminal('svgString')), Sequence ('svgf', NonTerminal('svgFilePath')), Sequence ('rect', NonTerminal('width'), NonTerminal('height')), Sequence ('ellipse', NonTerminal('width'), NonTerminal('height')), Sequence ('polygon', OneOrMore (Sequence (NonTerminal('x'), NonTerminal('y')))), Sequence ('curve', OneOrMore (Sequence (NonTerminal('x1'), NonTerminal('y1'), NonTerminal('x2'), NonTerminal('y2'), NonTerminal('x3'), NonTerminal('y3'), NonTerminal('x4'), NonTerminal('y4')))), Sequence ('arc', NonTerminal('width'), NonTerminal('height'), NonTerminal('startAngle'), NonTerminal('endAngle')), Sequence ('line', Choice (0, Sequence ('xy', NonTerminal('x'), NonTerminal('y')), Sequence ('wa', NonTerminal('width'), NonTerminal('angle'))))))
+).addTo()
+

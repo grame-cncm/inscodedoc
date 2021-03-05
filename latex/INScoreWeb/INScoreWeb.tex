@@ -14,7 +14,7 @@
 
 
 \begin{document}
-\title{\vspace*{8cm}INScore Web \\ Version \inscoreversion}
+\title{\vspace*{8cm}INScore Web \\ {\large Version \inscoreversion}}
 \author{D. Fober\\ 
 \\
 \\
@@ -67,14 +67,178 @@ This document is intended to present the differences between the native and web 
 A special section is also devoted to the implementation of INScore Web in standalone HTML pages.
 
 %===============================
-%:Unsupported
-\toplevel{Unsupported messages}
-\label{unsupportedMsg}
+%:Behavioural differences
+\toplevel{Behavioural differences}
+\label{behavior}
+
+The OSC protocol is not supported in the Web version. As a result, the mode of communication with the INScore engine is different (see section \ref{communication}) and may also depend on the application that uses this engine. 
+
+By default:
+\begin{itemize}
+\item the OSC output and error ports are redirected to the Javascript console.
+\item drag \& drop works like in the native version: you can drop files or text to an INScore scene (an HTML div in the Web version). 
+\end{itemize}
+
+The \OSC{log} window (address \OSC{/ITL/log}) is dependent on the host application. By default, input messages addressed to the \OSC{log} node are directed to the Javascript console.
+
+\sublevel{Optional components}
+\label{components}
+
+As the architecture of the web version is completely modular, the available objects depend on the host application:
+e.g. a page which wants to use objects in symbolic notation (type \OSC{gmn}) will have to include the Guido library. 
+This architecture allows applications to be optimized to fit their needs. It also facilitates the extension of the INScore engine.
+The table \ref{componentTbl} presents the current supported components.
+
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{|c|l|l|}
+\hline
+Component & Name & Dependent types \\
+\hline
+Guido Engine & libGUIDOEngine.js & \OSC{gmn}, \OSC{gmnf}, \OSC{gmnstream}, \\
+  &   & \OSC{pianoroll}, \OSC{pianorollf}, \OSC{pianorollstream} \\
+MusicXML library & libmusicxml.js & \OSC{musicxml}, \OSC{musicxmlf} \\
+  &   & use of MusicXML implies to have also the Guido Engine \\
+Faust compiler & libfaust-wasm.js & \OSC{faust}, \OSC{faustf} \\
+  & FaustLibrary.js &  \\
+\hline
+\end{tabular}
+\end{center}
+\caption{Components required by specific objects}
+\label{componentTbl}
+\end{table}%
+
+
+\sublevel{Using files in a script}
+\label{files}
+
+You can use file based objects in an INScore script but the file path is interpreted differently: 
+\begin{itemize}
+\item when using an absolute path, it refers to the document root of the HTTP server,
+\item when using a relative path, it refers to the location of the HTML page 
+\end{itemize}
+
+\note{}\\
+Browsers infer a MIME type from the file extension and generally, download any file which extension is not recognized
+(this behavior depends on the browser you are using). It is therefore recommended to use a \OSC{.txt} extension for any textual resource with non-standard extension. For example, a \OSC{score.gmn} file could be renamed and used as \OSC{score.gmn.txt}.
+
 
 %===============================
 %:Unsupported
-\toplevel{Unsupported attributes}
-\label{unsupportedAttr}
+\toplevel{Unsupported}
+\label{unsupported}
+
+%===============================
+%: Unsupported types
+\sublevel{Unsupported objects}
+\label{unsupportedObjects}
+
+The table \ref{unsupportedTbl} presents the objects that are not supported:
+
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{|c|l|}
+\hline
+Type & Comment \\
+\hline
+\OSC{fileWatcher} 	& doesn't make sense in a web environment \\
+\OSC{httpd} 		& unsupported in a web environment  \\
+\OSC{websocket} 	& unsupported in a web environment \\
+Faust plugins 		& deprecated and redesigned (see section \ref{faustObjects}) \\
+Gesture follower 	& unsupported \\
+\hline
+\end{tabular}
+\end{center}
+\caption{Unsupported objects}
+\label{unsupportedTbl}
+\end{table}%
+
+The following components are not yet implemented:
+\begin{itemize}
+\item graphic signals objects: \OSC{graph}, \OSC{fastgraph}, \OSC{radialgraph}
+\item Pianoroll stream: \OSC{pianorollstream} 
+\item Misc.: \OSC{grid} \OSC{layer} 
+\item Memory image: \OSC{memimg}
+\end{itemize}
+
+
+%===============================
+%: Unsupported attributes
+\sublevel{Unsupported messages}
+\label{unsupportedMessages}
+
+A number of messages are not supported in the web version, either because they do not make sense in the runtime context or because they cannot be implemented.
+
+\subsublevel{Common messages}
+\label{webcommonMessages}
+
+\begin{itemize}
+\item \OSC{export}, \OSC{exportAll}, \OSC{save}: are not supported due to the lack of file system
+\item \OSC{shear}, \OSC{dshear}: not implemented
+\item \OSC{effect}: \OSC{colorize}: not implemented
+\item \OSC{edit}: not yet implemented
+\end{itemize}
+
+\subsublevel{Application messages}
+\label{webappMessages}
+
+\begin{itemize}
+\item \OSC{quit}: do not make sense in the web environment
+\item \OSC{rootPath}: do not make sense in the web environment
+\item \OSC{mouse}: not yet implemented
+\item \OSC{read}: not implemented
+\item \OSC{load}: not implemented
+\item \OSC{port}, \OSC{outport}, \OSC{errport}: do not make sense without OSC
+\item \OSC{browse}: not implemented
+\item \OSC{get}: \OSC{guido-version} \OSC{musicxml-version}: not implemented. \\
+Note that the corresponding components are loaded, they print their version number to the Javascript console.
+\end{itemize}
+
+\subsublevel{Application log window}
+\label{weblogMessages}
+
+As mentioned above, the \OSC{log} window (address \OSC{/ITL/log}) is dependent on the host application. By default, input messages addressed to the \OSC{log} node are directed to the Javascript console.
+
+\begin{itemize}
+\item \OSC{clear}: dependent on the host application (do nothing by default)
+\item \OSC{save}: not supported due to the lack of file system
+\item \OSC{foreground}: dependent on the host application (do nothing by default)
+\item \OSC{wrap}: dependent on the host application (do nothing by default)
+\item \OSC{write}: dependent on the host application (write to the Javascript console by default)
+\end{itemize}
+
+
+\subsublevel{Scene messages}
+\label{websceneMessages}
+
+\begin{itemize}
+\item \OSC{new}, \OSC{del}: not implemented
+\item \OSC{save}: not supported due to the lack of file system
+\item \OSC{foreground}: dependent on the host application (do nothing by default)
+\item \OSC{wrap}: dependent on the host application (do nothing by default)
+\item \OSC{write}: dependent on the host application (write to the Javascript console by default)
+\end{itemize}
+
+
+
+
+%===============================
+%:New messages
+\toplevel{Specific new messages}
+\label{newMessages}
+
+
+%===============================
+%:Faust objects
+\toplevel{Faust objects}
+\label{faustObjects}
+
+
+%===============================
+%:Communication
+\toplevel{Communication scheme}
+\label{communication}
+
 
 
 

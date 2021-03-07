@@ -1,0 +1,84 @@
+site_name: INScore Documentation
+site_description: INScore documentation.
+copyright: <a href="https://inscore.grame.fr">INscore projects</a> Copyright &copy; 2019-2021 <a href="http://www.grame.fr">Grame-CNCM</a>
+nav:
+    - Home: index.md
+    - Reference:
+        - 'Messages':
+            - 'Introduction' :          refs/1-introduction.md
+            - 'Format of a message' :   refs/2-genformat.md
+            - 'Common Messages' :       refs/3-common.md
+            - 'Time Messages' :         refs/4-time.md
+            - 'Miscellaneous' :         refs/5-miscmsgs.md
+            - 'The set Message':        refs/6-setsect.md
+            - 'The get Message' :       refs/7-getsect.md
+            - 'Specific Messages' :     refs/8-specificMsg.md
+            - 'Application Messages':   refs/9-ITL.md
+            - 'Scene Messages' :        refs/10-scene.md
+            - 'Messages Forwarding' :   refs/11-forwarding.md
+            - 'Layers' :                refs/12-layers.md
+            - 'Mapping' :           refs/13-mapping.md
+            - 'Synchronization' :   refs/14-syncmsg.md
+            - 'Graphic signals' :   refs/15-graphsig.md
+            - 'Sensors' :           refs/16-sensors.md
+            - 'Interaction' :       refs/17-interaction.md
+            - 'Score Expressions' : refs/18-scoreExpr.md
+            - 'Plugins' :           refs/19-plugins.md
+            - 'Changes list' :      refs/20-changes.md
+            - 'Index' :             refs/index.md
+        - 'Scripting language':
+            - 'Language' :          lang/1-scripting.md
+            - 'Math. expressions' : lang/2-mathExpr.md
+            - 'Grammar' :           lang/3-appendices.md
+        - 'INScore Web' :
+            - 'Introduction' : web/1-introduction.md
+            - 'Global changes' : web/2-behavior.md
+            - 'Unsupported messages' : web/3-unsupported.md
+            - 'Specific messages' : web/4-newMessages.md
+            - 'Faust objects' : web/5-faustObjects.md
+            - 'Communication' : web/6-communication.md        
+    - Documents:
+        - 'Tutorial' : http://berio.grame.fr/MusicNotation/Introduction-to-INScore/
+        - 'Messages reference' : rsrc/INScoreMessages.pdf
+        - 'Language reference' : rsrc/INScoreLang.pdf
+        - 'Papers' : papers.md
+
+    - Download:
+        - 'INScore' : https://github.com/grame-cncm/inscore/releases
+    - About: about.md
+
+theme: 
+    name: mkdocs
+    highlightjs: true
+#    hljs_languages: 
+#        - inscore
+
+site_dir: ../docs
+
+extra:
+    social:
+        - type: github
+          link: https://github.com/grame-cncm/inscore
+        - type: home
+          link: https://inscore.grame.fr
+        - type: envelope
+          link: mailto:fober@grame.fr
+
+plugins:
+    - search
+
+extra_css:
+    - '/css/inscore.css'
+    - '/css/pubs.css'
+    - '/BNF/railroad-diagrams.css'
+
+extra_javascript:
+  - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML
+  - /js/inscore.js
+  - /js/pubs.js
+
+markdown_extensions:
+    - mdx_math
+    - markdown_include.include:
+        base_path: './docs'
+

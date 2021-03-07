@@ -159,6 +159,7 @@ The following components are not yet implemented:
 \item Pianoroll stream: \OSC{pianorollstream} 
 \item Misc.: \OSC{grid} \OSC{layer} 
 \item Memory image: \OSC{memimg}
+\item Sensors: \OSC{acceleromter}, \OSC{gyroscope}, \OSC{compass}, etc.
 \end{itemize}
 
 
@@ -169,6 +170,7 @@ The following components are not yet implemented:
 
 A number of messages are not supported in the web version, either because they do not make sense in the runtime context or because they cannot be implemented.
 
+%--------------------------------
 \subsublevel{Common messages}
 \label{webcommonMessages}
 
@@ -179,6 +181,7 @@ A number of messages are not supported in the web version, either because they d
 \item \OSC{edit}: not yet implemented
 \end{itemize}
 
+%--------------------------------
 \subsublevel{Application messages}
 \label{webappMessages}
 
@@ -194,6 +197,7 @@ A number of messages are not supported in the web version, either because they d
 Note that the corresponding components are loaded, they print their version number to the Javascript console.
 \end{itemize}
 
+%--------------------------------
 \subsublevel{Application log window}
 \label{weblogMessages}
 
@@ -204,10 +208,12 @@ As mentioned above, the \OSC{log} window (address \OSC{/ITL/log}) is dependent o
 \item \OSC{save}: not supported due to the lack of file system
 \item \OSC{foreground}: dependent on the host application (do nothing by default)
 \item \OSC{wrap}: dependent on the host application (do nothing by default)
+\item \OSC{scale}: dependent on the host application (do nothing by default)
 \item \OSC{write}: dependent on the host application (write to the Javascript console by default)
 \end{itemize}
 
 
+%--------------------------------
 \subsublevel{Scene messages}
 \label{websceneMessages}
 
@@ -219,19 +225,42 @@ As mentioned above, the \OSC{log} window (address \OSC{/ITL/log}) is dependent o
 \item \OSC{write}: dependent on the host application (write to the Javascript console by default)
 \end{itemize}
 
+%--------------------------------
+\subsublevel{Type specific messages}
+\label{webtypesMessages}
+
+\begin{itemize}
+\item \OSC{brushstyle}: not yet implemented
+\end{itemize}
+
+%--------------------------------
+\subsublevel{Synchronization}
+\label{webSynchronization}
 
 
+%--------------------------------
+\subsublevel{Events}
+\label{webEvents}
+
+touch events 
+export
+endPaint
 
 %===============================
 %:New messages
 \toplevel{Specific new messages}
 \label{newMessages}
 
+class
+
+
 
 %===============================
 %:Faust objects
 \toplevel{Faust objects}
 \label{faustObjects}
+
+Providing 
 
 
 %===============================

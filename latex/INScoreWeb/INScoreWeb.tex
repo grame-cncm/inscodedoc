@@ -9,6 +9,8 @@
 \newcommand{\sublevel}[1]	{\subsection{#1}}
 \newcommand{\subsublevel}[1]	{\subsubsection{#1}}
 
+\newcommand{\inprogress}[1]	{{\color{blue} \texttt{(#1)}}}
+
 \makeatother
 \pagestyle{empty}
 
@@ -157,7 +159,7 @@ The following components are not yet implemented:
 \begin{itemize}
 \item graphic signals objects: \OSC{graph}, \OSC{fastgraph}, \OSC{radialgraph}
 \item Pianoroll stream: \OSC{pianorollstream} 
-\item Misc.: \OSC{grid} \OSC{layer} 
+\item Misc.: \OSC{grid} 
 \item Memory image: \OSC{memimg}
 \item Sensors: \OSC{acceleromter}, \OSC{gyroscope}, \OSC{compass}, etc.
 \end{itemize}
@@ -218,11 +220,11 @@ As mentioned above, the \OSC{log} window (address \OSC{/ITL/log}) is dependent o
 \label{websceneMessages}
 
 \begin{itemize}
-\item \OSC{new}, \OSC{del}: not implemented
 \item \OSC{save}: not supported due to the lack of file system
 \item \OSC{foreground}: dependent on the host application (do nothing by default)
-\item \OSC{wrap}: dependent on the host application (do nothing by default)
-\item \OSC{write}: dependent on the host application (write to the Javascript console by default)
+\item \OSC{rootPath}: not yet implemented
+\item \OSC{load}: not yet supported
+\item \OSC{frameless} \OSC{windowOpacity}: not supported
 \end{itemize}
 
 %--------------------------------
@@ -231,28 +233,112 @@ As mentioned above, the \OSC{log} window (address \OSC{/ITL/log}) is dependent o
 
 \begin{itemize}
 \item \OSC{brushstyle}: not yet implemented
+\item Symbolic score:
+\begin{itemize}
+\item \OSC{columns} \OSC{rows}: not supported
+\item \OSC{pageFormat}: not yet implemented
+\item \OSC{get}:\OSC{pageCount} \OSC{systemCount}: not yet implemented
+\end{itemize}
+\item Piano roll messages: not yet implemented
+\item Video \OSC{get} messages: not yet implemented
+\item SVG \OSC{animate}: not yet implemented
+\item Arc \OSC{close}: not yet implemented
+\item Line \OSC{arrows}: not yet implemented
+\item \OSC{debug} node: not yet implemented
 \end{itemize}
 
 %--------------------------------
 \subsublevel{Synchronization}
 \label{webSynchronization}
 
+The following synchronisation modes are not yet supported:
+\begin{itemize}
+\item Stretch modes: \OSC{h} \OSC{v} \OSC{hv}
+\end{itemize}
 
 %--------------------------------
 \subsublevel{Events}
 \label{webEvents}
 
-touch events 
-export
-endPaint
+The following events are not yet supported:
+\begin{itemize}
+\item Touch events: \OSC{touchBegin} \OSC{touchEnd} \OSC{touchUpdate}
+\item Url events: \OSC{success} \OSC{error} \OSC{cancel}
+\item Video events: \OSC{ready} \OSC{end}
+\item Score event: \OSC{pageCount}
+\item \OSC{export}: not supported since the \OSC{export} message is not supported
+\item \OSC{endPaint}: not supported
+\end{itemize}
 
 %===============================
 %:New messages
 \toplevel{Specific new messages}
 \label{newMessages}
 
-class
+%--------------------------------
+\sublevel{Leveraging CSS}
+\label{webCSS}
 
+\href{https://www.w3schools.com/css/css_intro.asp}{Cascading Style Sheets} [CSS] are a powerful way to control the appearance of elements on a web page. The Web version of INScore provides a specific \OSC{class} message to use CSS in parallel to the standard mechanisms. This message is supported by all the score components.
+
+\begin{rail}
+classMsg : 'class' ([1]| [2] className +)
+\end{rail}
+
+\begin{itemize}
+\item 1: without argument, remove all class settings
+\item 2: set the CSS classes of an object
+\end{itemize}
+
+
+%--------------------------------
+\sublevel{MIDI support}
+\label{webMIDI}
+
+MIDI is supported using a specific event that you can configure using the \OSC{watch} message. 
+
+\begin{rail}
+watchMIDI : 'watch' 'midi' midifilter
+\end{rail}
+A filter is used to select the MIDI messages that will trigger the event.
+
+\begin{rail}
+midifilter : (| 'chan' int32) 
+			 (| ('keyon' | 'keyoff' | 'vel' | 'prog' | 'ctrl') (literal | range ))
+\end{rail}
+
+\begin{itemize}
+\item with an empty filter, any MIDI message will trigger the event
+\item \OSC{chan}: an optional channel number may be used to select only the MIDI messages on a specific MIDI channel
+\item \OSC{keyon}, \OSC{keyoff}, \OSC{vel}, \OSC{prog}, \OSC{ctrl}: are used to select MIDI messages according to their status.
+\end{itemize}
+
+\example\\
+Filtering MIDI messages that are not on channel 0
+\sample{/ITL/scene/obj watch midi chan 0 (inscore messages list);
+}
+
+\begin{rail}
+literal : (int32 | ('[' (int32 +) ']' ))
+\end{rail}
+
+Literal values are either a specific value or a list of values enclosed in brackets.
+
+\example\\
+Accepting MIDI key on messages for 3 specific pitches.
+\sample{/ITL/scene/obj watch midi keyon [60 62 64] (inscore messages list);
+}
+
+\begin{rail}
+range : ([1] '[' int32 '-' int32 ']' )
+		| [2] (']' int32 '-' int32 '[' )
+\end{rail}
+
+Range may be used when a value enter or leave the specified range.
+\begin{itemize}
+\item 1: trigger the event when the value enters the range
+\item 2: trigger the event when the value leaves the range
+\end{itemize}
 
 
 %===============================
@@ -260,7 +346,97 @@ class
 \toplevel{Faust objects}
 \label{faustObjects}
 
-Providing 
+\href{https://faust.grame.fr/}{Faust} is a functional programming language for sound synthesis and audio processing.
+Faust objects are available, providing that the Faust library has been loaded.
+
+%--------------------------------
+\sublevel{Creating a Faust object}
+\label{webFaust}
+
+The \OSC{faust} or \OSC{faustf} types must be used to create a Faust object.
+
+\note{}\\
+The \OSC{faust} type exists with the native version but to load a pre-compiled DSP. \OSC{faustdsp} and \OSC{faustdspf} types are not supported.
+
+\begin{rail}
+setFaust : 'set' (([1] 'faust' (| int32) dspCode)
+				| ([2] 'faustf' (| int32) dspFile))
+
+\end{rail}
+
+The expected arguments of the \OSC{set} message are:
+\begin{itemize}
+\item an optional integer that indicates a number of voices used to create a polyphonic DSP (see section \ref{webFaustPoly}). Note that when present, a polyphonic DSP is created even if equal to 1.
+\item 1: Faust DSP code (see the \href{https://faustdoc.grame.fr/}{Faust language} for more information).
+\item 2: a Faust DSP file. \inprogress{not yet implemented}
+\end{itemize}
+
+By default, a Faust DSP appears as a browsable block diagram.
+
+\note{}\\
+The Faust language uses characters that have a special meaning in HTML: for example, with the split operator \OSC{<:}, the \OSC{<} character will be interpreted as an opening HTML tag and you should use HTML escapes (e.g. \OSC{\&lt;} instead of \OSC{<}). This is necessary for inline DSP code only, DSP files are not concerned.
+
+%--------------------------------
+\sublevel{Faust messages}
+\label{webFaustMsgs}
+
+\begin{rail}
+faustMsgs : ('play' int32)
+			| ('connect' destination)
+\end{rail}
+
+\begin{itemize}
+\item \OSC{play}: expected parameter is '1' to connect the Faust processor to the audio output, '0' to disconnect from the audio output.  \inprogress{maybe connect is enough}
+\item \OSC{connect}: gives the number of outputs of the Faust processor  \inprogress{not yet implemented}
+\end{itemize}
+
+\begin{rail}
+faustgetMsgs : 'get' ('in' | 'out' | 'ui')
+\end{rail}
+
+\begin{itemize}
+\item \OSC{in}: gives the number of inputs of the Faust processor
+\item \OSC{out}: gives the number of outputs of the Faust processor
+\item \OSC{ui}: gives the Faust processor parameters (see section \ref{webFaustParams}) \inprogress{not yet implemented}
+\end{itemize}
+
+
+%--------------------------------
+\sublevel{Faust objects parameters}
+\label{webFaustParams}
+
+A Faust DSP code can declare UI elements that are used by \emph{architecture files} to build controllers providing users with dynamic control of the DSP parameters. In INScore, DSP UI elements are used to extend the Faust object address space. For example, when a DSP code declares a UI element named 'Volume', a Faust object which address is \OSC{/ITL/scene/dsp} is extended as \OSC{/ITL/scene/dsp/Volume}.
+
+Faust parameters support two types of messages:
+
+\begin{rail}
+faustParamMsgs : [1] float32 | [2] 'get'
+\end{rail}
+
+\begin{itemize}
+\item 1: set the parameter value
+\item 2: gives the parameter value
+\end{itemize}
+
+
+%--------------------------------
+\sublevel{Polyphonic objects}
+\label{webFaustPoly}
+
+Polyphonic objects (i.e. Faust objects created using the optional voice number) support additional messages:
+
+\begin{rail}
+faustPolyMsgs : (('keyOn' | 'keyOff') chan pitch vel)
+				| 'allNotesOff'
+\end{rail}
+
+\begin{itemize}
+\item \OSC{keyOn} and \OSC{keyOff} messages take 3 integer parameters: a MIDI channel, the note pitch and the velocity.
+\item \OSC{allNotesOff}: similar to MIDI all notes off message
+\end{itemize}
+
+
+
 
 
 %===============================

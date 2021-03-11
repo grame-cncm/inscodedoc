@@ -1129,26 +1129,29 @@ setGraphicSignal : 'set' (
 
 %===============================
 %:  Images and video
-\sublevel{Images and video}
+\sublevel{Media files}
 \label{imgscore}
 
-Images and video are supported using various formats. See section \fullref{fileset} for more details on the supported formats.
+Images, video and audio are supported using various formats. See section \fullref{fileset} for more details on the supported formats.
 
 \index{Set type!img}
 \index{Set type!memimg}
 \index{Set type!video}
+\index{Set type!audio}
 
 \begin{rail}
 setMedia : 
 	('img' imgPath) |
 	('memimg' objectPath) |
-	('video' videoPath)
+	('video' videoPath) |
+	('audio' audioPath)
 \end{rail}
 
 \begin{itemize}
-\item \OSC{img}: an image file. The image format is infered from the file extension.
+\item \OSC{img}: an image file. The image format is inferred from the file extension.
 \item \OSC{memimg}: a memory capture of the object given as argument. \OSC{objectPath} indicates the target object that is captured with all its childrens. It may be an object name or a path to an object. Simple object names and relative path are looked for in the receiver layer.
-\item \OSC{video}: a video file. The video format is infered from the file extension. Note that navigation through the video is made using its \OSC{date}.
+\item \OSC{video}: a video file. The video format is inferred from the file extension. Note that navigation through the video is made using its \OSC{date}.
+\item \OSC{audio}: an audio file. The audio format is inferred from the file extension. 
 \end{itemize}
 
 \example \\
@@ -1191,7 +1194,7 @@ setMisc : 'set' (
 \sublevel{File based resources}
 \label{filebasedrsrc}
 
-Most of the types can be either expressed with the corresponding data, or by a path to a file containing the data. For the latter form, the object type is generally suffixed with an 'f' (e.g. \OSC{txtf}, \OSC{htmlf}, \OSC{gmnf}, \OSC{musicxmlf}, \OSC{svgf}, \OSC{faustf}). The \OSC{img} and  \OSC{video} types have only a file form (and no 'f' suffix). \\
+Most of the types can be either expressed with the corresponding data, or by a path to a file containing the data. For the latter form, the object type is generally suffixed with an 'f' (e.g. \OSC{txtf}, \OSC{htmlf}, \OSC{gmnf}, \OSC{musicxmlf}, \OSC{svgf}, \OSC{faustf}). The \OSC{img}, \OSC{audio} and  \OSC{video} types have only a file form (and no 'f' suffix). \\
 A file path can be expressed as a Unix path (absolute or relative - see the scene or application \OSC{rootPath} message for relative paths handling), but also as an URL.
 Only the \OSC{http:} protocol is currently supported.
 
@@ -1230,7 +1233,7 @@ setFile :
 \end{rail}
 
 \begin{itemize}
-\item \OSC{file}: a generic type to handle file based objects. Actually, the \OSC{file} type is translated into a one of the \OSC{txtf}, \OSC{gmnf}, \OSC{img} or \OSC{video} types, according to the file extension (see table \ref{fileTranslate}).
+\item \OSC{file}: a generic type to handle file based objects. Actually, the \OSC{file} type is translated into a one of the \OSC{txtf}, \OSC{gmnf}, \OSC{img}, \OSC{audio} or \OSC{video} types, according to the file extension (see table \ref{fileTranslate}).
 \end{itemize}
 
 \seealso the application \OSC{rootPath} message (section \fullref{ITL}) for file based objects.
@@ -1249,6 +1252,7 @@ file extension & translated type \\
 \OSC{.svg} 			& \OSC{svgf} \\
 \OSC{.jpg .jpeg .png .gif .bmp .tiff} & \OSC{img} \\
 \OSC{.avi .wmv .mpg .mpeg .mp4 .mov .vob} & \OSC{video} \\
+\OSC{.mp3 .wav .aiff .aif, .m4a, .aac} & \OSC{audio} \\
 \OSC{.dsp} 			& \OSC{faustdspf} \\
 \hline
 \end{tabular}
@@ -1547,53 +1551,58 @@ Writing a pianoroll in 3 steps:
 }
 
 %-------------------------------
-%:  Video
-\sublevel{Video}
+%:  Audio and Video
+\sublevel{Audio and Video}
 \label{video}
 
-A video object has an own internal time and duration that is independant from the INScore time and duration. 
-This video time is controlled using specific messages.
+Media objects (\OSC{audio} \OSC{video}) have their own internal time and duration that is independent from the INScore time and duration. 
+This time is controlled using specific messages.
 
 \index{Specific messages! video! play}
 \index{Specific messages! video! volume}
 \index{Specific messages! video! rate}
 \index{Specific messages! video! vdate}
+\index{Specific messages! audio! play}
+\index{Specific messages! audio! volume}
+\index{Specific messages! audio! rate}
+\index{Specific messages! audio! vdate}
 
 \begin{rail}
-video :	'play' int32
+media :	'play' int32
 		| volume float32
 		| rate   float32
 		| vdate  ( [1] int32 | [2] (int32 int32) | [3] float)
 \end{rail}
 
 \begin{itemize}
-\item \OSC{play} start or stop playing the video. Default value is 0. 
-\item \OSC{volume} sets the audio volume of the video. Default and maximum value is 1.
-\item \OSC{rate} sets the video playing rate. Default value is 1.
-\item \OSC{vdate} sets the current video frame. Default value is 0. Arguments are the following:
+\item \OSC{play} start or stop playing the media. Default value is 0. 
+\item \OSC{volume} sets the audio volume. Default and maximum value is 1.
+\item \OSC{rate} sets the media playing rate. Default value is 1.
+\item \OSC{vdate} sets the current video frame or audio position. Default value is 0. Arguments are the following:
 \begin{itemize}
 \item 1) : a value in milliseconds. 
 \item 2) : a musical time expressed as a rational. Note that musical time is converted to milliseconds using a tempo value of 60. 
 \item 3) : a musical time expressed as a float. 
 \end{itemize}
-The video position may be updated while the video is playing.
+A media position may be updated while the media is playing.
 \end{itemize}
 
-A video object supports also specific queries: 
+Media objects support also specific queries: 
 
 \index{Specific messages! video! vduration}
+\index{Specific messages! audio! vduration}
 
 \begin{rail}
-videoget :	'mls'
+mediaGet :	'mls'
 			| 'vduration'
 \end{rail}
 
 \begin{itemize}
-\item \OSC{mls} gives the video absolute duration in milliseconds.
-\item \OSC{vduration} gives the video duration in musical time. The returned value is a rational computed using the current rate, according to a tempo value of 60.
+\item \OSC{mls} gives the media absolute duration in milliseconds.
+\item \OSC{vduration} gives the media duration in musical time. The returned value is a rational computed using the current rate, according to a tempo value of 60.
 \end{itemize}
 
-A video object supports specific events (see section \fullref{typespecevents} for more details). 
+A media object supports specific events (see section \fullref{typespecevents} for more details). 
 \\
 
 \example \\
@@ -1606,7 +1615,7 @@ Playing a video at half speed:
 \note \\
 Depending on the video encoding and on the platform renderer, setting the video current position using the \OSC{vdate} message may be aligned to key frames.
 \\
-Supported video formats are highly dependent on the platform, as well as the video specific features (e.g. setting the playing rate that may or may not be supported, or may behave differently).  
+Supported audio and video formats are highly dependent on the platform, as well as media specific features (e.g. setting the playing rate that may or may not be supported, or may behave differently).  
 
 
 %-------------------------------
@@ -3285,8 +3294,8 @@ specificEvent : 	  'pageCount'
 \item the \OSC{endPaint} event is supported at scene level only and triggered after a scene has been painted.
 \item the \OSC{error} event is supported at application level and triggered when an error occurs while receiving messages. 
 Typically you can use of this event to open the log window (\OSC{/ITL/log show 1}) 
-\item the \OSC{ready} event is supported by \OSC{video} objects. It is triggered when video data (duration, graphic dimensions) are available.
-\item the \OSC{end} event is supported by \OSC{video} objects. It is triggered when a video is playing and reaches the end of the media. In this case, the object \OSC{play} status is automatically switched to 0 to reflect the actual player state.
+\item the \OSC{ready} event is supported by media objects (\OSC{audio} and \OSC{video}). It is triggered when media data (duration, graphic dimensions) are available.
+\item the \OSC{end} event is supported by media objects (\OSC{audio} and \OSC{video}). It is triggered when a media is playing and reaches the end of the media. In this case, the object \OSC{play} status is automatically switched to 0 to reflect the actual player state.
 \end{itemize}
 
 \example \\

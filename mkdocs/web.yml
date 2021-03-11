@@ -41,6 +41,7 @@ nav:
         - 'Tutorial' : http://berio.grame.fr/MusicNotation/Introduction-to-INScore/
         - 'Messages reference' : rsrc/INScoreMessages.pdf
         - 'Language reference' : rsrc/INScoreLang.pdf
+        - 'Web reference'      : rsrc/INScoreLang.pdf
         - 'Papers' : papers.md
 
     - Download:

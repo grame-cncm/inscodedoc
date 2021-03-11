@@ -44,8 +44,8 @@ nav:
 theme: 
     name: mkdocs
     highlightjs: true
-#    hljs_languages: 
-#        - inscore
+    hljs_languages: 
+        - inscore
 
 site_dir: ../docs
 

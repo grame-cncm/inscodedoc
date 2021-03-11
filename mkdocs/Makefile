@@ -26,7 +26,7 @@ WEBSECTIONS := $(WEBSPLIT:%.tmp=%.md)
 RAIL 	 	:= $(shell find rail -name "*.rail")
 RAILOUT  	:= $(RAIL:rail/%.rail=$(DOCSDIR)/BNF/%.js)
 
-.PHONY: rail
+.PHONY: rail web
 
 all:
 	$(MAKE) -f Make.one SRCFILE=$(MSGSRC) OUTDIR=$(OSCDIR) INDEX=yes
@@ -34,7 +34,7 @@ all:
 	$(MAKE) rail
 
 web:
-	$(MAKE) -f Make.one SRCFILE=$(WEBSRC) OUTDIR=$(WEBDIR) INDEX=yes
+	$(MAKE) -f Make.one SRCFILE=$(WEBSRC) OUTDIR=$(WEBDIR) INDEX=no
 
 
 ####################################################################
@@ -62,7 +62,10 @@ build:
 serve:
 	cd $(MKDIR) && mkdocs serve -a localhost:$(PORT)
 
-serveweb:
+webbuild:
+	$(MAKE) build CONFIG=web.yml
+
+webserve:
 	cd $(MKDIR) && mkdocs serve -f web.yml -a localhost:8888
 
 menu:
@@ -85,7 +88,7 @@ $(DOCSDIR)/BNF/%.js: rail/%.rail
 	tools/rail2js $< | sed -f scripts/rail.sed > $@ 
 
 tools/rail2js:
-	make -C tools/rail2js-src
+	$(MAKE) -C tools/rail2js-src
 
 install:
 	pip install mkdocs

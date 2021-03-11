@@ -1,10 +1,14 @@
 *.tmp
-fullrefs.sed
-index.sed
-index.md
-docs/refs
-docs/lang
+
 rail/[0-9]*
 tools/rail2js
 
 docs/BNF/[1-9]*
+
+lang
+refs
+web
+docs/web
+docs/rsrc
+docs/refs
+docs/lang

@@ -86,6 +86,11 @@ h2 {
 	margin-bottom: 20px;
 }
 
+.OSC {
+	font-family: Courier;
+	color: rgb(100,100,180);
+}
+
 .note {
 	color: black;
 	font-size: 100%;

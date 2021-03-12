@@ -25,7 +25,7 @@ md: $(MDFILES) $(MDINDEX)
 
 fullrefs: $(OUTDIR)/fullrefs.sed
 $(OUTDIR)/fullrefs.sed : $(SPLIT)
-	grep label $(SPLIT) | sed -e 's/^$(OUTDIR)\///' | sed -f scripts/labels.sed > $@
+	grep '\\label' $(SPLIT) | sed -e 's/^$(OUTDIR)\///' | sed -f scripts/labels.sed > $@
 
 ### split input files in sections
 split : $(OUTDIR) $(DOCSDIR)/$(OUTDIR)

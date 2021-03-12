@@ -290,10 +290,15 @@ classMsg : 'class' ([1]| [2] className +)
 \item 2: set the CSS classes of an object
 \end{itemize}
 
+\note{}\\
+If a \OSC{class} message has not the expected effect, it's likely because the CSS properties of the target object are set by the standard INScore mechanisms (like color, border, font-size, etc.). As the own attributes of an object have precedence over the class of the object, the properties of the class are then ignored. You can force the properties of the class by adding the CSS rule \OSC{!important} which will override all previous styling rules for that specific property.
+
 
 %--------------------------------
 \sublevel{MIDI support}
 \label{webMIDI}
+
+\inprogress{this section is not yet implemented}
 
 MIDI is supported using a specific event that you can configure using the \OSC{watch} message. 
 
@@ -310,7 +315,7 @@ midifilter : (| 'chan' int32)
 \begin{itemize}
 \item with an empty filter, any MIDI message will trigger the event
 \item \OSC{chan}: an optional channel number may be used to select only the MIDI messages on a specific MIDI channel
-\item \OSC{keyon}, \OSC{keyoff}, \OSC{vel}, \OSC{prog}, \OSC{ctrl}: are used to select MIDI messages according to their status.
+\item \OSC{keyon}, \OSC{keyoff}, \OSC{vel}, \OSC{prog}, \OSC{ctrl}: are used to select MIDI messages according to their status and values.
 \end{itemize}
 
 \example\\
@@ -318,27 +323,35 @@ Filtering MIDI messages that are not on channel 0
 \sample{/ITL/scene/obj watch midi chan 0 (inscore messages list);
 }
 
+Literal values are either a specific value or a list of values enclosed in brackets.
+
 \begin{rail}
 literal : (int32 | ('[' (int32 +) ']' ))
 \end{rail}
-
-Literal values are either a specific value or a list of values enclosed in brackets.
 
 \example\\
 Accepting MIDI key on messages for 3 specific pitches.
 \sample{/ITL/scene/obj watch midi keyon [60 62 64] (inscore messages list);
 }
 
+
+Range may be used when a value enters or leaves the specified range.
+
 \begin{rail}
 range : ([1] '[' int32 '-' int32 ']' )
 		| [2] (']' int32 '-' int32 '[' )
 \end{rail}
 
-Range may be used when a value enter or leave the specified range.
 \begin{itemize}
-\item 1: trigger the event when the value enters the range
-\item 2: trigger the event when the value leaves the range
+\item 1: trigger the event when the value enters the range. 
+\item 2: trigger the event when the value leaves the range.
 \end{itemize}
+
+\example\\
+Accepting \OSC{keyon} MIDI messages only when entering and leaving the range 60 - 67;
+\sample{/ITL/scene/obj watch midi keyon '[60-67]' (inscore messages list);\\
+/ITL/scene/obj watch midi keyon ']60-67[' (inscore messages list);
+}
 
 
 %===============================
@@ -387,8 +400,10 @@ faustMsgs : ('play' int32)
 
 \begin{itemize}
 \item \OSC{play}: expected parameter is '1' to connect the Faust processor to the audio output, '0' to disconnect from the audio output.  \inprogress{maybe connect is enough}
-\item \OSC{connect}: gives the number of outputs of the Faust processor  \inprogress{not yet implemented}
+\item \OSC{connect}: connect the ouputs of the Faust object to the destination inputs. The destination must be a web audio node (typically another faust object). Inputs and outputs count must be the same on source and destination. \inprogress{not yet implemented}
 \end{itemize}
+
+
 
 \begin{rail}
 faustgetMsgs : 'get' ('in' | 'out' | 'ui')
@@ -397,7 +412,7 @@ faustgetMsgs : 'get' ('in' | 'out' | 'ui')
 \begin{itemize}
 \item \OSC{in}: gives the number of inputs of the Faust processor
 \item \OSC{out}: gives the number of outputs of the Faust processor
-\item \OSC{ui}: gives the Faust processor parameters (see section \ref{webFaustParams}) \inprogress{not yet implemented}
+\item \OSC{ui}: gives the Faust processor parameters (see section \ref{webFaustParams}) i.e. for each parameter: its OSC address followed by the parameter UI type, a label, the minimum and maximum values and the parameter step.
 \end{itemize}
 
 
@@ -418,6 +433,8 @@ faustParamMsgs : [1] float32 | [2] 'get'
 \item 2: gives the parameter value
 \end{itemize}
 
+\note{}\\
+When a parameter which type is \OSC{button} is set to 1, it is automatically reset to zero after a short time (corresponding at least to one audio buffer size).
 
 %--------------------------------
 \sublevel{Polyphonic objects}

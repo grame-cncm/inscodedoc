@@ -12,6 +12,12 @@
     font-style: italic; 
 }
 .pub_title { font-weight: bold; }
+.pub_title::before { 
+	content: "\25BA  "; 
+	color: blue;
+    margin-left: -20px;
+}
+
 .pub_authors {}
 .pub_ref    {}
 

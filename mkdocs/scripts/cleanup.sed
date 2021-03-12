@@ -17,6 +17,7 @@ s/\\sample{//g
 s/\\railalias.*$//g
 s/\\smallbreak//
 s/\\selayout//
+s/&lt;/\&amp;lt;/
 s/\\ //
 
 ############## remove comments

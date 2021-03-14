@@ -1128,7 +1128,7 @@ setGraphicSignal : 'set' (
 
 
 %===============================
-%:  Images and video
+%:  Media files
 \sublevel{Media files}
 \label{imgscore}
 
@@ -1151,7 +1151,7 @@ setMedia :
 \item \OSC{img}: an image file. The image format is inferred from the file extension.
 \item \OSC{memimg}: a memory capture of the object given as argument. \OSC{objectPath} indicates the target object that is captured with all its childrens. It may be an object name or a path to an object. Simple object names and relative path are looked for in the receiver layer.
 \item \OSC{video}: a video file. The video format is inferred from the file extension. Note that navigation through the video is made using its \OSC{date}.
-\item \OSC{audio}: an audio file. The audio format is inferred from the file extension. 
+\item \OSC{audio}: an audio file. The audio format is inferred from the file extension. \OSC{audio} objects appear as a waveform but this waveforom is not (yet) computed from the audio data but randomly generated.
 \end{itemize}
 
 \example \\

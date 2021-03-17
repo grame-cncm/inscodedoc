@@ -35,7 +35,7 @@ nav:
             - 'Global changes' : web/2-behavior.md
             - 'Unsupported messages' : web/3-unsupported.md
             - 'Specific messages' : web/4-newMessages.md
-            - 'Faust objects' : web/5-faustObjects.md
+            - 'Audio objects' : web/5-audioObjects.md
             - 'Communication' : web/6-communication.md        
     - Documents:
         - 'Tutorial' : http://berio.grame.fr/MusicNotation/Introduction-to-INScore/

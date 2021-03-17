@@ -1,4 +1,6 @@
 # remove comments
+s/\\jsonindent/    /
+
 s/^}[ \t]*$/__removed__/
 s/.*\\begin{.*$/__removed__/
 s/.*\\end{.*$/__removed__/

@@ -10,6 +10,7 @@
 \newcommand{\subsublevel}[1]	{\subsubsection{#1}}
 
 \newcommand{\inprogress}[1]	{{\color{blue} \texttt{(#1)}}}
+\newcommand{\jsonindent}	{\hspace*{5mm}}
 
 \makeatother
 \pagestyle{empty}
@@ -355,15 +356,50 @@ Accepting \OSC{keyon} MIDI messages only when entering and leaving the range 60 
 
 
 %===============================
+%:Audio objects
+\toplevel{Audio objects}
+\label{audioObjects}
+
+%===============================
 %:Faust objects
-\toplevel{Faust objects}
+\sublevel{Audio objects}
+\label{audioObjects}
+
+Audio objects are \emph{connectable} objects i.e. objects which output can be connected to the input of another audio object. In the INScore model, the following objects are audio objects: \OSC{audio}, \OSC{video}, \OSC{faust} (see section \ref{faustObjects}) and \OSC{audioio} (see section \ref{audioioObjects})  \inprogress{not yet implemented for \OSC{audio} and \OSC{video} types}.
+
+Audio objects support the following messages  \inprogress{not yet implemented)}:
+
+\begin{rail}
+audioMsgs : ('connect' | 'disconnect') ( destination + )
+\end{rail}
+
+\begin{itemize}
+\item \OSC{connect}: connect the outputs of the object to the destination inputs. The destination must be a another audio object. Inputs and outputs count must be the same on source and destination. The destination supports regular expressions.
+\item \OSC{disconnect}: disconnect the outputs of the object from the destination inputs. Note that errors (e.g. no existing connection with the destination) are silently ignored.
+\end{itemize}
+
+\note{}\\
+The \OSC{connect} message assumes that the source and destination are located in the same hierarchy (i.e. they have the same parent). 
+
+\begin{rail}
+audiogetMsgs : 'get' ('connect' | 'in' | 'out')
+\end{rail}
+
+\begin{itemize}
+\item \OSC{in}: gives the number of inputs of the audio object
+\item \OSC{out}: gives the number of outputs of the audio object
+\end{itemize}
+
+%===============================
+%:Faust objects
+\sublevel{Faust objects}
 \label{faustObjects}
 
 \href{https://faust.grame.fr/}{Faust} is a functional programming language for sound synthesis and audio processing.
 Faust objects are available, providing that the Faust library has been loaded.
 
 %--------------------------------
-\sublevel{Creating a Faust object}
+\subsublevel{Creating a Faust object}
 \label{webFaust}
 
 The \OSC{faust} or \OSC{faustf} types must be used to create a Faust object.
@@ -390,34 +426,22 @@ By default, a Faust DSP appears as a browsable block diagram.
 The Faust language uses characters that have a special meaning in HTML: for example, with the split operator \OSC{<:}, the \OSC{<} character will be interpreted as an opening HTML tag and you should use HTML escapes (e.g. \OSC{\&lt;} instead of \OSC{<}). This is necessary for inline DSP code only, DSP files are not concerned.
 
 %--------------------------------
-\sublevel{Faust messages}
+\subsublevel{Faust messages}
 \label{webFaustMsgs}
 
+Faust objects supports the audio objects messages plus an additional query message:
+
 \begin{rail}
-faustMsgs : ('play' int32)
-			| ('connect' destination)
+faustgetMsgs : 'get' 'ui'
 \end{rail}
 
 \begin{itemize}
-\item \OSC{play}: expected parameter is '1' to connect the Faust processor to the audio output, '0' to disconnect from the audio output.  \inprogress{maybe connect is enough}
-\item \OSC{connect}: connect the ouputs of the Faust object to the destination inputs. The destination must be a web audio node (typically another faust object). Inputs and outputs count must be the same on source and destination. \inprogress{not yet implemented}
-\end{itemize}
-
-
-
-\begin{rail}
-faustgetMsgs : 'get' ('in' | 'out' | 'ui')
-\end{rail}
-
-\begin{itemize}
-\item \OSC{in}: gives the number of inputs of the Faust processor
-\item \OSC{out}: gives the number of outputs of the Faust processor
 \item \OSC{ui}: gives the Faust processor parameters (see section \ref{webFaustParams}) i.e. for each parameter: its OSC address followed by the parameter UI type, a label, the minimum and maximum values and the parameter step.
 \end{itemize}
 
 
 %--------------------------------
-\sublevel{Faust objects parameters}
+\subsublevel{Faust objects parameters}
 \label{webFaustParams}
 
 A Faust DSP code can declare UI elements that are used by \emph{architecture files} to build controllers providing users with dynamic control of the DSP parameters. In INScore, DSP UI elements are used to extend the Faust object address space. For example, when a DSP code declares a UI element named 'Volume', a Faust object which address is \OSC{/ITL/scene/dsp} is extended as \OSC{/ITL/scene/dsp/Volume}.
@@ -437,7 +461,7 @@ faustParamMsgs : [1] float32 | [2] 'get'
 When a parameter which type is \OSC{button} is set to 1, it is automatically reset to zero after a short time (corresponding at least to one audio buffer size).
 
 %--------------------------------
-\sublevel{Polyphonic objects}
+\subsublevel{Polyphonic objects}
 \label{webFaustPoly}
 
 Polyphonic objects (i.e. Faust objects created using the optional voice number) support additional messages:
@@ -452,15 +476,59 @@ faustPolyMsgs : (('keyOn' | 'keyOff') chan pitch vel)
 \item \OSC{allNotesOff}: similar to MIDI all notes off message
 \end{itemize}
 
+%===============================
+%:  Audio IO
+\sublevel{Audio Input / Output}
+\label{audioioObjects}
 
+Audio input / output objects are provided as audio object (\see section \ref{audioObjects}) to the represent the physical audio inputs and outputs, in order to homogenize the connection process.
+An audio input / output type is \OSC{audioio}. It is created with a number of inputs and outputs as arguments.
 
+\begin{rail}
+audioioMsgs : 'set' 'audioio' int32 int32
+\end{rail}
 
+The current Javascript implementation automatically creates an audio input objet named \OSC{audioInput} (if any) and an audio output object named  \OSC{audioOutput} (if any). Thus the names \OSC{audioInput} and \OSC{audioOutput} are reserved and you should avoid to use them (unless audio connections are not needed).
+ 
 
 %===============================
 %:Communication
 \toplevel{Communication scheme}
 \label{communication}
 
+INScore forwarding mechanism supports \OSC{http} and \OSC{ws} protocols since version 1.27. Since these protocols are connection based, a counterpart \OSC{connect} message is provided with the Web version.
+
+\begin{rail}
+connectMsg : ('connect' ( [1] | [2] host +))
+\end{rail}
+
+\begin{itemize}
+\item 1) removes the existing set of connections,
+\item 2) connect to a list of remote hosts. Once the connection is established, the local INScore engine may receive messages from the remote hosts. To establish the connection, the remote hosts must have set a forwarding mechanism using the same protocol with the same port number. 
+\end{itemize}
+
+\begin{rail}
+remoteHost : (([1] 'http://' |  [2] 'ws://') hostname ':' portnum) +
+\end{rail}
+
+\sublevel{Web messages format}
+\label{msgFormat}
+
+Messages emitted by the \OSC{http} and \OSC{ws} forwarding mechanism and received by connected clients are encoded in \href{https://www.json.org/}{JSON} and transmitted as base64 encoded packets. The JSON format is the following:
+\sample{\{\\
+\jsonindent 'id' : number , \\
+\jsonindent 'method' : 'post' , \\
+\jsonindent 'data' : textual inscore messages \\
+ \}
+}
+
+\begin{itemize}
+\item \OSC{id}: is a packet unique identifier (currently unused)
+\item \OSC{method}: value must be 'post'
+\item \OSC{data}: must contain a valid inscore script
+\end{itemize}
+
+Although the native version of INScore supports this format for the \OSC{http} and \OSC{ws} protocols, nothing prohibits another application to control INScore web pages, provided that the format described above is respected.
 
 
 

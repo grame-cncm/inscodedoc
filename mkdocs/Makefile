@@ -1,6 +1,7 @@
 
 MAKE ?= make
 AWK  ?= awk
+PIP  ?= pip3
 CONFIG  ?= mkdocs.yml
 PORT    ?= 8000
 
@@ -91,13 +92,13 @@ tools/rail2js:
 	$(MAKE) -C tools/rail2js-src
 
 install:
-	pip install mkdocs
-	pip install markdown-include
-	pip install mkdocs-bootswatch
-	pip install python-markdown-math
+	$(PIP) install mkdocs
+	$(PIP) install markdown-include
+	$(PIP) install mkdocs-bootswatch
+	$(PIP) install python-markdown-math
 
 upgrade:
-	pip install mkdocs --upgrade
-	pip install markdown-include --upgrade
-	pip install mkdocs-bootswatch --upgrade
-	pip install python-markdown-math --upgrade
+	$(PIP) install mkdocs --upgrade
+	$(PIP) install markdown-include --upgrade
+	$(PIP) install mkdocs-bootswatch --upgrade
+	$(PIP) install python-markdown-math --upgrade

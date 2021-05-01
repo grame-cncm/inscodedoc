@@ -2219,7 +2219,7 @@ Counting the elements in a scene:
 }
 
 %===============================
-%:Forwarding
+%:Messages Forwarding
 \toplevel{Messages forwarding}
 \label{forwarding}
 The messages handled by the application or by a scene can be forwarded to arbitrary remote hosts. A filtering mecanism can be used to have a fine control of forwarded messages.
@@ -2245,7 +2245,7 @@ ITLMsgForward : ('forward' ( [1] | [2] ForwardDest +))
 \end{itemize}
 
 \begin{rail}
-ForwardDest : (([1] hostname | [2] 'osc://' hostname | [3] 'http://' hostname |  [4] 'ws://' hostname) ( | ':' portnum)) +
+ForwardDest : (([1] hostname | [2] 'osc://' hostname | [3] 'http://' hostname  | [4] 'https://' hostname |  [5] 'ws://' hostname) ( | ':' portnum)) +
 \end{rail}
 
 The forwarding mechanism can use different protocols, expressed by the destination in the form of an url, optionally followed by a port number separated by a semi-colon. By default, when no port number is specified, the default application listening port number is used (7000).
@@ -2254,13 +2254,36 @@ The forwarding mechanism can use different protocols, expressed by the destinati
 \item 1) obsolete form preserved for compatibility: it's equivalent to 2). 
 \item 2) messages are forwarded using the OSC protocol.
 \item 3) messages are forwarded in textual form using the HTTP protocol.
-\item 4) messages are forwarded in textual form using WebSockets.
+\item 3) messages are forwarded in textual form using the HTTPS protocol. See section \ref{ITLSSL} about additional requirements for encrypted connections.
+\item 5) messages are forwarded in textual form using WebSockets.
 \end{itemize}
 
 \example\\
 Forwards messages at application level to \OSC{host1.adomain.org} using OSC and the default application listening port number (7000)
 and to \OSC{host2.adomain.org} using HTTP on port number 5100 .
 \sample{/ITL forward osc://host1.adomain.org http://host2.adomain.org:5100;}
+
+%===============================
+%:  SSL support
+\sublevel{SSL support}
+\label{ITLSSL}
+
+When you use \OSC{https} as a communication protocol, a digital certificate and an encryption key are required to establish connections between INScore and the client stations. The certificate must be signed by a trusted certificate authority. Short term certificates are freely available on the internet. 
+
+Before issuing a \OSC{forward} message on an encrypted communication channel, the key and certificate must be loaded by INScore. For this purpose, a set of messages is provided at application level (\OSC{/ITL}):
+
+\begin{rail}
+SslSetup : ( 'key' | 'cert' | 'cacert' ) file
+\end{rail}
+
+\begin{itemize}
+\item \OSC{key} load 'file' as private key 
+\item \OSC{cert} load 'file' as digital certificate
+\item \OSC{cacert} load 'file' as intermediate certificate used as certificate authority 
+\end{itemize}
+
+\emph{file} is a path to a file that can be absolute or relative. 
+Resolution of relative paths differs from the approach used with \OSC{rootPath}: a path expressed as relative will always refer to the \OSC{.ssh} folder located at the root of the user directory (\$HOME).
 
 
 %===============================
@@ -2278,8 +2301,8 @@ ITLFilteringForward : [1] ('accept' (|item +)) | [2] ('reject' (|item +))
 \end{rail}
 
 \begin{itemize}
-\item 1) Remplace the actual accepted list by the new list or by an empty list. Item in accepted list are not filtered by the reject item list.
-\item 2) Remplace the actual accepted list by the new list or by an empty list. Item in reject list are filtered if they not match the accept list.
+\item 1) Replace the current accepted list by the new list or by an empty list. Item in accepted list are not filtered by the reject item list.
+\item 2) Replace the current accepted list by the new list or by an empty list. Item in reject list are filtered if they not match the accept list.
 \end{itemize}
 
 When a new message is incoming, if they match to an accepted item, filter is not apply.\\
@@ -2297,7 +2320,20 @@ Filter at scene level :
 The \OSC{fontWeight} message and message for \OSC{/ITL/scene1/rect} are rejected.
 
 \note{}\\
-INScore is message based in a consistent way: all actions are triggered by messages (including, for example, quitting the application). Some messages are generated internally. This is the case of \OSC{ddate}: an object sends \OSC{ddate} messages to itself when its tempo is not zero. It is therefore recommended to filter \OSC{ddate}: in the absence of a filter, a recipient who receives a \OSC{tempo} message will generate these messages internally, but will also receive those that have been forwarded. Its actual tempo will then be twice that set.
+INScore is message based in a consistent way: all actions are triggered by messages (including, for example, quitting the application). Some messages are generated internally. This is the case of \OSC{ddate}: an object sends \OSC{ddate} messages to itself when its tempo is not zero. It is therefore recommended to filter \OSC{ddate}: in the absence of a filter, a recipient who receives a \OSC{tempo} message will generate these messages internally, but will also receive those that have been forwarded. Its actual tempo will then be twice the one set.
+
+%===============================
+%:  Specific 
+\sublevel{Specific queries}
+\label{ITLForwardQueries}
+
+When using connection oriented protocols with the \OSC{forward} message (\OSC{http}, \OSC{https}, \OSC{ws}), you can query the number of connected clients:
+\begin{rail}
+ITLClientsQuery : 'get' 'clients'
+\end{rail}
+
+
+
 
 %===============================
 %:Layers

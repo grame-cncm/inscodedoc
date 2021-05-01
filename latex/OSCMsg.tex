@@ -2270,7 +2270,7 @@ and to \OSC{host2.adomain.org} using HTTP on port number 5100 .
 
 When you use \OSC{https} as a communication protocol, a digital certificate and an encryption key are required to establish connections between INScore and the client stations. The certificate must be signed by a trusted certificate authority. Short term certificates are freely available on the internet. 
 
-Before issuing a \OSC{forward} message on an encrypted communication channel, the key and certificate must be loaded by INScore. For this purpose, a set of messages is provided at application level (\OSC{/ITL}):
+Before issuing a \OSC{forward} message on an encrypted communication channel, the key and certificate must be loaded by INScore. For this purpose, a set of messages is provided by the application ssl node  \OSC{/ITL/ssl}:
 
 \begin{rail}
 SslSetup : ( 'key' | 'cert' | 'cacert' ) file
@@ -2312,7 +2312,7 @@ Filter at application level :
 \sample{/ITL/filter reject /ITL/scene/line* /ITL/scene/rect; \\
 /ITL/filter accept /ITL/scene/line2 scale arrows;
 }
-Message with OSC message with address starting with \OSC{/ITL/scene/line} or with address \OSC{/ITL/scene/rect} are filtered only if message address is not \OSC{/ITL/scene/line2} or if the content is not \OSC{scale} or \OSC{arrows}.\\
+Messages with address starting with \OSC{/ITL/scene/line} or addressed to \OSC{/ITL/scene/rect} are filtered only if message address is not \OSC{/ITL/scene/line2} or if the content is not \OSC{scale} or \OSC{arrows}.\\
 \\
 Filter at scene level :
 \sample{/ITL/scene1/filter reject fontWeight /ITL/scene1/rect;
@@ -2323,7 +2323,7 @@ The \OSC{fontWeight} message and message for \OSC{/ITL/scene1/rect} are rejected
 INScore is message based in a consistent way: all actions are triggered by messages (including, for example, quitting the application). Some messages are generated internally. This is the case of \OSC{ddate}: an object sends \OSC{ddate} messages to itself when its tempo is not zero. It is therefore recommended to filter \OSC{ddate}: in the absence of a filter, a recipient who receives a \OSC{tempo} message will generate these messages internally, but will also receive those that have been forwarded. Its actual tempo will then be twice the one set.
 
 %===============================
-%:  Specific 
+%:  Specific queries
 \sublevel{Specific queries}
 \label{ITLForwardQueries}
 
@@ -2331,8 +2331,8 @@ When using connection oriented protocols with the \OSC{forward} message (\OSC{ht
 \begin{rail}
 ITLClientsQuery : 'get' 'clients'
 \end{rail}
-
-
+The message must be addressed at the application level (\OSC{/ITL}). 
+The answer is detailed for each type of connection-oriented protocol in service.
 
 
 %===============================

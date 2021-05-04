@@ -32,6 +32,7 @@ RAILOUT  	:= $(RAIL:rail/%.rail=$(DOCSDIR)/BNF/%.js)
 all:
 	$(MAKE) -f Make.one SRCFILE=$(MSGSRC) OUTDIR=$(OSCDIR) INDEX=yes
 	$(MAKE) -f Make.one SRCFILE=$(LANGSRC) OUTDIR=$(LANGDIR) INDEX=no
+	$(MAKE) -f Make.one SRCFILE=$(WEBSRC) OUTDIR=$(WEBDIR) INDEX=no
 	$(MAKE) rail
 
 web:
@@ -62,12 +63,6 @@ build:
 
 serve:
 	cd $(MKDIR) && mkdocs serve -a localhost:$(PORT)
-
-webbuild:
-	$(MAKE) build CONFIG=web.yml
-
-webserve:
-	cd $(MKDIR) && mkdocs serve -f web.yml -a localhost:8888
 
 menu:
 	@echo Messages

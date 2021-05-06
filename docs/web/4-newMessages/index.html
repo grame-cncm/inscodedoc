@@ -20,6 +20,7 @@
         <script src="../../js/jquery-1.10.2.min.js" defer></script>
         <script src="../../js/bootstrap.min.js" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/inscore.min.js"></script>
         <script>hljs.initHighlightingOnLoad();</script> 
     </head>
 
@@ -172,7 +173,7 @@
 </li>
             
 <li>
-    <a href="../5-faustObjects/" class="dropdown-item">Faust objects</a>
+    <a href="../5-audioObjects/" class="dropdown-item">Audio objects</a>
 </li>
             
 <li>
@@ -199,7 +200,7 @@
 </li>
                                     
 <li>
-    <a href="../../rsrc/INScoreLang.pdf" class="dropdown-item">Web reference</a>
+    <a href="../../rsrc/INScoreWeb.pdf" class="dropdown-item">Web reference</a>
 </li>
                                     
 <li>
@@ -233,7 +234,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../5-faustObjects/" class="nav-link">
+                                <a rel="next" href="../5-audioObjects/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -261,10 +262,6 @@
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#midi-support" class="nav-link">MIDI support</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
               </ul>
             </li>
         </ul>
@@ -278,7 +275,7 @@
 <p><a name="newMessages"></a></p>
 <h2 id="leveraging-css">Leveraging CSS</h2>
 <p><a name="webCSS"></a></p>
-<p><a href=https://www.w3schools.com/css/css_intro.asp>Cascading Style Sheets</a> [CSS] are a powerful way to control the appearance of elements on a web page. The Web version of INScore provides a specific <span class="OSC">class</span> message to use CSS in parallel to the standard mechanisms. This message is supported by all the score components.</p>
+<p><a href=https://www.w3schools.com/css/css_intro.asp>Cascading Style Sheets</a> [CSS] are a powerful way to control the appearance of elements on a web page. The Web version of INScore provides a specific <span class="OSC">class</span> message to use CSS in parallel to the standard mechanisms. This message is supported by all the INScore objects.</p>
 <div class="rail">
 <span class="railtitle">classMsg</span>
 <br /><script>
@@ -293,68 +290,8 @@ ComplexDiagram(
 <li>1: without argument, remove all class settings</li>
 <li>2: set the CSS classes of an object</li>
 </ul>
-<h2 id="midi-support">MIDI support</h2>
-<p><a name="webMIDI"></a></p>
-<p>MIDI is supported using a specific event that you can configure using the <span class="OSC">watch</span> message. </p>
-<div class="rail">
-<span class="railtitle">watchMIDI</span>
-<br /><script>
-ComplexDiagram(
-    Sequence ('watch', 'midi', NonTerminal('midifilter'))
-).addTo()
-
-</script>
-</div>
-<p>A filter is used to select the MIDI messages that will trigger the event.</p>
-<div class="rail">
-<span class="railtitle">midifilter</span>
-<br /><script>
-ComplexDiagram(
-    Sequence (Optional  ( Sequence ('chan', NonTerminal('int32'))), Optional  ( Sequence (Choice (0, 'keyon', 'keyoff', 'vel', 'prog', 'ctrl'), Choice (0, NonTerminal('literal'), NonTerminal('range')))))
-).addTo()
-
-</script>
-</div>
-
-<ul>
-<li>with an empty filter, any MIDI message will trigger the event</li>
-<li><span class="OSC">chan</span>: an optional channel number may be used to select only the MIDI messages on a specific MIDI channel</li>
-<li><span class="OSC">keyon</span>, <span class="OSC">keyoff</span>, <span class="OSC">vel</span>, <span class="OSC">prog</span>, <span class="OSC">ctrl</span>: are used to select MIDI messages according to their status.</li>
-</ul>
-<p><span class="example">Example</span>
-Filtering MIDI messages that are not on channel 0</p>
-<pre><code class="language-inscore">/ITL/scene/obj watch midi chan 0 (inscore messages list);
-</code></pre>
-<div class="rail">
-<span class="railtitle">literal</span>
-<br /><script>
-ComplexDiagram(
-    Choice (0, NonTerminal('int32'), Sequence ('[', OneOrMore (NonTerminal('int32')), ']'))
-).addTo()
-
-</script>
-</div>
-
-<p>Literal values are either a specific value or a list of values enclosed in brackets.</p>
-<p><span class="example">Example</span>
-Accepting MIDI key on messages for 3 specific pitches.</p>
-<pre><code class="language-inscore">/ITL/scene/obj watch midi keyon [60 62 64] (inscore messages list);
-</code></pre>
-<div class="rail">
-<span class="railtitle">range</span>
-<br /><script>
-ComplexDiagram(
-    Choice (0, Sequence (Comment ('1'), '[', NonTerminal('int32'), '-', NonTerminal('int32'), ']'), Sequence (Comment ('2'), Sequence (']', NonTerminal('int32'), '-', NonTerminal('int32'), '[')))
-).addTo()
-
-</script>
-</div>
-
-<p>Range may be used when a value enter or leave the specified range.</p>
-<ul>
-<li>1: trigger the event when the value enters the range</li>
-<li>2: trigger the event when the value leaves the range</li>
-</ul></div>
+<p><span class="note">Note: </span>
+If a <span class="OSC">class</span> message has not the expected effect, it's likely because the CSS properties of the target object are set by the standard INScore mechanisms (like color, border, font-size, etc.). As the own attributes of an object have precedence over the class of the object, the properties of the class are then ignored. You can force the properties of the class by adding the CSS rule <span class="OSC">!important</span> which will override all previous styling rules for that specific property.</p></div>
             </div>
         </div>
 

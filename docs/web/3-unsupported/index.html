@@ -20,6 +20,7 @@
         <script src="../../js/jquery-1.10.2.min.js" defer></script>
         <script src="../../js/bootstrap.min.js" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/inscore.min.js"></script>
         <script>hljs.initHighlightingOnLoad();</script> 
     </head>
 
@@ -172,7 +173,7 @@
 </li>
             
 <li>
-    <a href="../5-faustObjects/" class="dropdown-item">Faust objects</a>
+    <a href="../5-audioObjects/" class="dropdown-item">Audio objects</a>
 </li>
             
 <li>
@@ -199,7 +200,7 @@
 </li>
                                     
 <li>
-    <a href="../../rsrc/INScoreLang.pdf" class="dropdown-item">Web reference</a>
+    <a href="../../rsrc/INScoreWeb.pdf" class="dropdown-item">Web reference</a>
 </li>
                                     
 <li>
@@ -289,19 +290,19 @@
 <tbody>
 <tr>
 <td align="center"><span class="OSC">fileWatcher</span></td>
-<td>doesn't make sense in a web environment</td>
+<td>unsupported</td>
 </tr>
 <tr>
 <td align="center"><span class="OSC">httpd</span></td>
-<td>unsupported in a web environment</td>
+<td>unsupported server</td>
 </tr>
 <tr>
 <td align="center"><span class="OSC">websocket</span></td>
-<td>unsupported in a web environment</td>
+<td>unsupported server</td>
 </tr>
 <tr>
 <td align="center">Faust plugins</td>
-<td>deprecated and redesigned (see section <a href="../5-faustObjects#faustObjects">faustObjects</a>)</td>
+<td>deprecated and redesigned (see section <a href="../5-audioObjects#faustObjects">faustObjects</a>)</td>
 </tr>
 <tr>
 <td align="center">Gesture follower</td>
@@ -328,21 +329,20 @@
 <h3 id="common-messages">Common messages</h3>
 <p><a name="webcommonMessages"></a></p>
 <ul>
-<li><span class="OSC">export</span>, <span class="OSC">exportAll</span>, <span class="OSC">save</span>: are not supported due to the lack of file system</li>
+<li><span class="OSC">export</span>, <span class="OSC">exportAll</span>, <span class="OSC">save</span>: not implemented</li>
 <li><span class="OSC">shear</span>, <span class="OSC">dshear</span>: not implemented</li>
 <li><span class="OSC">effect</span>: <span class="OSC">colorize</span>: not implemented</li>
-<li><span class="OSC">edit</span>: not yet implemented</li>
+<li><span class="OSC">edit</span>: not implemented</li>
 </ul>
 <h3 id="application-messages">Application messages</h3>
 <p><a name="webappMessages"></a></p>
 <ul>
 <li><span class="OSC">quit</span>: do not make sense in the web environment</li>
-<li><span class="OSC">rootPath</span>: do not make sense in the web environment</li>
+<li><span class="OSC">rootPath</span>: not implemented</li>
 <li><span class="OSC">mouse</span>: not yet implemented</li>
 <li><span class="OSC">read</span>: not implemented</li>
 <li><span class="OSC">load</span>: not implemented</li>
 <li><span class="OSC">port</span>, <span class="OSC">outport</span>, <span class="OSC">errport</span>: do not make sense without OSC</li>
-<li><span class="OSC">browse</span>: not implemented</li>
 <li><span class="OSC">get</span>: <span class="OSC">guido-version</span> <span class="OSC">musicxml-version</span>: not implemented. 
 Note that the corresponding components are loaded, they print their version number to the Javascript console.</li>
 </ul>
@@ -370,38 +370,31 @@ Note that the corresponding components are loaded, they print their version numb
 <p><a name="webtypesMessages"></a></p>
 <ul>
 <li><span class="OSC">brushstyle</span>: not yet implemented</li>
-<li>
-<p>Symbolic score:</p>
-</li>
-<li>
-<p><span class="OSC">columns</span> <span class="OSC">rows</span>: not supported</p>
-</li>
-<li><span class="OSC">pageFormat</span>: not yet implemented</li>
-<li>
-<p><span class="OSC">get</span>:<span class="OSC">pageCount</span> <span class="OSC">systemCount</span>: not yet implemented</p>
-</li>
-<li>
-<p>Piano roll messages: not yet implemented</p>
-</li>
+<li>Piano roll messages: not yet implemented</li>
 <li>Video <span class="OSC">get</span> messages: not yet implemented</li>
 <li>SVG <span class="OSC">animate</span>: not yet implemented</li>
 <li>Arc <span class="OSC">close</span>: not yet implemented</li>
 <li>Line <span class="OSC">arrows</span>: not yet implemented</li>
 <li><span class="OSC">debug</span> node: not yet implemented</li>
 </ul>
+<p>Symbolic score:</p>
+<ul>
+<li><span class="OSC">columns</span> <span class="OSC">rows</span>: not supported</li>
+<li><span class="OSC">pageFormat</span>: not yet implemented</li>
+<li><span class="OSC">get</span>: <span class="OSC">pageCount</span> <span class="OSC">systemCount</span>: not yet implemented</li>
+</ul>
 <h3 id="synchronization">Synchronization</h3>
 <p><a name="webSynchronization"></a></p>
 <p>The following synchronisation modes are not yet supported:</p>
 <ul>
-<li>Stretch modes: <span class="OSC">h</span> <span class="OSC">v</span> <span class="OSC">hv</span></li>
+<li>Stretch modes: <span class="OSC">h</span>, <span class="OSC">hv</span></li>
 </ul>
 <h3 id="events">Events</h3>
 <p><a name="webEvents"></a></p>
 <p>The following events are not yet supported:</p>
 <ul>
-<li>Touch events: <span class="OSC">touchBegin</span> <span class="OSC">touchEnd</span> <span class="OSC">touchUpdate</span></li>
-<li>Url events: <span class="OSC">success</span> <span class="OSC">error</span> <span class="OSC">cancel</span></li>
-<li>Video events: <span class="OSC">ready</span> <span class="OSC">end</span></li>
+<li>Touch events: <span class="OSC">touchBegin</span>, <span class="OSC">touchEnd</span>, <span class="OSC">touchUpdate</span></li>
+<li>Url events: <span class="OSC">success</span>, <span class="OSC">error</span>, <span class="OSC">cancel</span></li>
 <li>Score event: <span class="OSC">pageCount</span></li>
 <li><span class="OSC">export</span>: not supported since the <span class="OSC">export</span> message is not supported</li>
 <li><span class="OSC">endPaint</span>: not supported</li>

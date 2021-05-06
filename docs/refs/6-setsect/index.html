@@ -20,6 +20,7 @@
         <script src="../../js/jquery-1.10.2.min.js" defer></script>
         <script src="../../js/bootstrap.min.js" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/inscore.min.js"></script>
         <script>hljs.initHighlightingOnLoad();</script> 
     </head>
 
@@ -172,7 +173,7 @@
 </li>
             
 <li>
-    <a href="../../web/5-faustObjects/" class="dropdown-item">Faust objects</a>
+    <a href="../../web/5-audioObjects/" class="dropdown-item">Audio objects</a>
 </li>
             
 <li>
@@ -199,7 +200,7 @@
 </li>
                                     
 <li>
-    <a href="../../rsrc/INScoreLang.pdf" class="dropdown-item">Web reference</a>
+    <a href="../../rsrc/INScoreWeb.pdf" class="dropdown-item">Web reference</a>
 </li>
                                     
 <li>
@@ -516,7 +517,7 @@ ComplexDiagram(
 <li><span class="OSC">img</span>: an image file. The image format is inferred from the file extension.</li>
 <li><span class="OSC">memimg</span>: a memory capture of the object given as argument. <span class="OSC">objectPath</span> indicates the target object that is captured with all its childrens. It may be an object name or a path to an object. Simple object names and relative path are looked for in the receiver layer.</li>
 <li><span class="OSC">video</span>: a video file. The video format is inferred from the file extension. Note that navigation through the video is made using its <span class="OSC">date</span>.</li>
-<li><span class="OSC">audio</span>: an audio file. The audio format is inferred from the file extension. </li>
+<li><span class="OSC">audio</span>: an audio file. The audio format is inferred from the file extension. <span class="OSC">audio</span> objects appear as a waveform but this waveforom is not (yet) computed from the audio data but randomly generated.</li>
 </ul>
 <p><span class="example">Example</span> 
 Creating an image.</p>

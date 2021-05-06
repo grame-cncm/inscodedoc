@@ -20,6 +20,7 @@
         <script src="../../js/jquery-1.10.2.min.js" defer></script>
         <script src="../../js/bootstrap.min.js" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/inscore.min.js"></script>
         <script>hljs.initHighlightingOnLoad();</script> 
     </head>
 
@@ -172,7 +173,7 @@
 </li>
             
 <li>
-    <a href="../5-faustObjects/" class="dropdown-item">Faust objects</a>
+    <a href="../5-audioObjects/" class="dropdown-item">Audio objects</a>
 </li>
             
 <li>
@@ -199,7 +200,7 @@
 </li>
                                     
 <li>
-    <a href="../../rsrc/INScoreLang.pdf" class="dropdown-item">Web reference</a>
+    <a href="../../rsrc/INScoreWeb.pdf" class="dropdown-item">Web reference</a>
 </li>
                                     
 <li>
@@ -228,7 +229,7 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" href="../5-faustObjects/" class="nav-link">
+                                <a rel="prev" href="../5-audioObjects/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
@@ -257,6 +258,10 @@
             
             <li class="nav-item" data-level="1"><a href="#communication-scheme" class="nav-link">Communication scheme</a>
               <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#web-messages-format" class="nav-link">Web messages format</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
               </ul>
             </li>
         </ul>
@@ -267,7 +272,52 @@
 <script src='/BNF/railroad-diagrams.js'></script>
 
 <h1 id="communication-scheme">Communication scheme</h1>
-<p><a name="communication"></a></p></div>
+<p><a name="communication"></a></p>
+<p>INScore forwarding mechanism supports <span class="OSC">http</span> and <span class="OSC">ws</span> protocols since version 1.27. Since these protocols are connection based, a counterpart <span class="OSC">connect</span> message is provided with the Web version.</p>
+<div class="rail">
+<span class="railtitle">connectMsg</span>
+<br /><script>
+ComplexDiagram(
+    Sequence ('connect', Choice (0, Comment ('1'), Sequence (Comment ('2'), OneOrMore (NonTerminal('remoteHost')))))
+).addTo()
+
+</script>
+</div>
+
+<ul>
+<li>1) removes the existing set of connections,</li>
+<li>2) connect to a list of remote hosts. Once the connection is established, the local INScore engine may receive messages from the remote hosts. To establish the connection, the remote hosts must have set a forwarding mechanism using the same protocol with the same port number. </li>
+</ul>
+<div class="rail">
+<span class="railtitle">remoteHost</span>
+<br /><script>
+ComplexDiagram(
+    OneOrMore (Sequence (Choice (0, Sequence (Comment ('1'), 'http://'), Sequence (Comment ('2'), 'https://'), Sequence (Comment ('3'), 'ws://')), NonTerminal('hostname'), ':', NonTerminal('portnum')))
+).addTo()
+
+</script>
+</div>
+
+<ul>
+<li>1) uses <span class="OSC">http</span> as communication protocol,</li>
+<li>2) uses <span class="OSC">https</span>,</li>
+<li>3) uses <span class="OSC">websockets</span>. </li>
+</ul>
+<h2 id="web-messages-format">Web messages format</h2>
+<p><a name="msgFormat"></a></p>
+<p>Messages emitted by the <span class="OSC">http</span> and <span class="OSC">ws</span> forwarding mechanism and received by connected clients are encoded in <a href=https://www.json.org/>JSON</a> and transmitted as base64 encoded packets. The JSON format is the following:</p>
+<pre><code class="language-inscore">{
+     'id' : number , 
+     'method' : 'post' , 
+     'data' : textual inscore messages 
+ }
+</code></pre>
+<ul>
+<li><span class="OSC">id</span>: is a packet unique identifier (currently unused)</li>
+<li><span class="OSC">method</span>: value must be 'post'</li>
+<li><span class="OSC">data</span>: must contain a valid inscore script</li>
+</ul>
+<p>Although the native version of INScore supports this format for the <span class="OSC">http</span>, <span class="OSC">https</span> and <span class="OSC">ws</span> protocols, nothing prohibits another application to control INScore web pages, provided that the format described above is respected.</p></div>
             </div>
         </div>
 

@@ -20,6 +20,7 @@
         <script src="../../js/jquery-1.10.2.min.js" defer></script>
         <script src="../../js/bootstrap.min.js" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/inscore.min.js"></script>
         <script>hljs.initHighlightingOnLoad();</script> 
     </head>
 
@@ -172,7 +173,7 @@
 </li>
             
 <li>
-    <a href="../../web/5-faustObjects/" class="dropdown-item">Faust objects</a>
+    <a href="../../web/5-audioObjects/" class="dropdown-item">Audio objects</a>
 </li>
             
 <li>
@@ -199,7 +200,7 @@
 </li>
                                     
 <li>
-    <a href="../../rsrc/INScoreLang.pdf" class="dropdown-item">Web reference</a>
+    <a href="../../rsrc/INScoreWeb.pdf" class="dropdown-item">Web reference</a>
 </li>
                                     
 <li>
@@ -357,7 +358,7 @@ The default <span class="OSC">rate</span> value is 10.</p>
    <span class="OSC">IP  inPort outPort errPort</span> where <span class="OSC">IP</span> is sent as a string and port numbers as integer values.</p>
 </li>
 <li>
-<p><span class="OSC">forwardingMsg</span>: application support message forwading and filtering. See section <a href="../11-forwarding#forwarding">forwarding</a>.</p>
+<p><span class="OSC">forwardingMsg</span>: application support message forwading and filtering. See section \fullref{forwarding}.</p>
 </li>
 </ul>
 <p><span class="example">Example</span> 
@@ -439,7 +440,7 @@ Querying INScore version:</p>
 </code></pre>
 <h2 id="application-static-nodes">Application static nodes</h2>
 <p><a name="ITLStatic"></a></p>
-<p>The application level provides the static nodes - <span class="OSC">stats</span>, <span class="OSC">debug</span> and <span class="OSC">log</span>, available at <span class="OSC">/ITL/stats</span> <span class="OSC">/ITL/debug</span> and <span class="OSC">/ITL/log</span>  to help debugging communication and INScore scripts design.</p>
+<p>The application level provides the static nodes - <span class="OSC">stats</span>, <span class="OSC">debug</span>, <span class="OSC">log</span> and <span class="OSC">ssl</span>, available at <span class="OSC">/ITL/stats</span> <span class="OSC">/ITL/debug</span>, <span class="OSC">/ITL/log</span> and <span class="OSC">/ITL/ssl</span>. </p>
 <h3 id="the-stats-nodes">The 'stats' nodes</h3>
 <p><a name="ITLstat"></a></p>
 <p><a name="9-ITL-get"></a>
@@ -543,7 +544,10 @@ ComplexDiagram(
 <ul>
 <li><span class="OSC">path</span> add <span class="OSC">folder</span> as a user path. The system will look for plugins in this folder first.</li>
 <li><span class="OSC">reset</span> clear the current user path.</li>
-</ul></div>
+</ul>
+<h3 id="the-ssl-node">The 'ssl' node</h3>
+<p><a name="ITLSsl"></a></p>
+<p>The <span class="OSC">ssl</span> node is provided to manage certificates for encrypted communication with remote hosts. See section <a href="../11-forwarding#SSL">SSL</a> for more details and section <a href="../11-forwarding#Forwarding">Forwarding</a> for communication scheme.</p></div>
             </div>
         </div>
 

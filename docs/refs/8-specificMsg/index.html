@@ -150,6 +150,36 @@
 </li>
     </ul>
   </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">INScore Web</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../../web/1-introduction/" class="dropdown-item">Introduction</a>
+</li>
+            
+<li>
+    <a href="../../web/2-behavior/" class="dropdown-item">Global changes</a>
+</li>
+            
+<li>
+    <a href="../../web/3-unsupported/" class="dropdown-item">Unsupported messages</a>
+</li>
+            
+<li>
+    <a href="../../web/4-newMessages/" class="dropdown-item">Specific messages</a>
+</li>
+            
+<li>
+    <a href="../../web/5-faustObjects/" class="dropdown-item">Faust objects</a>
+</li>
+            
+<li>
+    <a href="../../web/6-communication/" class="dropdown-item">Communication</a>
+</li>
+    </ul>
+  </li>
                                 </ul>
                             </li>
                             <li class="dropdown">
@@ -161,6 +191,18 @@
 </li>
                                     
 <li>
+    <a href="../../rsrc/INScoreMessages.pdf" class="dropdown-item">Messages reference</a>
+</li>
+                                    
+<li>
+    <a href="../../rsrc/INScoreLang.pdf" class="dropdown-item">Language reference</a>
+</li>
+                                    
+<li>
+    <a href="../../rsrc/INScoreLang.pdf" class="dropdown-item">Web reference</a>
+</li>
+                                    
+<li>
     <a href="../../papers/" class="dropdown-item">Papers</a>
 </li>
                                 </ul>
@@ -168,10 +210,6 @@
                             <li class="dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Download <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
-                                    
-<li>
-    <a href="../../rsrc/INScoreLang.pdf" class="dropdown-item">Pdf documentation</a>
-</li>
                                     
 <li>
     <a href="https://github.com/grame-cncm/inscore/releases" class="dropdown-item">INScore</a>
@@ -235,7 +273,7 @@
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#video" class="nav-link">Video</a>
+            <li class="nav-item" data-level="2"><a href="#audio-and-video" class="nav-link">Audio and Video</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -456,16 +494,20 @@ Writing a pianoroll in 3 steps:</p>
 /ITL/scene/myPianoroll write &quot; d e&quot;;
 /ITL/scene/myPianoroll write &quot; f]&quot;;
 </code></pre>
-<h2 id="video">Video</h2>
+<h2 id="audio-and-video">Audio and Video</h2>
 <p><a name="video"></a></p>
-<p>A video object has an own internal time and duration that is independant from the INScore time and duration. 
-This video time is controlled using specific messages.</p>
+<p>Media objects (<span class="OSC">audio</span> <span class="OSC">video</span>) have their own internal time and duration that is independent from the INScore time and duration. 
+This time is controlled using specific messages.</p>
 <p><a name="8-specificMsg- play"></a>
+<a name="8-specificMsg- volume"></a>
+<a name="8-specificMsg- rate"></a>
+<a name="8-specificMsg- vdate"></a>
+<a name="8-specificMsg- play"></a>
 <a name="8-specificMsg- volume"></a>
 <a name="8-specificMsg- rate"></a>
 <a name="8-specificMsg- vdate"></a></p>
 <div class="rail">
-<span class="railtitle">video</span>
+<span class="railtitle">media</span>
 <br /><script>
 ComplexDiagram(
     Choice (0, Sequence ('play', NonTerminal('int32')), Sequence (NonTerminal('volume'), NonTerminal('float32')), Sequence (NonTerminal('rate'), NonTerminal('float32')), Sequence (NonTerminal('vdate'), Choice (0, Sequence (Comment ('1'), NonTerminal('int32')), Sequence (Comment ('2'), Sequence (NonTerminal('int32'), NonTerminal('int32'))), Sequence (Comment ('3'), NonTerminal('float')))))
@@ -475,11 +517,11 @@ ComplexDiagram(
 </div>
 
 <ul>
-<li><span class="OSC">play</span> start or stop playing the video. Default value is 0. </li>
-<li><span class="OSC">volume</span> sets the audio volume of the video. Default and maximum value is 1.</li>
-<li><span class="OSC">rate</span> sets the video playing rate. Default value is 1.</li>
+<li><span class="OSC">play</span> start or stop playing the media. Default value is 0. </li>
+<li><span class="OSC">volume</span> sets the audio volume. Default and maximum value is 1.</li>
+<li><span class="OSC">rate</span> sets the media playing rate. Default value is 1.</li>
 <li>
-<p><span class="OSC">vdate</span> sets the current video frame. Default value is 0. Arguments are the following:</p>
+<p><span class="OSC">vdate</span> sets the current video frame or audio position. Default value is 0. Arguments are the following:</p>
 </li>
 <li>
 <p>1) : a value in milliseconds. </p>
@@ -487,11 +529,12 @@ ComplexDiagram(
 <li>2) : a musical time expressed as a rational. Note that musical time is converted to milliseconds using a tempo value of 60. </li>
 <li>3) : a musical time expressed as a float. </li>
 </ul>
-<p>The video position may be updated while the video is playing.</p>
-<p>A video object supports also specific queries: </p>
-<p><a name="8-specificMsg- vduration"></a></p>
+<p>A media position may be updated while the media is playing.</p>
+<p>Media objects support also specific queries: </p>
+<p><a name="8-specificMsg- vduration"></a>
+<a name="8-specificMsg- vduration"></a></p>
 <div class="rail">
-<span class="railtitle">videoget</span>
+<span class="railtitle">mediaGet</span>
 <br /><script>
 ComplexDiagram(
     Choice (0, 'mls', 'vduration')
@@ -501,10 +544,10 @@ ComplexDiagram(
 </div>
 
 <ul>
-<li><span class="OSC">mls</span> gives the video absolute duration in milliseconds.</li>
-<li><span class="OSC">vduration</span> gives the video duration in musical time. The returned value is a rational computed using the current rate, according to a tempo value of 60.</li>
+<li><span class="OSC">mls</span> gives the media absolute duration in milliseconds.</li>
+<li><span class="OSC">vduration</span> gives the media duration in musical time. The returned value is a rational computed using the current rate, according to a tempo value of 60.</li>
 </ul>
-<p>A video object supports specific events (see section <a href="../17-interaction#typespecevents">typespecevents</a> for more details). </p>
+<p>A media object supports specific events (see section <a href="../17-interaction#typespecevents">typespecevents</a> for more details). </p>
 <p><span class="example">Example</span> 
 Playing a video at half speed:</p>
 <pre><code class="language-inscore">/ITL/scene/video set video &quot;Video.mp4&quot;; 
@@ -513,7 +556,7 @@ Playing a video at half speed:</p>
 </code></pre>
 <p><span class="note">Note:</span> 
 Depending on the video encoding and on the platform renderer, setting the video current position using the <span class="OSC">vdate</span> message may be aligned to key frames.</p>
-<p>Supported video formats are highly dependent on the platform, as well as the video specific features (e.g. setting the playing rate that may or may not be supported, or may behave differently).  </p>
+<p>Supported audio and video formats are highly dependent on the platform, as well as media specific features (e.g. setting the playing rate that may or may not be supported, or may behave differently).  </p>
 <h2 id="svg-objects">SVG Objects</h2>
 <p><a name="svgobjects"></a></p>
 <p>The following message is accepted by the SVG components (types <span class="OSC">svg | svgf</span>).</p>

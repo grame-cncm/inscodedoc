@@ -150,6 +150,36 @@
 </li>
     </ul>
   </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">INScore Web</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../../web/1-introduction/" class="dropdown-item">Introduction</a>
+</li>
+            
+<li>
+    <a href="../../web/2-behavior/" class="dropdown-item">Global changes</a>
+</li>
+            
+<li>
+    <a href="../../web/3-unsupported/" class="dropdown-item">Unsupported messages</a>
+</li>
+            
+<li>
+    <a href="../../web/4-newMessages/" class="dropdown-item">Specific messages</a>
+</li>
+            
+<li>
+    <a href="../../web/5-faustObjects/" class="dropdown-item">Faust objects</a>
+</li>
+            
+<li>
+    <a href="../../web/6-communication/" class="dropdown-item">Communication</a>
+</li>
+    </ul>
+  </li>
                                 </ul>
                             </li>
                             <li class="dropdown">
@@ -161,6 +191,18 @@
 </li>
                                     
 <li>
+    <a href="../../rsrc/INScoreMessages.pdf" class="dropdown-item">Messages reference</a>
+</li>
+                                    
+<li>
+    <a href="../../rsrc/INScoreLang.pdf" class="dropdown-item">Language reference</a>
+</li>
+                                    
+<li>
+    <a href="../../rsrc/INScoreLang.pdf" class="dropdown-item">Web reference</a>
+</li>
+                                    
+<li>
     <a href="../../papers/" class="dropdown-item">Papers</a>
 </li>
                                 </ul>
@@ -168,10 +210,6 @@
                             <li class="dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Download <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
-                                    
-<li>
-    <a href="../../rsrc/INScoreLang.pdf" class="dropdown-item">Pdf documentation</a>
-</li>
                                     
 <li>
     <a href="https://github.com/grame-cncm/inscore/releases" class="dropdown-item">INScore</a>
@@ -239,7 +277,7 @@
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#images-and-video" class="nav-link">Images and video</a>
+            <li class="nav-item" data-level="2"><a href="#media-files" class="nav-link">Media files</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -457,26 +495,28 @@ ComplexDiagram(
 <li><span class="OSC">faustdsp</span>: a FAUST object defined by a string (see section <a href="../19-plugins#faust">faust</a>)</li>
 <li><span class="OSC">faustdspf</span>: a FAUST object defined by a file (see section <a href="../19-plugins#faust">faust</a>)</li>
 </ul>
-<h2 id="images-and-video">Images and video</h2>
+<h2 id="media-files">Media files</h2>
 <p><a name="imgscore"></a></p>
-<p>Images and video are supported using various formats. See section <a href="../6-setsect#fileset">fileset</a> for more details on the supported formats.</p>
+<p>Images, video and audio are supported using various formats. See section <a href="../6-setsect#fileset">fileset</a> for more details on the supported formats.</p>
 <p><a name="6-setsect-img"></a>
 <a name="6-setsect-memimg"></a>
-<a name="6-setsect-video"></a></p>
+<a name="6-setsect-video"></a>
+<a name="6-setsect-audio"></a></p>
 <div class="rail">
 <span class="railtitle">setMedia</span>
 <br /><script>
 ComplexDiagram(
-    Choice (0, Sequence ('img', NonTerminal('imgPath')), Sequence ('memimg', NonTerminal('objectPath')), Sequence ('video', NonTerminal('videoPath')))
+    Choice (0, Sequence ('img', NonTerminal('imgPath')), Sequence ('memimg', NonTerminal('objectPath')), Sequence ('video', NonTerminal('videoPath')), Sequence ('audio', NonTerminal('audioPath')))
 ).addTo()
 
 </script>
 </div>
 
 <ul>
-<li><span class="OSC">img</span>: an image file. The image format is infered from the file extension.</li>
+<li><span class="OSC">img</span>: an image file. The image format is inferred from the file extension.</li>
 <li><span class="OSC">memimg</span>: a memory capture of the object given as argument. <span class="OSC">objectPath</span> indicates the target object that is captured with all its childrens. It may be an object name or a path to an object. Simple object names and relative path are looked for in the receiver layer.</li>
-<li><span class="OSC">video</span>: a video file. The video format is infered from the file extension. Note that navigation through the video is made using its <span class="OSC">date</span>.</li>
+<li><span class="OSC">video</span>: a video file. The video format is inferred from the file extension. Note that navigation through the video is made using its <span class="OSC">date</span>.</li>
+<li><span class="OSC">audio</span>: an audio file. The audio format is inferred from the file extension. </li>
 </ul>
 <p><span class="example">Example</span> 
 Creating an image.</p>
@@ -511,7 +551,7 @@ ComplexDiagram(
 </ul>
 <h2 id="file-based-resources">File based resources</h2>
 <p><a name="filebasedrsrc"></a></p>
-<p>Most of the types can be either expressed with the corresponding data, or by a path to a file containing the data. For the latter form, the object type is generally suffixed with an 'f' (e.g. <span class="OSC">txtf</span>, <span class="OSC">htmlf</span>, <span class="OSC">gmnf</span>, <span class="OSC">musicxmlf</span>, <span class="OSC">svgf</span>, <span class="OSC">faustf</span>). The <span class="OSC">img</span> and  <span class="OSC">video</span> types have only a file form (and no 'f' suffix). 
+<p>Most of the types can be either expressed with the corresponding data, or by a path to a file containing the data. For the latter form, the object type is generally suffixed with an 'f' (e.g. <span class="OSC">txtf</span>, <span class="OSC">htmlf</span>, <span class="OSC">gmnf</span>, <span class="OSC">musicxmlf</span>, <span class="OSC">svgf</span>, <span class="OSC">faustf</span>). The <span class="OSC">img</span>, <span class="OSC">audio</span> and  <span class="OSC">video</span> types have only a file form (and no 'f' suffix). 
 A file path can be expressed as a Unix path (absolute or relative - see the scene or application <span class="OSC">rootPath</span> message for relative paths handling), but also as an URL.
 Only the <span class="OSC">http:</span> protocol is currently supported.</p>
 <p>When the system encounters an URL, it creates an intermediate object that is in charge of retrieving the corresponding data. This object has a specific <span class="OSC">url</span> type that takes the target type and an url as arguments. It has a graphic appearance (actually a light gray box containing the object name and the target url) that can be controled like for any regular object.</p>
@@ -549,7 +589,7 @@ ComplexDiagram(
 </div>
 
 <ul>
-<li><span class="OSC">file</span>: a generic type to handle file based objects. Actually, the <span class="OSC">file</span> type is translated into a one of the <span class="OSC">txtf</span>, <span class="OSC">gmnf</span>, <span class="OSC">img</span> or <span class="OSC">video</span> types, according to the file extension (see table <a href="../6-setsect#fileTranslate">fileTranslate</a>).</li>
+<li><span class="OSC">file</span>: a generic type to handle file based objects. Actually, the <span class="OSC">file</span> type is translated into a one of the <span class="OSC">txtf</span>, <span class="OSC">gmnf</span>, <span class="OSC">img</span>, <span class="OSC">audio</span> or <span class="OSC">video</span> types, according to the file extension (see table <a href="../6-setsect#fileTranslate">fileTranslate</a>).</li>
 </ul>
 <p><span class="seealso">See also:</span> the application <span class="OSC">rootPath</span> message (section <a href="../9-ITL#ITL">ITL</a>) for file based objects.</p>
 <table>
@@ -587,6 +627,10 @@ ComplexDiagram(
 <tr>
 <td align="right"><span class="OSC">.avi .wmv .mpg .mpeg .mp4 .mov .vob</span></td>
 <td align="center"><span class="OSC">video</span></td>
+</tr>
+<tr>
+<td align="right"><span class="OSC">.mp3 .wav .aiff .aif, .m4a, .aac</span></td>
+<td align="center"><span class="OSC">audio</span></td>
 </tr>
 <tr>
 <td align="right"><span class="OSC">.dsp</span></td>

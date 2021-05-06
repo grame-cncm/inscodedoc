@@ -150,6 +150,36 @@
 </li>
     </ul>
   </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">INScore Web</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../../web/1-introduction/" class="dropdown-item">Introduction</a>
+</li>
+            
+<li>
+    <a href="../../web/2-behavior/" class="dropdown-item">Global changes</a>
+</li>
+            
+<li>
+    <a href="../../web/3-unsupported/" class="dropdown-item">Unsupported messages</a>
+</li>
+            
+<li>
+    <a href="../../web/4-newMessages/" class="dropdown-item">Specific messages</a>
+</li>
+            
+<li>
+    <a href="../../web/5-faustObjects/" class="dropdown-item">Faust objects</a>
+</li>
+            
+<li>
+    <a href="../../web/6-communication/" class="dropdown-item">Communication</a>
+</li>
+    </ul>
+  </li>
                                 </ul>
                             </li>
                             <li class="dropdown">
@@ -161,6 +191,18 @@
 </li>
                                     
 <li>
+    <a href="../../rsrc/INScoreMessages.pdf" class="dropdown-item">Messages reference</a>
+</li>
+                                    
+<li>
+    <a href="../../rsrc/INScoreLang.pdf" class="dropdown-item">Language reference</a>
+</li>
+                                    
+<li>
+    <a href="../../rsrc/INScoreLang.pdf" class="dropdown-item">Web reference</a>
+</li>
+                                    
+<li>
     <a href="../../papers/" class="dropdown-item">Papers</a>
 </li>
                                 </ul>
@@ -168,10 +210,6 @@
                             <li class="dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Download <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
-                                    
-<li>
-    <a href="../../rsrc/INScoreLang.pdf" class="dropdown-item">Pdf documentation</a>
-</li>
                                     
 <li>
     <a href="https://github.com/grame-cncm/inscore/releases" class="dropdown-item">INScore</a>
@@ -299,7 +337,7 @@ Creating a signal with a given buffer size:</p>
 <pre><code class="language-inscore">/ITL/scene/signal/mySig size 200;
 </code></pre>
 <p>Creating a signal with a given set of data (the buffer size will be the data size):</p>
-<pre><code class="language-inscore">/ITL/scene/signal/mySig 0. 0.1\ 0.2\ 0.3\ 0.4\ 0.5\ 0.4\ 0.3\ 0.2\ 0.1\ 0.\ -0.1\ -0.2 ;
+<pre><code class="language-inscore">/ITL/scene/signal/mySig 0. 0.10.2\ 0.3\ 0.4\ 0.5\ 0.4\ 0.3\ 0.2\ 0.1\ 0.\ -0.1\ -0.2 ;
 </code></pre>
 <h3 id="composing-signals-in-parallel">Composing signals in parallel.</h3>
 <p><a name="parcomp"></a>
@@ -377,10 +415,10 @@ ComplexDiagram(
 <p>The <strong>index value</strong> <span class="values">n</span> is the index of a target signal. When the <strong>parallel marker</strong> option is not present, the values are directed to the target signal. Indexes start at 0.</p>
 <p><span class="example">Example</span> 
 Sending data to the second component of a parallel signal:</p>
-<pre><code class="language-inscore">/ITL/scene/signal/sig '[1]' 0. 0.1\ 0.2\ 0.3\ 0.4\ 0.5\ 0.4\ 0.3\ 0.2\ 0.1\ 0. ;
+<pre><code class="language-inscore">/ITL/scene/signal/sig '[1]' 0. 0.10.2\ 0.3\ 0.4\ 0.5\ 0.4\ 0.3\ 0.2\ 0.1\ 0. ;
 </code></pre>
 <p>is equivalent to the following message (assuming that the second signal name is 's2'):</p>
-<pre><code class="language-inscore">/ITL/scene/signal/s2 0. 0.1\ 0.2\ 0.3\ 0.4\ 0.5\ 0.4\ 0.3\ 0.2\ 0.1\ 0. ;
+<pre><code class="language-inscore">/ITL/scene/signal/s2 0. 0.10.2\ 0.3\ 0.4\ 0.5\ 0.4\ 0.3\ 0.2\ 0.1\ 0. ;
 </code></pre>
 <p>Note that:</p>
 <ul>
@@ -603,7 +641,7 @@ Creating a signal and its graphic representation:</p>
 <p><a name="pgsignal"></a>
 When the dimension <em>d</em> of a signal connected to a graphic signal is greater than 6, then the input signal is interpreted like parallel graphic signals. More generally, the dimension <em>n</em> of a graphic signal is:
 <script type="math/tex; mode=display">
-n    |\ n \in \mathbb{N}\ \land\ 6.(n-1) < d \leqslant 6.n
+n    |n \in \mathbb{N}\ \land\ 6.(n-1) < d \leqslant 6.n
 </script>
 where <em>d</em> is the dimension of the input signal.</p>
 <p>When <em>d</em> is not a mutiple of 6, then the last graphic signal makes use of the default values mentionned above.</p>

@@ -150,6 +150,36 @@
 </li>
     </ul>
   </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">INScore Web</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../../web/1-introduction/" class="dropdown-item">Introduction</a>
+</li>
+            
+<li>
+    <a href="../../web/2-behavior/" class="dropdown-item">Global changes</a>
+</li>
+            
+<li>
+    <a href="../../web/3-unsupported/" class="dropdown-item">Unsupported messages</a>
+</li>
+            
+<li>
+    <a href="../../web/4-newMessages/" class="dropdown-item">Specific messages</a>
+</li>
+            
+<li>
+    <a href="../../web/5-faustObjects/" class="dropdown-item">Faust objects</a>
+</li>
+            
+<li>
+    <a href="../../web/6-communication/" class="dropdown-item">Communication</a>
+</li>
+    </ul>
+  </li>
                                 </ul>
                             </li>
                             <li class="dropdown">
@@ -161,6 +191,18 @@
 </li>
                                     
 <li>
+    <a href="../../rsrc/INScoreMessages.pdf" class="dropdown-item">Messages reference</a>
+</li>
+                                    
+<li>
+    <a href="../../rsrc/INScoreLang.pdf" class="dropdown-item">Language reference</a>
+</li>
+                                    
+<li>
+    <a href="../../rsrc/INScoreLang.pdf" class="dropdown-item">Web reference</a>
+</li>
+                                    
+<li>
     <a href="../../papers/" class="dropdown-item">Papers</a>
 </li>
                                 </ul>
@@ -168,10 +210,6 @@
                             <li class="dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Download <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
-                                    
-<li>
-    <a href="../../rsrc/INScoreLang.pdf" class="dropdown-item">Pdf documentation</a>
-</li>
                                     
 <li>
     <a href="https://github.com/grame-cncm/inscore/releases" class="dropdown-item">INScore</a>
@@ -334,29 +372,29 @@ ComplexDiagram(
 <tr>
 <th align="right">arg1</th>
 <th>arg2</th>
-<th align="center">output\</th>
+<th align="center">output</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td align="right"><span class="OSC">int32</span></td>
 <td><span class="OSC">int32</span></td>
-<td align="center"><span class="OSC">int32</span> \</td>
+<td align="center"><span class="OSC">int32</span></td>
 </tr>
 <tr>
 <td align="right"><span class="OSC">float32</span></td>
 <td><span class="OSC">int32</span></td>
-<td align="center"><span class="OSC">float32</span> \</td>
+<td align="center"><span class="OSC">float32</span></td>
 </tr>
 <tr>
 <td align="right"><span class="OSC">int32</span></td>
 <td><span class="OSC">float32</span></td>
-<td align="center"><span class="OSC">float32</span> \</td>
+<td align="center"><span class="OSC">float32</span></td>
 </tr>
 <tr>
 <td align="right"><span class="OSC">float32</span></td>
 <td><span class="OSC">float32</span></td>
-<td align="center"><span class="OSC">float32</span> \</td>
+<td align="center"><span class="OSC">float32</span></td>
 </tr>
 </tbody>
 </table>
@@ -370,34 +408,34 @@ ComplexDiagram(
 <tr>
 <th align="right">operation</th>
 <th>evaluates to</th>
-<th align="center">comment\</th>
+<th align="center">comment</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td align="right"><span class="OSC">string</span> + <span class="OSC">string</span></td>
 <td><span class="OSC">string</span></td>
-<td align="center">concatenate the two strings \</td>
+<td align="center">concatenate the two strings</td>
 </tr>
 <tr>
 <td align="right"><span class="OSC">string</span> + <span class="OSC">num</span></td>
-<td><span class="OSC">string</span> + \mathstring{num}</td>
-<td align="center"><span class="OSC">num</span> is converted to string \</td>
+<td><span class="OSC">string</span> + <em>string</em>(num)</td>
+<td align="center"><span class="OSC">num</span> is converted to string</td>
 </tr>
 <tr>
 <td align="right"><span class="OSC">num</span> + <span class="OSC">string</span></td>
-<td>\mathstring{num} + <span class="OSC">string</span></td>
-<td align="center">" \</td>
+<td><em>string</em>(num) + <span class="OSC">string</span></td>
+<td align="center">"</td>
 </tr>
 <tr>
 <td align="right">@max(<span class="OSC">string</span> <span class="OSC">string</span>)</td>
 <td><span class="OSC">string</span></td>
-<td align="center">select the largest string \</td>
+<td align="center">select the largest string</td>
 </tr>
 <tr>
 <td align="right">@min(<span class="OSC">string</span> <span class="OSC">string</span>)</td>
 <td><span class="OSC">string</span></td>
-<td align="center">select the smallest string \</td>
+<td align="center">select the smallest string</td>
 </tr>
 </tbody>
 </table>
@@ -407,29 +445,29 @@ ComplexDiagram(
 <thead>
 <tr>
 <th align="right">operation</th>
-<th align="center">comment\</th>
+<th align="center">comment</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="right"><span class="OSC">string</span> \op <span class="OSC">string</span></td>
-<td align="center">where \op\ is in [- * /</td>
+<td align="right"><span class="OSC">string</span> <em>op</em> <span class="OSC">string</span></td>
+<td align="center">where <em>op</em> is in [- * /</td>
 </tr>
 <tr>
-<td align="right"><span class="OSC">string</span> \op <span class="OSC">num</span></td>
+<td align="right"><span class="OSC">string</span> <em>op</em> <span class="OSC">num</span></td>
 <td align="center">"</td>
 </tr>
 <tr>
-<td align="right"><span class="OSC">num</span> \op <span class="OSC">string</span></td>
+<td align="right"><span class="OSC">num</span> <em>op</em> <span class="OSC">string</span></td>
 <td align="center">"</td>
 </tr>
 <tr>
 <td align="right">-<span class="OSC">string</span></td>
-<td align="center">\</td>
+<td align="center"></td>
 </tr>
 <tr>
 <td align="right">prefixed or postfixed <span class="OSC">string</span></td>
-<td align="center">\</td>
+<td align="center"></td>
 </tr>
 </tbody>
 </table>
@@ -440,29 +478,29 @@ ComplexDiagram(
 <thead>
 <tr>
 <th align="right">boolean operation</th>
-<th align="center">evaluated as \</th>
+<th align="center">evaluated as</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td align="right"><span class="OSC">string</span> == <span class="OSC">string</span></td>
-<td align="center">regular strings comparison \</td>
+<td align="center">regular strings comparison</td>
 </tr>
 <tr>
 <td align="right"><span class="OSC">string</span> &gt; <span class="OSC">string</span></td>
-<td align="center">alphabetical strings comparison \</td>
+<td align="center">alphabetical strings comparison</td>
 </tr>
 <tr>
 <td align="right"><span class="OSC">string</span> &gt;= <span class="OSC">string</span></td>
-<td align="center">" \</td>
+<td align="center">"</td>
 </tr>
 <tr>
 <td align="right"><span class="OSC">string</span> &lt; <span class="OSC">string</span></td>
-<td align="center">" \</td>
+<td align="center">"</td>
 </tr>
 <tr>
 <td align="right"><span class="OSC">string</span> &lt;= <span class="OSC">string</span></td>
-<td align="center">" \</td>
+<td align="center">"</td>
 </tr>
 </tbody>
 </table>
@@ -471,16 +509,16 @@ ComplexDiagram(
 <p><a name="arrays"></a></p>
 <p>For arrays, the operation is distributed inside the array elements:
 <script type="math/tex; mode=display">
- arg op\ [v_1\ ...\ v_n]  := [arg\ op\ v_1\ ...\ arg\ op\ v_n] 
+ arg op[v_1\ ...\ v_n]  := [arg\ op\ v_1\ ...\ arg\ op\ v_n] 
 </script>
 or
 <script type="math/tex; mode=display"> 
-[v_1 ...\ v_n]\ op\ arg  := [v_1\ op\ arg\ ...\ v_n\ op\ arg] 
+[v_1 ...v_n]\ op\ arg  := [v_1\ op\ arg\ ...\ v_n\ op\ arg] 
 </script>
 </p>
 <p>When both parameters are arrays, the operation is distributed from one array elements to the other array elements when the arrays have the same size and it generates an error when the sizes differ:
 <script type="math/tex; mode=display">
-[a_1 ...\ a_i]\ op\ [b_1\ ...\ b_i]  := [a_1\ op\ b_1\ ...\ a_i\ op\ b_i\ ] 
+[a_1 ...a_i]\ op\ [b_1\ ...\ b_i]  := [a_1\ op\ b_1\ ...\ a_i\ op\ b_i\ ] 
 </script>
 </p>
 <p>Boolean operations on arrays are evaluated as the logical <script type="math/tex">and</script> of it's element's boolean values and generate an error when the arrays sizes differ.</p></div>

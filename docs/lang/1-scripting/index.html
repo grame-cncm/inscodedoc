@@ -150,6 +150,36 @@
 </li>
     </ul>
   </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">INScore Web</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../../web/1-introduction/" class="dropdown-item">Introduction</a>
+</li>
+            
+<li>
+    <a href="../../web/2-behavior/" class="dropdown-item">Global changes</a>
+</li>
+            
+<li>
+    <a href="../../web/3-unsupported/" class="dropdown-item">Unsupported messages</a>
+</li>
+            
+<li>
+    <a href="../../web/4-newMessages/" class="dropdown-item">Specific messages</a>
+</li>
+            
+<li>
+    <a href="../../web/5-faustObjects/" class="dropdown-item">Faust objects</a>
+</li>
+            
+<li>
+    <a href="../../web/6-communication/" class="dropdown-item">Communication</a>
+</li>
+    </ul>
+  </li>
                                 </ul>
                             </li>
                             <li class="dropdown">
@@ -161,6 +191,18 @@
 </li>
                                     
 <li>
+    <a href="../../rsrc/INScoreMessages.pdf" class="dropdown-item">Messages reference</a>
+</li>
+                                    
+<li>
+    <a href="../../rsrc/INScoreLang.pdf" class="dropdown-item">Language reference</a>
+</li>
+                                    
+<li>
+    <a href="../../rsrc/INScoreLang.pdf" class="dropdown-item">Web reference</a>
+</li>
+                                    
+<li>
     <a href="../../papers/" class="dropdown-item">Papers</a>
 </li>
                                 </ul>
@@ -168,10 +210,6 @@
                             <li class="dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Download <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
-                                    
-<li>
-    <a href="../../rsrc/INScoreLang.pdf" class="dropdown-item">Pdf documentation</a>
-</li>
                                     
 <li>
     <a href="https://github.com/grame-cncm/inscore/releases" class="dropdown-item">INScore</a>
@@ -403,10 +441,10 @@ Using variables in interaction messages: $sx is evaluated at event occurrence   
 <li>
 <p>1 for Android</p>
 </li>
-<li>2 for iOS.</li>
-<li>3 for Linux, </li>
-<li>4 for MacOS, </li>
-<li>5 for Windows, </li>
+<li>2 for iOS</li>
+<li>3 for Linux </li>
+<li>4 for MacOS </li>
+<li>5 for Windows </li>
 <li>6 for the Web environment </li>
 </ul>
 <p><span class="note">Note:</span>
@@ -494,7 +532,7 @@ Actually, including a javascript section in a script is equivalent to send the <
 <p><span class="example">Example</span>
 Posting a message from a Javascript section:</p>
 <pre><code class="language-inscore">&lt;?javascript 
-   post (&quot;/ITL/scene/obj&quot;, &quot;dalpha&quot;, -1);&quot;;\ 
+   post (&quot;/ITL/scene/obj&quot;, &quot;dalpha&quot;, -1);&quot;;
    // The message /ITL/scene/obj dalpha -1 
    // will be evaluated by the next time task. 
 ?&gt;
@@ -502,7 +540,7 @@ Posting a message from a Javascript section:</p>
 <p>Declaration of a Javascript function to be used later:</p>
 <pre><code class="language-inscore">&lt;?javascript 
    // declare a function foo() 
-   function foo(arg) {\ 
+   function foo(arg) {
     return &quot;/ITL/scene/obj set txt foo called with &quot; + arg + &quot;;&quot;; 
    } 
 ?&gt;
@@ -523,9 +561,9 @@ Posting a message from a Javascript section:</p>
 <p><span class="example">Example</span></p>
 <pre><code class="language-inscore"># this is a line comment 
 /ITL/scene/* del; 
-\ 
+
 (*
-   here is a section comment\ 
+   here is a section comment
    section comments are multi-lines comments
 {*}) 
 

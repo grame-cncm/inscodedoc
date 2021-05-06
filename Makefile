@@ -7,6 +7,11 @@ MSGDEST  := mkdocs/docs/rsrc/INScoreMessages.pdf
 LANGDEST := mkdocs/docs/rsrc/INScoreLang.pdf
 WEBDEST  := mkdocs/docs/rsrc/INScoreWeb.pdf
 
+.PHONY: mkdocs
+
+all:
+	$(MAKE) pdf
+	$(MAKE) mkdocs
 
 ####################################################################
 help:

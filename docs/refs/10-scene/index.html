@@ -20,6 +20,7 @@
         <script src="../../js/jquery-1.10.2.min.js" defer></script>
         <script src="../../js/bootstrap.min.js" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/inscore.min.js"></script>
         <script>hljs.initHighlightingOnLoad();</script> 
     </head>
 
@@ -172,7 +173,7 @@
 </li>
             
 <li>
-    <a href="../../web/5-faustObjects/" class="dropdown-item">Faust objects</a>
+    <a href="../../web/5-audioObjects/" class="dropdown-item">Audio objects</a>
 </li>
             
 <li>
@@ -199,7 +200,7 @@
 </li>
                                     
 <li>
-    <a href="../../rsrc/INScoreLang.pdf" class="dropdown-item">Web reference</a>
+    <a href="../../rsrc/INScoreWeb.pdf" class="dropdown-item">Web reference</a>
 </li>
                                     
 <li>
@@ -322,7 +323,7 @@ ComplexDiagram(
 <li><span class="OSC">absolutexy</span>: requests the scene to absolute or relative coordinates. Absolute coordinates are in pixels relative to the top left corner of the screen. Relative coordinates are in the range [-1, 1] where [0,0] is the center of the screen. The message parameter is interpreted as a boolean value. Default value is <span class="values">0</span>.</li>
 <li><span class="OSC">windowOpacity</span>: switch the scene window to opaque or transparent mode. When in transparent mode, the scene alpha channel controls the window opacity (from completely opaque to completely transparent). In opaque mode, the scene alpha channel controls the background brush only. Default value is <span class="values">0</span> (transparent).</li>
 <li><span class="OSC">commonMsg</span>: a scene support the common graphic attributes. See section <a href="../3-common#common">common</a>.</li>
-<li><span class="OSC">forwardingMsg</span>: a scene support message forwading and filtering. See section <a href="../11-forwarding#forwarding">forwarding</a>.</li>
+<li><span class="OSC">forwardingMsg</span>: a scene support message forwading and filtering. See section \fullref{forwarding}.</li>
 </ul>
 <p><span class="example">Example</span> 
 Setting a scene current path:</p>

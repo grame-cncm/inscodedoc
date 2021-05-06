@@ -20,6 +20,7 @@
         <script src="../../js/jquery-1.10.2.min.js" defer></script>
         <script src="../../js/bootstrap.min.js" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/inscore.min.js"></script>
         <script>hljs.initHighlightingOnLoad();</script> 
     </head>
 
@@ -172,7 +173,7 @@
 </li>
             
 <li>
-    <a href="../../web/5-faustObjects/" class="dropdown-item">Faust objects</a>
+    <a href="../../web/5-audioObjects/" class="dropdown-item">Audio objects</a>
 </li>
             
 <li>
@@ -199,7 +200,7 @@
 </li>
                                     
 <li>
-    <a href="../../rsrc/INScoreLang.pdf" class="dropdown-item">Web reference</a>
+    <a href="../../rsrc/INScoreWeb.pdf" class="dropdown-item">Web reference</a>
 </li>
                                     
 <li>
@@ -257,6 +258,10 @@
             
             <li class="nav-item" data-level="1"><a href="#changes-list" class="nav-link">Changes list</a>
               <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#version-128-vs-version-127" class="nav-link">Version 1.28 vs version 1.27</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
             <li class="nav-item" data-level="2"><a href="#version-127-vs-version-124" class="nav-link">Version 1.27 vs version 1.24</a>
               <ul class="nav flex-column">
               </ul>
@@ -408,12 +413,26 @@
 
 <h1 id="changes-list">Changes list</h1>
 <p><a name="changes"></a></p>
+<h2 id="version-128-vs-version-127">Version 1.28 vs version 1.27</h2>
+<ul>
+<li>new <span class="OSC">dvolume</span> method for media objects</li>
+<li>new <span class="OSC">ssl</span> static application node for ssl certificates management</li>
+<li>new <span class="OSC">cert</span> <span class="OSC">key</span> <span class="OSC">cacert</span> messages to manage ssl certificates and keys. See section <a href="../11-forwarding#SSL">SSL</a></li>
+<li>new get clients messages at application level</li>
+<li>add https support to forwarding mechanism. See section <a href="../11-forwarding#Forwarding">Forwarding</a></li>
+</ul>
+<p>\vspace{-4mm}
+   INScore Web version
+\vspace{-4mm}</p>
+<ul>
+<li>fix ready event for audio objects</li>
+</ul>
 <h2 id="version-127-vs-version-124">Version 1.27 vs version 1.24</h2>
 <ul>
 <li>INScore Web version</li>
 <li>new <span class="OSC">faust</span> object (web version)</li>
 <li>new <span class="OSC">connect</span> method (web version)</li>
-<li>forwarding mechanism extended with http and ws support. See section <a href="../11-forwarding#ITLForward">ITLForward</a></li>
+<li>forwarding mechanism extended with http and ws support. See section <a href="../11-forwarding#Forwarding">Forwarding</a></li>
 </ul>
 <h2 id="version-124-vs-version-122">Version 1.24 vs version 1.22</h2>
 <ul>
@@ -442,9 +461,9 @@
 <li>new set of sensor objects. See section <a href="../16-sensors#sensors">sensors</a>.</li>
 <li>update to guido engine 1.63</li>
 <li>new <span class="OSC">preprocess</span> message supported at application and scene level intended to debug javascript sections or math expressions. Output of pre-processing is printed to the log window. See section <a href="../9-ITL#applmgmt">applmgmt</a> and  <a href="../10-scene#scene">scene</a>.</li>
-<li>environement variables introduced in scripting environment (OSName and OSId). See section \fullref{envvar}.</li>
+<li>environement variables introduced in scripting environment (OSName and OSId). See INScoreLang documentation.</li>
 <li>
-<p>new math expressions introduced in scripting context. See section \fullref{mathExpr}.</p>
+<p>new math expressions introduced in scripting context. See INScoreLang documentation.</p>
 </li>
 <li>
 <p>new <span class="OSC">syncFrame</span> synchronisation mode. See section <a href="../14-syncmsg#syncPos">syncPos</a> and <a href="../14-syncmsg#syncFrame">syncFrame</a>.</p>
@@ -493,8 +512,8 @@
 <li>the javascript engine is shared between the application and the different scenes.
   Note that it may change a script behavior when exploiting the previous independance
   of the javascript engine environments.</li>
-<li>new javascript <span class="OSC">osname</span> function that gives the current operating system name. See section \fullref{jsobj}.</li>
-<li>new javascript <span class="OSC">osid</span> function that gives the current operating system as an id. See section \fullref{jsobj}.</li>
+<li>new javascript <span class="OSC">osname</span> function that gives the current operating system name. See INScoreLang documentation.</li>
+<li>new javascript <span class="OSC">osid</span> function that gives the current operating system as an id. See INScoreLang documentation.</li>
 <li><span class="OSC">rootPath</span> message can be called without parameter to clear a scene rootPath. See section <a href="../10-scene#scene">scene</a>.</li>
 <li>log window supports the <span class="OSC">foreground</span> message. See section <a href="../9-ITL#ITLlog">ITLlog</a>.</li>
 <li>user actions on windows are generating <span class="OSC">foreground</span> messages.</li>
@@ -525,7 +544,7 @@
 <li>Add change tab on mobile with three digits gesture.</li>
 <li>add new object <span class="OSC">filter</span> at application and scene level to filter forwarded messages.</li>
 <li>sending to broadcast address is enabled</li>
-<li>add <span class="OSC">forward</span> and <span class="OSC">filter</span> messages to the scene to handle messages forwarding at scene level. See section <a href="../11-forwarding#forwarding">forwarding</a>.</li>
+<li>add <span class="OSC">forward</span> and <span class="OSC">filter</span> messages to the scene to handle messages forwarding at scene level. See section \fullref{forwarding}.</li>
 <li>default port to forward messages is now 7000.</li>
 <li>add new optional tab at startup with a menu for ios and android.</li>
 <li>add zoom and move capabilities at scene level using <span class="OSC">scale</span>, OSC{xorigin} and OSC{yorigin}. This is intended to support two fingers gesture on mobile device.</li>
@@ -558,7 +577,7 @@
 </li>
 <li>new <span class="OSC">memimg</span> object that capture the image of any object hierarchy including scenes. See section <a href="../6-setsect#imgscore">imgscore</a>.</li>
 <li>supports relative OSC addresses that are evaluated in the context of the target object 
-  (i.e. a scene for drag and drop operations, arbitrary objects with the <span class="OSC">eval</span> method). See section \fullref{scriptmsgs}.</li>
+  (i.e. a scene for drag and drop operations, arbitrary objects with the <span class="OSC">eval</span> method).</li>
 <li>new <span class="OSC">eval</span> method that takes a message list as argument, provided as a context for relative addresses evaluation. See section <a href="../5-miscmsgs#miscmsgs">miscmsgs</a>.</li>
 <li>new <span class="OSC">httpd</span> object that implements an http server providing images of the scene to remote clients. See section <a href="../6-setsect#webobjects">webobjects</a> and section <a href="../19-plugins#Httpd">Httpd</a>.</li>
 <li>
@@ -584,7 +603,7 @@
 </ul>
 <h2 id="version-108-vs-version-107">Version 1.08 vs version 1.07</h2>
 <ul>
-<li>new <span class="OSC"><strong>END</strong></span> marker supported to end a script parsing at arbitrary location  (see section \fullref{scriptstatement}).</li>
+<li>new <span class="OSC"><strong>END</strong></span> marker supported to end a script parsing at arbitrary location  (see INScoreLang documentation.).</li>
 <li>when displaying the mapping, the map dates are not printed any more by default (due to size and collisions).  The debug map parameter change from boolean to int value: 1 to activate the mapping display, 
 2 to have also the dates displayed  (see section <a href="../8-specificMsg#debugnode">debugnode</a>).</li>
 <li>the signal node is available at any level of the hierarchy (as well as the sync node)</li>
@@ -600,7 +619,7 @@
 <li>new <span class="OSC">faustdsp</span> object, charging libfaust as a plugin to compile faust DSP on-the-fly (see section <a href="../6-setsect#sigscore">sigscore</a>).</li>
 <li>exception catched when sending osc messages: was a potential crash, 
   e.g. in case of <span class="OSC">get</span> message sent to a signal with a large buffer -&gt; out of buffer memory</li>
-<li>new javascript 'post' function for posting delayed messages  (see section \fullref{jsobj})</li>
+<li>new javascript 'post' function for posting delayed messages  (see INScoreLang documentation.)</li>
 <li>new <span class="OSC">write</span> method supported by the 'log' window (see section <a href="../9-ITL#ITLlog">ITLlog</a>)</li>
 <li>variable addresses are evaluated in message based variables</li>
 <li>supports relative rotations on x and y axis</li>
@@ -616,7 +635,7 @@
 <h2 id="version-105-vs-version-103">Version 1.05 vs version 1.03</h2>
 <ul>
 <li>incorrect error message for watch messages corrected</li>
-<li>new javascript <span class="OSC">readfile</span> function (see section \fullref{jsobj})</li>
+<li>new javascript <span class="OSC">readfile</span> function (see INScoreLang documentation.)</li>
 <li>log window is now available from the application 'Tools' menu</li>
 <li>new <span class="OSC">brushStyle</span> attribute (see section <a href="../8-specificMsg#brush">brush</a>)</li>
 <li>new <span class="OSC">layer</span> object (see section <a href="../6-setsect#miscscore">miscscore</a>)</li>
@@ -630,7 +649,7 @@
 <li>log window utility provided as a new static node at application level (<span class="OSC">/ITL/log</span>) (see section <a href="../9-ITL#ITLlog">ITLlog</a>).</li>
 <li>new <span class="OSC">systemCount</span> read only attribute for Guido scores (see section <a href="../8-specificMsg#gmnpage">gmnpage</a>)</li>
 <li>IRCAM gesture follower support (see section <a href="../19-plugins#GF">GF</a>)</li>
-<li>javascript engine is available at the static address /ITL/scene/javascript and can be activated using a 'run' method  (see section \fullref{jsobj})</li>
+<li>javascript engine is available at the static address /ITL/scene/javascript and can be activated using a 'run' method  (see INScoreLang documentation.)</li>
 <li>new <span class="OSC">export</span> event (see section <a href="../17-interaction#miscevents">miscevents</a>)</li>
 <li>new <span class="OSC">endPaint</span> event at scene level  (see section <a href="../17-interaction#miscevents">miscevents</a>)</li>
 <li>new <span class="OSC">windowOpacity</span> method at scene level (see section <a href="../10-scene#scene">scene</a>)</li>
@@ -648,7 +667,7 @@
 <li>new 'relative | absolute' synchronization mode (see section <a href="../14-syncmsg#syncmode">syncmode</a>)</li>
 <li>'rename' message not supported any more</li>
 <li>a scene accepts multiple dropped files</li>
-<li>significant extension and syntax changes in inscore script files (see Scripting documentation section \fullref{scripting})</li>
+<li>significant extension and syntax changes in inscore script files (see INScoreLang documentation.)</li>
 <li>fileWatcher methods renamed and simplified (see section <a href="../17-interaction#filewatch">filewatch</a>)</li>
 <li>'click' and 'select' messages are not supported any more.</li>
 <li>new 'stats' virtual node at application level (address /ITL/stats), supports 'get' and 'reset' messages
@@ -695,7 +714,7 @@
 <ul>
 <li>new 'mouse' 'show/hide' message supported at application level (see section <a href="../9-ITL#ITL">ITL</a>)</li>
 <li>graphic signal supports alpha messages at object level</li>
-<li>javascript and lua embedded and supported in inscore scripts  (see section \fullref{scriptlang}).</li>
+<li>javascript and lua embedded and supported in inscore scripts.</li>
 <li>bug correction in sync delete (introduced with version 0.90)</li>
 </ul>
 <h2 id="version-092-vs-version-091">Version 0.92 vs version 0.91</h2>
@@ -711,7 +730,7 @@
 <h2 id="version-090-vs-version-082">Version 0.90 vs version 0.82</h2>
 <ul>
 <li>at application level: osc debug is now 'on' by default</li>
-<li>new scripting features (variables)  (see section \fullref{scriptvar}).</li>
+<li>new scripting features (variables).</li>
 <li>ITL file format change: </li>
 <li>semicolon added at the end of each message </li>
 <li>'//' comment not supported any more </li>

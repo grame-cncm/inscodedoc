@@ -1996,8 +1996,9 @@ Querying INScore version:
 \sublevel{Application static nodes}
 \label{ITLStatic}
 
-The application level provides the static nodes - \OSC{stats}, \OSC{debug} and \OSC{log}, available at \OSC{/ITL/stats} \OSC{/ITL/debug} and \OSC{/ITL/log}  to help debugging communication and INScore scripts design.
+The application level provides the static nodes - \OSC{stats}, \OSC{debug}, \OSC{log} and \OSC{ssl}, available at \OSC{/ITL/stats} \OSC{/ITL/debug}, \OSC{/ITL/log} and \OSC{/ITL/ssl}. 
 
+%--------------------------------
 \subsublevel{The 'stats' nodes}
 \label{ITLstat}
 
@@ -2018,6 +2019,7 @@ Answer to a \OSC{get} message addressed to \OSC{/ITL/stats}
 \sample{/ITL/stats osc 15 udp 10}
 
 
+%--------------------------------
 \subsublevel{The 'debug' nodes}
 \label{ITLdebug}
 
@@ -2041,6 +2043,7 @@ error:  incorrect parameters: /ITL/scene/foo x "incorrectType"
 }
 
 
+%--------------------------------
 \subsublevel{The 'log' nodes}
 \label{ITLlog}
 
@@ -2081,7 +2084,7 @@ ITLLog : 'show'  int32
 \end{itemize}
 
 
-
+%--------------------------------
 \subsublevel{The 'plugins' nodes}
 \label{ITLplugins}
 
@@ -2100,6 +2103,11 @@ ITLPlugin : 'path'  folder
 \item \OSC{reset} clear the current user path.
 \end{itemize}
 
+%--------------------------------
+\subsublevel{The 'ssl' node}
+\label{ITLSsl}
+
+The \OSC{ssl} node is provided to manage certificates for encrypted communication with remote hosts. See section \fullref{SSL} for more details and section \fullref{Forwarding} for communication scheme.
 
 %===============================
 %:Scene messages
@@ -2221,20 +2229,20 @@ Counting the elements in a scene:
 %===============================
 %:Messages Forwarding
 \toplevel{Messages forwarding}
-\label{forwarding}
+\label{Forwarding}
 The messages handled by the application or by a scene can be forwarded to arbitrary remote hosts. A filtering mecanism can be used to have a fine control of forwarded messages.
 
 %===============================
-%:  Messages forwarding
+%:  Remote hosts list
 \sublevel{Remote hosts list}
-\label{ITLForward}
+\label{RemoteHosts}
 
 Remote hosts lists can be set using the \OSC{forward} message at scene or application level. Hosts lists of the application and of each scene are independent.
 At scene level, only messages handle by the scene are forwarded (ie message for the scene itself or for one of his children object).
 The \OSC{forward} message itself can't be forwarded. 
 A message from a host cannot be forwarded to him to avoid direct loop.
  
-\index{ITL messages!forward}
+\index{Forwarding!forward}
 
 \begin{rail}
 ITLMsgForward : ('forward' ( [1] | [2] ForwardDest +))
@@ -2254,7 +2262,7 @@ The forwarding mechanism can use different protocols, expressed by the destinati
 \item 1) obsolete form preserved for compatibility: it's equivalent to 2). 
 \item 2) messages are forwarded using the OSC protocol.
 \item 3) messages are forwarded in textual form using the HTTP protocol.
-\item 3) messages are forwarded in textual form using the HTTPS protocol. See section \ref{ITLSSL} about additional requirements for encrypted connections.
+\item 3) messages are forwarded in textual form using the HTTPS protocol. See section \ref{SSL} about additional requirements for encrypted connections.
 \item 5) messages are forwarded in textual form using WebSockets.
 \end{itemize}
 
@@ -2266,11 +2274,15 @@ and to \OSC{host2.adomain.org} using HTTP on port number 5100 .
 %===============================
 %:  SSL support
 \sublevel{SSL support}
-\label{ITLSSL}
+\label{SSL}
 
 When you use \OSC{https} as a communication protocol, a digital certificate and an encryption key are required to establish connections between INScore and the client stations. The certificate must be signed by a trusted certificate authority. Short term certificates are freely available on the internet. 
 
 Before issuing a \OSC{forward} message on an encrypted communication channel, the key and certificate must be loaded by INScore. For this purpose, a set of messages is provided by the application ssl node  \OSC{/ITL/ssl}:
+
+\index{Forwarding!key}
+\index{Forwarding!cert}
+\index{Forwarding!cacert}
 
 \begin{rail}
 SslSetup : ( 'key' | 'cert' | 'cacert' ) file
@@ -2293,8 +2305,8 @@ Resolution of relative paths differs from the approach used with \OSC{rootPath}:
 
 The messages forwarded to arbitrary remote hosts using the \OSC{forward} message can be filtered to send only wanted messages. The static \OSC{filter} node is use manage the filter. A static \OSC{filter} node is created for each scene and one at application level. The filter can be construct with OSC address and messages. 
  
-\index{ITL messages!accept}
-\index{ITL messages!reject}
+\index{Forwarding!accept}
+\index{Forwarding!reject}
 
 \begin{rail}
 ITLFilteringForward : [1] ('accept' (|item +)) | [2] ('reject' (|item +))
@@ -2328,6 +2340,9 @@ INScore is message based in a consistent way: all actions are triggered by messa
 \label{ITLForwardQueries}
 
 When using connection oriented protocols with the \OSC{forward} message (\OSC{http}, \OSC{https}, \OSC{ws}), you can query the number of connected clients:
+
+\index{Forwarding!get}
+
 \begin{rail}
 ITLClientsQuery : 'get' 'clients'
 \end{rail}

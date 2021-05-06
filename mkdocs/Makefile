@@ -1,26 +1,42 @@
 
 MAKE ?= make
 AWK  ?= awk
-PIP  ?= pip
+PIP  ?= pip3
+CONFIG  ?= mkdocs.yml
+PORT    ?= 8000
 
-MKDIR := "./"
+MKDIR 		:= .
+DOCSDIR		:= $(MKDIR)/docs
+OSCDIR 		:= refs
+LANGDIR 	:= lang
+WEBDIR 		:= web
 
-SRCDIR   := ../latex
-SRC      := $(SRCDIR)/OSCMsg.tex
-SPLIT    := $(wildcard *.tmp)
-SECTIONS := $(SPLIT:%.tmp=%.md)
-MD 		 := $(SPLIT:%.tmp=docs/refs/%.md)
-REFOUT 	 := $(SECTIONS:%.md=%.refs)
-RAIL 	 := $(shell find rail -name "*.rail")
-RAILOUT  := $(RAIL:rail/%.rail=docs/BNF/%.js)
+SRCDIR   	:= ../latex
+MSGSRC   	:= $(SRCDIR)/OSCMsg.tex
+LANGSRC  	:= $(SRCDIR)/INScoreLang.tex
+WEBSRC  	:= $(SRCDIR)/INScoreWeb/INScoreWeb.tex
 
-.PHONY: rail
+OSCSPLIT 	:= $(wildcard $(OSCDIR)/*.tmp)
+LANGSPLIT	:= $(wildcard $(LANGDIR)/*.tmp)
+WEBSPLIT	:= $(wildcard $(WEBDIR)/*.tmp)
+
+OSCSECTIONS := $(OSCSPLIT:%.tmp=%.md)
+LANGSECTIONS:= $(LANGSPLIT:%.tmp=%.md)
+WEBSECTIONS := $(WEBSPLIT:%.tmp=%.md)
+
+RAIL 	 	:= $(shell find rail -name "*.rail")
+RAILOUT  	:= $(RAIL:rail/%.rail=$(DOCSDIR)/BNF/%.js)
+
+.PHONY: rail web
 
 all:
-	$(MAKE) split
-	$(MAKE) fullrefs
-	$(MAKE) md
+	$(MAKE) -f Make.one SRCFILE=$(MSGSRC) OUTDIR=$(OSCDIR) INDEX=yes
+	$(MAKE) -f Make.one SRCFILE=$(LANGSRC) OUTDIR=$(LANGDIR) INDEX=no
+	$(MAKE) -f Make.one SRCFILE=$(WEBSRC) OUTDIR=$(WEBDIR) INDEX=no
 	$(MAKE) rail
+
+web:
+	$(MAKE) -f Make.one SRCFILE=$(WEBSRC) OUTDIR=$(WEBDIR) INDEX=no
 
 
 ####################################################################
@@ -35,63 +51,49 @@ help:
 	@echo "  serve    : launch the mkdoc server"
 	@echo "  all      : generates all the necessary files from the latex documentation"
 	@echo "Development specific targets are available:"
+	@echo "  menu     : generates menu for mkdoc.yml"
+
+test:
+	echo OSCDIR $(OSCDIR)
 
 ####################################################################
 build:
-	cd $(MKDIR) && mkdocs build
+	cd $(MKDIR) && mkdocs build -f $(CONFIG)
 	git checkout ../docs/CNAME
 
 serve:
-	cd $(MKDIR) && mkdocs serve
+	cd $(MKDIR) && mkdocs serve -a localhost:$(PORT)
 
 menu:
-	@echo $(SECTIONS) | tr " " "\n" | sort -n | sed -e 's/^/        - : refs\//'
-
-md: docs/refs $(MD) docs/refs/index.md
-
-docs/refs:
-	mkdir docs/refs
-	
-fullrefs: fullrefs.sed
-fullrefs.sed : $(SPLIT)
-	grep label $(SPLIT) | sed -f scripts/labels.sed > $@
-
-split :
-	$(AWK) -f scripts/scan-input.awk $(SRC) | $(AWK) -f scripts/split.awk 
-
-refs: $(MD) fullrefs.sed
-
+	@echo Messages
+	@echo $(OSCSECTIONS) | tr " " "\n"  | sed -e 's/^/        - : \//' | sort -n
+	@echo Scripting language
+	@echo $(LANGSECTIONS) | tr " " "\n" | sed -e 's/^/        - : \//' | sort -n
+	@echo INScore Web
+	@echo $(WEBSECTIONS) | tr " " "\n" | sed -e 's/^/        - : \//' | sort -n
 
 rail: tools/rail2js $(RAILOUT)
 
-test:
-	@echo $(TMP)
-
 clean:
-	rm -f $(SPLIT)
-	rm -f $(MD)
-	rm -f *.tmp
-	rm -f fullrefs.sed
-	rm -f index.sed index.md
+	rm -rf $(OSCDIR) $(LANGDIR) $(WEBDIR)
 	rm -f rail/*.rail $(RAILOUT)
 
-docs/refs/%.md:%.tmp
-	sed -f scripts/tags.sed $< | $(AWK) -f scripts/samples.awk | $(AWK) -f scripts/figures.awk  \
-	| $(AWK) -f scripts/tables.awk | $(AWK) -f scripts/rail.awk FILE=$< \
-	| sed -f fullrefs.sed | sed -f index.sed | sed -f scripts/cleanup.sed  | grep -v __removed__ > $@
-			
-docs/refs/index.md:index.md
-	sort $< | $(AWK) -f scripts/index.awk > $@
-	
-docs/BNF/%.js: rail/%.rail
+				
+$(DOCSDIR)/BNF/%.js: rail/%.rail
 	@[ -d $(@D) ] || mkdir -p $(@D)
 	tools/rail2js $< | sed -f scripts/rail.sed > $@ 
 
 tools/rail2js:
-	make -C tools/rail2js-src
+	$(MAKE) -C tools/rail2js-src
 
 install:
 	$(PIP) install mkdocs
 	$(PIP) install markdown-include
 	$(PIP) install mkdocs-bootswatch
 	$(PIP) install python-markdown-math
+
+upgrade:
+	$(PIP) install mkdocs --upgrade
+	$(PIP) install markdown-include --upgrade
+	$(PIP) install mkdocs-bootswatch --upgrade
+	$(PIP) install python-markdown-math --upgrade

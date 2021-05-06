@@ -1,3 +1,43 @@
+% !TEX root = OSCMsg.tex
+
+%===============================
+%:    Differences to version 1.24  (version 1.27)
+\sublevel{Version 1.27 vs version 1.24}
+\begin{itemize}
+\item INScore Web version
+\item new \OSC{faust} object (web version)
+\item new \OSC{connect} method (web version)
+\item forwarding mechanism extended with http and ws support. See section \fullref{ITLForward}
+\end{itemize}
+
+
+%===============================
+%:    Differences to version 1.22  (version 1.24)
+\sublevel{Version 1.24 vs version 1.22}
+\begin{itemize}
+\item new inscore2 scripting language
+\item log window supports the \OSC{scale} message. See section \fullref{ITLlog}
+\item colors: supports html color names and hex values with 0x as prefix. See section \fullref{colormsg}
+\item supports absolute time segments in mappings. See section \fullref{segdefs}
+\item \OSC{tempo} is now a floating point value
+\item fix touch events with edit dialog
+\item add 'inscore2' extension to files filter (mobile version)
+\item update to guido engine 1.66
+\item edit message supports \OSC{set} as argument. See section \fullref{editmsg}
+\item edit new \OSC{reset} argument to clear the edit string in the object cache. See section \fullref{editmsg}
+\item new \OSC{dshear} method. See section \fullref{transform}
+\item fix bug with javascript runtime variable (passed as argument to run)
+\item fix synchronization issue with arcs (not visible when synchronized)
+\item fix crash bug with \OSC{set} messages addressed to /ITL/*/anobject
+\end{itemize}
+
+%===============================
+%:    Differences to version 1.21  (version 1.22)
+\sublevel{Version 1.22 vs version 1.21}
+\begin{itemize}
+\item new \OSC{opengl} message supported at scene level for optional OpenGl graphics rendering. Improves significantly the cpu use for graphics operations but at the cost of poorer rendering for text and symbolic scores 
+\item fix potential issue with dates: dates expressed with big values for the numerator or the denominator may result in overflow
+\end{itemize}
 
 %===============================
 %:    Differences to version 1.18  (version 1.21)
@@ -217,7 +257,7 @@
 
 %===============================
 %:    Differences to version 0.98
-\sublevel{Version 1.0 vs version 0.98}
+\sublevel{Version 1.00 vs version 0.98}
 \begin{itemize}
 \item bug correction in streching very small objects (due to approximations)
 \item bug correction in \$sx and \$sy computation (xorigin and yorigin was not taken into account)
@@ -515,7 +555,6 @@ Known issues:
 \item  new \OSC{pageCount} message for guido scores
 \item  debug nodes modified state propagated to parent node (corrects the debug informations graphic update issue)
 \item rational values catch null denominator (to prevents divide by zero exceptions).
-
 \end{itemize}
 
 %===============================

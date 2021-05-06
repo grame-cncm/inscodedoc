@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Faust objects - INScore Documentation</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+        <link href="/css/inscore.css" rel="stylesheet">
+        <link href="/css/pubs.css" rel="stylesheet">
+        <link href="/BNF/railroad-diagrams.css" rel="stylesheet">
+
+        <script src="../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">INScore Documentation</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href="../.." class="nav-link">Home</a>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Reference <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">Messages</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../../refs/1-introduction/" class="dropdown-item">Introduction</a>
+</li>
+            
+<li>
+    <a href="../../refs/2-genformat/" class="dropdown-item">Format of a message</a>
+</li>
+            
+<li>
+    <a href="../../refs/3-common/" class="dropdown-item">Common Messages</a>
+</li>
+            
+<li>
+    <a href="../../refs/4-time/" class="dropdown-item">Time Messages</a>
+</li>
+            
+<li>
+    <a href="../../refs/5-miscmsgs/" class="dropdown-item">Miscellaneous</a>
+</li>
+            
+<li>
+    <a href="../../refs/6-setsect/" class="dropdown-item">The set Message</a>
+</li>
+            
+<li>
+    <a href="../../refs/7-getsect/" class="dropdown-item">The get Message</a>
+</li>
+            
+<li>
+    <a href="../../refs/8-specificMsg/" class="dropdown-item">Specific Messages</a>
+</li>
+            
+<li>
+    <a href="../../refs/9-ITL/" class="dropdown-item">Application Messages</a>
+</li>
+            
+<li>
+    <a href="../../refs/10-scene/" class="dropdown-item">Scene Messages</a>
+</li>
+            
+<li>
+    <a href="../../refs/11-forwarding/" class="dropdown-item">Messages Forwarding</a>
+</li>
+            
+<li>
+    <a href="../../refs/12-layers/" class="dropdown-item">Layers</a>
+</li>
+            
+<li>
+    <a href="../../refs/13-mapping/" class="dropdown-item">Mapping</a>
+</li>
+            
+<li>
+    <a href="../../refs/14-syncmsg/" class="dropdown-item">Synchronization</a>
+</li>
+            
+<li>
+    <a href="../../refs/15-graphsig/" class="dropdown-item">Graphic signals</a>
+</li>
+            
+<li>
+    <a href="../../refs/16-sensors/" class="dropdown-item">Sensors</a>
+</li>
+            
+<li>
+    <a href="../../refs/17-interaction/" class="dropdown-item">Interaction</a>
+</li>
+            
+<li>
+    <a href="../../refs/18-scoreExpr/" class="dropdown-item">Score Expressions</a>
+</li>
+            
+<li>
+    <a href="../../refs/19-plugins/" class="dropdown-item">Plugins</a>
+</li>
+            
+<li>
+    <a href="../../refs/20-changes/" class="dropdown-item">Changes list</a>
+</li>
+            
+<li>
+    <a href="../../refs/" class="dropdown-item">Index</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">Scripting language</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../../lang/1-scripting/" class="dropdown-item">Language</a>
+</li>
+            
+<li>
+    <a href="../../lang/2-mathExpr/" class="dropdown-item">Math. expressions</a>
+</li>
+            
+<li>
+    <a href="../../lang/3-appendices/" class="dropdown-item">Grammar</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">INScore Web</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../1-introduction/" class="dropdown-item">Introduction</a>
+</li>
+            
+<li>
+    <a href="../2-behavior/" class="dropdown-item">Global changes</a>
+</li>
+            
+<li>
+    <a href="../3-unsupported/" class="dropdown-item">Unsupported messages</a>
+</li>
+            
+<li>
+    <a href="../4-newMessages/" class="dropdown-item">Specific messages</a>
+</li>
+            
+<li>
+    <a href="./" class="dropdown-item active">Faust objects</a>
+</li>
+            
+<li>
+    <a href="../6-communication/" class="dropdown-item">Communication</a>
+</li>
+    </ul>
+  </li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Documents <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="http://berio.grame.fr/MusicNotation/Introduction-to-INScore/" class="dropdown-item">Tutorial</a>
+</li>
+                                    
+<li>
+    <a href="../../rsrc/INScoreMessages.pdf" class="dropdown-item">Messages reference</a>
+</li>
+                                    
+<li>
+    <a href="../../rsrc/INScoreLang.pdf" class="dropdown-item">Language reference</a>
+</li>
+                                    
+<li>
+    <a href="../../rsrc/INScoreLang.pdf" class="dropdown-item">Web reference</a>
+</li>
+                                    
+<li>
+    <a href="../../papers/" class="dropdown-item">Papers</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Download <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="https://github.com/grame-cncm/inscore/releases" class="dropdown-item">INScore</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../about/" class="nav-link">About</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../4-newMessages/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../6-communication/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#faust-objects" class="nav-link">Faust objects</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#creating-a-faust-object" class="nav-link">Creating a Faust object</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#faust-messages" class="nav-link">Faust messages</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#faust-objects-parameters" class="nav-link">Faust objects parameters</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#polyphonic-objects" class="nav-link">Polyphonic objects</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<script src='/BNF/railroad-diagrams.js'></script>
+
+<h1 id="faust-objects">Faust objects</h1>
+<p><a name="faustObjects"></a></p>
+<p><a href=https://faust.grame.fr/>Faust</a> is a functional programming language for sound synthesis and audio processing.
+Faust objects are available, providing that the Faust library has been loaded.</p>
+<h2 id="creating-a-faust-object">Creating a Faust object</h2>
+<p><a name="webFaust"></a></p>
+<p>The <span class="OSC">faust</span> or <span class="OSC">faustf</span> types must be used to create a Faust object.</p>
+<p><span class="note">Note: </span>
+The <span class="OSC">faust</span> type exists with the native version but to load a pre-compiled DSP. <span class="OSC">faustdsp</span> and <span class="OSC">faustdspf</span> types are not supported.</p>
+<div class="rail">
+<span class="railtitle">setFaust</span>
+<br /><script>
+ComplexDiagram(
+    Sequence ('set', Choice (0, Sequence (Comment ('1'), 'faust', Optional  ( NonTerminal('int32')), NonTerminal('dspCode')), Sequence (Comment ('2'), 'faustf', Optional  ( NonTerminal('int32')), NonTerminal('dspFile'))))
+).addTo()
+
+</script>
+</div>
+
+<p>The expected arguments of the <span class="OSC">set</span> message are:</p>
+<ul>
+<li>an optional integer that indicates a number of voices used to create a polyphonic DSP (see section <a href="../5-faustObjects#webFaustPoly">webFaustPoly</a>). Note that when present, a polyphonic DSP is created even if equal to 1.</li>
+<li>1: Faust DSP code (see the <a href=https://faustdoc.grame.fr/>Faust language</a> for more information).</li>
+<li>2: a Faust DSP file. \inprogress{not yet implemented}</li>
+</ul>
+<p>By default, a Faust DSP appears as a browsable block diagram.</p>
+<p><span class="note">Note: </span>
+The Faust language uses characters that have a special meaning in HTML: for example, with the split operator <span class="OSC">&lt;:</span>, the <span class="OSC">&lt;</span> character will be interpreted as an opening HTML tag and you should use HTML escapes (e.g. <span class="OSC">&lt;</span> instead of <span class="OSC">&lt;</span>). This is necessary for inline DSP code only, DSP files are not concerned.</p>
+<h2 id="faust-messages">Faust messages</h2>
+<p><a name="webFaustMsgs"></a></p>
+<div class="rail">
+<span class="railtitle">faustMsgs</span>
+<br /><script>
+ComplexDiagram(
+    Choice (0, Sequence ('play', NonTerminal('int32')), Sequence ('connect', NonTerminal('destination')))
+).addTo()
+
+</script>
+</div>
+
+<ul>
+<li><span class="OSC">play</span>: expected parameter is '1' to connect the Faust processor to the audio output, '0' to disconnect from the audio output.  \inprogress{maybe connect is enough}</li>
+<li><span class="OSC">connect</span>: gives the number of outputs of the Faust processor  \inprogress{not yet implemented}</li>
+</ul>
+<div class="rail">
+<span class="railtitle">faustgetMsgs</span>
+<br /><script>
+ComplexDiagram(
+    Sequence ('get', Choice (0, 'in', 'out', 'ui'))
+).addTo()
+
+</script>
+</div>
+
+<ul>
+<li><span class="OSC">in</span>: gives the number of inputs of the Faust processor</li>
+<li><span class="OSC">out</span>: gives the number of outputs of the Faust processor</li>
+<li><span class="OSC">ui</span>: gives the Faust processor parameters (see section <a href="../5-faustObjects#webFaustParams">webFaustParams</a>) \inprogress{not yet implemented}</li>
+</ul>
+<h2 id="faust-objects-parameters">Faust objects parameters</h2>
+<p><a name="webFaustParams"></a></p>
+<p>A Faust DSP code can declare UI elements that are used by <strong>architecture files</strong> to build controllers providing users with dynamic control of the DSP parameters. In INScore, DSP UI elements are used to extend the Faust object address space. For example, when a DSP code declares a UI element named 'Volume', a Faust object which address is <span class="OSC">/ITL/scene/dsp</span> is extended as <span class="OSC">/ITL/scene/dsp/Volume</span>.</p>
+<p>Faust parameters support two types of messages:</p>
+<div class="rail">
+<span class="railtitle">faustParamMsgs</span>
+<br /><script>
+ComplexDiagram(
+    Choice (0, Sequence (Comment ('1'), NonTerminal('float32')), Sequence (Comment ('2'), 'get'))
+).addTo()
+
+</script>
+</div>
+
+<ul>
+<li>1: set the parameter value</li>
+<li>2: gives the parameter value</li>
+</ul>
+<h2 id="polyphonic-objects">Polyphonic objects</h2>
+<p><a name="webFaustPoly"></a></p>
+<p>Polyphonic objects (i.e. Faust objects created using the optional voice number) support additional messages:</p>
+<div class="rail">
+<span class="railtitle">faustPolyMsgs</span>
+<br /><script>
+ComplexDiagram(
+    Choice (0, Sequence (Choice (0, 'keyOn', 'keyOff'), NonTerminal('chan'), NonTerminal('pitch'), NonTerminal('vel')), 'allNotesOff')
+).addTo()
+
+</script>
+</div>
+
+<ul>
+<li><span class="OSC">keyOn</span> and <span class="OSC">keyOff</span> messages take 3 integer parameters: a MIDI channel, the note pitch and the velocity.</li>
+<li><span class="OSC">allNotesOff</span>: similar to MIDI all notes off message</li>
+</ul></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+                <p><a href="https://inscore.grame.fr">INscore projects</a> Copyright &copy; 2019-2021 <a href="http://www.grame.fr">Grame-CNCM</a></p>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" defer></script>
+        <script src="/js/inscore.js" defer></script>
+        <script src="/js/pubs.js" defer></script>
+        <script src="../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

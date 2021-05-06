@@ -1,4 +1,6 @@
 # remove comments
+s/\\jsonindent/    /
+
 s/^}[ \t]*$/__removed__/
 s/.*\\begin{.*$/__removed__/
 s/.*\\end{.*$/__removed__/
@@ -16,6 +18,9 @@ s/.*\\hline.*$/__removed__/
 s/\\sample{//g
 s/\\railalias.*$//g
 s/\\smallbreak//
+s/\\selayout//
+s/&lt;/\&amp;lt;/
+s/\\ //
 
 ############## remove comments
 s/%.*//

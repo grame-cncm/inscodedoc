@@ -1,104 +1,83 @@
 
 \documentclass[a4paper,twoside]{report}
+
 \usepackage{INScore}
-\usepackage[T1]{fontenc}
-\usepackage{ae,aecompl}
-\usepackage{pslatex}
-\usepackage{times}
-\usepackage[utf8]{inputenc}
-\usepackage{graphicx}
-\usepackage{amssymb}
-\usepackage{rail}
-\usepackage{makeidx}
-\usepackage{color}
-\usepackage{hyperref}
-\usepackage{comment}
-\usepackage{multicol}
-\usepackage{textcomp}
 
-
-\definecolor{mycolor}{rgb}{0.384,0.0,0.145}
-\hypersetup{
-	colorlinks=true,
-	linkcolor= mycolor
+\fancypagestyle{mystyle}{%
+  \fancyhf{}.          % Clear header and footer
+  \fancyhead[LE,RO]{\textsc{INScore OSC Messages Reference}}
+  \fancyfoot[RO,LE]{\thepage}
+  \renewcommand{\headrulewidth}{0.4pt}% Line at the header visible
+%  \renewcommand{\footrulewidth}{0.4pt}% Line at the footer visible
+}
+\fancypagestyle{plain}{%
+  \fancyhf{}%
+  \fancyfoot[LE,RO]{\thepage}
+  \renewcommand{\headrulewidth}{0pt}
+%  \fancyhead[LE,RO]{\textsc{INScore OSC Messages Reference}}
 }
 
-
-\setlength\parskip{\medskipamount}
-
 \makeatletter
-\railparam{\addtolength{\itemsep}{-3ex}}
-
-%\newcommand{\toplevel}[1]	{\section{#1}}
-%\newcommand{\sublevel}[1]	{\subsection{#1}}
-%\newcommand{\subsublevel}[1]	{\subsubsection{#1}}
 
 \newcommand{\toplevel}[1]	{\chapter{#1}}
 \newcommand{\sublevel}[1]	{\section{#1}}
 \newcommand{\subsublevel}[1]	{\subsection{#1}}
 
-\newcommand{\fullref}[1]	{\ref{#1} p.\pageref{#1}}
-
-\providecommand{\boldsymbol}[1]{\mbox{\boldmath $#1$}}
-\newcommand{\OSC}[1]		{\texttt{#1}}
-\newcommand{\values}[1]		{\texttt{#1}}
-\newcommand{\oldexample}	{\hspace*{1cm}}
-\newcommand{\example}		{\textbf{\hspace{-1.5cm}\textbf{\textsc{Example }}}}
-\newcommand{\note}	[1]		{\vspace{2mm}\textbf{\hspace{-0.9cm}\textbf{\textsc{Note #1}}}}
-\newcommand{\warning}[1]	{\vspace{2mm}\textbf{\hspace{-1.5cm}\textbf{\textsc{Warning #1}}}}
-
 \renewcommand{\seealso}		{\textbf{See also: }}
 
-\newcommand{\osctype}[1]	{\textbf{\texttt{{\small #1}}}}
-\newcommand{\oscint}		{\osctype{int32}}
-\newcommand{\oscfloat}		{\osctype{float32}}
-\newcommand{\oscstring}		{\osctype{string}}
-\newcommand{\rational}		{\osctype{rational}}
-\newcommand{\lowTilde} 		{\texttildelow}
 \newcommand{\icomment} 		{\#}
-
-\let\olditemize\itemize
-\let\oldenditemize\enditemize
-\renewenvironment{itemize} 	{\olditemize \setlength{\itemsep}{1mm}}{\oldenditemize}
-
-
-\setlength\parskip{2pt}
-\setlength\railnamesep{-1mm}
-\railterm{int32, float32, string}
-\railalias{int32}{\oscint}
-\railalias{float32}{\oscfloat}
-\railalias{string}{\oscstring}
-
-
-\definecolor{mygrey}{gray}{0.93}
-\newcommand{\sample}	[1]			{\vspace{-2mm}\begin{center}\colorbox{mygrey}{
-								\begin{minipage}[t]{0.9\columnwidth} 
-								{\small \texttt{#1}}
-								\end{minipage}}\end{center}}
-\newcommand{\samplev}[1]			{\begin{center}\colorbox{mygrey}{
-								\begin{minipage}[t]{\columnwidth} 
-								{\small \texttt{#1}}
-								\end{minipage}}\end{center}}
+\newcommand{\selayout}		{ }  % used only by the score expressions standalone version
 \newcommand{\sampleindent}	{ \hspace{0.5cm} }
 
 
+\newcommand{\firstnote}[1]	{
+	\vspace{12cm}
+	\vspace{2mm}
+	\noindent\makebox[\textwidth][c]{%
+    \begin{minipage}{1.0\textwidth}
+	{\Large \textbf{Note }}
+	\noindent\hrulefill\par
+	\vspace{2mm}
+	#1
+	\end{minipage}}
+}
+
 \makeatother
 \makeindex
-
+\pagestyle{empty}
 
 \begin{document}
 
-\title{INScore \\ OSC Messages Reference \\v.1.25}
+\title{\vspace*{5cm}
+INScore \\ OSC Messages Reference \\v.\inscoreversion}
 
-\author{D. Fober\\ GRAME\\ Centre national de cr\'eation musicale\\
+\author{D. Fober\\ 
 {\small <fober@grame.fr>} \\
-%\vspace{2mm}
-%ANR-08-CORD-010
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\includegraphics[width=30mm]{imgs/Logo_Grame}\\
+Centre national de création musicale\\
 }
+\date{}
 
 \maketitle
 
-\vspace*{17.5cm}
+\vspace*{19.5cm}
  
 {\small INScore makes use of the following technologies:}
 \begin{table}[h]
@@ -113,27 +92,27 @@
 {\small INScore research and development has been funded by the French National Research Agency [ANR]\\ Interlude project [ANR- 08-CORD-010] and INEDIT project [ANR-12-CORD-0009].}
   
 
-\pagestyle{empty}
+%\pagestyle{empty}
 \cleardoublepage
 \tableofcontents
-
-\vspace*{18.5cm}
-
-\noindent\hrulefill\par
-\vspace*{2mm}
-\noindent\makebox[\textwidth][c]{%
-    \begin{minipage}{1.\textwidth}
-{\Large \textbf{Warning}}
-
-\vspace*{5mm}
-Throughout the documentation, all the sample code are given using scripting syntax i.e. that OSC messges are suffixed with a semi-colon ';'. This semi-colon is used as a message separator in INScore scripts and is not needed when sending messages over a network.
-\end{minipage}}
 \thispagestyle{empty}
-\pagestyle{plain}
-
-\newpage
+%\pagestyle{plain}
+\pagestyle{mystyle}
 
 \setcounter{page}{1}
+\addtocontents{toc}{\protect\thispagestyle{empty}}
+
+%===============================
+%:Introduction
+\toplevel{Introduction}
+\label{introduction}
+
+INScore is an environment for the design of augmented, interactive, dynamic  musical scores, oriented towards unconventional uses of music notation and representation, including real-time symbolic notation capabilities. This environment is fully controllable using Open Sound Control [OSC] messages. This document presents all the messages supported by the system.
+
+A scripting language has been defined as an extended textual version of OSC messages that allows you to design scores in a modular and incremental way. This language is close to the present specification. Its syntax and grammar are described in a separate document.
+
+\firstnote{Throughout the documentation, the sample code are given using scripting syntax i.e. that OSC messages are suffixed with a semi-colon ';'. This semi-colon is used as a message separator in INScore scripts and is not needed when sending messages over a network. See the INScore language reference for more information.}
+
 
 %===============================
 %:General format
@@ -144,18 +123,18 @@ The OSC address could be string or a regular expression matching several objects
 \begin{rail}
 OSCMessage : OSCAddress message (parameters |)
 \end{rail}
-\example
+\example \\
+Sending the message \OSC{x} to the object which address is \OSC{/ITL/scene/score} with \OSC{0.5} as parameter.
 \sample{/ITL/scene/score x 0.5;}
-sends the message \OSC{x} to the object which address is \OSC{/ITL/scene/score} with \OSC{0.5} as parameter.
 
-The address is similar to a Unix path and supports regular expressions as defined by the OSC specification (see at \url{http://opensoundcontrol.org/}). This address scheme is extended to address any host and applications (see section \fullref{interaction}). Relative addresses have also been introduced for the scripting language (see section \fullref{scriptmsgs})
+The address is similar to a Unix path and supports regular expressions as defined by the \href{http://opensoundcontrol.org/}{OSC specification}. This address scheme is extended to address any host and applications (see section \fullref{interaction}).
 
 \note{} A valid legal OSC address always starts with \OSC{/ITL} that is the application address and that is also used as a discriminant for incoming messages.
 \begin{rail}
 OSCAddress : '/' (identifier | regexp) +
 \end{rail}
 
-Identifiers may include letters, hyphen, underscore and numbers apart at first position (see lexical definition section \fullref{lex}).
+Identifiers may include letters, hyphen, underscore and numbers (apart at first position for the latter).
 \railalias{startid}{[-\_a-zA-Z]}
 \railalias{nextid}{[-\_a-zA-Z0-9]]}
 \begin{rail}
@@ -172,17 +151,20 @@ SigOSCMessage : OSCAddress parameters
 \label{params}
 Message parameters types are the OSC types \emph{int32}, \emph{float32} and \emph{OSC-string}. In the remainder of this document, they are used as terminal symbols, denoted by \oscint, \oscfloat\ and \oscstring. 
 
-When used in a script file (see section \ref{scripting}), \oscstring\ should be single or double quoted when they include characters not allowed in identifiers (space, punctuation marks, etc.).
-If an ambiguous double or single quote is part of the string, it must be escaped using a '\verb+\+'.
+When used in a script file, \oscstring\ should be single or double quoted when they include characters not allowed in identifiers (space, punctuation marks, etc.).
+If an ambiguous double or single quote is part of the string, it can be escaped using a '\verb+\+'.
 
-Parameters types policy is relaxed: the system makes its best to convert a parameter to the expected type, which depend on the message string. With an incorrect type and when no conversion is applied, an incorrect parameter message is issued.
+Parameters types policy is relaxed: the system makes its best to convert a parameter to the expected type, which depend on the message string. With an incorrect type and when no conversion is applied, an incorrect parameter message error is triggered.
+
+The system is strict regarding the number of expected parameters.
+
 
 %===============================
 \sublevel{Address space}
 \label{addrspace}
 The OSC address space is made of static and dynamic nodes, hierarchically organized as in figure \ref{fig:addrspace}:
 
-\begin{figure}[h]
+\begin{figure}[H]
 	\centering \includegraphics[width=120mm]{imgs/address_space}
  \caption{The OSC address space. Nodes in italic/blue are dynamic nodes.}
  \label{fig:addrspace}
@@ -270,7 +252,7 @@ The general form of the scaling string is \OSC{[n,m]}, where $n$ and $m$ are 2 n
 
 \subsublevel{Using more than one implicit message}
 \label{implicitmsg}
-You can you any arbitrary number of message strings in an \OSC{alias} message. In any case, an input message with the corresponding values is expected. For example, when the \OSC{alias} message has 3 messages strings, input messages are expected to have 3 associated values. These values are distributed in sequence with each message string, which also means that the input message is translated into 3 different messages.
+You can use an arbitrary number of message strings in an \OSC{alias} message. In any case, an input message with the corresponding values is expected. For example, when the \OSC{alias} message has 3 messages strings, input messages are expected to have 3 associated values. These values are distributed in sequence with each message string, which also means that the input message is translated into 3 different messages.
  
 
 \example
@@ -317,19 +299,12 @@ commonMsg :  ('show' int32)
 \begin{itemize}
 \item \OSC{show}: shows or hides the destination object. The parameter is interpreted as a boolean value. Default value is \values{1}. 
 \item \OSC{del}: deletes the destination object. 
-
-\item \OSC{lock}: if not null, cancel any \OSC{del} message sent to this object. The object will still be deleted if its ancestors receive a \OSC{del} message. The parameter is interpreted as a boolean value. Default value is \values{0}. 
-
+\item \OSC{lock}: if not null, cancel any \OSC{del} message sent to this object. However, the object will still be deleted if one of its parents receives a \OSC{del} message. The parameter is interpreted as a boolean value. Default value is \values{0}. 
 \item \OSC{export} and \OSC{exportAll}: exports an object to an image file respectively without or with its childrens. If the exported object is a scene, childrens are always exported.\\
 1) exports to the \OSC{filePath} name. The \OSC{filePath} can be relative or absolute. When the filename is not specified, exports to \OSC{path/\textit{identifier}.pdf}. The file extension is used to infer the export format. Supported extensions and formats are: \emph{pdf, bmp, gif, jpeg, png, pgm, ppm, tiff, xbm, xpm}. \\
 2) exports to \OSC{rootPath/\textit{identifier}.pdf}.\\
-When the destination file is not completely specified (second form or missing extension), there is an automatic numbering of output names when the destination file already exists. \\ 
-
-\item \OSC{save}: recursively saves objects states to a file. When a \OSC{message} list is present, only the specified attributes are saved. The \OSC{filePath} can be relative or absolute. When relative, an absolute path is build using the current \OSC{rootPath} (see application or scene current paths  p.\pageref{applmgmt} and  p.\pageref{scene}). The optional \OSC{+} parameter indicates an append mode for the write operation. The message must be sent to the address \OSC{/ITL} to save the whole application state.\\
-\textbf{Note}: when a list of attributes is specified, unknown attributes are silently ignored. \\
-\textbf{Note}: the file extension for INScore files is \OSC{.inscore}. INScore files dropped on the application or on a window are interpreted as script files (see section \fullref{scripting}).
-
-%\item \OSC{rename}: rename the destination object. Changes its OSC address. \textbf{Warning}: OSC pattern matching allows to give the same name to a whole collection of objects; in this case, there is no way to individually address an object when its name is shared with other objects.
+When the destination file is not completely specified (second form or missing extension), there is an automatic numbering of output names when the destination file already exists.
+\item \OSC{save}: recursively saves objects states to a file. When a \OSC{message} list is present, only the specified attributes are saved. The \OSC{filePath} can be relative or absolute. When relative, an absolute path is build using the current \OSC{rootPath} (see application or scene current paths  p.\pageref{applmgmt} and  p.\pageref{scene}). The optional \OSC{+} parameter indicates an append mode for the write operation. The message must be sent to the address \OSC{/ITL} to save the whole application state.
 \item 'PositionMsg' are absolute and relative position messages.
 \item 'ColorMsg' are absolute and relative color control messages.
 \item 'TimeMsg' are time management messages. They are described in section \fullref{time}.
@@ -348,6 +323,9 @@ Saving a scene to \OSC{myScore.inscore} at the current root path, the second for
 }
 Hiding an object:
 \sample{/ITL/scene/myObject show 0;}
+\note{}\\ 
+when a list of attributes is specified, unknown attributes are silently ignored.
+
 
 %-------------------------------
 %:    Positioning
@@ -509,7 +487,7 @@ Rotating an object graphic on the \OSC{z} axis.
 %-------------------------------
 %:    Color messages
 \sublevel{Color messages}
-\label{colormsg}
+\label{colors}
 
 
 \begin{rail}
@@ -517,7 +495,7 @@ ColorMsg : 	absColorMsg
 			|	relColorMsg 
 \end{rail}
 
-Color messages are absolute or relative color control messages. Color may be expressed in RGBA or HSBA.
+Color messages are absolute or relative color control messages. Color may be expressed in RGBA or HSBA or using a color name.
 
 \subsublevel{Absolute color messages}
 \label{abscolor}
@@ -797,8 +775,8 @@ editMsg : 'edit' ( [1] |
 \end{rail}
 
 \begin{itemize}
-\item \textbf{1}: without argument, the editor is initalized with all the target object attributes.
-\item \textbf{2}: using a list of attributes, the editor is initalized with the target object corresponding attributes. Note that \OSC{set} as attribute can be used to edit the object \OSC{set} message.
+\item \textbf{1}: without argument, the editor is initialized with all the target object attributes.
+\item \textbf{2}: using a list of attributes, the editor is initialized with the target object corresponding attributes. Note that \OSC{set} as attribute can be used to edit the object \OSC{set} message.
 \item \textbf{3}: \OSC{reset} is used to clear the edit string stored in the object cache. It is equivalent to the 'clear' button in the edit dialog. Note that as long as the edit string stored in the cache is not empty, \OSC{edit} messages are ignored unless followed by a \OSC{reset} (see below).
 \end{itemize}
 
@@ -907,7 +885,7 @@ A cursor moving over a score using the \OSC{tempo} message.
 \toplevel{Miscellaneous messages}
 \label{miscmsgs}
 
-The following messages are supported by all the objects. They are detailled in specialized sections.
+The following messages are supported by all the objects. They are detailed in specific sections.
 
 \index{Misc messages!eval}
 \index{Misc messages!watch}
@@ -925,7 +903,7 @@ miscMsgs :
 \end{rail}
 
 \begin{itemize}
-\item \OSC{eval}: evaluates a list of messages in the context of the receiver object. See section \fullref{scriptmsgs} for more details.
+\item \OSC{eval}: evaluates a list of messages in the context of the receiver object. The messages can used \emph{relative OSC addresses} i.e. addresses that start with a dot ('.'). In this case, the leading '.' is replaced by the receiver OSC address.
 \item \OSC{watch}: used to manage the object interaction with various events. See section \fullref{interaction} for more details.
 \item \OSC{push}, \OSC{pop}: saves and restores the object interaction state. See section \fullref{evtstate} for more details.
 \item \OSC{map}: used to describe the relations between graphic and time spaces. See section \fullref{mapping} for more details.
@@ -1150,27 +1128,30 @@ setGraphicSignal : 'set' (
 
 
 %===============================
-%:  Images and video
-\sublevel{Images and video}
+%:  Media files
+\sublevel{Media files}
 \label{imgscore}
 
-Images and video are supported using various formats. See section \fullref{fileset} for more details on the supported formats.
+Images, video and audio are supported using various formats. See section \fullref{fileset} for more details on the supported formats.
 
 \index{Set type!img}
 \index{Set type!memimg}
 \index{Set type!video}
+\index{Set type!audio}
 
 \begin{rail}
 setMedia : 
 	('img' imgPath) |
 	('memimg' objectPath) |
-	('video' videoPath)
+	('video' videoPath) |
+	('audio' audioPath)
 \end{rail}
 
 \begin{itemize}
-\item \OSC{img}: an image file. The image format is infered from the file extension.
+\item \OSC{img}: an image file. The image format is inferred from the file extension.
 \item \OSC{memimg}: a memory capture of the object given as argument. \OSC{objectPath} indicates the target object that is captured with all its childrens. It may be an object name or a path to an object. Simple object names and relative path are looked for in the receiver layer.
-\item \OSC{video}: a video file. The video format is infered from the file extension. Note that navigation through the video is made using its \OSC{date}.
+\item \OSC{video}: a video file. The video format is inferred from the file extension. Note that navigation through the video is made using its \OSC{date}.
+\item \OSC{audio}: an audio file. The audio format is inferred from the file extension. \OSC{audio} objects appear as a waveform but this waveforom is not (yet) computed from the audio data but randomly generated.
 \end{itemize}
 
 \example \\
@@ -1213,7 +1194,7 @@ setMisc : 'set' (
 \sublevel{File based resources}
 \label{filebasedrsrc}
 
-Most of the types can be either expressed with the corresponding data, or by a path to a file containing the data. For the latter form, the object type is generally suffixed with an 'f' (e.g. \OSC{txtf}, \OSC{htmlf}, \OSC{gmnf}, \OSC{musicxmlf}, \OSC{svgf}, \OSC{faustf}). The \OSC{img} and  \OSC{video} types have only a file form (and no 'f' suffix). \\
+Most of the types can be either expressed with the corresponding data, or by a path to a file containing the data. For the latter form, the object type is generally suffixed with an 'f' (e.g. \OSC{txtf}, \OSC{htmlf}, \OSC{gmnf}, \OSC{musicxmlf}, \OSC{svgf}, \OSC{faustf}). The \OSC{img}, \OSC{audio} and  \OSC{video} types have only a file form (and no 'f' suffix). \\
 A file path can be expressed as a Unix path (absolute or relative - see the scene or application \OSC{rootPath} message for relative paths handling), but also as an URL.
 Only the \OSC{http:} protocol is currently supported.
 
@@ -1252,7 +1233,7 @@ setFile :
 \end{rail}
 
 \begin{itemize}
-\item \OSC{file}: a generic type to handle file based objects. Actually, the \OSC{file} type is translated into a one of the \OSC{txtf}, \OSC{gmnf}, \OSC{img} or \OSC{video} types, according to the file extension (see table \ref{fileTranslate}).
+\item \OSC{file}: a generic type to handle file based objects. Actually, the \OSC{file} type is translated into a one of the \OSC{txtf}, \OSC{gmnf}, \OSC{img}, \OSC{audio} or \OSC{video} types, according to the file extension (see table \ref{fileTranslate}).
 \end{itemize}
 
 \seealso the application \OSC{rootPath} message (section \fullref{ITL}) for file based objects.
@@ -1271,6 +1252,7 @@ file extension & translated type \\
 \OSC{.svg} 			& \OSC{svgf} \\
 \OSC{.jpg .jpeg .png .gif .bmp .tiff} & \OSC{img} \\
 \OSC{.avi .wmv .mpg .mpeg .mp4 .mov .vob} & \OSC{video} \\
+\OSC{.mp3 .wav .aiff .aif, .m4a, .aac} & \OSC{audio} \\
 \OSC{.dsp} 			& \OSC{faustdspf} \\
 \hline
 \end{tabular}
@@ -1365,7 +1347,7 @@ The \OSC{get width} and \OSC{get height} messages addressed to components that h
 %:Type specific messages
 \toplevel{Type specific messages}
 \label{specificMsg}
-Some of the messages are accepted only by specific components.
+Some of the messages are accepted only by specific components. This section describes the messages associated to specific objects types.
 
 
 %-------------------------------
@@ -1379,7 +1361,8 @@ Some of the messages are accepted only by specific components.
  \label{brushstyle}
 \end{figure}
 
-Specific brush messages accepted by the following components: \OSC{rect | ellipse | polygon | curve |  layer}.
+\OSC{brushStyle} message is accepted by the following components: \\
+\OSC{rect ellipse polygon curve  layer}.
 
 \index{Specific messages! brushStyle}
 \index{Specific messages! brushStyle! solid}
@@ -1529,7 +1512,7 @@ pianorollMsg :		'keyboard' int32
 \item \OSC{autoVoicesColoration}: enable voices automatic coloration. If voiceColor is used for a voice, automatic voices coloration do nothing for it. Default value to 0.
 \item \OSC{measureBars}: Display measure bars on piano roll. Default value to 0.
 \item \OSC{voiceColor}: set a color to a voice. The parameters are voice number (start to 1), and RGBA color (See section \fullref{colormsg}). If not color is present, voice color is reset to default color. If voice number and color are not present, reset all voices to default color.
-\item \OSC{pitchLines}:  Display pitch lines on pianoroll. Parameters are a note list in english notation (A A\# B ...) with case insensitive. Default to all lines. An '\OSC{empty}' note (i.e. the litteral '\OSC{empty}' string)  can be used to not display any line.
+\item \OSC{pitchLines}:  Display pitch lines on pianoroll. Parameters are a note list in english notation (A A\# B ...) with case insensitive. Default to all lines. An '\OSC{empty}' note (i.e. the litteral '\OSC{empty}' string)  can be used to hide all lines.
 \item \OSC{clipTime}: set time limits for piano roll (See section \fullref{time} to set a time). The two times have to be wrote in the same format. If no time is present, time limits are reset to default.
 \item \OSC{clipPitch}:  Set pitch limits to piano roll. The pitch is in midi format. If no value is present, pitch limits are reset to default.
 \end{itemize}
@@ -1568,53 +1551,58 @@ Writing a pianoroll in 3 steps:
 }
 
 %-------------------------------
-%:  Video
-\sublevel{Video}
+%:  Audio and Video
+\sublevel{Audio and Video}
 \label{video}
 
-A video object has an own internal time and duration that is independant from the INScore time and duration. 
-This video time is controlled using specific messages.
+Media objects (\OSC{audio} \OSC{video}) have their own internal time and duration that is independent from the INScore time and duration. 
+This time is controlled using specific messages.
 
 \index{Specific messages! video! play}
 \index{Specific messages! video! volume}
 \index{Specific messages! video! rate}
 \index{Specific messages! video! vdate}
+\index{Specific messages! audio! play}
+\index{Specific messages! audio! volume}
+\index{Specific messages! audio! rate}
+\index{Specific messages! audio! vdate}
 
 \begin{rail}
-video :	'play' int32
+media :	'play' int32
 		| volume float32
 		| rate   float32
 		| vdate  ( [1] int32 | [2] (int32 int32) | [3] float)
 \end{rail}
 
 \begin{itemize}
-\item \OSC{play} start or stop playing the video. Default value is 0. 
-\item \OSC{volume} sets the audio volume of the video. Default and maximum value is 1.
-\item \OSC{rate} sets the video playing rate. Default value is 1.
-\item \OSC{vdate} sets the current video frame. Default value is 0. Arguments are the following:
+\item \OSC{play} start or stop playing the media. Default value is 0. 
+\item \OSC{volume} sets the audio volume. Default and maximum value is 1.
+\item \OSC{rate} sets the media playing rate. Default value is 1.
+\item \OSC{vdate} sets the current video frame or audio position. Default value is 0. Arguments are the following:
 \begin{itemize}
-\item \textbf{1} : a value in milliseconds. 
-\item \textbf{2} : a musical time expressed as a rational. Note that musical time is converted to milliseconds using a tempo value of 60. 
-\item \textbf{3} : a musical time expressed as a float. 
+\item 1) : a value in milliseconds. 
+\item 2) : a musical time expressed as a rational. Note that musical time is converted to milliseconds using a tempo value of 60. 
+\item 3) : a musical time expressed as a float. 
 \end{itemize}
-The video position may be updated while the video is playing.
+A media position may be updated while the media is playing.
 \end{itemize}
 
-A video object supports also specific queries: 
+Media objects support also specific queries: 
 
 \index{Specific messages! video! vduration}
+\index{Specific messages! audio! vduration}
 
 \begin{rail}
-videoget :	'mls'
+mediaGet :	'mls'
 			| 'vduration'
 \end{rail}
 
 \begin{itemize}
-\item \OSC{mls} gives the video absolute duration in milliseconds.
-\item \OSC{vduration} gives the video duration in musical time. The returned value is a rational computed using the current rate, according to a tempo value of 60.
+\item \OSC{mls} gives the media absolute duration in milliseconds.
+\item \OSC{vduration} gives the media duration in musical time. The returned value is a rational computed using the current rate, according to a tempo value of 60.
 \end{itemize}
 
-A video object supports specific events (see section \fullref{typespecevents} for more details). 
+A media object supports specific events (see section \fullref{typespecevents} for more details). 
 \\
 
 \example \\
@@ -1627,7 +1615,7 @@ Playing a video at half speed:
 \note \\
 Depending on the video encoding and on the platform renderer, setting the video current position using the \OSC{vdate} message may be aligned to key frames.
 \\
-Supported video formats are highly dependent on the platform, as well as the video specific features (e.g. setting the playing rate that may or may not be supported, or may behave differently).  
+Supported audio and video formats are highly dependent on the platform, as well as media specific features (e.g. setting the playing rate that may or may not be supported, or may behave differently).  
 
 
 %-------------------------------
@@ -1677,7 +1665,7 @@ radiusMsg :		'radius' float32 float32
 \sublevel{Arcs}
 \label{arcobjects}
 
-Arcs are portion of ellipses.
+Arcs are portions of ellipses.
 Although an arc is specified by it's \OSC{set} message, it supports additional messages to control the start angles and the arc extension individually. An additional \OSC{close} message affects the drawing of the arc.
 
 \index{Specific messages! arc! start}
@@ -1919,7 +1907,7 @@ The default \OSC{rate} value is 10.
 \item \OSC{ticks}: sets the application current ticks count. The ticks count indicates the number of time tasks performed by the application.
 
 \item \OSC{hello}: query the host IP number. The message is intended for ITL applications discovery. Answer to the query has the following format: \\
-\oldexample \OSC{IP  inPort outPort errPort} where \OSC{IP} is sent as a string and port numbers as integer values.
+\hspace*{1cm} \OSC{IP  inPort outPort errPort} where \OSC{IP} is sent as a string and port numbers as integer values.
 
 \item \OSC{forwardingMsg}: application support message forwading and filtering. See section \fullref{forwarding}.
 \end{itemize}
@@ -1929,7 +1917,7 @@ when sending the message:
 \sample{/ITL hello;}
 \sampleindent the application will answer with the following message:
 \sample{/ITL 192.168.0.5  7000 7001 7003}
-\sampleindent when it runs on a host which IP number is \OSC{192.168.0.5} using the default port numbers.
+\sampleindent when it runs on a host which IP address is \OSC{192.168.0.5} using the default port numbers.
 
 %===============================
 %:  Ports management
@@ -2008,8 +1996,9 @@ Querying INScore version:
 \sublevel{Application static nodes}
 \label{ITLStatic}
 
-The application level provides the static nodes - \OSC{stats}, \OSC{debug} and \OSC{log}, available at \OSC{/ITL/stats} \OSC{/ITL/debug} and \OSC{/ITL/log}  to help debugging communication and INScore scripts design.
+The application level provides the static nodes - \OSC{stats}, \OSC{debug}, \OSC{log} and \OSC{ssl}, available at \OSC{/ITL/stats} \OSC{/ITL/debug}, \OSC{/ITL/log} and \OSC{/ITL/ssl}. 
 
+%--------------------------------
 \subsublevel{The 'stats' nodes}
 \label{ITLstat}
 
@@ -2030,6 +2019,7 @@ Answer to a \OSC{get} message addressed to \OSC{/ITL/stats}
 \sample{/ITL/stats osc 15 udp 10}
 
 
+%--------------------------------
 \subsublevel{The 'debug' nodes}
 \label{ITLdebug}
 
@@ -2053,6 +2043,7 @@ error:  incorrect parameters: /ITL/scene/foo x "incorrectType"
 }
 
 
+%--------------------------------
 \subsublevel{The 'log' nodes}
 \label{ITLlog}
 
@@ -2063,6 +2054,7 @@ The \OSC{log} node controls a console window that display all the messages sent 
 \index{ITL log!wrap}
 \index{ITL log!save}
 \index{ITL log!level}
+\index{ITL log!scale}
 
 \begin{rail}
 ITLLog : 'show'  int32
@@ -2072,6 +2064,7 @@ ITLLog : 'show'  int32
 		| 'write' (arg +)
 		| 'save' string
 		| 'level' int32
+		| 'scale' float32
 \end{rail}
 
 \begin{itemize}
@@ -2087,10 +2080,11 @@ ITLLog : 'show'  int32
 \item 1 : log errors (default value)
 \item 2 : log errors and output of \OSC{get} messages
 \end{itemize}
+\item \OSC{scale} scales the log window content. Default value is 1.0.
 \end{itemize}
 
 
-
+%--------------------------------
 \subsublevel{The 'plugins' nodes}
 \label{ITLplugins}
 
@@ -2109,12 +2103,17 @@ ITLPlugin : 'path'  folder
 \item \OSC{reset} clear the current user path.
 \end{itemize}
 
+%--------------------------------
+\subsublevel{The 'ssl' node}
+\label{ITLSsl}
+
+The \OSC{ssl} node is provided to manage certificates for encrypted communication with remote hosts. See section \fullref{SSL} for more details and section \fullref{Forwarding} for communication scheme.
 
 %===============================
 %:Scene messages
 \toplevel{Scene messages}
 \label{scene}
-A scene may be viewed as a window on the score elements. Its address is \OSC{/ITL/\textit{sceneIdentifier}} where \OSC{\textit{sceneIdentifier}} is the scene name. 
+A scene may be viewed as a window on the score elements. Its address is \OSC{/ITL/\textit{sceneIdentifier}} where \OSC{\textit{sceneIdentifier}} is a user defined scene name. A scene named \OSC{scene} is created on startup.
 
 %===============================
 %:  Scene control
@@ -2228,42 +2227,76 @@ Counting the elements in a scene:
 }
 
 %===============================
-%:Forwarding
+%:Messages Forwarding
 \toplevel{Messages forwarding}
-\label{forwarding}
+\label{Forwarding}
 The messages handled by the application or by a scene can be forwarded to arbitrary remote hosts. A filtering mecanism can be used to have a fine control of forwarded messages.
 
 %===============================
-%:  Messages forwarding
+%:  Remote hosts list
 \sublevel{Remote hosts list}
-\label{ITLForward}
+\label{RemoteHosts}
 
 Remote hosts lists can be set using the \OSC{forward} message at scene or application level. Hosts lists of the application and of each scene are independent.
 At scene level, only messages handle by the scene are forwarded (ie message for the scene itself or for one of his children object).
 The \OSC{forward} message itself can't be forwarded. 
 A message from a host cannot be forwarded to him to avoid direct loop.
  
-\index{ITL messages!forward}
+\index{Forwarding!forward}
 
 \begin{rail}
-ITLMsgForward : ('forward' ( [1] | [2] hostname +))
+ITLMsgForward : ('forward' ( [1] | [2] ForwardDest +))
+\end{rail}
+\begin{itemize}
+\item 1) removes the set of forwarded destinations,
+\item 2) set a list of remote hosts for forwarding. 
+\end{itemize}
+
+\begin{rail}
+ForwardDest : (([1] hostname | [2] 'osc://' hostname | [3] 'http://' hostname  | [4] 'https://' hostname |  [5] 'ws://' hostname) ( | ':' portnum)) +
+\end{rail}
+
+The forwarding mechanism can use different protocols, expressed by the destination in the form of an url, optionally followed by a port number separated by a semi-colon. By default, when no port number is specified, the default application listening port number is used (7000).
+
+\begin{itemize}
+\item 1) obsolete form preserved for compatibility: it's equivalent to 2). 
+\item 2) messages are forwarded using the OSC protocol.
+\item 3) messages are forwarded in textual form using the HTTP protocol.
+\item 3) messages are forwarded in textual form using the HTTPS protocol. See section \ref{SSL} about additional requirements for encrypted connections.
+\item 5) messages are forwarded in textual form using WebSockets.
+\end{itemize}
+
+\example\\
+Forwards messages at application level to \OSC{host1.adomain.org} using OSC and the default application listening port number (7000)
+and to \OSC{host2.adomain.org} using HTTP on port number 5100 .
+\sample{/ITL forward osc://host1.adomain.org http://host2.adomain.org:5100;}
+
+%===============================
+%:  SSL support
+\sublevel{SSL support}
+\label{SSL}
+
+When you use \OSC{https} as a communication protocol, a digital certificate and an encryption key are required to establish connections between INScore and the client stations. The certificate must be signed by a trusted certificate authority. Short term certificates are freely available on the internet. 
+
+Before issuing a \OSC{forward} message on an encrypted communication channel, the key and certificate must be loaded by INScore. For this purpose, a set of messages is provided by the application ssl node  \OSC{/ITL/ssl}:
+
+\index{Forwarding!key}
+\index{Forwarding!cert}
+\index{Forwarding!cacert}
+
+\begin{rail}
+SslSetup : ( 'key' | 'cert' | 'cacert' ) file
 \end{rail}
 
 \begin{itemize}
-\item 1) removes the set of forwarded destinations,
-\item 2) set a list of remote hosts for forwarding. Note that \OSC{hostname} can be any legal host name or IP number, optionally extended with a port number separated by a semi-colon. By default, when no port number is specified, the default application listening port number is used (7000).
+\item \OSC{key} load 'file' as private key 
+\item \OSC{cert} load 'file' as digital certificate
+\item \OSC{cacert} load 'file' as intermediate certificate used as certificate authority 
 \end{itemize}
-\example\\
-Forwarding messages handle by application to \OSC{host1.adomain.org} using the default application listening port number (7000)
-and to \OSC{host2.adomain.org} on port number 5100.
 
-\sample{/ITL forward host1.adomain.org host2.adomain.org:5100;}
+\emph{file} is a path to a file that can be absolute or relative. 
+Resolution of relative paths differs from the approach used with \OSC{rootPath}: a path expressed as relative will always refer to the \OSC{.ssh} folder located at the root of the user directory (\$HOME).
 
-
-Forwarding messages handle by the scene \OSC{scene1} to \OSC{host3.adomain.org} using the default application listening port number (7000)
-and to \OSC{host4.adomain.org} on port number 5100.
-
-\sample{/ITL/scene1 forward host1.adomain.org host2.adomain.org:5100;}
 
 %===============================
 %:  Filters
@@ -2272,30 +2305,49 @@ and to \OSC{host4.adomain.org} on port number 5100.
 
 The messages forwarded to arbitrary remote hosts using the \OSC{forward} message can be filtered to send only wanted messages. The static \OSC{filter} node is use manage the filter. A static \OSC{filter} node is created for each scene and one at application level. The filter can be construct with OSC address and messages. 
  
-\index{ITL messages!accept}
-\index{ITL messages!reject}
+\index{Forwarding!accept}
+\index{Forwarding!reject}
 
 \begin{rail}
 ITLFilteringForward : [1] ('accept' (|item +)) | [2] ('reject' (|item +))
 \end{rail}
 
 \begin{itemize}
-\item 1) Remplace the actual accepted list by the new list or by an empty list. Item in accepted list are not filtered by the reject item list.
-\item 2) Remplace the actual accepted list by the new list or by an empty list. Item in reject list are filtered if they not match the accept list.
+\item 1) Replace the current accepted list by the new list or by an empty list. Item in accepted list are not filtered by the reject item list.
+\item 2) Replace the current accepted list by the new list or by an empty list. Item in reject list are filtered if they not match the accept list.
 \end{itemize}
 
-When a new message is incoming, if they match to an accepted item, filter is not apply.\\ \\
+When a new message is incoming, if they match to an accepted item, filter is not apply.\\
+
 \example\\
 Filter at application level :
 \sample{/ITL/filter reject /ITL/scene/line* /ITL/scene/rect; \\
 /ITL/filter accept /ITL/scene/line2 scale arrows;
 }
-Message with OSC message with address starting with \OSC{/ITL/scene/line} or with address \OSC{/ITL/scene/rect} are filtered only if message address is not \OSC{/ITL/scene/line2} or if the content is not \OSC{scale} or \OSC{arrows}.\\
+Messages with address starting with \OSC{/ITL/scene/line} or addressed to \OSC{/ITL/scene/rect} are filtered only if message address is not \OSC{/ITL/scene/line2} or if the content is not \OSC{scale} or \OSC{arrows}.\\
 \\
 Filter at scene level :
 \sample{/ITL/scene1/filter reject fontWeight /ITL/scene1/rect;
 }
 The \OSC{fontWeight} message and message for \OSC{/ITL/scene1/rect} are rejected.
+
+\note{}\\
+INScore is message based in a consistent way: all actions are triggered by messages (including, for example, quitting the application). Some messages are generated internally. This is the case of \OSC{ddate}: an object sends \OSC{ddate} messages to itself when its tempo is not zero. It is therefore recommended to filter \OSC{ddate}: in the absence of a filter, a recipient who receives a \OSC{tempo} message will generate these messages internally, but will also receive those that have been forwarded. Its actual tempo will then be twice the one set.
+
+%===============================
+%:  Specific queries
+\sublevel{Specific queries}
+\label{ITLForwardQueries}
+
+When using connection oriented protocols with the \OSC{forward} message (\OSC{http}, \OSC{https}, \OSC{ws}), you can query the number of connected clients:
+
+\index{Forwarding!get}
+
+\begin{rail}
+ITLClientsQuery : 'get' 'clients'
+\end{rail}
+The message must be addressed at the application level (\OSC{/ITL}). 
+The answer is detailed for each type of connection-oriented protocol in service.
 
 
 %===============================
@@ -2581,7 +2633,12 @@ syncIdentifier : [1] identifier
 		| [2] identifier ':' mapName
 \end{rail}
 
-Synchronization identifiers indicates 1) the name of an object or 2) the name of an object associated to a mapping name. Using the first form (i.e. without explicit mapping name), the system uses the default unnamed mapping (see section \fullref{mapMsg} mappings and named mappings).
+Synchronization identifiers indicates 
+\begin{itemize}
+\item 1) the name of an object. Note that you can use regular expressions to refer to a set of objects.
+\item 2) the name of an object associated to a mapping name. 
+\end{itemize}
+Using the first form (i.e. without explicit mapping name), the system uses the default unnamed mapping (see section \fullref{mapMsg} mappings and named mappings).
 
 Synchronization between components has no effect if any of the required mapping is missing (see table \ref{maptable}).
 
@@ -2626,7 +2683,7 @@ syncHow : 'relative' | 'absolute'
 
 The synchronization mode makes use of the master time to graphic mapping to compute the slave position. It may also use the master current date, depending on the following options:
 \begin{itemize}
-\item \OSC{relative}: the time position where the slave appears is relative to the mapping and to the master current date (actually, it shifts the mapping from the master current date). The relative mode is used by default.
+\item \OSC{relative}: the time position where the slave appears is relative to the mapping AND to the master current date (actually, it shifts the mapping from the master current date). The relative mode is used by default.
 \item \OSC{absolute}: the time position where the slave appears corresponds to the mapping date only.
 \end{itemize}
 
@@ -3010,7 +3067,7 @@ Creating a signal and its graphic representation:
 \subsublevel{Graphic signal default values.}
 \label{gsigdefault}
 
-As mentionned above, a graphic signal expects to be connected to parallel signals having at least an \values{y} component, a graphic thickness component and HSBA components. Thus, from graphic signal viewpoint, the expected dimension of a signal should be equal or greater than 6. In case the \OSC{signalIdentifier} dimension is less than 6, the graphic signal will use the default values defined in table \ref{gsigdefault}.
+As mentionned above, a graphic signal expects to be connected to parallel signals having at least an \values{y} component, a graphic thickness component and HSBA components. Thus, from graphic signal viewpoint, the expected dimension of a signal should be equal or greater than 6. In case the \OSC{signalIdentifier} dimension is less than 6, the graphic signal will use the default values defined in table \ref{gsigdefaultvalues}.
 
 \begin{table}[htbp]
 \caption{Graphic signal default values.}
@@ -3028,7 +3085,7 @@ parameter & default value & \\
 \hline
 \end{tabular}
 \end{center}
-\label{gsigdefault}
+\label{gsigdefaultvalues}
 \end{table}
 
 %-------------------------------
@@ -3088,7 +3145,7 @@ interactMsg : (('watch' | 'watch+')  ([1] |
 							| [4] message )  )) 
 \end{rail}
 
-\OSC{what} represents the event to watch and \OSC{message} is a list of associated messages, separated by a comma. Colon is also supported as separator (to avoid issues with comma in Max).
+\OSC{what} represents the event to watch and \OSC{message} is a list of associated messages, separated by a comma. A colon (':') is also supported as separator (to avoid issues with comma in Max).
 
 \begin{itemize}
 \item [1]: clear all the messages for all the events.
@@ -3099,7 +3156,7 @@ interactMsg : (('watch' | 'watch+')  ([1] |
 
 \note{} \\
 	The [1] and [2] form has no effect with the \OSC{watch+} message. \\
-	In some environments, the comma has a special meaning, making tricky to use it as a message separator. This is why ':' is also accepted as separator in OSC messages. \\
+	In some environments, the comma has a special meaning, making tricky to use it as a message separator. This is why ':' is also accepted as separator in OSC messages lists. \\
 	The \OSC{get watch} message gives all the watch messages of a node, but doesn't take any argument.
 
 \begin{rail} 
@@ -3208,7 +3265,7 @@ Each event takes a time interval as parameter, defined by two \OSC{time} specifi
 
 \example \\
 An object that moves a score to a given page number when it enters its time zone.
-\samplev{/ITL/scene/myObject watch timeEnter 10/1 18/1 (/ITL/scene/score page 2);}
+\sample{/ITL/scene/myObject watch timeEnter 10/1 18/1 (/ITL/scene/score page 2);}
 
 %===============================
 %:       URL events
@@ -3288,8 +3345,8 @@ specificEvent : 	  'pageCount'
 \item the \OSC{endPaint} event is supported at scene level only and triggered after a scene has been painted.
 \item the \OSC{error} event is supported at application level and triggered when an error occurs while receiving messages. 
 Typically you can use of this event to open the log window (\OSC{/ITL/log show 1}) 
-\item the \OSC{ready} event is supported by \OSC{video} objects. It is triggered when video data (duration, graphic dimensions) are available.
-\item the \OSC{end} event is supported by \OSC{video} objects. It is triggered when a video is playing and reaches the end of the media. In this case, the object \OSC{play} status is automatically switched to 0 to reflect the actual player state.
+\item the \OSC{ready} event is supported by media objects (\OSC{audio} and \OSC{video}). It is triggered when media data (duration, graphic dimensions) are available.
+\item the \OSC{end} event is supported by media objects (\OSC{audio} and \OSC{video}). It is triggered when a media is playing and reaches the end of the media. In this case, the object \OSC{play} status is automatically switched to 0 to reflect the actual player state.
 \end{itemize}
 
 \example \\
@@ -3311,13 +3368,13 @@ Watching an object \OSC{x} coordinate change:
 Watching the \OSC{newData} event is equivalent to watch the \OSC{set} attribute. However, the \OSC{newData} event is triggered only when the object state is changed.
 
 \warning \\
-With the event's generalisation to any object attribute, a one tick delay has been introduced to all events. Thus the associated messages are not processed synchronously to the event but posted to be processed by the next time task. This delay has been introduced to avoid freezing the system in case of loops. However, it introduces also a pitfall in interaction design, when message based variables are used (see section \fullref{msgvar}): message based variables are evaluated at the event time while messages are processed by the next time task, thus the following messages won't produce the expected result:
+With the event's generalization to any object attribute, a one tick delay has been introduced to all events. Thus the associated messages are not processed synchronously to the event but posted to be processed by the next time task. This delay has been introduced to avoid freezing the system in case of loops. However, it introduces also a pitfall in interaction design, when message based variables are used (see section \fullref{msgvar}): message based variables are evaluated at the event time while messages are processed by the next time task, thus the following messages won't produce the expected result:
 \sample{/ITL/scene/myObject watch x ( \\
 \hspace*{1cm} /ITL/scene/A x '\$(/ITL/scene/myObject get x)', \\
 \hspace*{1cm} /ITL/scene/B x '\$(/ITL/scene/A get x)' \\
 );
 }
-actually, when the \OSC{\$(/ITL/scene/A get x)} variable is evaluated, the preceding message that sets the x attribute of A has not been aready processed.
+actually, when the \OSC{\$(/ITL/scene/A get x)} variable is evaluated, the preceding message that sets the x attribute of A has not been already processed.
 One workaround consists in splitting the interaction in several parts, making sure that the messages are processed e.g.
 \sample{/ITL/scene/myObject watch x ( /ITL/scene/A x '\$(/ITL/scene/myObject get x)'); \\
 /ITL/scene/A watch x ( /ITL/scene/B x '\$(/ITL/scene/A get x)' );
@@ -3585,294 +3642,15 @@ fileWatcher : (('watch' | 'watch+')  ( | filePath  ( |  ( ( message  )+ "," ) ) 
 \end{rail}
 
 \example \\
-Reload aa INScore script on file modification:
+Reload an INScore script on file modification:
 \sample{
 /ITL/scene/fileWatcher watch 'myScript.inscore' \\
 \hspace*{3cm}( /ITL/scene load 'myScript.inscore' );
 }
 
-
-%===============================
-%:Scripting
-\toplevel{Scripting}
-\label{scripting}
-
-INScore saves its state to files containing textual OSC messages. These files can be edited or created from scratch using any text editor. In order to provide users with a scripting language, the OSC syntax has been extended at textual level.
-
-%===============================
-%:    Statements
-\sublevel{Statements}
-\label{scriptstatement}
-An INScore file is a list of textual expressions. A script expression is:
-\begin{itemize}
-\item a message: basically a textual OSC message extended to support URL like addresses and variables as parameters.
-\item a variable declaration.
-\item a foreign language script that may generate messages as output.
-\item an end marker '\OSC{\_\_END\_\_}' to declare a script end. After the marker, the remaining part of the script will be ignored.
-\end{itemize}
-
-\index{Scripting!expressions}
-
-\begin{rail}
-expression :  
-		 	message ";"
-		| 	variabledecl ";"
-		| 	script
-		|   end
-\end{rail}
-
-Messages and variables declarations must be followed by a semicolon, used as statements separator.
-
-%===============================
-%:    Messages
-\sublevel{Messages}
-\label{scriptmsgs}
-
-Messages are basically OSC messages that support the address extension scheme described in section \fullref{interaction} and relative addresses that are described below.
-Messages parameters can be replaced by variables that are evaluated at parsing level. Variables are described in section \ref{scriptvar}.
-
-Using the address extension scheme, a script may be designed to initialize an INScore scene and external applications as well, including on remote hosts.
-
-\example\\
-Initializing a score and an external application listening on port 12000 and running on a remote host named \OSC{host.adomain.net}.
-\sample{/ITL/scene/score set gmnf 'myscore.gmn';\\
-host.adomain.net:12000/run 1;
-}
-
-Relative addresses have been introduced to provide more flexibility in the score design process. A relative address starts with '\OSC{./}'. It is evaluated in the context of the message receiver: a legal OSC address is dynamically constructed using the receiver address that is used to prefix the relative address. 
-
-\example
-\sample{the relative address \hspace*{3mm}./score \\
-addressed to \hspace*{15.4mm}/ITL/scene/layer\\
-will be evaluted as \hspace*{4mm}/ITL/scene/layer/score
-}
-
-The receiver context may be:
-\begin{itemize}
-\item the INScore application address (i.e. \OSC{/ITL}) for messages enclosed in a file loaded at application level (using the \OSC{load} message addressed to the application) or for files dropped to the application or given as arguments of the INScoreViewer application.
-\item a scene address for messages enclosed in a file loaded at scene level (using the \OSC{load} message addressed to a scene) or for files or messages dropped to a scene window.
-\item any object address when the messages are passed as arguments of an \OSC{eval} message (see section \fullref{miscmsgs}).
-\end{itemize}
-
-\example\\
-Using a set of messages in different contexts:
-\sample{score = (\\
-\hspace*{5mm}./score set gmn '[a f g]', \\
-\hspace*{5mm}./score scale 2.\\
-);\\
-/ITL/scene/l1 eval \$score;\\
-/ITL/scene/l2 eval \$score;
-}
-
 \note{}\\
-Legal OSC addresses that are given as argument of an \OSC{eval} message are not affected by the evaluation.
+Some text editors delete the target file before saving. In this case, it breaks the file watching system and thus, it doesn't work as expected.
 
-
-%===============================
-%:    types
-\sublevel{Types}
-\label{scripttypes}
-
-Using OSC, the message parameters are typed by the OSC protocol. 
-With their textual version, any parameter is converted to an OSC type (i.e. int32, float or string) at parsing level.
-A special attention must be given to strings in order to discriminate addresses and parameters. Strings intended as parameters must:
-\begin{itemize}
-\item be quoted, using single or double quotes. Note that an ambiguous quote included in a string can be escaped using a '\verb+\+'.
-\item or make use of the following characters set: \OSC{[-a-zA-Z0-9]+} or \OSC{[\_a-zA-Z][\_a-zA-Z0-9]*}.
- \end{itemize}
-
-\example \\
-Different string parameter
-\sample{/ITL/scene/text set txt "Hello world";  \icomment string including a space must be quoted \\
-/ITL/scene/img set file 'anImage.png';  \icomment dots must be quoted too \\
-/ITL/scene/foo set txt no\_quotes\_needed;
-}
-
-
-%===============================
-%:    Variables
-\sublevel{Variables}
-\label{scriptvar}
-
-A variable declaration associates a name with a list of parameters or a list of messages.
-Parameters must follow the rules given in section \ref{scripttypes}. They may include previously declared variables. A message list must be enclosed in parenthesis and a comma must be used as messages separator.
-
-\index{Scripting! variable}
-
-\begin{rail} 
-variabledecl : 'ident' '=' ( (param | variable) +
-					| '(' (message + ',') ')' ) ';'
-\end{rail}
-
-\example \\
-Variables declarations
-\sample{color = 200 200 200; \\
-colorwithalpha = \$color 100; \icomment using another variable \\
-msgsvar= ( \hspace*{2.7cm}  \icomment a variable referring to a message list \\
-\hspace*{1cm} localhost:7001/world "Hello world", \\
-\hspace*{1cm} localhost:7001/world "how are you ?" );
-}
-
-
-A variable may be used in place of any message parameter. A reference to a variable must have the form \OSC{\$ident} where \OSC{ident} is a previously declared variable. A variable is evaluated at parsing level and replaced by its content.
-
-\example \\
-Using a variable to share a common position:
-\sample{x = 0.5;\\
-/ITL/scene/a x \$x;\\
-/ITL/scene/b x \$x;
-}
-
-Variables can be used in interaction messages as well, which may also use the variables available in the interaction context (see section \fullref{interactvar}). To differentiate between a \emph{script} and an \emph{interaction} variable, the latter must be quoted to be passed as strings and to prevent their evaluation by the parser. 
-
-\example \\
-Using variables in interaction messages: \$sx is evaluated at event occurrence	and \$y is evaluated at parsing level.
-\sample{y = 0.5;\\
-/ITL/scene/foo watch mouseDown (/ITL/scene/foo "\$sx" \$y);
-}
-
-%===============================
-%:    Environnement variables
-\sublevel{Environnement variables}
-\label{envvar}
-
-Environnement variables are predefined variables available in a script context. They provide information related to the current context. Current environment variables are:
-\begin{itemize}
-\item \textbf{\OSC{OSName}}: gives the current operating system name. The value is among \OSC{"MacOS"}, \OSC{"Windows"}, \OSC{"Linux"}, \OSC{"Android"} and \OSC{"iOS"}.
-\item \textbf{\OSC{OSId}} : gives the current operating system as a numeric identifier. Returned value is (in alphabetic order): 
-\begin{itemize}
-\item 1 for Android
-\item 2 for iOS.
-\item 3 for Linux, 
-\item 4 for MacOS, 
-\item 5 for Windows, 
-\end{itemize}
-\end{itemize}
-
-\note\\
-There is nothing to prevent overriding of an environment variable. It's the script responsibility to handle variable names collisions.
-
-
-%===============================
-%:    Message based parameters
-\sublevel{Message based parameters}
-\label{scriptmsgparam}
-
-Similarly to message based variables (see section \fullref{msgvar}), a message parameter may also use the result of a \OSC{get} message as parameters specified like a message based variable.
-The message must be enclosed in parameters with a leading \$ sign.
-
-\index{Scripting! message based parameters}
-
-\begin{rail} 
-msgparam : '(' (message) ')'
-\end{rail}
-
-\example \\
-Displaying INScore version using a message parameter:
-\sample{/ITL/scene/version set  txt "INScore version is" \$(/ITL get version);}
-
-\note{}\\
-Message based parameters are evaluated by the parser. Thus when the system state is modified by a script before a message parameter, these modifications won't be visible at the time of the parameter evaluation because all the messages will be processed by the next time task. For example:\\
-\sample{/ITL/scene/obj x 0.1;\\
-/ITL/scene/foo x \$(/ITL/scene/foo get x);
-}
-x position of \OSC{/ITL/scene/foo} will be set to x position of \OSC{/ITL/scene/obj} at the time of the script evaluation (that may be different to 0.1).
-
-%===============================
-%:    languages
-\sublevel{Languages}
-\label{scriptlang}
-
-\index{Scripting!javascript}
-%\index{Scripting!lua}
-
-INScore supports Javascript and Lua as scripting languages. Javascript is embedded by default (using the Qt Javascript engine). INScore needs to be recompiled to embed the Lua engine\footnote{\url{http://www.lua.org/}}. A script section is indicated similarly to a Javascript section in html i.e. enclosed in an opening \OSC{<?} and a closing \OSC{?>}.
-
-\index{Scripting! javascript}
-%\index{Scripting! lua}
-
-\begin{rail} 
-script : '<?' ('javascript' | 'lua') script '?>'
-\end{rail}
-
-The principle of using an embedded programming language in script files is the following: \emph{javascript} or \emph{lua} sections are given to the corresponding engine and are expected to produce INScore messages on output.
-These messages are then parsed as if replacing the corresponding script section.
-
-Note that INScore variables are exported to the current language environment.
-
-\example
-\sample{
-<?javascript \\
-\hspace*{3mm} "/ITL/scene/version set 'txt' 'Javascript v."  + version() + "';"; \\
-\hspace*{1mm} ?>
-}
-
-A single persistent context is created at application level and shared to each scene.
-
-\note Lua support is going to be deprecated and should be removed in a future release.
-
-%===============================
-%:    The Javascript objects
-\subsublevel{The Javascript object}
-\label{jsobj}
-
-The Javascript engine is available at runtime at the address \OSC{/ITL/\textit{scene}/javascript}. It has a \OSC{run} method that takes a javascript string as parameter.
-
-\index{Scripting! javascript! run}
-
-\begin{rail} 
-javascript :  'run' 'code'
-\end{rail}
-
-The \OSC{run} method evaluates the code. Similarly to javascript sections in scripts, the output of the evaluation is expected to be a string containing valid INScore messages that are next executed. 
-Actually, including a javascript section in a script is equivalent to send the \OSC{run} message with the same code as parameter to the javascript object.
-
-The Javascript engine is based on the Qt5 Javascrip engine, extended with additional functions:
-\begin{itemize}
-\item \textbf{\OSC{version()}} : gives the javascript engine version number as a string.
-\item \textbf{\OSC{print(val1 [, val2 [, ...]])}} : print the arguments to the OSC standard output. The arguments list is prefixed by 'javascript:'. The function is provided for debug purpose.
-\item \textbf{\OSC{readfile(file)}} : read a file and returns its content as a string. The file name could be specified as an absolute or relative path. When relative, the file is searched in the application current \OSC{rootPath} (see section \fullref{applmgmt}).
-\item \textbf{\OSC{post(address [,...])}} : build an OSC message and post it for delayed processing i.e. to be processed by the next time task. \OSC{address} is an OSC or an extended OSC address. Optional arguments are the message parameters.
-\item \textbf{\OSC{osname()}} : gives the current operating system name. Returned value is among \OSC{"MacOS"}, \OSC{"Windows"}, \OSC{"Linux"}, \OSC{"Android"} and \OSC{"iOS"}.
-\item \textbf{\OSC{osid()}} : gives the current operating system as a numéric identifiant. Returned value is (in alphabetic order): 
-\begin{itemize}
-\item 1 for Android
-\item 2 for iOS.
-\item 3 for Linux, 
-\item 4 for MacOS, 
-\item 5 for Windows, 
-\end{itemize}
-\end{itemize}
-
-
-\example
-\sample{
-<?javascript \\
-\hspace*{3mm} post ("/ITL/scene/obj", "dalpha", -1);";\\ 
-\hspace*{3mm} \# The message /ITL/scene/obj dalpha -1 \\
-\hspace*{3mm} \# will be evaluated by the next time task. \\
-?>
-}
-
-\example
-\sample{
-<?javascript \\
-\hspace*{3mm} \# declare a function foo() \\
-\hspace*{3mm} function foo(arg) \{\\ 
-\hspace*{6mm}  return "/ITL/scene/obj set txt foo called with " + arg + ";"; \\
-\hspace*{3mm} \} \\
-?>\\
-\\
-\# call the foo function \\
-<?javascript foo(1)?>\\
-\\
-\# or call the foo function using the run message \\
-/ITL/scene/javascript run "foo(1)";
-}
-
-%===============================
-%:Math expressions
-\input{MathExpressions/mathexpressions.tex}
 
 %===============================
 %:Score expressions
@@ -3901,7 +3679,7 @@ The plugins are shared libraries which extension is platform dependent. The plug
 \sublevel{FAUST plugins}
 \label{faust}
 
-FAUST [Functional Audio Stream]\footnote{\url{http://faust.grame.fr}} is a functional programming language specifically designed for real-time signal processing and synthesis. A FAUST/INScore architecture allows to embed FAUST processors in INScore, for the purpose of signals computation. A FAUST plugin is viewed as a parallel signal and thus it is created in the \OSC{signal} address space. Similarly to signals, it is associated to an OSC address in the form \OSC{/ITL/\emph{scene}/signal/\emph{name}} where \OSC{\emph{name}} is a user defined name.
+\href{http://faust.grame.fr}{FAUST} [Functional Audio Stream] is a functional programming language specifically designed for real-time signal processing and synthesis. A FAUST/INScore architecture allows to embed FAUST processors in INScore, for the purpose of signals computation. A FAUST plugin is viewed as a parallel signal and thus it is created in the \OSC{signal} address space. Similarly to signals, it is associated to an OSC address in the form \OSC{/ITL/\emph{scene}/signal/\emph{name}} where \OSC{\emph{name}} is a user defined name.
 
 \subsublevel{Set Message}
 \label{faustsetmsg}
@@ -4189,7 +3967,7 @@ A gesture follower object has a graphic appearance and supports all the standard
 
 
 \begin{figure}[h]
-	\centering \includegraphics[width=0.95\columnwidth]{imgs/gesture-follower}
+	\centering \includegraphics[width=0.85\columnwidth]{imgs/gesture-follower}
  \caption{The gesture follower appearance in its different phases.}
  \label{fig:gfgraph}
 \end{figure}
@@ -4201,7 +3979,7 @@ A gesture follower object has a graphic appearance and supports all the standard
 \sublevel{Httpd server plugin}
 \label{Httpd}
 
-INScore can embed Http server to expose real time screenshot image of a scene to the web. This feature is based on libmicrohttpd \footnote{\url{http://www.gnu.org/software/libmicrohttpd/}} and is available as a plugin that is included in the INScore distribution (version 1.11 or greater). The Url to get the image is the base url of the server.
+INScore can embed Http server to expose real time screenshot image of a scene to the web. This feature is based on \href{http://www.gnu.org/software/libmicrohttpd/}{libmicrohttpd} and is available as a plugin that is included in the INScore distribution (version 1.11 or greater). The Url to get the image is the base url of the server.
 
 %===============================
 %:      Set messages
@@ -4242,16 +4020,6 @@ A string corresponding to the server status ("started" or "stopped") is return.
 
 \example \\
 \sample{/ITL/scene/server get status;}
-
-%===============================
-%:Appendix
-\toplevel{Appendices}
-\label{appendices}
-\input{yacc.tex}
-
-\input{tokens.tex}
-
-\input{yaccexpr.tex}
 
 
 %===============================

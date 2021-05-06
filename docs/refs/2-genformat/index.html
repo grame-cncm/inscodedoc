@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Format of a message - INScore Documentation</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+        <link href="/css/inscore.css" rel="stylesheet">
+        <link href="/css/pubs.css" rel="stylesheet">
+        <link href="/BNF/railroad-diagrams.css" rel="stylesheet">
+
+        <script src="../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">INScore Documentation</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href="../.." class="nav-link">Home</a>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Reference <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">Messages</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../1-introduction/" class="dropdown-item">Introduction</a>
+</li>
+            
+<li>
+    <a href="./" class="dropdown-item active">Format of a message</a>
+</li>
+            
+<li>
+    <a href="../3-common/" class="dropdown-item">Common Messages</a>
+</li>
+            
+<li>
+    <a href="../4-time/" class="dropdown-item">Time Messages</a>
+</li>
+            
+<li>
+    <a href="../5-miscmsgs/" class="dropdown-item">Miscellaneous</a>
+</li>
+            
+<li>
+    <a href="../6-setsect/" class="dropdown-item">The set Message</a>
+</li>
+            
+<li>
+    <a href="../7-getsect/" class="dropdown-item">The get Message</a>
+</li>
+            
+<li>
+    <a href="../8-specificMsg/" class="dropdown-item">Specific Messages</a>
+</li>
+            
+<li>
+    <a href="../9-ITL/" class="dropdown-item">Application Messages</a>
+</li>
+            
+<li>
+    <a href="../10-scene/" class="dropdown-item">Scene Messages</a>
+</li>
+            
+<li>
+    <a href="../11-forwarding/" class="dropdown-item">Messages Forwarding</a>
+</li>
+            
+<li>
+    <a href="../12-layers/" class="dropdown-item">Layers</a>
+</li>
+            
+<li>
+    <a href="../13-mapping/" class="dropdown-item">Mapping</a>
+</li>
+            
+<li>
+    <a href="../14-syncmsg/" class="dropdown-item">Synchronization</a>
+</li>
+            
+<li>
+    <a href="../15-graphsig/" class="dropdown-item">Graphic signals</a>
+</li>
+            
+<li>
+    <a href="../16-sensors/" class="dropdown-item">Sensors</a>
+</li>
+            
+<li>
+    <a href="../17-interaction/" class="dropdown-item">Interaction</a>
+</li>
+            
+<li>
+    <a href="../18-scoreExpr/" class="dropdown-item">Score Expressions</a>
+</li>
+            
+<li>
+    <a href="../19-plugins/" class="dropdown-item">Plugins</a>
+</li>
+            
+<li>
+    <a href="../20-changes/" class="dropdown-item">Changes list</a>
+</li>
+            
+<li>
+    <a href="../" class="dropdown-item">Index</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">Scripting language</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../../lang/1-scripting/" class="dropdown-item">Language</a>
+</li>
+            
+<li>
+    <a href="../../lang/2-mathExpr/" class="dropdown-item">Math. expressions</a>
+</li>
+            
+<li>
+    <a href="../../lang/3-appendices/" class="dropdown-item">Grammar</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">INScore Web</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../../web/1-introduction/" class="dropdown-item">Introduction</a>
+</li>
+            
+<li>
+    <a href="../../web/2-behavior/" class="dropdown-item">Global changes</a>
+</li>
+            
+<li>
+    <a href="../../web/3-unsupported/" class="dropdown-item">Unsupported messages</a>
+</li>
+            
+<li>
+    <a href="../../web/4-newMessages/" class="dropdown-item">Specific messages</a>
+</li>
+            
+<li>
+    <a href="../../web/5-faustObjects/" class="dropdown-item">Faust objects</a>
+</li>
+            
+<li>
+    <a href="../../web/6-communication/" class="dropdown-item">Communication</a>
+</li>
+    </ul>
+  </li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Documents <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="http://berio.grame.fr/MusicNotation/Introduction-to-INScore/" class="dropdown-item">Tutorial</a>
+</li>
+                                    
+<li>
+    <a href="../../rsrc/INScoreMessages.pdf" class="dropdown-item">Messages reference</a>
+</li>
+                                    
+<li>
+    <a href="../../rsrc/INScoreLang.pdf" class="dropdown-item">Language reference</a>
+</li>
+                                    
+<li>
+    <a href="../../rsrc/INScoreLang.pdf" class="dropdown-item">Web reference</a>
+</li>
+                                    
+<li>
+    <a href="../../papers/" class="dropdown-item">Papers</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Download <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="https://github.com/grame-cncm/inscore/releases" class="dropdown-item">INScore</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../about/" class="nav-link">About</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../1-introduction/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../3-common/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#general-format" class="nav-link">General format</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#parameters" class="nav-link">Parameters</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#address-space" class="nav-link">Address space</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#aliases" class="nav-link">Aliases</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<script src='/BNF/railroad-diagrams.js'></script>
+
+<h1 id="general-format">General format</h1>
+<p><a name="genformat"></a></p>
+<p>An OSC message is made of an OSC address, followed by a message string, followed by zero to n parameters. The message string could be viewed as the method name of the object identified by the OSC address.
+The OSC address could be string or a regular expression matching several objects.</p>
+<div class="rail">
+<span class="railtitle">OSCMessage</span>
+<br /><script>
+ComplexDiagram(
+    Sequence (NonTerminal('OSCAddress'), NonTerminal('message'), Optional (NonTerminal('parameters')) )
+).addTo()
+
+</script>
+</div>
+<p><span class="example">Example</span> 
+Sending the message <span class="OSC">x</span> to the object which address is <span class="OSC">/ITL/scene/score</span> with <span class="OSC">0.5</span> as parameter.</p>
+<pre><code class="language-inscore">/ITL/scene/score x 0.5;
+</code></pre>
+<p>The address is similar to a Unix path and supports regular expressions as defined by the <a href=http://opensoundcontrol.org/>OSC specification</a>. This address scheme is extended to address any host and applications (see section <a href="../17-interaction#interaction">interaction</a>).</p>
+<p><span class="note">Note: </span> A valid legal OSC address always starts with <span class="OSC">/ITL</span> that is the application address and that is also used as a discriminant for incoming messages.</p>
+<div class="rail">
+<span class="railtitle">OSCAddress</span>
+<br /><script>
+ComplexDiagram(
+    Sequence ('/', OneOrMore (Choice (0, NonTerminal('identifier'), NonTerminal('regexp'))))
+).addTo()
+
+</script>
+</div>
+
+<p>Identifiers may include letters, hyphen, underscore and numbers (apart at first position for the latter).</p>
+<div class="rail">
+<span class="railtitle">identifier</span>
+<br /><script>
+ComplexDiagram(
+    Sequence ('[-_a-zA-Z]', OneOrMore ('[-_a-zA-Z0-9]]'))
+).addTo()
+
+</script>
+</div>
+
+<p>Some specific nodes (like <strong>signals</strong> - see section <a href="../15-graphsig#ssignal">ssignal</a>) accept OSC messages without message string:</p>
+<div class="rail">
+<span class="railtitle">SigOSCMessage</span>
+<br /><script>
+ComplexDiagram(
+    Sequence (NonTerminal('OSCAddress'), NonTerminal('parameters'))
+).addTo()
+
+</script>
+</div>
+
+<h2 id="parameters">Parameters</h2>
+<p><a name="params"></a>
+Message parameters types are the OSC types <strong>int32</strong>, <strong>float32</strong> and <strong>OSC-string</strong>. In the remainder of this document, they are used as terminal symbols, denoted by <span class="terminal">int32</span>, <span class="terminal">float32</span> and <span class="terminal">string</span>. </p>
+<p>When used in a script file, <span class="terminal">string</span> should be single or double quoted when they include characters not allowed in identifiers (space, punctuation marks, etc.).
+If an ambiguous double or single quote is part of the string, it can be escaped using a '\'.</p>
+<p>Parameters types policy is relaxed: the system makes its best to convert a parameter to the expected type, which depend on the message string. With an incorrect type and when no conversion is applied, an incorrect parameter message error is triggered.</p>
+<p>The system is strict regarding the number of expected parameters.</p>
+<h2 id="address-space">Address space</h2>
+<p><a name="addrspace"></a>
+The OSC address space is made of static and dynamic nodes, hierarchically organized as in figure <a href="../2-genformat#fig:addrspace">fig:addrspace</a>:</p>
+<p><a name="fig:addrspace"></a>
+<img alt="fig:addrspace" src="../imgs/address_space.png" />  <br />
+<span class='caption'>The OSC address space. Nodes in italic/blue are dynamic nodes.</span></p>
+<p>OSC messages are accepted at any level of the hierarchy:</p>
+<ul>
+<li>
+<p><strong>the application level</strong> responds to messages for application management (udp ports management, loading files, query messages). </p>
+</li>
+<li>
+<p><strong>the scene level</strong> contains <strong>scores</strong> that are associated to a window and respond to specific scene management messages. 
+It includes a static node named <span class="OSC">stats</span> that collects information about incoming messages, a static <span class="OSC">log</span> node that control an embedded log window.</p>
+</li>
+<li>
+<p><strong>the component level</strong> contains the score components and 3 static nodes:</p>
+</li>
+<li>
+<p>a <strong>signal</strong> node that may be viewed as a folder containing signals</p>
+</li>
+<li>a <strong>sync</strong> node, in charge of the synchronization messages</li>
+<li>a <strong>javascript</strong> node, that may be adressed to run javascript code dynamically.</li>
+</ul>
+<p>Each component includes a static node named <span class="OSC">debug</span> that provides debugging information.
+-  <strong>the signals level</strong> contains signals i.e. objects that accept data streams and that may be graphically rendered as a scene component (see Signals and Graphic signals section <a href="../15-graphsig#graphsig">graphsig</a>).</p>
+<p><span class="note">Note: </span> Since version 1.05, each component of a score may also be a container and thus, the hierarchy described above has a potential infinite depth level. Note also that a <span class="OSC">sync</span> node is present at each level. </p>
+<h2 id="aliases">Aliases</h2>
+<p><a name="alias"></a>
+An alias mechanism allows an arbitrary OSC address to be used in place of a real address. An <span class="OSC">alias</span> message is provided to describe aliases: </p>
+<p><a name="2-genformat-alias"></a></p>
+<div class="rail">
+<span class="railtitle">alias</span>
+<br /><script>
+ComplexDiagram(
+    Sequence (NonTerminal('OSCAddress'), 'alias', Choice (0, Sequence (Comment ('1'), NonTerminal('OSCAlias'), Optional (OneOrMore (Sequence (NonTerminal('message'), Optional ('[n,m]') ))) ), Comment ('2')))
+).addTo()
+
+</script>
+</div>
+
+<ul>
+<li><strong>[1]</strong> sets <span class="OSC">OSCAlias</span> as an alias of <span class="OSC">OSCAddress</span>. The alias may be optionally followed by message strings which are then taken as implied messages. These messages can also be optionally followed by a scaling specification.</li>
+<li><strong>[2]</strong> removes <span class="OSC">OSCAddress</span> aliases.</li>
+</ul>
+<p><span class="note">Note: </span> Regular expressions are not supported by the alias mechanism and could lead to unpredictable results.</p>
+<p><span class="example">Example</span></p>
+<pre><code class="language-inscore"># makes the address /ITL/scene/myobject available using /1/fader1
+/ITL/scene/myobject alias '/1/fader1';
+
+# the following input message:
+/1/fader1 0.5;
+# will be translated into:
+/ITL/scene/myobject 0.5;
+</code></pre>
+<pre><code class="language-inscore"># create an alias with an implicit 'x' message
+/ITL/scene/myobject alias '/1/fader1' x;
+
+# the following input message:
+/1/fader1 0.5;
+# will be translated into:
+/ITL/scene/myobject x 0.5;
+</code></pre>
+<h3 id="scaling">Scaling</h3>
+<p><a name="scaling"></a>
+In INScore, the parameter values are generally in the range [-1, 1]. However, some devices can generate messages with their own values range (e. g. accelerometers). An optional scaling string allows to convert any input range into the [-1, 1] range.</p>
+<p>The general form of the scaling string is <span class="OSC">[n,m]</span>, where <script type="math/tex">n</script> and <script type="math/tex">m</script> are 2 numbers describing the minimum and maximum input values. Any input value <script type="math/tex">v</script> is then transformed into a value <script type="math/tex">v'</script> such that:
+<script type="math/tex; mode=display">
+    v' = 2 (v-n)/(n-m) - 1
+</script>
+</p>
+<p><span class="example">Example</span></p>
+<pre><code class="language-inscore"># create an alias with an implicit 'x' message using a scaling specification
+/ITL/scene/myobject alias '/1/fader1' x[0,100];
+
+# the following input message:
+/1/fader1 5;
+# will be translated into:
+/ITL/scene/myobject x -0.9;
+</code></pre>
+<h3 id="using-more-than-one-implicit-message">Using more than one implicit message</h3>
+<p><a name="implicitmsg"></a>
+You can use an arbitrary number of message strings in an <span class="OSC">alias</span> message. In any case, an input message with the corresponding values is expected. For example, when the <span class="OSC">alias</span> message has 3 messages strings, input messages are expected to have 3 associated values. These values are distributed in sequence with each message string, which also means that the input message is translated into 3 different messages.</p>
+<p><span class="example">Example</span></p>
+<pre><code class="language-inscore"># create an alias with implicit 'x' 'y' and 'angle' messages using scaling
+/ITL/scene/myobject alias '/1/fader1' x[0,100] y[0,100] angle;
+
+# the following input message:
+/1/fader1 5 60 12;
+# will be translated into:
+/ITL/scene/myobject x -0.9;
+/ITL/scene/myobject y  0.2;
+/ITL/scene/myobject angle 12;
+</code></pre></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+                <p><a href="https://inscore.grame.fr">INscore projects</a> Copyright &copy; 2019-2021 <a href="http://www.grame.fr">Grame-CNCM</a></p>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" defer></script>
+        <script src="/js/inscore.js" defer></script>
+        <script src="/js/pubs.js" defer></script>
+        <script src="../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

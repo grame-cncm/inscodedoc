@@ -1,3 +1,10 @@
+/* 
+body {
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    line-height: 1.428571429;
+}
+ */
 
 h1 {
     color: #444;
@@ -26,7 +33,10 @@ h2 {
 	padding: 2px 5px 5px 15px;
 	margin-top: 25px;
 }
- 
+
+.navbar-brand {
+    font-size: 20px;
+}
 
 .col-md-9 img {
 	display: block;
@@ -76,6 +86,11 @@ h2 {
 .rail {
 	margin-left: 20px;
 	margin-bottom: 20px;
+}
+
+.OSC {
+	font-family: Courier;
+	color: rgb(100,100,180);
 }
 
 .note {

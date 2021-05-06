@@ -1,0 +1,484 @@
+
+\documentclass[a4paper,twoside]{article}
+\usepackage{../INScore}
+
+
+\makeatletter
+
+\newcommand{\toplevel}[1]	{\section{#1}}
+\newcommand{\sublevel}[1]	{\subsection{#1}}
+\newcommand{\subsublevel}[1]	{\subsubsection{#1}}
+
+\newcommand{\inprogress}[1]	{{\color{blue} \texttt{(#1)}}}
+\newcommand{\jsonindent}	{\hspace*{5mm}}
+
+\makeatother
+\pagestyle{empty}
+
+
+\begin{document}
+\title{\vspace*{8cm}INScore Web \\ {\large Version \inscoreversion}}
+\author{D. Fober\\ 
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\includegraphics[width=30mm]{../imgs/Logo_Grame}\\
+Centre national de création musicale\\
+}
+\date{}
+
+
+\maketitle
+\thispagestyle{empty}
+ 
+\cleardoublepage
+\tableofcontents
+\newpage
+\setcounter{page}{1}
+\pagestyle{plain}
+
+
+%===============================
+%:Introduction
+\toplevel{Introduction}
+\label{introduction}
+
+Since version 1.27, the INScore engine is available as Javascript libraries:
+\begin{itemize}
+\item a WebAssembly [WASM] library providing all the services of the abstract INScore model,
+\item a Javascript library providing an HTML view of the INScore model.
+\end{itemize}
+
+The web environment provides a very different runtime context than a native application: 
+it is much more modular; due to the absence of a 'concrete machine' a number of INScore primitives do not make sense in a web environment; finally it provides new rendering capabilities with CSS. 
+
+This document is intended to present the differences between the native and web versions of INScore. 
+A special section is also devoted to the implementation of INScore Web in standalone HTML pages.
+
+%===============================
+%:Behavioural differences
+\toplevel{Behavioural differences}
+\label{behavior}
+
+The OSC protocol is not supported in the Web version. As a result, the mode of communication with the INScore engine is different (see section \ref{communication}) and may also depend on the application that uses this engine. 
+
+By default:
+\begin{itemize}
+\item the OSC output and error ports are redirected to the Javascript console.
+\item drag \& drop works like in the native version: you can drop files or text to an INScore scene (an HTML div in the Web version). 
+\end{itemize}
+
+The \OSC{log} window (address \OSC{/ITL/log}) is dependent on the host application. By default, input messages addressed to the \OSC{log} node are directed to the Javascript console.
+
+\sublevel{Optional components}
+\label{components}
+
+As the architecture of the web version is completely modular, the available objects depend on the host application:
+e.g. a page which wants to use objects in symbolic notation (type \OSC{gmn}) will have to include the Guido library. 
+This architecture allows applications to be optimized to fit their needs. It also facilitates the extension of the INScore engine.
+The table \ref{componentTbl} presents the current supported components.
+
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{|c|l|l|}
+\hline
+Component & Name & Dependent types \\
+\hline
+Guido Engine & libGUIDOEngine.js & \OSC{gmn}, \OSC{gmnf}, \OSC{gmnstream}, \\
+  &   & \OSC{pianoroll}, \OSC{pianorollf}, \OSC{pianorollstream} \\
+MusicXML library & libmusicxml.js & \OSC{musicxml}, \OSC{musicxmlf} \\
+  &   & use of MusicXML implies to have also the Guido Engine \\
+Faust compiler & libfaust-wasm.js & \OSC{faust}, \OSC{faustf} \\
+  & FaustLibrary.js &  \\
+\hline
+\end{tabular}
+\end{center}
+\caption{Components required by specific objects}
+\label{componentTbl}
+\end{table}%
+
+
+\sublevel{Using files in a script}
+\label{files}
+
+You can use file based objects in an INScore script but the file path is interpreted differently: 
+\begin{itemize}
+\item when using an absolute path, it refers to the document root of the HTTP server,
+\item when using a relative path, it refers to the location of the HTML page 
+\end{itemize}
+
+\note{}\\
+Browsers infer a MIME type from the file extension and generally, download any file which extension is not recognized
+(this behavior depends on the browser you are using). It is therefore recommended to use a \OSC{.txt} extension for any textual resource with non-standard extension. For example, a \OSC{score.gmn} file could be renamed and used as \OSC{score.gmn.txt}.
+
+
+%===============================
+%:Unsupported
+\toplevel{Unsupported}
+\label{unsupported}
+
+%===============================
+%: Unsupported objects
+\sublevel{Unsupported objects}
+\label{unsupportedObjects}
+
+The table \ref{unsupportedTbl} presents the objects that are not supported:
+
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{|c|l|}
+\hline
+Type & Comment \\
+\hline
+\OSC{fileWatcher} 	& unsupported \\
+\OSC{httpd} 		& unsupported server  \\
+\OSC{websocket} 	& unsupported server \\
+Faust plugins 		& deprecated and redesigned (see section \ref{faustObjects}) \\
+Gesture follower 	& unsupported \\
+\hline
+\end{tabular}
+\end{center}
+\caption{Unsupported objects}
+\label{unsupportedTbl}
+\end{table}%
+
+The following components are not yet implemented:
+\begin{itemize}
+\item graphic signals objects: \OSC{graph}, \OSC{fastgraph}, \OSC{radialgraph}
+\item Pianoroll stream: \OSC{pianorollstream} 
+\item Misc.: \OSC{grid} 
+\item Memory image: \OSC{memimg}
+\item Sensors: \OSC{acceleromter}, \OSC{gyroscope}, \OSC{compass}, etc.
+\end{itemize}
+
+
+%===============================
+%: Unsupported messages
+\sublevel{Unsupported messages}
+\label{unsupportedMessages}
+
+A number of messages are not supported in the web version, either because they do not make sense in the runtime context or because they cannot be implemented.
+
+%--------------------------------
+\subsublevel{Common messages}
+\label{webcommonMessages}
+
+\begin{itemize}
+\item \OSC{export}, \OSC{exportAll}, \OSC{save}: not implemented
+\item \OSC{shear}, \OSC{dshear}: not implemented
+\item \OSC{effect}: \OSC{colorize}: not implemented
+\item \OSC{edit}: not implemented
+\end{itemize}
+
+%--------------------------------
+\subsublevel{Application messages}
+\label{webappMessages}
+
+\begin{itemize}
+\item \OSC{quit}: do not make sense in the web environment
+\item \OSC{rootPath}: not implemented
+\item \OSC{mouse}: not yet implemented
+\item \OSC{read}: not implemented
+\item \OSC{load}: not implemented
+\item \OSC{port}, \OSC{outport}, \OSC{errport}: do not make sense without OSC
+\item \OSC{get}: \OSC{guido-version} \OSC{musicxml-version}: not implemented. \\
+Note that the corresponding components are loaded, they print their version number to the Javascript console.
+\end{itemize}
+
+%--------------------------------
+\subsublevel{Application log window}
+\label{weblogMessages}
+
+As mentioned above, the \OSC{log} window (address \OSC{/ITL/log}) is dependent on the host application. By default, input messages addressed to the \OSC{log} node are directed to the Javascript console.
+
+\begin{itemize}
+\item \OSC{clear}: dependent on the host application (do nothing by default)
+\item \OSC{save}: not supported due to the lack of file system
+\item \OSC{foreground}: dependent on the host application (do nothing by default)
+\item \OSC{wrap}: dependent on the host application (do nothing by default)
+\item \OSC{scale}: dependent on the host application (do nothing by default)
+\item \OSC{write}: dependent on the host application (write to the Javascript console by default)
+\end{itemize}
+
+
+%--------------------------------
+\subsublevel{Scene messages}
+\label{websceneMessages}
+
+\begin{itemize}
+\item \OSC{save}: not supported due to the lack of file system
+\item \OSC{foreground}: dependent on the host application (do nothing by default)
+\item \OSC{rootPath}: not yet implemented
+\item \OSC{load}: not yet supported
+\item \OSC{frameless} \OSC{windowOpacity}: not supported
+\end{itemize}
+
+%--------------------------------
+\subsublevel{Type specific messages}
+\label{webtypesMessages}
+
+\begin{itemize}
+\item \OSC{brushstyle}: not yet implemented
+\item Piano roll messages: not yet implemented
+\item Video \OSC{get} messages: not yet implemented
+\item SVG \OSC{animate}: not yet implemented
+\item Arc \OSC{close}: not yet implemented
+\item Line \OSC{arrows}: not yet implemented
+\item \OSC{debug} node: not yet implemented
+\end{itemize}
+
+Symbolic score:
+\begin{itemize}
+\item \OSC{columns} \OSC{rows}: not supported
+\item \OSC{pageFormat}: not yet implemented
+\item \OSC{get}: \OSC{pageCount} \OSC{systemCount}: not yet implemented
+\end{itemize}
+
+%--------------------------------
+\subsublevel{Synchronization}
+\label{webSynchronization}
+
+The following synchronisation modes are not yet supported:
+\begin{itemize}
+\item Stretch modes: \OSC{h}, \OSC{hv}
+\end{itemize}
+
+%--------------------------------
+\subsublevel{Events}
+\label{webEvents}
+
+The following events are not yet supported:
+\begin{itemize}
+\item Touch events: \OSC{touchBegin}, \OSC{touchEnd}, \OSC{touchUpdate}
+\item Url events: \OSC{success}, \OSC{error}, \OSC{cancel}
+\item Score event: \OSC{pageCount}
+\item \OSC{export}: not supported since the \OSC{export} message is not supported
+\item \OSC{endPaint}: not supported
+\end{itemize}
+
+%===============================
+%:New messages
+\toplevel{Specific new messages}
+\label{newMessages}
+
+%--------------------------------
+\sublevel{Leveraging CSS}
+\label{webCSS}
+
+\href{https://www.w3schools.com/css/css_intro.asp}{Cascading Style Sheets} [CSS] are a powerful way to control the appearance of elements on a web page. The Web version of INScore provides a specific \OSC{class} message to use CSS in parallel to the standard mechanisms. This message is supported by all the INScore objects.
+
+\begin{rail}
+classMsg : 'class' ([1]| [2] className +)
+\end{rail}
+
+\begin{itemize}
+\item 1: without argument, remove all class settings
+\item 2: set the CSS classes of an object
+\end{itemize}
+
+\note{}\\
+If a \OSC{class} message has not the expected effect, it's likely because the CSS properties of the target object are set by the standard INScore mechanisms (like color, border, font-size, etc.). As the own attributes of an object have precedence over the class of the object, the properties of the class are then ignored. You can force the properties of the class by adding the CSS rule \OSC{!important} which will override all previous styling rules for that specific property.
+
+%===============================
+% Midi support
+
+
+%===============================
+%:Audio objects
+\toplevel{Audio objects}
+\label{audioObjects}
+
+%===============================
+%:Faust objects
+\sublevel{Audio objects}
+\label{audioObjects}
+
+Audio objects are \emph{connectable} objects i.e. objects which output can be connected to the input of another audio object. In the INScore model, the following objects are audio objects: \OSC{audio}, \OSC{video}, \OSC{faust} (see section \ref{faustObjects}) and \OSC{audioio} (see section \ref{audioioObjects}).
+
+Audio objects support the following messages:
+
+\begin{rail}
+audioMsgs : ('connect' | 'disconnect') ( destination + )
+\end{rail}
+
+\begin{itemize}
+\item \OSC{connect}: connect the outputs of the object to the destination inputs. The destination must be a another audio object. Inputs and outputs count must be the same on source and destination. The destination supports regular expressions.
+\item \OSC{disconnect}: disconnect the outputs of the object from the destination inputs. Note that errors (e.g. no existing connection with the destination) are silently ignored.
+\end{itemize}
+
+\note{}\\
+The \OSC{connect} message assumes that the source and destination are located in the same hierarchy (i.e. they have the same parent). 
+
+\begin{rail}
+audiogetMsgs : 'get' ('connect' | 'in' | 'out')
+\end{rail}
+
+\begin{itemize}
+\item \OSC{in}: gives the number of inputs of the audio object
+\item \OSC{out}: gives the number of outputs of the audio object
+\end{itemize}
+
+%===============================
+%:Faust objects
+\sublevel{Faust objects}
+\label{faustObjects}
+
+\href{https://faust.grame.fr/}{Faust} is a functional programming language for sound synthesis and audio processing.
+Faust objects are available, providing that the Faust library has been loaded.
+
+%--------------------------------
+\subsublevel{Creating a Faust object}
+\label{webFaust}
+
+The \OSC{faust} or \OSC{faustf} types must be used to create a Faust object.
+
+\note{}\\
+The \OSC{faust} type exists with the native version but to load a pre-compiled DSP. \OSC{faustdsp} and \OSC{faustdspf} types are not supported.
+
+\begin{rail}
+setFaust : 'set' (([1] 'faust' (| int32) dspCode)
+				| ([2] 'faustf' (| int32) dspFile))
+
+\end{rail}
+
+The expected arguments of the \OSC{set} message are:
+\begin{itemize}
+\item an optional integer that indicates a number of voices used to create a polyphonic DSP (see section \ref{webFaustPoly}). Note that when present, a polyphonic DSP is created even if equal to 1.
+\item 1: Faust DSP code (see the \href{https://faustdoc.grame.fr/}{Faust language} for more information).
+\item 2: a Faust DSP file.
+\end{itemize}
+
+By default, a Faust DSP appears as a browsable block diagram.
+
+\note{}\\
+The Faust language uses characters that have a special meaning in HTML: for example, with the split operator \OSC{<:}, the '\OSC{<}' character will be interpreted as an opening HTML tag and you should use HTML escapes (e.g. \OSC{\&lt;} instead of \OSC{<}). This is necessary for inline DSP code only, DSP files are not concerned.
+
+%--------------------------------
+\subsublevel{Faust messages}
+\label{webFaustMsgs}
+
+Faust objects supports the audio objects messages plus an additional query message:
+
+\begin{rail}
+faustgetMsgs : 'get' 'ui'
+\end{rail}
+
+\begin{itemize}
+\item \OSC{ui}: gives the Faust processor parameters (see section \ref{webFaustParams}) i.e. for each parameter: its OSC address followed by the parameter UI type, a label, the minimum and maximum values and the parameter step.
+\end{itemize}
+
+
+%--------------------------------
+\subsublevel{Faust objects parameters}
+\label{webFaustParams}
+
+A Faust DSP code can declare UI elements that are used by \emph{architecture files} to build controllers providing users with dynamic control of the DSP parameters. In INScore, DSP UI elements are used to extend the Faust object address space. For example, when a DSP code declares a UI element named 'Volume', a Faust object which address is \OSC{/ITL/scene/dsp} is extended as \OSC{/ITL/scene/dsp/Volume}.
+
+Faust parameters support two types of messages:
+
+\begin{rail}
+faustParamMsgs : [1] float32 | [2] 'get'
+\end{rail}
+
+\begin{itemize}
+\item 1: set the parameter value
+\item 2: gives the parameter value
+\end{itemize}
+
+\note{}\\
+When a parameter which type is \OSC{button} is set to 1, it is automatically reset to zero after a short time (corresponding at least to one audio buffer size).
+
+%--------------------------------
+\subsublevel{Polyphonic objects}
+\label{webFaustPoly}
+
+Polyphonic objects (i.e. Faust objects created using the optional voice number) support additional messages:
+
+\begin{rail}
+faustPolyMsgs : (('keyOn' | 'keyOff') chan pitch vel)
+				| 'allNotesOff'
+\end{rail}
+
+\begin{itemize}
+\item \OSC{keyOn} and \OSC{keyOff} messages take 3 integer parameters: a MIDI channel, the note pitch and the velocity.
+\item \OSC{allNotesOff}: similar to MIDI all notes off message
+\end{itemize}
+
+%===============================
+%:  Audio IO
+\sublevel{Audio Input / Output}
+\label{audioioObjects}
+
+Audio input / output objects are provided as audio object (\see section \ref{audioObjects}) to the represent the physical audio inputs and outputs, in order to homogenize the connection process.
+An audio input / output type is \OSC{audioio}. It is created with a number of inputs and outputs as arguments.
+
+\begin{rail}
+audioioMsgs : 'set' 'audioio' int32 int32
+\end{rail}
+
+\note\\
+The current Javascript implementation automatically creates an audio input objet named \OSC{audioInput} (if any) and an audio output object named  \OSC{audioOutput} (if any). Thus the names \OSC{audioInput} and \OSC{audioOutput} are reserved and you should avoid to use them (unless audio connections are not needed).
+ 
+
+%===============================
+%:Communication
+\toplevel{Communication scheme}
+\label{communication}
+
+INScore forwarding mechanism supports \OSC{http} and \OSC{ws} protocols since version 1.27. Since these protocols are connection based, a counterpart \OSC{connect} message is provided with the Web version.
+
+\begin{rail}
+connectMsg : ('connect' ( [1] | [2] remoteHost +))
+\end{rail}
+
+\begin{itemize}
+\item 1) removes the existing set of connections,
+\item 2) connect to a list of remote hosts. Once the connection is established, the local INScore engine may receive messages from the remote hosts. To establish the connection, the remote hosts must have set a forwarding mechanism using the same protocol with the same port number. 
+\end{itemize}
+
+\begin{rail}
+remoteHost : (([1] 'http://' |  [2] 'https://' |  [3] 'ws://') hostname ':' portnum) +
+\end{rail}
+
+\begin{itemize}
+\item 1) uses \OSC{http} as communication protocol,
+\item 2) uses \OSC{https},
+\item 3) uses \OSC{websockets}. 
+\end{itemize}
+
+\sublevel{Web messages format}
+\label{msgFormat}
+
+Messages emitted by the \OSC{http} and \OSC{ws} forwarding mechanism and received by connected clients are encoded in \href{https://www.json.org/}{JSON} and transmitted as base64 encoded packets. The JSON format is the following:
+\sample{\{\\
+\jsonindent 'id' : number , \\
+\jsonindent 'method' : 'post' , \\
+\jsonindent 'data' : textual inscore messages \\
+ \}
+}
+
+\begin{itemize}
+\item \OSC{id}: is a packet unique identifier (currently unused)
+\item \OSC{method}: value must be 'post'
+\item \OSC{data}: must contain a valid inscore script
+\end{itemize}
+
+Although the native version of INScore supports this format for the \OSC{http}, \OSC{https} and \OSC{ws} protocols, nothing prohibits another application to control INScore web pages, provided that the format described above is respected.
+
+
+
+\end{document}

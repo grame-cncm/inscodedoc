@@ -3,7 +3,9 @@
 <div><img class=ilogo alt="inscore" src="imgs/inscore.png" /></div>
 
 [**INScore**](https://inscore.grame.fr) is an environment for the design of interactive augmented music scores oriented towards unconventional uses of music notation and representation, including real-time symbolic music notation capabilities. INScore native version is fully controllable using Open Sound Control [OSC] messages.  
-**INScore scripting language** is an extended textual version of theses messages that allows you to design scores in a modular and incremental way. This site documents the scripting language. To test the system, you can go to the online [INScore editor](https://inscoreweb.grame.fr).
+**INScore scripting language** is an extended textual version of theses messages that allows you to design scores in a modular and incremental way. To test the system, you can go to the online [INScore editor](https://inscoreweb.grame.fr).
+
+This site documents the INScore messages and the scripting language. 
 
 _Note_: All the features described in this document are not available with the online editor.  
 At this time, the documentation does not yet reflect the differences between the web version and the native version of INScore.

@@ -1,0 +1,401 @@
+
+\documentclass[a4paper,twoside]{report}
+
+\usepackage{INScore}
+
+\fancypagestyle{mystyle}{%
+  \fancyhf{}.          % Clear header and footer
+  \fancyhead[LE,RO]{\textsc{INScore Scripting Language}}
+  \fancyfoot[RO,LE]{\thepage}
+  \renewcommand{\headrulewidth}{0.4pt}% Line at the header visible
+%  \renewcommand{\footrulewidth}{0.4pt}% Line at the footer visible
+}
+\fancypagestyle{plain}{%
+  \fancyhf{}%
+  \fancyfoot[LE,RO]{\thepage}
+  \renewcommand{\headrulewidth}{0pt}
+%  \fancyhead[LE,RO]{\textsc{INScore OSC Messages Reference}}
+}
+
+
+\makeatletter
+\newcommand{\toplevel}[1]	{\chapter{#1}}
+\newcommand{\sublevel}[1]	{\section{#1}}
+\newcommand{\subsublevel}[1]	{\subsection{#1}}
+
+\newcommand{\icomment} 		{\#}
+\newcommand{\inscoreend}  {\_\_END\_\_}
+
+\makeatother
+\pagestyle{empty}
+
+\begin{document}
+
+\title{\vspace*{5cm}INScore v.\inscoreversion \\ - \\ Scripting language}
+\author{D. Fober\\ 
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\includegraphics[width=30mm]{imgs/Logo_Grame}\\
+Centre national de création musicale\\
+}
+\date{}
+
+\maketitle
+\thispagestyle{empty}
+
+\cleardoublepage
+\tableofcontents
+\thispagestyle{empty}
+
+\pagestyle{mystyle}
+\setcounter{page}{1}
+
+
+
+%===============================
+%:Scripting
+\toplevel{INScore Scripting Language}
+\label{scripting}
+
+%===============================
+%:    Introduction
+\sublevel{Introduction}
+\label{introduction}
+
+INScore scripting language is based on a textual version of OSC messages, extended with variables, Javascript sections and Mathematical expressions.
+INScore scripts files are expected to carry a \OSC{.inscore} extension. You can drop them to the INScoreViewer application or to any opened INScore scene.
+
+The application or scene state can be saved (using the \OSC{save} message) as files containing textual OSC messages. These files can be edited or created from scratch using any text editor. 
+
+%===============================
+%:    Statements
+\sublevel{Statements}
+\label{scriptstatement}
+An INScore file is a list of textual expressions. An expression is:
+\begin{itemize}
+\item a message: basically a textual OSC message extended to support URL like addresses and variables as parameters.
+\item a variable declaration.
+\item a javascript section that may generate messages as output.
+\item comments.
+\item an end marker '\OSC{\inscoreend}' to declare a script end. After the marker, the remaining part of the script will be ignored.
+\end{itemize}
+
+\begin{rail}
+expression :  
+		 	message ";"
+		| 	variabledecl ";"
+		| 	javascript
+		| 	comments
+		|   end
+\end{rail}
+
+Messages and variables declarations must be followed by a semicolon that is used as statements separator.
+
+%===============================
+%:    Messages
+\sublevel{Messages}
+\label{scriptmsgs}
+
+Messages are basic OSC messages that support an OSC address extension scheme and relative addresses that are described below.
+Messages parameters can be replaced by variables that are evaluated at parsing level. Variables are described in section \ref{scriptvar}.
+
+\subsublevel{Extended OSC addresses}
+\label{extaddress}
+
+OSC addresses can be extended to target other applications, including on other hosts.
+
+\begin{rail} 
+address : (| (IPAddress | hostname) ':' port)  OSCAddress
+\end{rail}
+
+Using the address extension scheme, a script may be designed to initialize an INScore scene and external applications as well, including on remote hosts.
+
+\example\\
+Initializing a score and an external application listening on port 12000 and running on a remote host named \OSC{host.adomain.net}.
+\sample{/ITL/scene/score set gmnf 'myscore.gmn';\\
+host.adomain.net:12000/run 1;
+}
+
+
+\subsublevel{Relative addresses}
+\label{reladdress}
+
+Relative addresses have been introduced to provide more flexibility in the score design process. A relative address starts with '\OSC{./}'. It is evaluated in the context of the message receiver: a legal OSC address is dynamically constructed using the receiver address  to prefix the relative address. 
+
+\example
+\sample{the relative address \hspace*{3mm}./score \\
+addressed to \hspace*{15.4mm}/ITL/scene/layer\\
+will be evaluted as \hspace*{4mm}/ITL/scene/layer/score
+}
+
+The receiver context may be:
+\begin{itemize}
+\item the INScore application address (i.e. \OSC{/ITL}) for messages enclosed in a file loaded at application level (using the \OSC{load} message addressed to the application) or for files dropped to the application or given as arguments of the INScoreViewer application.
+\item a scene address for messages enclosed in a file loaded at scene level (using the \OSC{load} message addressed to a scene) or for files or messages dropped to a scene window.
+\item any object address when the messages are passed as arguments of an \OSC{eval} message (see \href{https://inscoredoc.grame.fr/refs/4-miscmsgs/}{OSCMsg reference}).
+\end{itemize}
+
+\example\\
+Using a set of messages in different contexts:
+\sample{score = (\\
+\hspace*{5mm}./score set gmn '[a f g]', \\
+\hspace*{5mm}./score scale 2.\\
+);\\
+/ITL/scene/l1 eval \$score;\\
+/ITL/scene/l2 eval \$score;
+}
+
+\note{}\\
+Legal OSC addresses (i.e. addresses that start with '/') that are given as argument of an \OSC{eval} message are not affected by the address evaluation.
+
+
+%===============================
+%:    types
+\sublevel{Types}
+\label{scripttypes}
+
+The message parameters types are constrained by the OSC protocol: any parameter is converted to an OSC type (i.e. int32, float or string) at parsing level.
+A special attention must be given to strings in order to discriminate addresses and parameters. Strings intended as parameters must:
+\begin{itemize}
+\item be quoted, using single or double quotes. Note that an ambiguous quote included in a string can be escaped using a '\verb+\+'.
+\item or avoid any special characters i.e. any other character than \OSC{[\_-a-zA-Z0-9]}.
+\end{itemize}
+
+\note{}\\
+\OSC{text} objects are permissive with the above rules: spaces don't have to be quoted, they accept also numbers as input arguments (they are converted to strings). 
+
+\example \\
+Different string parameters
+\sample{/ITL/scene/text set txt "Hello world";  \icomment string including a space can be quoted \\
+/ITL/scene/text set txt Hello world;   \icomment text objects support stream like parameters \\
+/ITL/scene/img set file 'anImage.png';  \icomment dots must be quoted too \\
+/ITL/scene/foo set txt no\_quotes\_needed;
+}
+
+
+%===============================
+%:    Variables
+\sublevel{Variables}
+\label{scriptvar}
+
+A variable declaration associates a name with a list of parameters or a list of messages.
+Parameters must follow the rules given in section \ref{scripttypes}. They may include previously declared variables. A message list must be enclosed in parenthesis and a comma must be used as messages separator.
+
+\begin{rail} 
+variabledecl : 'ident' '=' ( (param | variable) +
+					| '(' (message + ',') ')' ) ';'
+\end{rail}
+
+\example \\
+Variables declarations
+\sample{color = 200 200 200; \\
+colorwithalpha = \$color 100; \icomment using another variable \\
+msgsvar= ( \hspace*{2.7cm}  \icomment a variable referring to a message list \\
+\hspace*{1cm} localhost:7001/world "Hello world", \\
+\hspace*{1cm} localhost:7001/world "how are you ?" );
+}
+
+
+A variable may be used in place of any message parameter. A reference to a variable must have the form \OSC{\$ident} where \OSC{ident} is a previously declared variable. A variable is evaluated at parsing level and replaced by its content.
+
+\example \\
+Using a variable to share a common position:
+\sample{x = 0.5;\\
+/ITL/scene/a x \$x;\\
+/ITL/scene/b x \$x;
+}
+
+Variables can be used in interaction messages as well, which may also use the variables available from events context. To differentiate between a \emph{script} and an \emph{interaction} variable, the latter must be quoted to be passed as strings and to prevent their evaluation by the parser. 
+
+\example \\
+Using variables in interaction messages: \$sx is evaluated at event occurrence	and \$y is evaluated at parsing level.
+\sample{y = 0.5;\\
+/ITL/scene/foo watch mouseDown (/ITL/scene/foo "\$sx" \$y);
+}
+
+%===============================
+%:    Environnement variables
+\sublevel{Environnement variables}
+\label{envvar}
+
+Environnement variables are predefined variables available in a script context. They provide information related to the current context. Current environment variables are:
+\begin{itemize}
+\item \textbf{\OSC{OSName}}: gives the current operating system name. The value is among \OSC{"MacOS"}, \OSC{"Windows"}, \OSC{"Linux"}, \OSC{"Android"}, \OSC{"iOS"} and \OSC{"Web"}.
+\item \textbf{\OSC{OSId}} : gives the current operating system as a numeric identifier. Returned value is (in alphabetic order): 
+\begin{itemize}
+\item 1 for Android
+\item 2 for iOS
+\item 3 for Linux 
+\item 4 for MacOS 
+\item 5 for Windows 
+\item 6 for the Web environment 
+\end{itemize}
+\end{itemize}
+
+\note\\
+There is nothing to prevent overriding of an environment variable. It's the script responsibility to handle variable names collisions.
+
+
+%===============================
+%:    Message based parameters
+\sublevel{Message based parameters}
+\label{scriptmsgparam}
+
+A message parameter may also use the result of a \OSC{get} message as parameter specified like a message based variable.
+The message must be enclosed in parenthesis with a leading \$ sign.
+
+\begin{rail} 
+msgparam : dollar '(' (message) ')'
+\end{rail}
+
+\example \\
+Displaying INScore version using a message parameter:
+\sample{/ITL/scene/version set  txt "INScore version is" \$(/ITL get version);}
+
+\note{}\\
+Message based parameters are evaluated by the parser. Thus when the system state is modified by a script before a message parameter, these modifications won't be visible at the time of the parameter evaluation because all the messages will be processed by the next time task. For example:\\
+\sample{/ITL/scene/obj x 0.1;\\
+/ITL/scene/foo x \$(/ITL/scene/foo get x);
+}
+x position of \OSC{/ITL/scene/foo} will be set to x position of \OSC{/ITL/scene/obj} at the time of the script evaluation (that may be different to 0.1).
+
+
+%===============================
+%:    languages
+\sublevel{Javascript}
+\label{javascript}
+
+INScore supports Javascript as scripting languages. Javascript is embedded using the Qt Javascript engine. A script section is indicated similarly to a Javascript section in html i.e. enclosed in an opening \OSC{<?} and a closing \OSC{?>}.
+
+\begin{rail} 
+script : '<?' ('javascript') script '?>'
+\end{rail}
+
+The principle of using Javascript sections in INScore files is the following: the Javascript sections are passed to the Javascript engine and are expected to produce textual INScore messages on output. These messages are then parsed as if replacing the corresponding script section.\\
+INScore variables are exported to the Javascript environment.
+
+\note{}\\
+A Javascript section may produce not output, for example when it declares functions to be used later.
+
+
+\example
+\sample{<? javascript \\
+\hspace*{3mm} "/ITL/scene/version set txt 'Javascript v. " + version() + "';" \\
+?>
+}
+
+A single persistent Javascript context is created at application level and shared with each scene.
+
+%===============================
+%:    The Javascript objects
+\subsublevel{The Javascript object}
+\label{jsobj}
+
+The Javascript engine is available at runtime at the address \OSC{/ITL/\textit{scene}/javascript}. It has a \OSC{run} method that takes a javascript string as parameter.
+
+\begin{rail} 
+javascript :  'run' 'code'
+\end{rail}
+
+The \OSC{run} method evaluates the code. Similarly to javascript sections in scripts, the output of the evaluation is expected to be a string containing valid INScore messages that are next executed. 
+Actually, including a javascript section in a script is equivalent to send the \OSC{run} message with the same code as parameter to the javascript object.
+
+The Javascript engine is based on the Qt5 Javascrip engine, extended with INScore specific functions:
+\begin{itemize}
+\item \textbf{\OSC{version()}}: gives the javascript engine version number as a string.
+\item \textbf{\OSC{print(val1 [, val2 [, ...]])}}: print the arguments to the OSC standard output. The arguments list is prefixed by 'javascript:'. The function is provided for debug purpose.
+\item \textbf{\OSC{readfile(file)}}: read a file and returns its content as a string. The file name could be specified as an absolute or relative path. When relative, the file is searched in the application current \OSC{rootPath}.
+\item \textbf{\OSC{post(address [,...])}}: build an OSC message and post it for delayed processing i.e. to be processed by the next time task. \OSC{address} is an OSC or an extended OSC address. Optional arguments are the message parameters.
+\item \textbf{\OSC{osname()}}: gives the current operating system name.
+\item \textbf{\OSC{osid()}}: gives the current operating system as a numeric identifiant. Returned value is (in alphabetic order): 
+\begin{itemize}
+\item 1 for Android
+\item 2 for iOS.
+\item 3 for Linux, 
+\item 4 for MacOS, 
+\item 5 for Windows
+\end{itemize}
+\end{itemize}
+
+
+\example\\
+Posting a message from a Javascript section:
+\sample{<?javascript \\
+\hspace*{3mm} post ("/ITL/scene/obj", "dalpha", -1);";\\ 
+\hspace*{3mm} // The message /ITL/scene/obj dalpha -1 \\
+\hspace*{3mm} // will be evaluated by the next time task. \\
+?>
+}
+
+Declaration of a Javascript function to be used later:
+\sample{<?javascript \\
+\hspace*{3mm} // declare a function foo() \\
+\hspace*{3mm} function foo(arg) \{\\ 
+\hspace*{6mm}  return "/ITL/scene/obj set txt foo called with " + arg + ";"; \\
+\hspace*{3mm} \} \\
+?>\\
+\\
+\# call the foo function \\
+<?javascript foo(1)?>\\
+\\
+\# or call the foo function using the run message \\
+/ITL/scene/javascript run "foo(1)";
+}
+
+%===============================
+%:    Comments
+\sublevel{Comments}
+\label{comments}
+
+There are two ways to comment code inside a script:
+\begin{itemize}
+\item line comments: the '\#' character is used for line comments, anything after a '\#' is ignored.
+\item section comments: section comments start with '(*' and end with '*)', anything between them is ignored.
+\end{itemize}
+
+\example\\
+\sample{\# this is a line comment \\
+/ITL/scene/* del; \\
+\\ 
+(*\\
+\hspace*{3mm} here is a section comment\\ 
+\hspace*{3mm} section comments are multi-lines comments\\
+{*}) \\
+\\
+/ITL/scene/hello set txt "Hello world!";  \# the preceding message is not commented\\
+\\
+\inscoreend\\
+\\
+and everything below the \inscoreend\ marker is also ignored
+}
+
+
+%===============================
+%:Math expressions
+\input{MathExpressions/mathexpressions.tex}
+
+%===============================
+%:Appendix
+\toplevel{Appendices}
+\label{appendices}
+
+\input{yacc.tex}
+
+\input{tokens.tex}
+
+\end{document}

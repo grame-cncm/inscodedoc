@@ -1,0 +1,4 @@
+ComplexDiagram(
+	Choice (0, Sequence (Comment ('1'), NonTerminal('matharg'), '+', NonTerminal('matharg')), Sequence (Comment ('2'), NonTerminal('matharg'), '-', NonTerminal('matharg')), Sequence (Comment ('3'), '-', NonTerminal('matharg')), Sequence (Comment ('4'), NonTerminal('matharg'), '*', NonTerminal('matharg')), Sequence (Comment ('5'), NonTerminal('matharg'), '/', NonTerminal('matharg')), Sequence (Comment ('6'), NonTerminal('matharg'), '%', NonTerminal('matharg')), Sequence (Comment ('7'), '(', NonTerminal('mathexpr'), ')'), Sequence (Comment ('8'), 'max', '(', OneOrMore (NonTerminal('matharg')), ')'), Sequence (Comment ('9'), 'min', '(', OneOrMore (NonTerminal('matharg')), ')'), Sequence (Comment ('10'), '(', NonTerminal('mathbool'), '?', NonTerminal('matharg'), ':', NonTerminal('matharg'), ')'))
+).addTo()
+

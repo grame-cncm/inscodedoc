@@ -1,6 +1,7 @@
 
 function basename(file) {
     gsub(/\..*/, "", file);
+    gsub(/^[^/]*\//, "", file);
     return file;
 }
 
@@ -33,8 +34,8 @@ BEGIN {
 	WAITLABEL = 0;
 	SECTION = "";
 	FILE    = "";
-	INDEX   = "index.md";
-	SED     = "index.sed";
+	INDEX   = OUTDIR "/index.md";
+	SED     = OUTDIR "/index.sed";
 	FS      = "{";
 	print > INDEX;
 	print > SED;
@@ -85,8 +86,7 @@ END {
 
 /\\label/ {
 	if (WAITLABEL) {
-		if (FILE) close(FILE);
-	 	FILE = N "-" getTagContent($2) ".tmp";
+	 	FILE = OUTDIR "/" N "-" getTagContent($2) ".tmp";
 	 	N += 1;
 	 	print "{!include.txt!}\n" > FILE;
 	 	print SECTION >> FILE;

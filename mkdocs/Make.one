@@ -1,0 +1,47 @@
+
+MAKE ?= make
+AWK  ?= awk
+
+DOCSDIR		:= ./docs
+SPLIT 		:= $(wildcard $(OUTDIR)/*.tmp)
+SECTIONS 	:= $(SPLIT:%.tmp=%.md)
+MDFILES 	:= $(SPLIT:$(OUTDIR)/%.tmp=$(DOCSDIR)/$(OUTDIR)/%.md)
+
+ifeq ($(INDEX), yes)
+	MDINDEX := $(DOCSDIR)/$(OUTDIR)/index.md
+endif
+
+
+all:
+	$(MAKE) split -f Make.one
+	$(MAKE) fullrefs -f Make.one
+	$(MAKE) md -f Make.one
+
+test:
+	echo OSCDIR $(OSCDIR)
+
+####################################################################
+md: $(MDFILES) $(MDINDEX)
+
+fullrefs: $(OUTDIR)/fullrefs.sed
+$(OUTDIR)/fullrefs.sed : $(SPLIT)
+	grep '\\label' $(SPLIT) | sed -e 's/^$(OUTDIR)\///' | sed -f scripts/labels.sed > $@
+
+### split input files in sections
+split : $(OUTDIR) $(DOCSDIR)/$(OUTDIR)
+	$(AWK) -f scripts/scan-input.awk $(SRCFILE) | $(AWK) -f scripts/split.awk -v OUTDIR=$(OUTDIR)
+
+### create output folders
+$(OUTDIR):
+	mkdir $@
+$(DOCSDIR)/$(OUTDIR):
+	mkdir $@
+
+$(DOCSDIR)/$(OUTDIR)/%.md:$(OUTDIR)/%.tmp
+	sed -f scripts/tags.sed $< | $(AWK) -f scripts/samples.awk | $(AWK) -f scripts/figures.awk  \
+	| $(AWK) -f scripts/tables.awk | $(AWK) -f scripts/rail.awk FILE=$< \
+	| sed -f $(OUTDIR)/fullrefs.sed | sed -f $(OUTDIR)/index.sed | sed -f scripts/cleanup.sed  | grep -v __removed__ > $@
+			
+$(DOCSDIR)/$(OUTDIR)/index.md:$(OUTDIR)/index.md
+	sort $< | $(AWK) -f scripts/index.awk > $@
+

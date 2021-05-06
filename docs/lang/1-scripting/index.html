@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Language - INScore Documentation</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+        <link href="/css/inscore.css" rel="stylesheet">
+        <link href="/css/pubs.css" rel="stylesheet">
+        <link href="/BNF/railroad-diagrams.css" rel="stylesheet">
+
+        <script src="../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">INScore Documentation</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href="../.." class="nav-link">Home</a>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Reference <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">Messages</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../../refs/1-introduction/" class="dropdown-item">Introduction</a>
+</li>
+            
+<li>
+    <a href="../../refs/2-genformat/" class="dropdown-item">Format of a message</a>
+</li>
+            
+<li>
+    <a href="../../refs/3-common/" class="dropdown-item">Common Messages</a>
+</li>
+            
+<li>
+    <a href="../../refs/4-time/" class="dropdown-item">Time Messages</a>
+</li>
+            
+<li>
+    <a href="../../refs/5-miscmsgs/" class="dropdown-item">Miscellaneous</a>
+</li>
+            
+<li>
+    <a href="../../refs/6-setsect/" class="dropdown-item">The set Message</a>
+</li>
+            
+<li>
+    <a href="../../refs/7-getsect/" class="dropdown-item">The get Message</a>
+</li>
+            
+<li>
+    <a href="../../refs/8-specificMsg/" class="dropdown-item">Specific Messages</a>
+</li>
+            
+<li>
+    <a href="../../refs/9-ITL/" class="dropdown-item">Application Messages</a>
+</li>
+            
+<li>
+    <a href="../../refs/10-scene/" class="dropdown-item">Scene Messages</a>
+</li>
+            
+<li>
+    <a href="../../refs/11-forwarding/" class="dropdown-item">Messages Forwarding</a>
+</li>
+            
+<li>
+    <a href="../../refs/12-layers/" class="dropdown-item">Layers</a>
+</li>
+            
+<li>
+    <a href="../../refs/13-mapping/" class="dropdown-item">Mapping</a>
+</li>
+            
+<li>
+    <a href="../../refs/14-syncmsg/" class="dropdown-item">Synchronization</a>
+</li>
+            
+<li>
+    <a href="../../refs/15-graphsig/" class="dropdown-item">Graphic signals</a>
+</li>
+            
+<li>
+    <a href="../../refs/16-sensors/" class="dropdown-item">Sensors</a>
+</li>
+            
+<li>
+    <a href="../../refs/17-interaction/" class="dropdown-item">Interaction</a>
+</li>
+            
+<li>
+    <a href="../../refs/18-scoreExpr/" class="dropdown-item">Score Expressions</a>
+</li>
+            
+<li>
+    <a href="../../refs/19-plugins/" class="dropdown-item">Plugins</a>
+</li>
+            
+<li>
+    <a href="../../refs/20-changes/" class="dropdown-item">Changes list</a>
+</li>
+            
+<li>
+    <a href="../../refs/" class="dropdown-item">Index</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">Scripting language</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="./" class="dropdown-item active">Language</a>
+</li>
+            
+<li>
+    <a href="../2-mathExpr/" class="dropdown-item">Math. expressions</a>
+</li>
+            
+<li>
+    <a href="../3-appendices/" class="dropdown-item">Grammar</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">INScore Web</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../../web/1-introduction/" class="dropdown-item">Introduction</a>
+</li>
+            
+<li>
+    <a href="../../web/2-behavior/" class="dropdown-item">Global changes</a>
+</li>
+            
+<li>
+    <a href="../../web/3-unsupported/" class="dropdown-item">Unsupported messages</a>
+</li>
+            
+<li>
+    <a href="../../web/4-newMessages/" class="dropdown-item">Specific messages</a>
+</li>
+            
+<li>
+    <a href="../../web/5-faustObjects/" class="dropdown-item">Faust objects</a>
+</li>
+            
+<li>
+    <a href="../../web/6-communication/" class="dropdown-item">Communication</a>
+</li>
+    </ul>
+  </li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Documents <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="http://berio.grame.fr/MusicNotation/Introduction-to-INScore/" class="dropdown-item">Tutorial</a>
+</li>
+                                    
+<li>
+    <a href="../../rsrc/INScoreMessages.pdf" class="dropdown-item">Messages reference</a>
+</li>
+                                    
+<li>
+    <a href="../../rsrc/INScoreLang.pdf" class="dropdown-item">Language reference</a>
+</li>
+                                    
+<li>
+    <a href="../../rsrc/INScoreLang.pdf" class="dropdown-item">Web reference</a>
+</li>
+                                    
+<li>
+    <a href="../../papers/" class="dropdown-item">Papers</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Download <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="https://github.com/grame-cncm/inscore/releases" class="dropdown-item">INScore</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../about/" class="nav-link">About</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../../refs/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../2-mathExpr/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#inscore-scripting-language" class="nav-link">INScore Scripting Language</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#introduction" class="nav-link">Introduction</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#statements" class="nav-link">Statements</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#messages" class="nav-link">Messages</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#types" class="nav-link">Types</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#variables" class="nav-link">Variables</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#environnement-variables" class="nav-link">Environnement variables</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#message-based-parameters" class="nav-link">Message based parameters</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#javascript" class="nav-link">Javascript</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#comments" class="nav-link">Comments</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<script src='/BNF/railroad-diagrams.js'></script>
+
+<h1 id="inscore-scripting-language">INScore Scripting Language</h1>
+<p><a name="scripting"></a></p>
+<h2 id="introduction">Introduction</h2>
+<p><a name="introduction"></a></p>
+<p>INScore scripting language is based on a textual version of OSC messages, extended with variables, Javascript sections and Mathematical expressions.
+INScore scripts files are expected to carry a <span class="OSC">.inscore</span> extension. You can drop them to the INScoreViewer application or to any opened INScore scene.</p>
+<p>The application or scene state can be saved (using the <span class="OSC">save</span> message) as files containing textual OSC messages. These files can be edited or created from scratch using any text editor. </p>
+<h2 id="statements">Statements</h2>
+<p><a name="scriptstatement"></a>
+An INScore file is a list of textual expressions. An expression is:</p>
+<ul>
+<li>a message: basically a textual OSC message extended to support URL like addresses and variables as parameters.</li>
+<li>a variable declaration.</li>
+<li>a javascript section that may generate messages as output.</li>
+<li>comments.</li>
+<li>an end marker '<span class="OSC">\inscoreend</span>' to declare a script end. After the marker, the remaining part of the script will be ignored.</li>
+</ul>
+<div class="rail">
+<span class="railtitle">expression</span>
+<br /><script>
+ComplexDiagram(
+    Choice (0, Sequence (NonTerminal('message'), ";"), Sequence (NonTerminal('variabledecl'), ";"), NonTerminal('javascript'), NonTerminal('comments'), NonTerminal('end'))
+).addTo()
+
+</script>
+</div>
+
+<p>Messages and variables declarations must be followed by a semicolon that is used as statements separator.</p>
+<h2 id="messages">Messages</h2>
+<p><a name="scriptmsgs"></a></p>
+<p>Messages are basic OSC messages that support an OSC address extension scheme and relative addresses that are described below.
+Messages parameters can be replaced by variables that are evaluated at parsing level. Variables are described in section <a href="../1-scripting#scriptvar">scriptvar</a>.</p>
+<h3 id="extended-osc-addresses">Extended OSC addresses</h3>
+<p><a name="extaddress"></a></p>
+<p>OSC addresses can be extended to target other applications, including on other hosts.</p>
+<div class="rail">
+<span class="railtitle">address</span>
+<br /><script>
+ComplexDiagram(
+    Sequence (Optional  ( Sequence (Choice (0, NonTerminal('IPAddress'), NonTerminal('hostname')), ':', NonTerminal('port'))), NonTerminal('OSCAddress'))
+).addTo()
+
+</script>
+</div>
+
+<p>Using the address extension scheme, a script may be designed to initialize an INScore scene and external applications as well, including on remote hosts.</p>
+<p><span class="example">Example</span>
+Initializing a score and an external application listening on port 12000 and running on a remote host named <span class="OSC">host.adomain.net</span>.</p>
+<pre><code class="language-inscore">/ITL/scene/score set gmnf 'myscore.gmn';
+host.adomain.net:12000/run 1;
+</code></pre>
+<h3 id="relative-addresses">Relative addresses</h3>
+<p><a name="reladdress"></a></p>
+<p>Relative addresses have been introduced to provide more flexibility in the score design process. A relative address starts with '<span class="OSC">./</span>'. It is evaluated in the context of the message receiver: a legal OSC address is dynamically constructed using the receiver address  to prefix the relative address. </p>
+<p><span class="example">Example</span></p>
+<pre><code class="language-inscore">the relative address   ./score 
+addressed to   /ITL/scene/layer
+will be evaluted as   /ITL/scene/layer/score
+</code></pre>
+<p>The receiver context may be:</p>
+<ul>
+<li>the INScore application address (i.e. <span class="OSC">/ITL</span>) for messages enclosed in a file loaded at application level (using the <span class="OSC">load</span> message addressed to the application) or for files dropped to the application or given as arguments of the INScoreViewer application.</li>
+<li>a scene address for messages enclosed in a file loaded at scene level (using the <span class="OSC">load</span> message addressed to a scene) or for files or messages dropped to a scene window.</li>
+<li>any object address when the messages are passed as arguments of an <span class="OSC">eval</span> message (see <a href=https://inscoredoc.grame.fr/refs/4-miscmsgs/>OSCMsg reference</a>).</li>
+</ul>
+<p><span class="example">Example</span>
+Using a set of messages in different contexts:</p>
+<pre><code class="language-inscore">score = (
+  ./score set gmn '[a f g]', 
+  ./score scale 2.
+);
+/ITL/scene/l1 eval $score;
+/ITL/scene/l2 eval $score;
+</code></pre>
+<p><span class="note">Note: </span>
+Legal OSC addresses (i.e. addresses that start with '/') that are given as argument of an <span class="OSC">eval</span> message are not affected by the address evaluation.</p>
+<h2 id="types">Types</h2>
+<p><a name="scripttypes"></a></p>
+<p>The message parameters types are constrained by the OSC protocol: any parameter is converted to an OSC type (i.e. int32, float or string) at parsing level.
+A special attention must be given to strings in order to discriminate addresses and parameters. Strings intended as parameters must:</p>
+<ul>
+<li>be quoted, using single or double quotes. Note that an ambiguous quote included in a string can be escaped using a '\'.</li>
+<li>or avoid any special characters i.e. any other character than <span class="OSC">[_-a-zA-Z0-9]</span>.</li>
+</ul>
+<p><span class="note">Note: </span>
+<span class="OSC">text</span> objects are permissive with the above rules: spaces don't have to be quoted, they accept also numbers as input arguments (they are converted to strings). </p>
+<p><span class="example">Example</span> 
+Different string parameters</p>
+<pre><code class="language-inscore">/ITL/scene/text set txt &quot;Hello world&quot;;  # string including a space can be quoted 
+/ITL/scene/text set txt Hello world;   # text objects support stream like parameters 
+/ITL/scene/img set file 'anImage.png';  # dots must be quoted too 
+/ITL/scene/foo set txt no_quotes_needed;
+</code></pre>
+<h2 id="variables">Variables</h2>
+<p><a name="scriptvar"></a></p>
+<p>A variable declaration associates a name with a list of parameters or a list of messages.
+Parameters must follow the rules given in section <a href="../1-scripting#scripttypes">scripttypes</a>. They may include previously declared variables. A message list must be enclosed in parenthesis and a comma must be used as messages separator.</p>
+<div class="rail">
+<span class="railtitle">variabledecl</span>
+<br /><script>
+ComplexDiagram(
+    Sequence ('ident', '=', Choice (0, OneOrMore (Choice (0, NonTerminal('param'), NonTerminal('variable'))), Sequence ('(', OneOrMore (NonTerminal('message'), ','), ')')), ';')
+).addTo()
+
+</script>
+</div>
+
+<p><span class="example">Example</span> 
+Variables declarations</p>
+<pre><code class="language-inscore">color = 200 200 200; 
+colorwithalpha = $color 100; # using another variable 
+msgsvar= (     # a variable referring to a message list 
+   localhost:7001/world &quot;Hello world&quot;, 
+   localhost:7001/world &quot;how are you ?&quot; );
+</code></pre>
+<p>A variable may be used in place of any message parameter. A reference to a variable must have the form <span class="OSC">$ident</span> where <span class="OSC">ident</span> is a previously declared variable. A variable is evaluated at parsing level and replaced by its content.</p>
+<p><span class="example">Example</span> 
+Using a variable to share a common position:</p>
+<pre><code class="language-inscore">x = 0.5;
+/ITL/scene/a x $x;
+/ITL/scene/b x $x;
+</code></pre>
+<p>Variables can be used in interaction messages as well, which may also use the variables available from events context. To differentiate between a <strong>script</strong> and an <strong>interaction</strong> variable, the latter must be quoted to be passed as strings and to prevent their evaluation by the parser. </p>
+<p><span class="example">Example</span> 
+Using variables in interaction messages: $sx is evaluated at event occurrence   and $y is evaluated at parsing level.</p>
+<pre><code class="language-inscore">y = 0.5;
+/ITL/scene/foo watch mouseDown (/ITL/scene/foo &quot;$sx&quot; $y);
+</code></pre>
+<h2 id="environnement-variables">Environnement variables</h2>
+<p><a name="envvar"></a></p>
+<p>Environnement variables are predefined variables available in a script context. They provide information related to the current context. Current environment variables are:</p>
+<ul>
+<li><strong><span class="OSC">OSName</span></strong>: gives the current operating system name. The value is among <span class="OSC">"MacOS"</span>, <span class="OSC">"Windows"</span>, <span class="OSC">"Linux"</span>, <span class="OSC">"Android"</span>, <span class="OSC">"iOS"</span> and <span class="OSC">"Web"</span>.</li>
+<li>
+<p><strong><span class="OSC">OSId</span></strong> : gives the current operating system as a numeric identifier. Returned value is (in alphabetic order): </p>
+</li>
+<li>
+<p>1 for Android</p>
+</li>
+<li>2 for iOS</li>
+<li>3 for Linux </li>
+<li>4 for MacOS </li>
+<li>5 for Windows </li>
+<li>6 for the Web environment </li>
+</ul>
+<p><span class="note">Note:</span>
+There is nothing to prevent overriding of an environment variable. It's the script responsibility to handle variable names collisions.</p>
+<h2 id="message-based-parameters">Message based parameters</h2>
+<p><a name="scriptmsgparam"></a></p>
+<p>A message parameter may also use the result of a <span class="OSC">get</span> message as parameter specified like a message based variable.
+The message must be enclosed in parenthesis with a leading $ sign.</p>
+<div class="rail">
+<span class="railtitle">msgparam</span>
+<br /><script>
+ComplexDiagram(
+    Sequence (NonTerminal('dollar'), '(', NonTerminal('message'), ')')
+).addTo()
+
+</script>
+</div>
+
+<p><span class="example">Example</span> 
+Displaying INScore version using a message parameter:</p>
+<pre><code class="language-inscore">/ITL/scene/version set  txt &quot;INScore version is&quot; $(/ITL get version);
+</code></pre>
+<p><span class="note">Note: </span>
+Message based parameters are evaluated by the parser. Thus when the system state is modified by a script before a message parameter, these modifications won't be visible at the time of the parameter evaluation because all the messages will be processed by the next time task. For example:</p>
+<pre><code class="language-inscore">/ITL/scene/obj x 0.1;
+/ITL/scene/foo x $(/ITL/scene/foo get x);
+</code></pre>
+<p>x position of <span class="OSC">/ITL/scene/foo</span> will be set to x position of <span class="OSC">/ITL/scene/obj</span> at the time of the script evaluation (that may be different to 0.1).</p>
+<h2 id="javascript">Javascript</h2>
+<p><a name="javascript"></a></p>
+<p>INScore supports Javascript as scripting languages. Javascript is embedded using the Qt Javascript engine. A script section is indicated similarly to a Javascript section in html i.e. enclosed in an opening <span class="OSC">&lt;?</span> and a closing <span class="OSC">?&gt;</span>.</p>
+<div class="rail">
+<span class="railtitle">script</span>
+<br /><script>
+ComplexDiagram(
+    Sequence ('<?', 'javascript', NonTerminal('script'), '?>')
+).addTo()
+
+</script>
+</div>
+
+<p>The principle of using Javascript sections in INScore files is the following: the Javascript sections are passed to the Javascript engine and are expected to produce textual INScore messages on output. These messages are then parsed as if replacing the corresponding script section.
+INScore variables are exported to the Javascript environment.</p>
+<p><span class="note">Note: </span>
+A Javascript section may produce not output, for example when it declares functions to be used later.</p>
+<p><span class="example">Example</span></p>
+<pre><code class="language-inscore">&lt;? javascript 
+   &quot;/ITL/scene/version set txt 'Javascript v. &quot; + version() + &quot;';&quot; 
+?&gt;
+</code></pre>
+<p>A single persistent Javascript context is created at application level and shared with each scene.</p>
+<h3 id="the-javascript-object">The Javascript object</h3>
+<p><a name="jsobj"></a></p>
+<p>The Javascript engine is available at runtime at the address <span class="OSC">/ITL/<em>scene</span>/javascript</em>. It has a <span class="OSC">run</span> method that takes a javascript string as parameter.</p>
+<div class="rail">
+<span class="railtitle">javascript</span>
+<br /><script>
+ComplexDiagram(
+    Sequence ('run', 'code')
+).addTo()
+
+</script>
+</div>
+
+<p>The <span class="OSC">run</span> method evaluates the code. Similarly to javascript sections in scripts, the output of the evaluation is expected to be a string containing valid INScore messages that are next executed. 
+Actually, including a javascript section in a script is equivalent to send the <span class="OSC">run</span> message with the same code as parameter to the javascript object.</p>
+<p>The Javascript engine is based on the Qt5 Javascrip engine, extended with INScore specific functions:</p>
+<ul>
+<li><strong><span class="OSC">version()</span></strong>: gives the javascript engine version number as a string.</li>
+<li><strong><span class="OSC">print(val1 [, val2 [, ...]])</span></strong>: print the arguments to the OSC standard output. The arguments list is prefixed by 'javascript:'. The function is provided for debug purpose.</li>
+<li><strong><span class="OSC">readfile(file)</span></strong>: read a file and returns its content as a string. The file name could be specified as an absolute or relative path. When relative, the file is searched in the application current <span class="OSC">rootPath</span>.</li>
+<li><strong><span class="OSC">post(address [,...])</span></strong>: build an OSC message and post it for delayed processing i.e. to be processed by the next time task. <span class="OSC">address</span> is an OSC or an extended OSC address. Optional arguments are the message parameters.</li>
+<li><strong><span class="OSC">osname()</span></strong>: gives the current operating system name.</li>
+<li>
+<p><strong><span class="OSC">osid()</span></strong>: gives the current operating system as a numeric identifiant. Returned value is (in alphabetic order): </p>
+</li>
+<li>
+<p>1 for Android</p>
+</li>
+<li>2 for iOS.</li>
+<li>3 for Linux, </li>
+<li>4 for MacOS, </li>
+<li>5 for Windows</li>
+</ul>
+<p><span class="example">Example</span>
+Posting a message from a Javascript section:</p>
+<pre><code class="language-inscore">&lt;?javascript 
+   post (&quot;/ITL/scene/obj&quot;, &quot;dalpha&quot;, -1);&quot;;
+   // The message /ITL/scene/obj dalpha -1 
+   // will be evaluated by the next time task. 
+?&gt;
+</code></pre>
+<p>Declaration of a Javascript function to be used later:</p>
+<pre><code class="language-inscore">&lt;?javascript 
+   // declare a function foo() 
+   function foo(arg) {
+    return &quot;/ITL/scene/obj set txt foo called with &quot; + arg + &quot;;&quot;; 
+   } 
+?&gt;
+
+# call the foo function 
+&lt;?javascript foo(1)?&gt;
+
+# or call the foo function using the run message 
+/ITL/scene/javascript run &quot;foo(1)&quot;;
+</code></pre>
+<h2 id="comments">Comments</h2>
+<p><a name="comments"></a></p>
+<p>There are two ways to comment code inside a script:</p>
+<ul>
+<li>line comments: the '#' character is used for line comments, anything after a '#' is ignored.</li>
+<li>section comments: section comments start with '(<em>' and end with '</em>)', anything between them is ignored.</li>
+</ul>
+<p><span class="example">Example</span></p>
+<pre><code class="language-inscore"># this is a line comment 
+/ITL/scene/* del; 
+
+(*
+   here is a section comment
+   section comments are multi-lines comments
+{*}) 
+
+/ITL/scene/hello set txt &quot;Hello world!&quot;;  # the preceding message is not commented
+
+\inscoreend
+
+and everything below the \inscoreend marker is also ignored
+</code></pre></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+                <p><a href="https://inscore.grame.fr">INscore projects</a> Copyright &copy; 2019-2021 <a href="http://www.grame.fr">Grame-CNCM</a></p>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" defer></script>
+        <script src="/js/inscore.js" defer></script>
+        <script src="/js/pubs.js" defer></script>
+        <script src="../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

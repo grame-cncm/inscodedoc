@@ -1,40 +1,80 @@
 
-% set dimensions of columns, gap between columns, and paragraph indent
-\setlength{\paperheight}{29.7cm}
-\setlength{\textheight}{22cm}
-\setlength{\paperwidth}{21cm}
-\setlength{\textwidth}{15cm}
-\setlength{\columnsep}{1cm}
+\usepackage{pslatex}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{rail}
+\usepackage{color}
+\usepackage{hyperref}
+\usepackage{comment}
+\usepackage{multicol}
+\usepackage{textcomp}
+\usepackage{float}
+\usepackage{makeidx}
+\usepackage{geometry}
+\usepackage{lastpage}
+\usepackage{fancyhdr}
 
-\setlength{\headheight}{10mm}
-\setlength{\voffset}{-5mm}
-\setlength{\hoffset}{0mm}
-\setlength{\topmargin}{0mm}
-\setlength{\marginparwidth}{0mm}
+\geometry{
+ a4paper,
+ total={158mm,250mm},
+ right=20mm,
+ top=25mm,
+}
+
+\def \inscoreversion {1.28}
+
+\definecolor{lcolor}{rgb}{0.0,0.0,0.145}
+\hypersetup{
+	colorlinks=true,
+	linkcolor= lcolor
+}
+
+\setlength\parskip{3pt}
 \setlength{\parindent}{0pt}
-\setlength{\oddsidemargin}{8mm}
-\setlength{\evensidemargin}{8mm}
-
-
-%\setlength{\itemsep}{0mm}
-%\setlength{\parskip}{0mm}
-%\setlength{\parsep}{0mm}
-
-%\def\abstract{
-%    \begin{center}{
-%        \bf ABSTRACT
-%    }
-%    \end{center}
-%}
-%\def\endabstract{\par}
 
 \def\title#1{\gdef\@title{\Huge{#1}}}
 
 \let\orig@Itemize =\itemize
-\def\Nospacing{\itemsep=0mm\topsep=-2mm\partopsep=-2mm\parskip=0mm\parsep=0pt}
+\def\Nospacing{\itemsep=1mm\topsep=-2mm\partopsep=-2mm\parskip=0mm\parsep=0pt}
 \renewenvironment{itemize}{\orig@Itemize\Nospacing}{\endlist}
 
 
 \flushbottom
+
+\newcommand{\fullref}[1]	{\ref{#1} p.\pageref{#1}}
+
+\newcommand{\OSC}[1]		{\texttt{#1}}
+\newcommand{\values}[1]		{\texttt{#1}}
+\newcommand{\example}		{\textbf{\hspace{-1.0cm}\textbf{\textsc{Example }}}}
+\newcommand{\note}	[1]		{\vspace{2mm}\textbf{\hspace{-1.0cm}\textbf{\textsc{Note #1}}}}
+\newcommand{\warning}[1]	{\vspace{2mm}\textbf{\hspace{-1.0cm}\textbf{\textsc{Warning #1}}}}
+
+\newcommand{\osctype}[1]	{\textbf{\texttt{{\small #1}}}}
+\newcommand{\oscint}		{\osctype{int32}}
+\newcommand{\oscfloat}		{\osctype{float32}}
+\newcommand{\oscstring}		{\osctype{string}}
+\newcommand{\rational}		{\osctype{rational}}
+
+\newcommand{\lowTilde} 		{\texttildelow}
+
+\providecommand{\boldsymbol}[1]{\mbox{\boldmath $#1$}}
+
+\definecolor{mygrey}{gray}{0.93}
+\newcommand{\sample}	[1]		{\vspace{-2mm}\begin{center}\colorbox{mygrey}{
+								\begin{minipage}[t]{0.95\columnwidth} 
+								{\small \texttt{#1}}
+								\end{minipage}}\end{center}}
+
+
+\setlength\railnamesep{-1mm}
+\railparam{\addtolength{\itemsep}{-3ex}}
+\railterm{int32, float32, string, dollar}
+\railalias{int32}{\oscint}
+\railalias{float32}{\oscfloat}
+\railalias{string}{\oscstring}
+\railalias{dollar}{\$}
+
 
 %%%% EOF

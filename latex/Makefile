@@ -1,15 +1,24 @@
 
-DOC 	= OSCMsg.pdf
+
+OSC   := OSCMsg
+LANG  := INScoreLang
+OUT   := $(OSC).pdf $(LANG).pdf
+
+LANGDEPS := $(LANG).tex MathExpressions/mathexpressions.tex yacc.tex tokens.tex
+OSCDEPS := $(OSC).tex changelist.tex Sensors/sensors.tex scorexpressions.tex
 
 
-all: $(DOC)
+all: $(OUT)
+	make -C ScoreExpressionDoc
+	make -C INScoreWeb
 	
-OSCMsg.pdf : OSCMsg.rao OSCMsg.ind
+$(OSC).pdf  : $(OSCDEPS) $(OSC).rao $(OSC).idx
+$(LANG).pdf : $(LANGDEPS) $(LANG).rao
 
 clean:
 	rm -f *.aux *.bbl *.blg *.log *.dvi *.rai *.ilg *.idx *.ind *.toc 
-	rm -f *.4* *.out *.tmp *.xref *.idv *.lg *.rao *.css
-	rm -f $(DOC)
+	rm -f *.4* *.out *.tmp *.xref *.idv *.lg *.rao *.css *.synctex.gz
+	rm -f $(OUT)
 
 
 %.bbl: %.bib

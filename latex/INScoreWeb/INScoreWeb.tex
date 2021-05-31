@@ -296,10 +296,70 @@ If a \OSC{class} message has not the expected effect, it's likely because the CS
 %===============================
 % Midi support
 
+--------------------------------
+\sublevel{MIDI support}
+\label{webMIDI}
+
+\inprogress{this section is not yet implemented}
+
+MIDI is supported using a specific event that you can configure using the \OSC{watch} message. 
+
+\begin{rail}
+watchMIDI : 'watch' 'midi' midifilter
+\end{rail}
+A filter is used to select the MIDI messages that will trigger the event.
+
+\begin{rail}
+midifilter : (| 'chan' int32) 
+			 (| ('keyon' | 'keyoff' | 'vel' | 'prog' | 'ctrl') (literal | range ))
+\end{rail}
+
+\begin{itemize}
+\item with an empty filter, any MIDI message will trigger the event
+\item \OSC{chan}: an optional channel number may be used to select only the MIDI messages on a specific MIDI channel
+\item \OSC{keyon}, \OSC{keyoff}, \OSC{vel}, \OSC{prog}, \OSC{ctrl}: are used to select MIDI messages according to their status and values.
+\end{itemize}
+
+\example\\
+Filtering MIDI messages that are not on channel 0
+\sample{/ITL/scene/obj watch midi chan 0 (inscore messages list);
+}
+
+Literal values are either a specific value or a list of values enclosed in brackets.
+
+\begin{rail}
+literal : (int32 | ('[' (int32 +) ']' ))
+\end{rail}
+
+\example\\
+Accepting MIDI key on messages for 3 specific pitches.
+\sample{/ITL/scene/obj watch midi keyon [60 62 64] (inscore messages list);
+}
+
+
+Range may be used when a value enters or leaves the specified range.
+
+\begin{rail}
+range : ([1] '[' int32 '-' int32 ']' )
+		| [2] (']' int32 '-' int32 '[' )
+\end{rail}
+
+\begin{itemize}
+\item 1: trigger the event when the value enters the range. 
+\item 2: trigger the event when the value leaves the range.
+\end{itemize}
+
+\example\\
+Accepting \OSC{keyon} MIDI messages only when entering and leaving the range 60 - 67;
+\sample{/ITL/scene/obj watch midi keyon '[60-67]' (inscore messages list);\\
+/ITL/scene/obj watch midi keyon ']60-67[' (inscore messages list);
+}
+
+
 
 %===============================
-%:Audio objects
-\toplevel{Audio objects}
+%:Audio
+\toplevel{Audio}
 \label{audioObjects}
 
 %===============================
@@ -423,7 +483,7 @@ faustPolyMsgs : (('keyOn' | 'keyOff') chan pitch vel)
 \sublevel{Audio Input / Output}
 \label{audioioObjects}
 
-Audio input / output objects are provided as audio object (\see section \ref{audioObjects}) to the represent the physical audio inputs and outputs, in order to homogenize the connection process.
+Audio input / output objects are provided as audio object (see section \ref{audioObjects}) to represent the physical audio inputs and outputs, in order to homogenize the connection process.
 An audio input / output type is \OSC{audioio}. It is created with a number of inputs and outputs as arguments.
 
 \begin{rail}

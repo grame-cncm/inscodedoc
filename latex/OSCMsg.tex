@@ -3291,6 +3291,16 @@ keyEvent : 	('keyDown' | 'keyUp') ([1] char | [2] '[' charlist ']' | [3] '*')
 Unlike standard applications, there is no notion of focus regarding key events: when several objects request keyboard input, all of them will receive \OSC{key} events, provided they are watching the same input.
 
 
+%===============================
+%:       Midi events
+\subsublevel{MIDI events}
+\label{midievents}
+
+MIDI events are supported, but only by the Web version. 
+MIDI events are supported by the native version for compatibility reasons but 
+they are inactive (no MIDI input). \\
+See INScore Web documentation for more details.
+
 
 %===============================
 %:       URL events

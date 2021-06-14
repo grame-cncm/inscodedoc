@@ -309,14 +309,16 @@ A filter is used to select the MIDI messages that will trigger the event.
 \begin{rail}
 midifilter : (| '*')
 			 | ('chan' int32) 
-			 (| midikey | ('prog' | 'ctrl') midivalue)
+			 (| midikey | 'prog' int32 | 'ctrl' int32 midivalue)
 \end{rail}
 
 \begin{itemize}
 \item an empty filter can be used to stop watching MIDI input
 \item '*' denotes any MIDI message (no filter at all)
 \item \OSC{chan}: an optional channel number may be used to select only the MIDI messages on a given MIDI channel
-\item midikey, \OSC{vel}, \OSC{prog}, \OSC{ctrl}: are used to select MIDI messages according to their status and values.
+\item midikey: is used to select key on/off messages according to their values and to an optional velocity.
+\item \OSC{prog}: is used to select program change messages. A program change number is expected as next argument.
+\item \OSC{ctrl}: is used to select control change messages. A control change number is expected as next argument.
 \end{itemize}
 
 \example\\
@@ -338,27 +340,34 @@ midivalue :
 			(literal | range )
 \end{rail}
 
-Literal values are a single value or a list of space separated values enclosed in brackets. All the values must be in the MIDI data range (0-127).
-
 \begin{rail}
-literal : (int32 | ('[' (int32 +) ']' ))
+literal : ([1] int32 | ([2] '[' (int32 +) ']' ))
 \end{rail}
+
+Literal values are:
+\begin{itemize}
+\item 1: a single value,
+\item 2: a list of space separated values enclosed in brackets,
+\end{itemize}
+All the values must be in the MIDI data range (0-127).
 
 \example\\
 Accepting MIDI key on messages for 3 specific pitches.
 \sample{/ITL/scene/obj watch midi keyon [60 62 64] (inscore messages list);
 }
 
-Range may be used when a value enters or leaves the specified range.
+Range may be used when a value is within the specified range, or enters or leaves the range.
 
 \begin{rail}
-range : ([1] '[' int32 '-' int32 ']' )
-		| [2] (']' int32 '-' int32 '[' )
+range : ([1] '(' int32 '-' int32 ')' )
+		| [2] (')' int32 '-' int32 '(' )
+		| [3] ('[' int32 '-' int32 ']' )
 \end{rail}
 
 \begin{itemize}
 \item 1: trigger the event when the value enters the range. 
 \item 2: trigger the event when the value leaves the range.
+\item 3: trigger the event when the value is within the range.
 \end{itemize}
 
 \example\\

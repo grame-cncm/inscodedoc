@@ -3278,13 +3278,19 @@ Keyboard events are triggered by pressing or releasing a key on the keyboard.
 \index{Interaction!Events!keyUp}
 
 \begin{rail}
-keyEvent : 	('keyDown' | 'keyUp') ([1] char | [2] '[' charlist ']' | [3] '*')
+keyEvent : 	('keyDown' | 'keyUp') ([1] char | [2] '[' charlist ']' | [3] '*' | [4] controlKey)
+\end{rail}
+
+\index{Interaction!Events!controlKey}
+\begin{rail}
+controlKey : 'ArrowLeft' | 'ArrowRight' | 'ArrowUp' | 'ArrowDown'
 \end{rail}
 
 \begin{itemize}
 \item 1) only the specified \OSC{char} will trigger the event,
 \item 2) \OSC{charlist} is a string interpreted like the bracket expression of regular expressions. For example, using \OSC{[abc]}, 'a' or 'b' or 'c' will trigger a key event, using \OSC{[1-9]}, any numeric from 1 to 9 will trigger a key event.
 \item 3) any key triggers a key event.
+\item 4) handles special keys to trigger the key event. A literal description of the key must be provided (e.g. \OSC{ArrowLeft}).
 \end{itemize}
 
 \note\\

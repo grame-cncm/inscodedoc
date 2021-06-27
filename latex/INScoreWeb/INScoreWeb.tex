@@ -178,7 +178,7 @@ A number of messages are not supported in the web version, either because they d
 \label{webcommonMessages}
 
 \begin{itemize}
-\item \OSC{export}, \OSC{exportAll}, \OSC{save}: not implemented
+\item \OSC{export}, \OSC{exportAll}: not implemented
 \item \OSC{shear}, \OSC{dshear}: not implemented
 \item \OSC{effect}: \OSC{colorize}: not implemented
 \item \OSC{edit}: not implemented
@@ -193,10 +193,7 @@ A number of messages are not supported in the web version, either because they d
 \item \OSC{rootPath}: not implemented
 \item \OSC{mouse}: not yet implemented
 \item \OSC{read}: not implemented
-\item \OSC{load}: not implemented
 \item \OSC{port}, \OSC{outport}, \OSC{errport}: do not make sense without OSC
-\item \OSC{get}: \OSC{guido-version} \OSC{musicxml-version}: not implemented. \\
-Note that the corresponding components are loaded, they print their version number to the Javascript console.
 \end{itemize}
 
 %--------------------------------
@@ -207,7 +204,7 @@ As mentioned above, the \OSC{log} window (address \OSC{/ITL/log}) is dependent o
 
 \begin{itemize}
 \item \OSC{clear}: dependent on the host application (do nothing by default)
-\item \OSC{save}: not supported due to the lack of file system
+\item \OSC{save}: not supported
 \item \OSC{foreground}: dependent on the host application (do nothing by default)
 \item \OSC{wrap}: dependent on the host application (do nothing by default)
 \item \OSC{scale}: dependent on the host application (do nothing by default)
@@ -220,10 +217,7 @@ As mentioned above, the \OSC{log} window (address \OSC{/ITL/log}) is dependent o
 \label{websceneMessages}
 
 \begin{itemize}
-\item \OSC{save}: not supported due to the lack of file system
 \item \OSC{foreground}: dependent on the host application (do nothing by default)
-\item \OSC{rootPath}: not yet implemented
-\item \OSC{load}: not yet supported
 \item \OSC{frameless} \OSC{windowOpacity}: not supported
 \end{itemize}
 
@@ -272,6 +266,17 @@ The following events are not yet supported:
 
 %===============================
 %:New messages
+\toplevel{Behavioral changes}
+\label{Behavior}
+
+Some messages behave differently with the Web version.
+\begin{itemize}
+\item \OSC{save}: download the INScore content to the file given as argument. You should find this file in your download folder.
+\end{itemize}
+
+
+%===============================
+%:New messages
 \toplevel{Specific new messages}
 \label{newMessages}
 
@@ -280,7 +285,7 @@ The following events are not yet supported:
 \sublevel{Leveraging CSS}
 \label{webCSS}
 
-\href{https://www.w3schools.com/css/css_intro.asp}{Cascading Style Sheets} [CSS] are a powerful way to control the appearance of elements on a web page. The Web version of INScore provides a specific \OSC{class} message to use CSS in parallel to the standard mechanisms. This message is supported by all the INScore objects.
+\href{https://www.w3schools.com/css/css_intro.asp}{Cascading Style Sheets} [CSS] are a powerful way to control the appearance of elements on a web page. The Web version of INScore provides a specific \OSC{class} message to use CSS in parallel to the standard mechanisms. This message is supported by all the INScore objects. 
 
 \begin{rail}
 classMsg : 'class' ([1]| [2] className +)
@@ -299,7 +304,7 @@ If a \OSC{class} message has not the expected effect, it's likely because the CS
 \sublevel{MIDI support}
 \label{webMIDI}
 
-MIDI is supported using a specific event that you can configure using the \OSC{watch} message. 
+MIDI is supported using a specific event that you can configure using the \OSC{watch} message. Before using MIDI, you should check that your browser is supporting the Web MIDI API.
 
 \begin{rail}
 watchMIDI : 'watch' 'midi' midifilter
@@ -384,7 +389,7 @@ Accepting \OSC{keyon} MIDI messages only when entering and leaving the range 60 
 \label{audioObjects}
 
 %===============================
-%:Faust objects
+%:Audio objects
 \sublevel{Audio objects}
 \label{audioObjects}
 
@@ -421,6 +426,9 @@ audiogetMsgs : 'get' ('connect' | 'in' | 'out')
 \href{https://faust.grame.fr/}{Faust} is a functional programming language for sound synthesis and audio processing.
 Faust objects are available, providing that the Faust library has been loaded.
 
+\warning \\
+A page containing Faust objects require an https connection, unless it runs on localhost.
+
 %--------------------------------
 \subsublevel{Creating a Faust object}
 \label{webFaust}
@@ -432,7 +440,8 @@ The \OSC{faust} type exists with the native version but to load a pre-compiled D
 
 \begin{rail}
 setFaust : 'set' (([1] 'faust' (| int32) dspCode)
-				| ([2] 'faustf' (| int32) dspFile))
+				| ([2] 'faustf' (| int32) dspFile)
+				| ([3] 'faustw' (| int32) wasmFile jsonFile))
 
 \end{rail}
 
@@ -441,6 +450,7 @@ The expected arguments of the \OSC{set} message are:
 \item an optional integer that indicates a number of voices used to create a polyphonic DSP (see section \ref{webFaustPoly}). Note that when present, a polyphonic DSP is created even if equal to 1.
 \item 1: Faust DSP code (see the \href{https://faustdoc.grame.fr/}{Faust language} for more information).
 \item 2: a Faust DSP file.
+\item 3: a Faust pre-compiled wasm file and the associated json file. Note that theses files can be generated using the \OSC{get wasm} message (see section \fullref{webFaustMsgs}). 
 \end{itemize}
 
 By default, a Faust DSP appears as a browsable block diagram.
@@ -452,14 +462,15 @@ The Faust language uses characters that have a special meaning in HTML: for exam
 \subsublevel{Faust messages}
 \label{webFaustMsgs}
 
-Faust objects support the audio objects messages plus an additional query message:
+Faust objects support the audio objects messages plus additional query messages:
 
 \begin{rail}
-faustgetMsgs : 'get' 'ui'
+faustgetMsgs : 'get' ('ui' | 'wasm')
 \end{rail}
 
 \begin{itemize}
 \item \OSC{ui}: gives the Faust processor parameters (see section \ref{webFaustParams}) i.e. for each parameter: its OSC address followed by the parameter UI type, a label, the minimum and maximum values and the parameter step.
+\item \OSC{wasm}: generates the Faust dsp as a precompiled wasm file with the associated json file. The Faust object name is used for the files name. On output, the files \OSC{xxx.wasm} and \OSC{xxx.json} should be present in the local download folder (where \OSC{xxx} is the Faust object name).
 \end{itemize}
 
 

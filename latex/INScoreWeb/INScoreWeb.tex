@@ -265,7 +265,7 @@ The following events are not yet supported:
 \end{itemize}
 
 %===============================
-%:New messages
+%:Behavioral changes
 \toplevel{Behavioral changes}
 \label{Behavior}
 
@@ -302,7 +302,22 @@ If a \OSC{class} message has not the expected effect, it's likely because the CS
 %===============================
 %:  Midi support
 \sublevel{MIDI support}
-\label{webMIDI}
+\label{MIDI}
+
+A \OSC{midi} node is automatically created at application level (\OSC{/ITL/midi}).
+Before using the MIDI features, the \OSC{midi} node must be explicitly initialised using the \OSC{init} message. On success, the \OSC{ready} event is triggered, otherwise an \OSC{error} event is triggered.
+
+\example
+\sample{/ITL/midi watch ready ( do something to use the MIDI interface ); \\
+/ITL/midi watch error ( do something else ); \\
+/ITL/midi init;
+}
+
+
+%:  Midi support
+\subsublevel{MIDI events}
+\label{MIDIEvents}
+
 
 MIDI is supported using a specific event that you can configure using the \OSC{watch} message. Before using MIDI, you should check that your browser is supporting the Web MIDI API.
 
@@ -381,6 +396,22 @@ Accepting \OSC{keyon} MIDI messages only when entering and leaving the range 60 
 /ITL/scene/obj watch midi keyon ']60-67[' (inscore messages list);
 }
 
+\subsublevel{MIDI verbose mode}
+\label{verbMIDI}
+
+In order to facilitate the detection of messages sent by a MIDI interface, a 'verbose' mode allows incoming messages to be displayed on the browser console. Real-time and system exclusive messages are filtered out.
+To enable or disable verbose mode, a specific message must be sent to the \OSC{/ITL/midi} object:
+
+\begin{rail}
+verbMIDI : 'verbose' int32
+\end{rail}
+
+The message parameter is a boolean value.
+
+\example
+\sample{/ITL/midi verbose 1; 
+}
+Activates the MIDI verbose mode.
 
 
 %===============================
@@ -398,11 +429,12 @@ Audio objects are \emph{connectable} objects i.e. objects which output can be co
 Audio objects support the following messages:
 
 \begin{rail}
-audioMsgs : ('connect' | 'disconnect') ( destination + )
+audioMsgs : ('connect' | 'disconnect') ( ([1] destination 
+			|  ( [2] int32 ':' destination ':' int32 )) + ) 
 \end{rail}
 
 \begin{itemize}
-\item \OSC{connect}: connect the outputs of the object to the destination inputs. The destination must be a another audio object. Inputs and outputs count must be the same on source and destination. The destination supports regular expressions.
+\item \OSC{connect}: connect the outputs of the object to the destination inputs. \OSC{destination} must be another audio object. Without  numeric prefix and suffix [1], inputs and outputs count must be the same on source and destination. The second form [2] connects only the corresponding output channel to the corresponding input (indexed from 1). The destination supports regular expressions.
 \item \OSC{disconnect}: disconnect the outputs of the object from the destination inputs. Note that errors (e.g. no existing connection with the destination) are silently ignored.
 \end{itemize}
 
@@ -462,6 +494,17 @@ The Faust language uses characters that have a special meaning in HTML: for exam
 \subsublevel{Faust messages}
 \label{webFaustMsgs}
 
+Faust objects are active by default, i.e. the output signals is computed whatever the audio connection state. 
+However, it is possible to disable the signals computation when it is not needed (e.g. for objects that are only temporarily active), which allows a large number of faust objects to be embedded in a score, while saving a significant CPU. The \OSC{compute} message is provided in this intend.
+
+\begin{rail}
+faustMsgs : 'compute' int32
+\end{rail}
+
+\begin{itemize}
+\item \OSC{compute}: start or stop computing the audio signals. The parameter is a boolean value. Default value is 1.
+\end{itemize}
+
 Faust objects support the audio objects messages plus additional query messages:
 
 \begin{rail}
@@ -491,8 +534,6 @@ faustParamMsgs : [1] float32 | [2] 'get'
 \item 2: gives the parameter value
 \end{itemize}
 
-\note{}\\
-When a parameter which type is \OSC{button} is set to 1, it is automatically reset to zero after a short time (corresponding at least to one audio buffer size).
 
 %--------------------------------
 \subsublevel{Polyphonic objects}

@@ -21,7 +21,7 @@ nav:
             - 'Synchronization' :   refs/14-syncmsg.md
             - 'Graphic signals' :   refs/15-graphsig.md
             - 'Sensors' :           refs/16-sensors.md
-            - 'Interaction' :       refs/17-interaction.md
+            - 'Events' :       refs/17-interaction.md
             - 'Score Expressions' : refs/18-scoreExpr.md
             - 'Plugins' :           refs/19-plugins.md
             - 'Changes list' :      refs/20-changes.md

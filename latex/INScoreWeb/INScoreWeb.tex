@@ -399,14 +399,20 @@ Accepting \OSC{keyon} MIDI messages only when entering and leaving the range 60 
 \subsublevel{MIDI verbose mode}
 \label{verbMIDI}
 
-In order to facilitate the detection of messages sent by a MIDI interface, a 'verbose' mode allows incoming messages to be displayed on the browser console. Real-time and system exclusive messages are filtered out.
+In order to facilitate the detection of messages sent by a MIDI interface, a 'verbose' mode allows incoming messages to be displayed on the browser console. 
 To enable or disable verbose mode, a specific message must be sent to the \OSC{/ITL/midi} object:
 
 \begin{rail}
 verbMIDI : 'verbose' int32
 \end{rail}
 
-The message parameter is a boolean value.
+The parameter is a numerical value that controls which MIDI events are displayed: 
+\begin{itemize}
+\item 0: disable the verbose mode
+\item 1: displays the channel MIDI events (Real-time and system exclusive events are filtered out).
+\item 2: displays all the MIDI events
+\end{itemize}
+
 
 \example
 \sample{/ITL/midi verbose 1; 

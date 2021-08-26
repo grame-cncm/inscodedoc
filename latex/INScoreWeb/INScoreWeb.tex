@@ -70,9 +70,9 @@ This document is intended to present the differences between the native and web 
 A special section is also devoted to the implementation of INScore Web in standalone HTML pages.
 
 %===============================
-%:Behavioural differences
-\toplevel{Behavioural differences}
-\label{behavior}
+%:Main differences
+\toplevel{Main differences}
+\label{mainDiffs}
 
 The OSC protocol is not supported in the Web version. As a result, the mode of communication with the INScore engine is different (see section \ref{communication}) and may also depend on the application that uses this engine. 
 
@@ -267,7 +267,7 @@ The following events are not yet supported:
 %===============================
 %:Behavioral changes
 \toplevel{Behavioral changes}
-\label{Behavior}
+\label{behavior}
 
 Some messages behave differently with the Web version.
 \begin{itemize}
@@ -301,7 +301,7 @@ If a \OSC{class} message has not the expected effect, it's likely because the CS
 
 %===============================
 %:  Midi support
-\sublevel{MIDI support}
+\toplevel{MIDI support}
 \label{MIDI}
 
 A \OSC{midi} node is automatically created at application level (\OSC{/ITL/midi}).
@@ -315,7 +315,7 @@ Before using the MIDI features, the \OSC{midi} node must be explicitly initialis
 
 
 %:  Midi support
-\subsublevel{MIDI events}
+\sublevel{MIDI events}
 \label{MIDIEvents}
 
 
@@ -396,7 +396,7 @@ Accepting \OSC{keyon} MIDI messages only when entering and leaving the range 60 
 /ITL/scene/obj watch midi keyon ']60-67[' (inscore messages list);
 }
 
-\subsublevel{MIDI verbose mode}
+\sublevel{MIDI verbose mode}
 \label{verbMIDI}
 
 In order to facilitate the detection of messages sent by a MIDI interface, a 'verbose' mode allows incoming messages to be displayed on the browser console. 

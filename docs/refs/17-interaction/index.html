@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>Interaction - INScore Documentation</title>
+        <title>Events - INScore Documentation</title>
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
@@ -113,7 +113,7 @@
 </li>
             
 <li>
-    <a href="./" class="dropdown-item active">Interaction</a>
+    <a href="./" class="dropdown-item active">Events</a>
 </li>
             
 <li>
@@ -161,7 +161,7 @@
 </li>
             
 <li>
-    <a href="../../web/2-behavior/" class="dropdown-item">Global changes</a>
+    <a href="../../web/2-mainDiffs/" class="dropdown-item">Global changes</a>
 </li>
             
 <li>
@@ -169,15 +169,23 @@
 </li>
             
 <li>
-    <a href="../../web/4-newMessages/" class="dropdown-item">Specific messages</a>
+    <a href="../../web/4-behavior/" class="dropdown-item">Behavioral changes</a>
 </li>
             
 <li>
-    <a href="../../web/5-audioObjects/" class="dropdown-item">Audio objects</a>
+    <a href="../../web/5-newMessages/" class="dropdown-item">Specific messages</a>
 </li>
             
 <li>
-    <a href="../../web/6-communication/" class="dropdown-item">Communication</a>
+    <a href="../../web/6-MIDI/" class="dropdown-item">MIDI support</a>
+</li>
+            
+<li>
+    <a href="../../web/7-audioObjects/" class="dropdown-item">Audio objects</a>
+</li>
+            
+<li>
+    <a href="../../web/8-communication/" class="dropdown-item">Communication</a>
 </li>
     </ul>
   </li>
@@ -350,7 +358,7 @@ An extended address to send messages to <span class="OSC">localhost</span> on po
 </code></pre>
 <h2 id="internal-events">Internal events</h2>
 <p><a name="defevents"></a></p>
-<p>Internal events are triggered by the user interaction (mouse or touch events) or by the engine internal functionning.</p>
+<p>Internal events are triggered by the user interaction (mouse or touch events) or by the engine internal functioning.</p>
 <h3 id="mouse-events">Mouse events</h3>
 <p><a name="uievents"></a></p>
 <p>User interface events are typical mouse events:</p>
@@ -440,6 +448,46 @@ ComplexDiagram(
 An object that moves a score to a given page number when it enters its time zone.</p>
 <pre><code class="language-inscore">/ITL/scene/myObject watch timeEnter 10/1 18/1 (/ITL/scene/score page 2);
 </code></pre>
+<h3 id="keyboard-events">Keyboard events</h3>
+<p><a name="keyevents"></a></p>
+<p>Keyboard events are triggered by pressing or releasing a key on the keyboard.</p>
+<p><a name="17-interaction-keyDown"></a>
+<a name="17-interaction-keyUp"></a></p>
+<div class="rail">
+<span class="railtitle">keyEvent</span>
+<br /><script>
+ComplexDiagram(
+    Sequence (Choice (0, 'keyDown', 'keyUp'), Choice (0, Sequence (Comment ('1'), NonTerminal('char')), Sequence (Comment ('2'), '[', NonTerminal('charlist'), ']'), Sequence (Comment ('3'), '*'), Sequence (Comment ('4'), NonTerminal('controlKey'))))
+).addTo()
+
+</script>
+</div>
+
+<p><a name="17-interaction-controlKey"></a></p>
+<div class="rail">
+<span class="railtitle">controlKey</span>
+<br /><script>
+ComplexDiagram(
+    Choice (0, 'ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown')
+).addTo()
+
+</script>
+</div>
+
+<ul>
+<li>1) only the specified <span class="OSC">char</span> will trigger the event,</li>
+<li>2) <span class="OSC">charlist</span> is a string interpreted like the bracket expression of regular expressions. For example, using <span class="OSC">[abc]</span>, 'a' or 'b' or 'c' will trigger a key event, using <span class="OSC">[1-9]</span>, any numeric from 1 to 9 will trigger a key event.</li>
+<li>3) any key triggers a key event.</li>
+<li>4) handles special keys to trigger the key event. A literal description of the key must be provided (e.g. <span class="OSC">ArrowLeft</span>).</li>
+</ul>
+<p><span class="note">Note:</span>
+Unlike standard applications, there is no notion of focus regarding key events: when several objects request keyboard input, all of them will receive <span class="OSC">key</span> events, provided they are watching the same input.</p>
+<h3 id="midi-events">MIDI events</h3>
+<p><a name="midievents"></a></p>
+<p>MIDI events are supported, but only by the Web version. 
+MIDI events are supported by the native version for compatibility reasons but 
+they are inactive (no MIDI input). 
+See INScore Web documentation for more details.</p>
 <h3 id="url-events">URL events</h3>
 <p><a name="urlevents"></a></p>
 <p><span class="OSC">url</span> objects (i.e. intermediate objects for URL based objects (see section <a href="../6-setsect#filebasedrsrc">filebasedrsrc</a>) support specific events, intended to reflect the transaction state:</p>

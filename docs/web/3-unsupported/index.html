@@ -113,7 +113,7 @@
 </li>
             
 <li>
-    <a href="../../refs/17-interaction/" class="dropdown-item">Interaction</a>
+    <a href="../../refs/17-interaction/" class="dropdown-item">Events</a>
 </li>
             
 <li>
@@ -161,7 +161,7 @@
 </li>
             
 <li>
-    <a href="../2-behavior/" class="dropdown-item">Global changes</a>
+    <a href="../2-mainDiffs/" class="dropdown-item">Global changes</a>
 </li>
             
 <li>
@@ -169,15 +169,23 @@
 </li>
             
 <li>
-    <a href="../4-newMessages/" class="dropdown-item">Specific messages</a>
+    <a href="../4-behavior/" class="dropdown-item">Behavioral changes</a>
 </li>
             
 <li>
-    <a href="../5-audioObjects/" class="dropdown-item">Audio objects</a>
+    <a href="../5-newMessages/" class="dropdown-item">Specific messages</a>
 </li>
             
 <li>
-    <a href="../6-communication/" class="dropdown-item">Communication</a>
+    <a href="../6-MIDI/" class="dropdown-item">MIDI support</a>
+</li>
+            
+<li>
+    <a href="../7-audioObjects/" class="dropdown-item">Audio objects</a>
+</li>
+            
+<li>
+    <a href="../8-communication/" class="dropdown-item">Communication</a>
 </li>
     </ul>
   </li>
@@ -229,12 +237,12 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" href="../2-behavior/" class="nav-link">
+                                <a rel="prev" href="../2-mainDiffs/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../4-newMessages/" class="nav-link">
+                                <a rel="next" href="../4-behavior/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -302,7 +310,7 @@
 </tr>
 <tr>
 <td align="center">Faust plugins</td>
-<td>deprecated and redesigned (see section <a href="../5-audioObjects#faustObjects">faustObjects</a>)</td>
+<td>deprecated and redesigned (see section <a href="../7-audioObjects#faustObjects">faustObjects</a>)</td>
 </tr>
 <tr>
 <td align="center">Gesture follower</td>
@@ -329,7 +337,7 @@
 <h3 id="common-messages">Common messages</h3>
 <p><a name="webcommonMessages"></a></p>
 <ul>
-<li><span class="OSC">export</span>, <span class="OSC">exportAll</span>, <span class="OSC">save</span>: not implemented</li>
+<li><span class="OSC">export</span>, <span class="OSC">exportAll</span>: not implemented</li>
 <li><span class="OSC">shear</span>, <span class="OSC">dshear</span>: not implemented</li>
 <li><span class="OSC">effect</span>: <span class="OSC">colorize</span>: not implemented</li>
 <li><span class="OSC">edit</span>: not implemented</li>
@@ -341,17 +349,14 @@
 <li><span class="OSC">rootPath</span>: not implemented</li>
 <li><span class="OSC">mouse</span>: not yet implemented</li>
 <li><span class="OSC">read</span>: not implemented</li>
-<li><span class="OSC">load</span>: not implemented</li>
 <li><span class="OSC">port</span>, <span class="OSC">outport</span>, <span class="OSC">errport</span>: do not make sense without OSC</li>
-<li><span class="OSC">get</span>: <span class="OSC">guido-version</span> <span class="OSC">musicxml-version</span>: not implemented. 
-Note that the corresponding components are loaded, they print their version number to the Javascript console.</li>
 </ul>
 <h3 id="application-log-window">Application log window</h3>
 <p><a name="weblogMessages"></a></p>
 <p>As mentioned above, the <span class="OSC">log</span> window (address <span class="OSC">/ITL/log</span>) is dependent on the host application. By default, input messages addressed to the <span class="OSC">log</span> node are directed to the Javascript console.</p>
 <ul>
 <li><span class="OSC">clear</span>: dependent on the host application (do nothing by default)</li>
-<li><span class="OSC">save</span>: not supported due to the lack of file system</li>
+<li><span class="OSC">save</span>: not supported</li>
 <li><span class="OSC">foreground</span>: dependent on the host application (do nothing by default)</li>
 <li><span class="OSC">wrap</span>: dependent on the host application (do nothing by default)</li>
 <li><span class="OSC">scale</span>: dependent on the host application (do nothing by default)</li>
@@ -360,10 +365,7 @@ Note that the corresponding components are loaded, they print their version numb
 <h3 id="scene-messages">Scene messages</h3>
 <p><a name="websceneMessages"></a></p>
 <ul>
-<li><span class="OSC">save</span>: not supported due to the lack of file system</li>
 <li><span class="OSC">foreground</span>: dependent on the host application (do nothing by default)</li>
-<li><span class="OSC">rootPath</span>: not yet implemented</li>
-<li><span class="OSC">load</span>: not yet supported</li>
 <li><span class="OSC">frameless</span> <span class="OSC">windowOpacity</span>: not supported</li>
 </ul>
 <h3 id="type-specific-messages">Type specific messages</h3>

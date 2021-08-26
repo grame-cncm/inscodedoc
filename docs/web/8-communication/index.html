@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>Global changes - INScore Documentation</title>
+        <title>Communication - INScore Documentation</title>
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
@@ -113,7 +113,7 @@
 </li>
             
 <li>
-    <a href="../../refs/17-interaction/" class="dropdown-item">Interaction</a>
+    <a href="../../refs/17-interaction/" class="dropdown-item">Events</a>
 </li>
             
 <li>
@@ -161,7 +161,7 @@
 </li>
             
 <li>
-    <a href="./" class="dropdown-item active">Global changes</a>
+    <a href="../2-mainDiffs/" class="dropdown-item">Global changes</a>
 </li>
             
 <li>
@@ -169,15 +169,23 @@
 </li>
             
 <li>
-    <a href="../4-newMessages/" class="dropdown-item">Specific messages</a>
+    <a href="../4-behavior/" class="dropdown-item">Behavioral changes</a>
 </li>
             
 <li>
-    <a href="../5-audioObjects/" class="dropdown-item">Audio objects</a>
+    <a href="../5-newMessages/" class="dropdown-item">Specific messages</a>
 </li>
             
 <li>
-    <a href="../6-communication/" class="dropdown-item">Communication</a>
+    <a href="../6-MIDI/" class="dropdown-item">MIDI support</a>
+</li>
+            
+<li>
+    <a href="../7-audioObjects/" class="dropdown-item">Audio objects</a>
+</li>
+            
+<li>
+    <a href="./" class="dropdown-item active">Communication</a>
 </li>
     </ul>
   </li>
@@ -229,12 +237,12 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" href="../1-introduction/" class="nav-link">
+                                <a rel="prev" href="../7-audioObjects/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../3-unsupported/" class="nav-link">
+                                <a rel="next" href="../../rsrc/INScoreMessages.pdf" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -256,13 +264,9 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="1"><a href="#behavioural-differences" class="nav-link">Behavioural differences</a>
+            <li class="nav-item" data-level="1"><a href="#communication-scheme" class="nav-link">Communication scheme</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#optional-components" class="nav-link">Optional components</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#using-files-in-a-script" class="nav-link">Using files in a script</a>
+            <li class="nav-item" data-level="2"><a href="#web-messages-format" class="nav-link">Web messages format</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -275,78 +279,53 @@
 
 <script src='/BNF/railroad-diagrams.js'></script>
 
-<h1 id="behavioural-differences">Behavioural differences</h1>
-<p><a name="behavior"></a></p>
-<p>The OSC protocol is not supported in the Web version. As a result, the mode of communication with the INScore engine is different (see section <a href="../6-communication#communication">communication</a>) and may also depend on the application that uses this engine. </p>
-<p>By default:</p>
+<h1 id="communication-scheme">Communication scheme</h1>
+<p><a name="communication"></a></p>
+<p>INScore forwarding mechanism supports <span class="OSC">http</span> and <span class="OSC">ws</span> protocols since version 1.27. Since these protocols are connection based, a counterpart <span class="OSC">connect</span> message is provided with the Web version.</p>
+<div class="rail">
+<span class="railtitle">connectMsg</span>
+<br /><script>
+ComplexDiagram(
+    Sequence ('connect', Choice (0, Comment ('1'), Sequence (Comment ('2'), OneOrMore (NonTerminal('remoteHost')))))
+).addTo()
+
+</script>
+</div>
+
 <ul>
-<li>the OSC output and error ports are redirected to the Javascript console.</li>
-<li>drag &amp; drop works like in the native version: you can drop files or text to an INScore scene (an HTML div in the Web version). </li>
+<li>1) removes the existing set of connections,</li>
+<li>2) connect to a list of remote hosts. Once the connection is established, the local INScore engine may receive messages from the remote hosts. To establish the connection, the remote hosts must have set a forwarding mechanism using the same protocol with the same port number. </li>
 </ul>
-<p>The <span class="OSC">log</span> window (address <span class="OSC">/ITL/log</span>) is dependent on the host application. By default, input messages addressed to the <span class="OSC">log</span> node are directed to the Javascript console.</p>
-<h2 id="optional-components">Optional components</h2>
-<p><a name="components"></a></p>
-<p>As the architecture of the web version is completely modular, the available objects depend on the host application:
-e.g. a page which wants to use objects in symbolic notation (type <span class="OSC">gmn</span>) will have to include the Guido library. 
-This architecture allows applications to be optimized to fit their needs. It also facilitates the extension of the INScore engine.
-The table <a href="../2-behavior#componentTbl">componentTbl</a> presents the current supported components.</p>
-<table>
-<thead>
-<tr>
-<th align="center">Component</th>
-<th>Name</th>
-<th>Dependent types</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="center">Guido Engine</td>
-<td>libGUIDOEngine.js</td>
-<td><span class="OSC">gmn</span>, <span class="OSC">gmnf</span>, <span class="OSC">gmnstream</span>,</td>
-</tr>
-<tr>
-<td align="center"></td>
-<td></td>
-<td><span class="OSC">pianoroll</span>, <span class="OSC">pianorollf</span>, <span class="OSC">pianorollstream</span></td>
-</tr>
-<tr>
-<td align="center">MusicXML library</td>
-<td>libmusicxml.js</td>
-<td><span class="OSC">musicxml</span>, <span class="OSC">musicxmlf</span></td>
-</tr>
-<tr>
-<td align="center"></td>
-<td></td>
-<td>use of MusicXML implies to have also the Guido Engine</td>
-</tr>
-<tr>
-<td align="center">Faust compiler</td>
-<td>libfaust-wasm.js</td>
-<td><span class="OSC">faust</span>, <span class="OSC">faustf</span></td>
-</tr>
-<tr>
-<td align="center"></td>
-<td>FaustLibrary.js</td>
-<td></td>
-</tr>
-<tr>
-<td align="center"><a name="componentTbl"></a></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<p><span class='caption'>Components required by specific objects</span></p>
-<h2 id="using-files-in-a-script">Using files in a script</h2>
-<p><a name="files"></a></p>
-<p>You can use file based objects in an INScore script but the file path is interpreted differently: </p>
+<div class="rail">
+<span class="railtitle">remoteHost</span>
+<br /><script>
+ComplexDiagram(
+    OneOrMore (Sequence (Choice (0, Sequence (Comment ('1'), 'http://'), Sequence (Comment ('2'), 'https://'), Sequence (Comment ('3'), 'ws://')), NonTerminal('hostname'), ':', NonTerminal('portnum')))
+).addTo()
+
+</script>
+</div>
+
 <ul>
-<li>when using an absolute path, it refers to the document root of the HTTP server,</li>
-<li>when using a relative path, it refers to the location of the HTML page </li>
+<li>1) uses <span class="OSC">http</span> as communication protocol,</li>
+<li>2) uses <span class="OSC">https</span>,</li>
+<li>3) uses <span class="OSC">websockets</span>. </li>
 </ul>
-<p><span class="note">Note: </span>
-Browsers infer a MIME type from the file extension and generally, download any file which extension is not recognized
-(this behavior depends on the browser you are using). It is therefore recommended to use a <span class="OSC">.txt</span> extension for any textual resource with non-standard extension. For example, a <span class="OSC">score.gmn</span> file could be renamed and used as <span class="OSC">score.gmn.txt</span>.</p></div>
+<h2 id="web-messages-format">Web messages format</h2>
+<p><a name="msgFormat"></a></p>
+<p>Messages emitted by the <span class="OSC">http</span> and <span class="OSC">ws</span> forwarding mechanism and received by connected clients are encoded in <a href=https://www.json.org/>JSON</a> and transmitted as base64 encoded packets. The JSON format is the following:</p>
+<pre><code class="language-inscore">{
+     'id' : number , 
+     'method' : 'post' , 
+     'data' : textual inscore messages 
+ }
+</code></pre>
+<ul>
+<li><span class="OSC">id</span>: is a packet unique identifier (currently unused)</li>
+<li><span class="OSC">method</span>: value must be 'post'</li>
+<li><span class="OSC">data</span>: must contain a valid inscore script</li>
+</ul>
+<p>Although the native version of INScore supports this format for the <span class="OSC">http</span>, <span class="OSC">https</span> and <span class="OSC">ws</span> protocols, nothing prohibits another application to control INScore web pages, provided that the format described above is respected.</p></div>
             </div>
         </div>
 

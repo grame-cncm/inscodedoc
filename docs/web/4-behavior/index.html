@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>Specific messages - INScore Documentation</title>
+        <title>Behavioral changes - INScore Documentation</title>
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
@@ -113,7 +113,7 @@
 </li>
             
 <li>
-    <a href="../../refs/17-interaction/" class="dropdown-item">Interaction</a>
+    <a href="../../refs/17-interaction/" class="dropdown-item">Events</a>
 </li>
             
 <li>
@@ -161,7 +161,7 @@
 </li>
             
 <li>
-    <a href="../2-behavior/" class="dropdown-item">Global changes</a>
+    <a href="../2-mainDiffs/" class="dropdown-item">Global changes</a>
 </li>
             
 <li>
@@ -169,15 +169,23 @@
 </li>
             
 <li>
-    <a href="./" class="dropdown-item active">Specific messages</a>
+    <a href="./" class="dropdown-item active">Behavioral changes</a>
 </li>
             
 <li>
-    <a href="../5-audioObjects/" class="dropdown-item">Audio objects</a>
+    <a href="../5-newMessages/" class="dropdown-item">Specific messages</a>
 </li>
             
 <li>
-    <a href="../6-communication/" class="dropdown-item">Communication</a>
+    <a href="../6-MIDI/" class="dropdown-item">MIDI support</a>
+</li>
+            
+<li>
+    <a href="../7-audioObjects/" class="dropdown-item">Audio objects</a>
+</li>
+            
+<li>
+    <a href="../8-communication/" class="dropdown-item">Communication</a>
 </li>
     </ul>
   </li>
@@ -234,7 +242,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../5-audioObjects/" class="nav-link">
+                                <a rel="next" href="../5-newMessages/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -256,12 +264,8 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="1"><a href="#specific-new-messages" class="nav-link">Specific new messages</a>
+            <li class="nav-item" data-level="1"><a href="#behavioral-changes" class="nav-link">Behavioral changes</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#leveraging-css" class="nav-link">Leveraging CSS</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
               </ul>
             </li>
         </ul>
@@ -271,27 +275,12 @@
 
 <script src='/BNF/railroad-diagrams.js'></script>
 
-<h1 id="specific-new-messages">Specific new messages</h1>
-<p><a name="newMessages"></a></p>
-<h2 id="leveraging-css">Leveraging CSS</h2>
-<p><a name="webCSS"></a></p>
-<p><a href=https://www.w3schools.com/css/css_intro.asp>Cascading Style Sheets</a> [CSS] are a powerful way to control the appearance of elements on a web page. The Web version of INScore provides a specific <span class="OSC">class</span> message to use CSS in parallel to the standard mechanisms. This message is supported by all the INScore objects.</p>
-<div class="rail">
-<span class="railtitle">classMsg</span>
-<br /><script>
-ComplexDiagram(
-    Sequence ('class', Choice (0, Comment ('1'), Sequence (Comment ('2'), OneOrMore (NonTerminal('className')))))
-).addTo()
-
-</script>
-</div>
-
+<h1 id="behavioral-changes">Behavioral changes</h1>
+<p><a name="behavior"></a></p>
+<p>Some messages behave differently with the Web version.</p>
 <ul>
-<li>1: without argument, remove all class settings</li>
-<li>2: set the CSS classes of an object</li>
-</ul>
-<p><span class="note">Note: </span>
-If a <span class="OSC">class</span> message has not the expected effect, it's likely because the CSS properties of the target object are set by the standard INScore mechanisms (like color, border, font-size, etc.). As the own attributes of an object have precedence over the class of the object, the properties of the class are then ignored. You can force the properties of the class by adding the CSS rule <span class="OSC">!important</span> which will override all previous styling rules for that specific property.</p></div>
+<li><span class="OSC">save</span>: download the INScore content to the file given as argument. You should find this file in your download folder.</li>
+</ul></div>
             </div>
         </div>
 

@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>Communication - INScore Documentation</title>
+        <title>Audio objects - INScore Documentation</title>
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
@@ -113,7 +113,7 @@
 </li>
             
 <li>
-    <a href="../../refs/17-interaction/" class="dropdown-item">Interaction</a>
+    <a href="../../refs/17-interaction/" class="dropdown-item">Events</a>
 </li>
             
 <li>
@@ -161,7 +161,7 @@
 </li>
             
 <li>
-    <a href="../2-behavior/" class="dropdown-item">Global changes</a>
+    <a href="../2-mainDiffs/" class="dropdown-item">Global changes</a>
 </li>
             
 <li>
@@ -169,15 +169,23 @@
 </li>
             
 <li>
-    <a href="../4-newMessages/" class="dropdown-item">Specific messages</a>
+    <a href="../4-behavior/" class="dropdown-item">Behavioral changes</a>
 </li>
             
 <li>
-    <a href="../5-audioObjects/" class="dropdown-item">Audio objects</a>
+    <a href="../5-newMessages/" class="dropdown-item">Specific messages</a>
 </li>
             
 <li>
-    <a href="./" class="dropdown-item active">Communication</a>
+    <a href="../6-MIDI/" class="dropdown-item">MIDI support</a>
+</li>
+            
+<li>
+    <a href="./" class="dropdown-item active">Audio objects</a>
+</li>
+            
+<li>
+    <a href="../8-communication/" class="dropdown-item">Communication</a>
 </li>
     </ul>
   </li>
@@ -229,12 +237,12 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" href="../5-audioObjects/" class="nav-link">
+                                <a rel="prev" href="../6-MIDI/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../../rsrc/INScoreMessages.pdf" class="nav-link">
+                                <a rel="next" href="../8-communication/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -256,9 +264,17 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="1"><a href="#communication-scheme" class="nav-link">Communication scheme</a>
+            <li class="nav-item" data-level="1"><a href="#audio" class="nav-link">Audio</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#web-messages-format" class="nav-link">Web messages format</a>
+            <li class="nav-item" data-level="2"><a href="#audio-objects" class="nav-link">Audio objects</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#faust-objects" class="nav-link">Faust objects</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#audio-input-output" class="nav-link">Audio Input / Output</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -271,53 +287,156 @@
 
 <script src='/BNF/railroad-diagrams.js'></script>
 
-<h1 id="communication-scheme">Communication scheme</h1>
-<p><a name="communication"></a></p>
-<p>INScore forwarding mechanism supports <span class="OSC">http</span> and <span class="OSC">ws</span> protocols since version 1.27. Since these protocols are connection based, a counterpart <span class="OSC">connect</span> message is provided with the Web version.</p>
+<h1 id="audio">Audio</h1>
+<p><a name="audioObjects"></a></p>
+<h2 id="audio-objects">Audio objects</h2>
+<p><a name="audioObjects"></a></p>
+<p>Audio objects are <strong>connectable</strong> objects i.e. objects which output can be connected to the input of another audio object. In the INScore model, the following objects are audio objects: <span class="OSC">audio</span>, <span class="OSC">video</span>, <span class="OSC">faust</span> (see section <a href="../7-audioObjects#faustObjects">faustObjects</a>) and <span class="OSC">audioio</span> (see section <a href="../7-audioObjects#audioioObjects">audioioObjects</a>).</p>
+<p>Audio objects support the following messages:</p>
 <div class="rail">
-<span class="railtitle">connectMsg</span>
+<span class="railtitle">audioMsgs</span>
 <br /><script>
 ComplexDiagram(
-    Sequence ('connect', Choice (0, Comment ('1'), Sequence (Comment ('2'), OneOrMore (NonTerminal('remoteHost')))))
+    Sequence (Choice (0, 'connect', 'disconnect'), OneOrMore (Choice (0, Sequence (Comment ('1'), NonTerminal('destination')), Sequence (Comment ('2'), NonTerminal('int32'), ':', NonTerminal('destination'), ':', NonTerminal('int32')))))
 ).addTo()
 
 </script>
 </div>
 
 <ul>
-<li>1) removes the existing set of connections,</li>
-<li>2) connect to a list of remote hosts. Once the connection is established, the local INScore engine may receive messages from the remote hosts. To establish the connection, the remote hosts must have set a forwarding mechanism using the same protocol with the same port number. </li>
+<li><span class="OSC">connect</span>: connect the outputs of the object to the destination inputs. <span class="OSC">destination</span> must be another audio object. Without  numeric prefix and suffix [1], inputs and outputs count must be the same on source and destination. The second form [2] connects only the corresponding output channel to the corresponding input (indexed from 1). The destination supports regular expressions.</li>
+<li><span class="OSC">disconnect</span>: disconnect the outputs of the object from the destination inputs. Note that errors (e.g. no existing connection with the destination) are silently ignored.</li>
 </ul>
+<p><span class="note">Note: </span>
+The <span class="OSC">connect</span> message assumes that the source and destination are located in the same hierarchy (i.e. they have the same parent). </p>
 <div class="rail">
-<span class="railtitle">remoteHost</span>
+<span class="railtitle">audiogetMsgs</span>
 <br /><script>
 ComplexDiagram(
-    OneOrMore (Sequence (Choice (0, Sequence (Comment ('1'), 'http://'), Sequence (Comment ('2'), 'https://'), Sequence (Comment ('3'), 'ws://')), NonTerminal('hostname'), ':', NonTerminal('portnum')))
+    Sequence ('get', Choice (0, 'connect', 'in', 'out'))
 ).addTo()
 
 </script>
 </div>
 
 <ul>
-<li>1) uses <span class="OSC">http</span> as communication protocol,</li>
-<li>2) uses <span class="OSC">https</span>,</li>
-<li>3) uses <span class="OSC">websockets</span>. </li>
+<li><span class="OSC">in</span>: gives the number of inputs of the audio object</li>
+<li><span class="OSC">out</span>: gives the number of outputs of the audio object</li>
 </ul>
-<h2 id="web-messages-format">Web messages format</h2>
-<p><a name="msgFormat"></a></p>
-<p>Messages emitted by the <span class="OSC">http</span> and <span class="OSC">ws</span> forwarding mechanism and received by connected clients are encoded in <a href=https://www.json.org/>JSON</a> and transmitted as base64 encoded packets. The JSON format is the following:</p>
-<pre><code class="language-inscore">{
-     'id' : number , 
-     'method' : 'post' , 
-     'data' : textual inscore messages 
- }
-</code></pre>
+<h2 id="faust-objects">Faust objects</h2>
+<p><a name="faustObjects"></a></p>
+<p><a href=https://faust.grame.fr/>Faust</a> is a functional programming language for sound synthesis and audio processing.
+Faust objects are available, providing that the Faust library has been loaded.</p>
+<p><span class="warning">Warning</span> 
+A page containing Faust objects require an https connection, unless it runs on localhost.</p>
+<h3 id="creating-a-faust-object">Creating a Faust object</h3>
+<p><a name="webFaust"></a></p>
+<p>The <span class="OSC">faust</span> or <span class="OSC">faustf</span> types must be used to create a Faust object.</p>
+<p><span class="note">Note: </span>
+The <span class="OSC">faust</span> type exists with the native version but to load a pre-compiled DSP. <span class="OSC">faustdsp</span> and <span class="OSC">faustdspf</span> types are not supported.</p>
+<div class="rail">
+<span class="railtitle">setFaust</span>
+<br /><script>
+ComplexDiagram(
+    Sequence ('set', Choice (0, Sequence (Comment ('1'), 'faust', Optional  ( NonTerminal('int32')), NonTerminal('dspCode')), Sequence (Comment ('2'), 'faustf', Optional  ( NonTerminal('int32')), NonTerminal('dspFile')), Sequence (Comment ('3'), 'faustw', Optional  ( NonTerminal('int32')), NonTerminal('wasmFile'), NonTerminal('jsonFile'))))
+).addTo()
+
+</script>
+</div>
+
+<p>The expected arguments of the <span class="OSC">set</span> message are:</p>
 <ul>
-<li><span class="OSC">id</span>: is a packet unique identifier (currently unused)</li>
-<li><span class="OSC">method</span>: value must be 'post'</li>
-<li><span class="OSC">data</span>: must contain a valid inscore script</li>
+<li>an optional integer that indicates a number of voices used to create a polyphonic DSP (see section <a href="../7-audioObjects#webFaustPoly">webFaustPoly</a>). Note that when present, a polyphonic DSP is created even if equal to 1.</li>
+<li>1: Faust DSP code (see the <a href=https://faustdoc.grame.fr/>Faust language</a> for more information).</li>
+<li>2: a Faust DSP file.</li>
+<li>3: a Faust pre-compiled wasm file and the associated json file. Note that theses files can be generated using the <span class="OSC">get wasm</span> message (see section <a href="../7-audioObjects#webFaustMsgs">webFaustMsgs</a>). </li>
 </ul>
-<p>Although the native version of INScore supports this format for the <span class="OSC">http</span>, <span class="OSC">https</span> and <span class="OSC">ws</span> protocols, nothing prohibits another application to control INScore web pages, provided that the format described above is respected.</p></div>
+<p>By default, a Faust DSP appears as a browsable block diagram.</p>
+<p><span class="note">Note: </span>
+The Faust language uses characters that have a special meaning in HTML: for example, with the split operator <span class="OSC">&lt;:</span>, the '<span class="OSC">&lt;</span>' character will be interpreted as an opening HTML tag and you should use HTML escapes (e.g. <span class="OSC">&amp;lt;</span> instead of <span class="OSC">&lt;</span>). This is necessary for inline DSP code only, DSP files are not concerned.</p>
+<h3 id="faust-messages">Faust messages</h3>
+<p><a name="webFaustMsgs"></a></p>
+<p>Faust objects are active by default, i.e. the output signals is computed whatever the audio connection state. 
+However, it is possible to disable the signals computation when it is not needed (e.g. for objects that are only temporarily active), which allows a large number of faust objects to be embedded in a score, while saving a significant CPU. The <span class="OSC">compute</span> message is provided in this intend.</p>
+<div class="rail">
+<span class="railtitle">faustMsgs</span>
+<br /><script>
+ComplexDiagram(
+    Sequence ('compute', NonTerminal('int32'))
+).addTo()
+
+</script>
+</div>
+
+<ul>
+<li><span class="OSC">compute</span>: start or stop computing the audio signals. The parameter is a boolean value. Default value is 1.</li>
+</ul>
+<p>Faust objects support the audio objects messages plus additional query messages:</p>
+<div class="rail">
+<span class="railtitle">faustgetMsgs</span>
+<br /><script>
+ComplexDiagram(
+    Sequence ('get', Choice (0, 'ui', 'wasm'))
+).addTo()
+
+</script>
+</div>
+
+<ul>
+<li><span class="OSC">ui</span>: gives the Faust processor parameters (see section <a href="../7-audioObjects#webFaustParams">webFaustParams</a>) i.e. for each parameter: its OSC address followed by the parameter UI type, a label, the minimum and maximum values and the parameter step.</li>
+<li><span class="OSC">wasm</span>: generates the Faust dsp as a precompiled wasm file with the associated json file. The Faust object name is used for the files name. On output, the files <span class="OSC">xxx.wasm</span> and <span class="OSC">xxx.json</span> should be present in the local download folder (where <span class="OSC">xxx</span> is the Faust object name).</li>
+</ul>
+<h3 id="faust-objects-parameters">Faust objects parameters</h3>
+<p><a name="webFaustParams"></a></p>
+<p>A Faust DSP code can declare UI elements that are used by <strong>architecture files</strong> to build controllers providing users with dynamic control of the DSP parameters. In INScore, DSP UI elements are used to extend the Faust object address space. For example, when a DSP code declares a UI element named 'Volume', a Faust object which address is <span class="OSC">/ITL/scene/dsp</span> is extended as <span class="OSC">/ITL/scene/dsp/Volume</span>.</p>
+<p>Faust parameters support two types of messages:</p>
+<div class="rail">
+<span class="railtitle">faustParamMsgs</span>
+<br /><script>
+ComplexDiagram(
+    Choice (0, Sequence (Comment ('1'), NonTerminal('float32')), Sequence (Comment ('2'), 'get'))
+).addTo()
+
+</script>
+</div>
+
+<ul>
+<li>1: set the parameter value</li>
+<li>2: gives the parameter value</li>
+</ul>
+<h3 id="polyphonic-objects">Polyphonic objects</h3>
+<p><a name="webFaustPoly"></a></p>
+<p>Polyphonic objects (i.e. Faust objects created using the optional voice number) support additional messages:</p>
+<div class="rail">
+<span class="railtitle">faustPolyMsgs</span>
+<br /><script>
+ComplexDiagram(
+    Choice (0, Sequence (Choice (0, 'keyOn', 'keyOff'), NonTerminal('chan'), NonTerminal('pitch'), NonTerminal('vel')), 'allNotesOff')
+).addTo()
+
+</script>
+</div>
+
+<ul>
+<li><span class="OSC">keyOn</span> and <span class="OSC">keyOff</span> messages take 3 integer parameters: a MIDI channel, the note pitch and the velocity.</li>
+<li><span class="OSC">allNotesOff</span>: similar to MIDI all notes off message</li>
+</ul>
+<h2 id="audio-input-output">Audio Input / Output</h2>
+<p><a name="audioioObjects"></a></p>
+<p>Audio input / output objects are provided as audio object (see section <a href="../7-audioObjects#audioObjects">audioObjects</a>) to represent the physical audio inputs and outputs, in order to homogenize the connection process.
+An audio input / output type is <span class="OSC">audioio</span>. It is created with a number of inputs and outputs as arguments.</p>
+<div class="rail">
+<span class="railtitle">audioioMsgs</span>
+<br /><script>
+ComplexDiagram(
+    Sequence ('set', 'audioio', NonTerminal('int32'), NonTerminal('int32'))
+).addTo()
+
+</script>
+</div>
+
+<p><span class="note">Note:</span>
+The current Javascript implementation automatically creates an audio input objet named <span class="OSC">audioInput</span> (if any) and an audio output object named  <span class="OSC">audioOutput</span> (if any). Thus the names <span class="OSC">audioInput</span> and <span class="OSC">audioOutput</span> are reserved and you should avoid to use them (unless audio connections are not needed).</p></div>
             </div>
         </div>
 

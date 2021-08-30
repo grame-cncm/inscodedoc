@@ -21,7 +21,7 @@ nav:
             - 'Synchronization' :   refs/14-syncmsg.md
             - 'Graphic signals' :   refs/15-graphsig.md
             - 'Sensors' :           refs/16-sensors.md
-            - 'Interaction' :       refs/17-interaction.md
+            - 'Events' :       refs/17-interaction.md
             - 'Score Expressions' : refs/18-scoreExpr.md
             - 'Plugins' :           refs/19-plugins.md
             - 'Changes list' :      refs/20-changes.md
@@ -31,12 +31,14 @@ nav:
             - 'Math. expressions' : lang/2-mathExpr.md
             - 'Grammar' :           lang/3-appendices.md
         - 'INScore Web' :
-            - 'Introduction' : web/1-introduction.md
-            - 'Global changes' : web/2-behavior.md
+            - 'Introduction' :         web/1-introduction.md
+            - 'Global changes' :       web/2-mainDiffs.md
             - 'Unsupported messages' : web/3-unsupported.md
-            - 'Specific messages' : web/4-newMessages.md
-            - 'Audio objects' : web/5-audioObjects.md
-            - 'Communication' : web/6-communication.md        
+            - 'Behavioral changes' :   web/4-behavior.md
+            - 'Specific messages' :    web/5-newMessages.md
+            - 'MIDI support' :         web/6-MIDI.md
+            - 'Audio objects' :        web/7-audioObjects.md
+            - 'Communication' :        web/8-communication.md
     - Documents:
         - 'Tutorial' : http://berio.grame.fr/MusicNotation/Introduction-to-INScore/
         - 'Messages reference' : rsrc/INScoreMessages.pdf

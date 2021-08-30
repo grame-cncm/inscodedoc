@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>Specific messages - INScore Documentation</title>
+        <title>Communication - INScore Documentation</title>
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
@@ -113,7 +113,7 @@
 </li>
             
 <li>
-    <a href="../../refs/17-interaction/" class="dropdown-item">Interaction</a>
+    <a href="../../refs/17-interaction/" class="dropdown-item">Events</a>
 </li>
             
 <li>
@@ -161,7 +161,7 @@
 </li>
             
 <li>
-    <a href="../2-behavior/" class="dropdown-item">Global changes</a>
+    <a href="../2-mainDiffs/" class="dropdown-item">Global changes</a>
 </li>
             
 <li>
@@ -169,15 +169,23 @@
 </li>
             
 <li>
-    <a href="./" class="dropdown-item active">Specific messages</a>
+    <a href="../4-behavior/" class="dropdown-item">Behavioral changes</a>
 </li>
             
 <li>
-    <a href="../5-audioObjects/" class="dropdown-item">Audio objects</a>
+    <a href="../5-newMessages/" class="dropdown-item">Specific messages</a>
 </li>
             
 <li>
-    <a href="../6-communication/" class="dropdown-item">Communication</a>
+    <a href="../6-MIDI/" class="dropdown-item">MIDI support</a>
+</li>
+            
+<li>
+    <a href="../7-audioObjects/" class="dropdown-item">Audio objects</a>
+</li>
+            
+<li>
+    <a href="./" class="dropdown-item active">Communication</a>
 </li>
     </ul>
   </li>
@@ -229,12 +237,12 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" href="../3-unsupported/" class="nav-link">
+                                <a rel="prev" href="../7-audioObjects/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../5-audioObjects/" class="nav-link">
+                                <a rel="next" href="../../rsrc/INScoreMessages.pdf" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -256,9 +264,9 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="1"><a href="#specific-new-messages" class="nav-link">Specific new messages</a>
+            <li class="nav-item" data-level="1"><a href="#communication-scheme" class="nav-link">Communication scheme</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#leveraging-css" class="nav-link">Leveraging CSS</a>
+            <li class="nav-item" data-level="2"><a href="#web-messages-format" class="nav-link">Web messages format</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -271,27 +279,53 @@
 
 <script src='/BNF/railroad-diagrams.js'></script>
 
-<h1 id="specific-new-messages">Specific new messages</h1>
-<p><a name="newMessages"></a></p>
-<h2 id="leveraging-css">Leveraging CSS</h2>
-<p><a name="webCSS"></a></p>
-<p><a href=https://www.w3schools.com/css/css_intro.asp>Cascading Style Sheets</a> [CSS] are a powerful way to control the appearance of elements on a web page. The Web version of INScore provides a specific <span class="OSC">class</span> message to use CSS in parallel to the standard mechanisms. This message is supported by all the INScore objects.</p>
+<h1 id="communication-scheme">Communication scheme</h1>
+<p><a name="communication"></a></p>
+<p>INScore forwarding mechanism supports <span class="OSC">http</span> and <span class="OSC">ws</span> protocols since version 1.27. Since these protocols are connection based, a counterpart <span class="OSC">connect</span> message is provided with the Web version.</p>
 <div class="rail">
-<span class="railtitle">classMsg</span>
+<span class="railtitle">connectMsg</span>
 <br /><script>
 ComplexDiagram(
-    Sequence ('class', Choice (0, Comment ('1'), Sequence (Comment ('2'), OneOrMore (NonTerminal('className')))))
+    Sequence ('connect', Choice (0, Comment ('1'), Sequence (Comment ('2'), OneOrMore (NonTerminal('remoteHost')))))
 ).addTo()
 
 </script>
 </div>
 
 <ul>
-<li>1: without argument, remove all class settings</li>
-<li>2: set the CSS classes of an object</li>
+<li>1) removes the existing set of connections,</li>
+<li>2) connect to a list of remote hosts. Once the connection is established, the local INScore engine may receive messages from the remote hosts. To establish the connection, the remote hosts must have set a forwarding mechanism using the same protocol with the same port number. </li>
 </ul>
-<p><span class="note">Note: </span>
-If a <span class="OSC">class</span> message has not the expected effect, it's likely because the CSS properties of the target object are set by the standard INScore mechanisms (like color, border, font-size, etc.). As the own attributes of an object have precedence over the class of the object, the properties of the class are then ignored. You can force the properties of the class by adding the CSS rule <span class="OSC">!important</span> which will override all previous styling rules for that specific property.</p></div>
+<div class="rail">
+<span class="railtitle">remoteHost</span>
+<br /><script>
+ComplexDiagram(
+    OneOrMore (Sequence (Choice (0, Sequence (Comment ('1'), 'http://'), Sequence (Comment ('2'), 'https://'), Sequence (Comment ('3'), 'ws://')), NonTerminal('hostname'), ':', NonTerminal('portnum')))
+).addTo()
+
+</script>
+</div>
+
+<ul>
+<li>1) uses <span class="OSC">http</span> as communication protocol,</li>
+<li>2) uses <span class="OSC">https</span>,</li>
+<li>3) uses <span class="OSC">websockets</span>. </li>
+</ul>
+<h2 id="web-messages-format">Web messages format</h2>
+<p><a name="msgFormat"></a></p>
+<p>Messages emitted by the <span class="OSC">http</span> and <span class="OSC">ws</span> forwarding mechanism and received by connected clients are encoded in <a href=https://www.json.org/>JSON</a> and transmitted as base64 encoded packets. The JSON format is the following:</p>
+<pre><code class="language-inscore">{
+     'id' : number , 
+     'method' : 'post' , 
+     'data' : textual inscore messages 
+ }
+</code></pre>
+<ul>
+<li><span class="OSC">id</span>: is a packet unique identifier (currently unused)</li>
+<li><span class="OSC">method</span>: value must be 'post'</li>
+<li><span class="OSC">data</span>: must contain a valid inscore script</li>
+</ul>
+<p>Although the native version of INScore supports this format for the <span class="OSC">http</span>, <span class="OSC">https</span> and <span class="OSC">ws</span> protocols, nothing prohibits another application to control INScore web pages, provided that the format described above is respected.</p></div>
             </div>
         </div>
 

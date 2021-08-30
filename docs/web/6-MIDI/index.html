@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>Global changes - INScore Documentation</title>
+        <title>MIDI support - INScore Documentation</title>
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
@@ -113,7 +113,7 @@
 </li>
             
 <li>
-    <a href="../../refs/17-interaction/" class="dropdown-item">Interaction</a>
+    <a href="../../refs/17-interaction/" class="dropdown-item">Events</a>
 </li>
             
 <li>
@@ -161,7 +161,7 @@
 </li>
             
 <li>
-    <a href="./" class="dropdown-item active">Global changes</a>
+    <a href="../2-mainDiffs/" class="dropdown-item">Global changes</a>
 </li>
             
 <li>
@@ -169,15 +169,23 @@
 </li>
             
 <li>
-    <a href="../4-newMessages/" class="dropdown-item">Specific messages</a>
+    <a href="../4-behavior/" class="dropdown-item">Behavioral changes</a>
 </li>
             
 <li>
-    <a href="../5-audioObjects/" class="dropdown-item">Audio objects</a>
+    <a href="../5-newMessages/" class="dropdown-item">Specific messages</a>
 </li>
             
 <li>
-    <a href="../6-communication/" class="dropdown-item">Communication</a>
+    <a href="./" class="dropdown-item active">MIDI support</a>
+</li>
+            
+<li>
+    <a href="../7-audioObjects/" class="dropdown-item">Audio objects</a>
+</li>
+            
+<li>
+    <a href="../8-communication/" class="dropdown-item">Communication</a>
 </li>
     </ul>
   </li>
@@ -229,12 +237,12 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" href="../1-introduction/" class="nav-link">
+                                <a rel="prev" href="../5-newMessages/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../3-unsupported/" class="nav-link">
+                                <a rel="next" href="../7-audioObjects/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -256,13 +264,13 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="1"><a href="#behavioural-differences" class="nav-link">Behavioural differences</a>
+            <li class="nav-item" data-level="1"><a href="#midi-support" class="nav-link">MIDI support</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#optional-components" class="nav-link">Optional components</a>
+            <li class="nav-item" data-level="2"><a href="#midi-events" class="nav-link">MIDI events</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#using-files-in-a-script" class="nav-link">Using files in a script</a>
+            <li class="nav-item" data-level="2"><a href="#midi-verbose-mode" class="nav-link">MIDI verbose mode</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -275,78 +283,137 @@
 
 <script src='/BNF/railroad-diagrams.js'></script>
 
-<h1 id="behavioural-differences">Behavioural differences</h1>
-<p><a name="behavior"></a></p>
-<p>The OSC protocol is not supported in the Web version. As a result, the mode of communication with the INScore engine is different (see section <a href="../6-communication#communication">communication</a>) and may also depend on the application that uses this engine. </p>
-<p>By default:</p>
+<h1 id="midi-support">MIDI support</h1>
+<p><a name="MIDI"></a></p>
+<p>A <span class="OSC">midi</span> node is automatically created at application level (<span class="OSC">/ITL/midi</span>).
+Before using the MIDI features, the <span class="OSC">midi</span> node must be explicitly initialised using the <span class="OSC">init</span> message. On success, the <span class="OSC">ready</span> event is triggered, otherwise an <span class="OSC">error</span> event is triggered.</p>
+<p><span class="example">Example</span></p>
+<pre><code class="language-inscore">/ITL/midi watch ready ( do something to use the MIDI interface ); 
+/ITL/midi watch error ( do something else ); 
+/ITL/midi init;
+</code></pre>
+<h2 id="midi-events">MIDI events</h2>
+<p><a name="MIDIEvents"></a></p>
+<p>MIDI is supported using a specific event that you can configure using the <span class="OSC">watch</span> message. Before using MIDI, you should check that your browser is supporting the Web MIDI API.</p>
+<div class="rail">
+<span class="railtitle">watchMIDI</span>
+<br /><script>
+ComplexDiagram(
+    Sequence ('watch', 'midi', NonTerminal('midifilter'))
+).addTo()
+
+</script>
+</div>
+<p>A filter is used to select the MIDI messages that will trigger the event.</p>
+<div class="rail">
+<span class="railtitle">midifilter</span>
+<br /><script>
+ComplexDiagram(
+    Choice (0, Optional  ( '*'), Sequence (Optional  ( Sequence ('chan', NonTerminal('int32'))), Choice (0, NonTerminal('midikey'), Sequence ('prog', NonTerminal('int32')), Sequence ('ctrl', NonTerminal('int32'), NonTerminal('midivalue')))))
+).addTo()
+
+</script>
+</div>
+
 <ul>
-<li>the OSC output and error ports are redirected to the Javascript console.</li>
-<li>drag &amp; drop works like in the native version: you can drop files or text to an INScore scene (an HTML div in the Web version). </li>
+<li>an empty filter can be used to stop watching MIDI input</li>
+<li>'*' denotes any MIDI message (no filter at all)</li>
+<li><span class="OSC">chan</span>: an optional channel number may be used to select only the MIDI messages on a given MIDI channel</li>
+<li>midikey: is used to select key on/off messages according to their values and to an optional velocity.</li>
+<li><span class="OSC">prog</span>: is used to select program change messages. A program change number is expected as next argument.</li>
+<li><span class="OSC">ctrl</span>: is used to select control change messages. A control change number is expected as next argument.</li>
 </ul>
-<p>The <span class="OSC">log</span> window (address <span class="OSC">/ITL/log</span>) is dependent on the host application. By default, input messages addressed to the <span class="OSC">log</span> node are directed to the Javascript console.</p>
-<h2 id="optional-components">Optional components</h2>
-<p><a name="components"></a></p>
-<p>As the architecture of the web version is completely modular, the available objects depend on the host application:
-e.g. a page which wants to use objects in symbolic notation (type <span class="OSC">gmn</span>) will have to include the Guido library. 
-This architecture allows applications to be optimized to fit their needs. It also facilitates the extension of the INScore engine.
-The table <a href="../2-behavior#componentTbl">componentTbl</a> presents the current supported components.</p>
-<table>
-<thead>
-<tr>
-<th align="center">Component</th>
-<th>Name</th>
-<th>Dependent types</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="center">Guido Engine</td>
-<td>libGUIDOEngine.js</td>
-<td><span class="OSC">gmn</span>, <span class="OSC">gmnf</span>, <span class="OSC">gmnstream</span>,</td>
-</tr>
-<tr>
-<td align="center"></td>
-<td></td>
-<td><span class="OSC">pianoroll</span>, <span class="OSC">pianorollf</span>, <span class="OSC">pianorollstream</span></td>
-</tr>
-<tr>
-<td align="center">MusicXML library</td>
-<td>libmusicxml.js</td>
-<td><span class="OSC">musicxml</span>, <span class="OSC">musicxmlf</span></td>
-</tr>
-<tr>
-<td align="center"></td>
-<td></td>
-<td>use of MusicXML implies to have also the Guido Engine</td>
-</tr>
-<tr>
-<td align="center">Faust compiler</td>
-<td>libfaust-wasm.js</td>
-<td><span class="OSC">faust</span>, <span class="OSC">faustf</span></td>
-</tr>
-<tr>
-<td align="center"></td>
-<td>FaustLibrary.js</td>
-<td></td>
-</tr>
-<tr>
-<td align="center"><a name="componentTbl"></a></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<p><span class='caption'>Components required by specific objects</span></p>
-<h2 id="using-files-in-a-script">Using files in a script</h2>
-<p><a name="files"></a></p>
-<p>You can use file based objects in an INScore script but the file path is interpreted differently: </p>
+<p><span class="example">Example</span>
+Accept all MIDI messages that are on channel 0</p>
+<pre><code class="language-inscore">/ITL/scene/obj watch midi chan 0 (inscore messages list);
+</code></pre>
+<div class="rail">
+<span class="railtitle">midikey</span>
+<br /><script>
+ComplexDiagram(
+    Sequence (Choice (0, 'keyon', 'keyoff'), NonTerminal('midivalue'), Optional  ( Sequence ('vel', NonTerminal('midivalue'))))
+).addTo()
+
+</script>
+</div>
+
+<p>A MIDI key is either <span class="OSC">keyon</span> or <span class="OSC">keyoff</span>. It may be followed by an optional velocity selector.</p>
+<p>A MIDI value is either literal values or a range of values.</p>
+<div class="rail">
+<span class="railtitle">midivalue</span>
+<br /><script>
+ComplexDiagram(
+    Choice (0, NonTerminal('literal'), NonTerminal('range'))
+).addTo()
+
+</script>
+</div>
+
+<div class="rail">
+<span class="railtitle">literal</span>
+<br /><script>
+ComplexDiagram(
+    Choice (0, Sequence (Comment ('1'), NonTerminal('int32')), Sequence (Comment ('2'), '[', OneOrMore (NonTerminal('int32')), ']'))
+).addTo()
+
+</script>
+</div>
+
+<p>Literal values are:</p>
 <ul>
-<li>when using an absolute path, it refers to the document root of the HTTP server,</li>
-<li>when using a relative path, it refers to the location of the HTML page </li>
+<li>1: a single value,</li>
+<li>2: a list of space separated values enclosed in brackets,</li>
 </ul>
-<p><span class="note">Note: </span>
-Browsers infer a MIME type from the file extension and generally, download any file which extension is not recognized
-(this behavior depends on the browser you are using). It is therefore recommended to use a <span class="OSC">.txt</span> extension for any textual resource with non-standard extension. For example, a <span class="OSC">score.gmn</span> file could be renamed and used as <span class="OSC">score.gmn.txt</span>.</p></div>
+<p>All the values must be in the MIDI data range (0-127).</p>
+<p><span class="example">Example</span>
+Accepting MIDI key on messages for 3 specific pitches.</p>
+<pre><code class="language-inscore">/ITL/scene/obj watch midi keyon [60 62 64] (inscore messages list);
+</code></pre>
+<p>Range may be used when a value is within the specified range, or enters or leaves the range.</p>
+<div class="rail">
+<span class="railtitle">range</span>
+<br /><script>
+ComplexDiagram(
+    Choice (0, Sequence (Comment ('1'), '(', NonTerminal('int32'), '-', NonTerminal('int32'), ')'), Sequence (Comment ('2'), Sequence (')', NonTerminal('int32'), '-', NonTerminal('int32'), '(')), Sequence (Comment ('3'), Sequence ('[', NonTerminal('int32'), '-', NonTerminal('int32'), ']')))
+).addTo()
+
+</script>
+</div>
+
+<ul>
+<li>1: trigger the event when the value enters the range. </li>
+<li>2: trigger the event when the value leaves the range.</li>
+<li>3: trigger the event when the value is within the range.</li>
+</ul>
+<p><span class="example">Example</span>
+Accepting <span class="OSC">keyon</span> MIDI messages only when entering and leaving the range 60 - 67;</p>
+<pre><code class="language-inscore">/ITL/scene/obj watch midi keyon '[60-67]' (inscore messages list);
+/ITL/scene/obj watch midi keyon ']60-67[' (inscore messages list);
+</code></pre>
+<h2 id="midi-verbose-mode">MIDI verbose mode</h2>
+<p><a name="verbMIDI"></a></p>
+<p>In order to facilitate the detection of messages sent by a MIDI interface, a 'verbose' mode allows incoming messages to be displayed on the browser console. 
+To enable or disable verbose mode, a specific message must be sent to the <span class="OSC">/ITL/midi</span> object:</p>
+<div class="rail">
+<span class="railtitle">verbMIDI</span>
+<br /><script>
+ComplexDiagram(
+    Sequence ('verbose', NonTerminal('int32'))
+).addTo()
+
+</script>
+</div>
+
+<p>The parameter is a numerical value that controls which MIDI events are displayed: </p>
+<ul>
+<li>0: disable the verbose mode</li>
+<li>1: displays the channel MIDI events (Real-time and system exclusive events are filtered out).</li>
+<li>2: displays all the MIDI events</li>
+</ul>
+<p><span class="example">Example</span></p>
+<pre><code class="language-inscore">/ITL/midi verbose 1; 
+</code></pre>
+<p>Activates the MIDI verbose mode.</p></div>
             </div>
         </div>
 

@@ -70,9 +70,9 @@ This document is intended to present the differences between the native and web 
 A special section is also devoted to the implementation of INScore Web in standalone HTML pages.
 
 %===============================
-%:Behavioural differences
-\toplevel{Behavioural differences}
-\label{behavior}
+%:Main differences
+\toplevel{Main differences}
+\label{mainDiffs}
 
 The OSC protocol is not supported in the Web version. As a result, the mode of communication with the INScore engine is different (see section \ref{communication}) and may also depend on the application that uses this engine. 
 
@@ -178,7 +178,7 @@ A number of messages are not supported in the web version, either because they d
 \label{webcommonMessages}
 
 \begin{itemize}
-\item \OSC{export}, \OSC{exportAll}, \OSC{save}: not implemented
+\item \OSC{export}, \OSC{exportAll}: not implemented
 \item \OSC{shear}, \OSC{dshear}: not implemented
 \item \OSC{effect}: \OSC{colorize}: not implemented
 \item \OSC{edit}: not implemented
@@ -193,10 +193,7 @@ A number of messages are not supported in the web version, either because they d
 \item \OSC{rootPath}: not implemented
 \item \OSC{mouse}: not yet implemented
 \item \OSC{read}: not implemented
-\item \OSC{load}: not implemented
 \item \OSC{port}, \OSC{outport}, \OSC{errport}: do not make sense without OSC
-\item \OSC{get}: \OSC{guido-version} \OSC{musicxml-version}: not implemented. \\
-Note that the corresponding components are loaded, they print their version number to the Javascript console.
 \end{itemize}
 
 %--------------------------------
@@ -207,7 +204,7 @@ As mentioned above, the \OSC{log} window (address \OSC{/ITL/log}) is dependent o
 
 \begin{itemize}
 \item \OSC{clear}: dependent on the host application (do nothing by default)
-\item \OSC{save}: not supported due to the lack of file system
+\item \OSC{save}: not supported
 \item \OSC{foreground}: dependent on the host application (do nothing by default)
 \item \OSC{wrap}: dependent on the host application (do nothing by default)
 \item \OSC{scale}: dependent on the host application (do nothing by default)
@@ -220,10 +217,7 @@ As mentioned above, the \OSC{log} window (address \OSC{/ITL/log}) is dependent o
 \label{websceneMessages}
 
 \begin{itemize}
-\item \OSC{save}: not supported due to the lack of file system
 \item \OSC{foreground}: dependent on the host application (do nothing by default)
-\item \OSC{rootPath}: not yet implemented
-\item \OSC{load}: not yet supported
 \item \OSC{frameless} \OSC{windowOpacity}: not supported
 \end{itemize}
 
@@ -271,15 +265,27 @@ The following events are not yet supported:
 \end{itemize}
 
 %===============================
+%:Behavioral changes
+\toplevel{Behavioral changes}
+\label{behavior}
+
+Some messages behave differently with the Web version.
+\begin{itemize}
+\item \OSC{save}: download the INScore content to the file given as argument. You should find this file in your download folder.
+\end{itemize}
+
+
+%===============================
 %:New messages
 \toplevel{Specific new messages}
 \label{newMessages}
 
 %--------------------------------
+%:  CSS
 \sublevel{Leveraging CSS}
 \label{webCSS}
 
-\href{https://www.w3schools.com/css/css_intro.asp}{Cascading Style Sheets} [CSS] are a powerful way to control the appearance of elements on a web page. The Web version of INScore provides a specific \OSC{class} message to use CSS in parallel to the standard mechanisms. This message is supported by all the INScore objects.
+\href{https://www.w3schools.com/css/css_intro.asp}{Cascading Style Sheets} [CSS] are a powerful way to control the appearance of elements on a web page. The Web version of INScore provides a specific \OSC{class} message to use CSS in parallel to the standard mechanisms. This message is supported by all the INScore objects. 
 
 \begin{rail}
 classMsg : 'class' ([1]| [2] className +)
@@ -294,16 +300,133 @@ classMsg : 'class' ([1]| [2] className +)
 If a \OSC{class} message has not the expected effect, it's likely because the CSS properties of the target object are set by the standard INScore mechanisms (like color, border, font-size, etc.). As the own attributes of an object have precedence over the class of the object, the properties of the class are then ignored. You can force the properties of the class by adding the CSS rule \OSC{!important} which will override all previous styling rules for that specific property.
 
 %===============================
-% Midi support
+%:  Midi support
+\toplevel{MIDI support}
+\label{MIDI}
+
+A \OSC{midi} node is automatically created at application level (\OSC{/ITL/midi}).
+Before using the MIDI features, the \OSC{midi} node must be explicitly initialised using the \OSC{init} message. On success, the \OSC{ready} event is triggered, otherwise an \OSC{error} event is triggered.
+
+\example
+\sample{/ITL/midi watch ready ( do something to use the MIDI interface ); \\
+/ITL/midi watch error ( do something else ); \\
+/ITL/midi init;
+}
+
+
+%:  Midi events
+\sublevel{MIDI events}
+\label{MIDIEvents}
+
+
+MIDI is supported using a specific event that you can configure using the \OSC{watch} message. Before using MIDI, you should check that your browser is supporting the Web MIDI API.
+
+\begin{rail}
+watchMIDI : 'watch' 'midi' midifilter
+\end{rail}
+A filter is used to select the MIDI messages that will trigger the event.
+
+\begin{rail}
+midifilter : (| '*')
+			 | (| 'chan' int32) 
+			 (midikey | 'prog' int32 | 'ctrl' int32 midivalue)
+\end{rail}
+
+\begin{itemize}
+\item an empty filter can be used to stop watching MIDI input
+\item '*' denotes any MIDI message (no filter at all)
+\item \OSC{chan}: an optional channel number may be used to select only the MIDI messages on a given MIDI channel
+\item midikey: is used to select key on/off messages according to their values and to an optional velocity.
+\item \OSC{prog}: is used to select program change messages. A program change number is expected as next argument.
+\item \OSC{ctrl}: is used to select control change messages. A control change number is expected as next argument.
+\end{itemize}
+
+\example\\
+Accept all MIDI messages that are on channel 0
+\sample{/ITL/scene/obj watch midi chan 0 (inscore messages list);
+}
+
+\begin{rail}
+midikey : 
+			 ('keyon' | 'keyoff') midivalue (| ('vel' midivalue))
+\end{rail}
+
+A MIDI key is either \OSC{keyon} or \OSC{keyoff}. It may be followed by an optional velocity selector.
+
+A MIDI value is either literal values or a range of values.
+
+\begin{rail}
+midivalue : 
+			(literal | range )
+\end{rail}
+
+\begin{rail}
+literal : ([1] int32 | ([2] '[' (int32 +) ']' ))
+\end{rail}
+
+Literal values are:
+\begin{itemize}
+\item 1: a single value,
+\item 2: a list of space separated values enclosed in brackets,
+\end{itemize}
+All the values must be in the MIDI data range (0-127).
+
+\example\\
+Accepting MIDI key on messages for 3 specific pitches.
+\sample{/ITL/scene/obj watch midi keyon [60 62 64] (inscore messages list);
+}
+
+Range may be used when a value is within the specified range, or enters or leaves the range.
+
+\begin{rail}
+range : ([1] '(' int32 '-' int32 ')' )
+		| [2] (')' int32 '-' int32 '(' )
+		| [3] ('[' int32 '-' int32 ']' )
+\end{rail}
+
+\begin{itemize}
+\item 1: trigger the event when the value enters the range. 
+\item 2: trigger the event when the value leaves the range.
+\item 3: trigger the event when the value is within the range.
+\end{itemize}
+
+\example\\
+Accepting \OSC{keyon} MIDI messages only when entering and leaving the range 60 - 67;
+\sample{/ITL/scene/obj watch midi keyon '[60-67]' (inscore messages list);\\
+/ITL/scene/obj watch midi keyon ']60-67[' (inscore messages list);
+}
+
+\sublevel{MIDI verbose mode}
+\label{verbMIDI}
+
+In order to facilitate the detection of messages sent by a MIDI interface, a 'verbose' mode allows incoming messages to be displayed on the browser console. 
+To enable or disable verbose mode, a specific message must be sent to the \OSC{/ITL/midi} object:
+
+\begin{rail}
+verbMIDI : 'verbose' int32
+\end{rail}
+
+The parameter is a numerical value that controls which MIDI events are displayed: 
+\begin{itemize}
+\item 0: disable the verbose mode
+\item 1: displays the channel MIDI events (Real-time and system exclusive events are filtered out).
+\item 2: displays all the MIDI events
+\end{itemize}
+
+
+\example
+\sample{/ITL/midi verbose 1; 
+}
+Activates the MIDI verbose mode.
 
 
 %===============================
-%:Audio objects
-\toplevel{Audio objects}
+%:Audio
+\toplevel{Audio}
 \label{audioObjects}
 
 %===============================
-%:Faust objects
+%:Audio objects
 \sublevel{Audio objects}
 \label{audioObjects}
 
@@ -312,11 +435,12 @@ Audio objects are \emph{connectable} objects i.e. objects which output can be co
 Audio objects support the following messages:
 
 \begin{rail}
-audioMsgs : ('connect' | 'disconnect') ( destination + )
+audioMsgs : ('connect' | 'disconnect') ( ([1] destination 
+			|  ( [2] int32 ':' destination ':' int32 )) + ) 
 \end{rail}
 
 \begin{itemize}
-\item \OSC{connect}: connect the outputs of the object to the destination inputs. The destination must be a another audio object. Inputs and outputs count must be the same on source and destination. The destination supports regular expressions.
+\item \OSC{connect}: connect the outputs of the object to the destination inputs. \OSC{destination} must be another audio object. Without  numeric prefix and suffix [1], inputs and outputs count must be the same on source and destination. The second form [2] connects only the corresponding output channel to the corresponding input (indexed from 1). The destination supports regular expressions.
 \item \OSC{disconnect}: disconnect the outputs of the object from the destination inputs. Note that errors (e.g. no existing connection with the destination) are silently ignored.
 \end{itemize}
 
@@ -340,6 +464,9 @@ audiogetMsgs : 'get' ('connect' | 'in' | 'out')
 \href{https://faust.grame.fr/}{Faust} is a functional programming language for sound synthesis and audio processing.
 Faust objects are available, providing that the Faust library has been loaded.
 
+\warning \\
+A page containing Faust objects require an https connection, unless it runs on localhost.
+
 %--------------------------------
 \subsublevel{Creating a Faust object}
 \label{webFaust}
@@ -351,7 +478,8 @@ The \OSC{faust} type exists with the native version but to load a pre-compiled D
 
 \begin{rail}
 setFaust : 'set' (([1] 'faust' (| int32) dspCode)
-				| ([2] 'faustf' (| int32) dspFile))
+				| ([2] 'faustf' (| int32) dspFile)
+				| ([3] 'faustw' (| int32) wasmFile jsonFile))
 
 \end{rail}
 
@@ -360,6 +488,7 @@ The expected arguments of the \OSC{set} message are:
 \item an optional integer that indicates a number of voices used to create a polyphonic DSP (see section \ref{webFaustPoly}). Note that when present, a polyphonic DSP is created even if equal to 1.
 \item 1: Faust DSP code (see the \href{https://faustdoc.grame.fr/}{Faust language} for more information).
 \item 2: a Faust DSP file.
+\item 3: a Faust pre-compiled wasm file and the associated json file. Note that theses files can be generated using the \OSC{get wasm} message (see section \fullref{webFaustMsgs}). 
 \end{itemize}
 
 By default, a Faust DSP appears as a browsable block diagram.
@@ -371,14 +500,26 @@ The Faust language uses characters that have a special meaning in HTML: for exam
 \subsublevel{Faust messages}
 \label{webFaustMsgs}
 
-Faust objects supports the audio objects messages plus an additional query message:
+Faust objects are active by default, i.e. the output signals is computed whatever the audio connection state. 
+However, it is possible to disable the signals computation when it is not needed (e.g. for objects that are only temporarily active), which allows a large number of faust objects to be embedded in a score, while saving a significant CPU. The \OSC{compute} message is provided in this intend.
 
 \begin{rail}
-faustgetMsgs : 'get' 'ui'
+faustMsgs : 'compute' int32
+\end{rail}
+
+\begin{itemize}
+\item \OSC{compute}: start or stop computing the audio signals. The parameter is a boolean value. Default value is 1.
+\end{itemize}
+
+Faust objects support the audio objects messages plus additional query messages:
+
+\begin{rail}
+faustgetMsgs : 'get' ('ui' | 'wasm')
 \end{rail}
 
 \begin{itemize}
 \item \OSC{ui}: gives the Faust processor parameters (see section \ref{webFaustParams}) i.e. for each parameter: its OSC address followed by the parameter UI type, a label, the minimum and maximum values and the parameter step.
+\item \OSC{wasm}: generates the Faust dsp as a precompiled wasm file with the associated json file. The Faust object name is used for the files name. On output, the files \OSC{xxx.wasm} and \OSC{xxx.json} should be present in the local download folder (where \OSC{xxx} is the Faust object name).
 \end{itemize}
 
 
@@ -399,8 +540,6 @@ faustParamMsgs : [1] float32 | [2] 'get'
 \item 2: gives the parameter value
 \end{itemize}
 
-\note{}\\
-When a parameter which type is \OSC{button} is set to 1, it is automatically reset to zero after a short time (corresponding at least to one audio buffer size).
 
 %--------------------------------
 \subsublevel{Polyphonic objects}
@@ -423,7 +562,7 @@ faustPolyMsgs : (('keyOn' | 'keyOff') chan pitch vel)
 \sublevel{Audio Input / Output}
 \label{audioioObjects}
 
-Audio input / output objects are provided as audio object (\see section \ref{audioObjects}) to the represent the physical audio inputs and outputs, in order to homogenize the connection process.
+Audio input / output objects are provided as audio object (see section \ref{audioObjects}) to represent the physical audio inputs and outputs, in order to homogenize the connection process.
 An audio input / output type is \OSC{audioio}. It is created with a number of inputs and outputs as arguments.
 
 \begin{rail}

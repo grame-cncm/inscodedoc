@@ -3179,7 +3179,7 @@ An extended address to send messages to \OSC{localhost} on port \OSC{12000}:
 \sublevel{Internal events}
 \label{defevents}
 
-Internal events are triggered by the user interaction (mouse or touch events) or by the engine internal functionning.
+Internal events are triggered by the user interaction (mouse or touch events) or by the engine internal functioning.
 
 %===============================
 %:       Mouse events
@@ -3266,6 +3266,47 @@ Each event takes a time interval as parameter, defined by two \OSC{time} specifi
 \example \\
 An object that moves a score to a given page number when it enters its time zone.
 \sample{/ITL/scene/myObject watch timeEnter 10/1 18/1 (/ITL/scene/score page 2);}
+
+%===============================
+%:       Key events
+\subsublevel{Keyboard events}
+\label{keyevents}
+
+Keyboard events are triggered by pressing or releasing a key on the keyboard.
+
+\index{Interaction!Events!keyDown}
+\index{Interaction!Events!keyUp}
+
+\begin{rail}
+keyEvent : 	('keyDown' | 'keyUp') ([1] char | [2] '[' charlist ']' | [3] '*' | [4] controlKey)
+\end{rail}
+
+\index{Interaction!Events!controlKey}
+\begin{rail}
+controlKey : 'ArrowLeft' | 'ArrowRight' | 'ArrowUp' | 'ArrowDown'
+\end{rail}
+
+\begin{itemize}
+\item 1) only the specified \OSC{char} will trigger the event,
+\item 2) \OSC{charlist} is a string interpreted like the bracket expression of regular expressions. For example, using \OSC{[abc]}, 'a' or 'b' or 'c' will trigger a key event, using \OSC{[1-9]}, any numeric from 1 to 9 will trigger a key event.
+\item 3) any key triggers a key event.
+\item 4) handles special keys to trigger the key event. A literal description of the key must be provided (e.g. \OSC{ArrowLeft}).
+\end{itemize}
+
+\note\\
+Unlike standard applications, there is no notion of focus regarding key events: when several objects request keyboard input, all of them will receive \OSC{key} events, provided they are watching the same input.
+
+
+%===============================
+%:       Midi events
+\subsublevel{MIDI events}
+\label{midievents}
+
+MIDI events are supported, but only by the Web version. 
+MIDI events are supported by the native version for compatibility reasons but 
+they are inactive (no MIDI input). \\
+See INScore Web documentation for more details.
+
 
 %===============================
 %:       URL events

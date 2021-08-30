@@ -314,7 +314,7 @@ Before using the MIDI features, the \OSC{midi} node must be explicitly initialis
 }
 
 
-%:  Midi support
+%:  Midi events
 \sublevel{MIDI events}
 \label{MIDIEvents}
 
@@ -328,8 +328,8 @@ A filter is used to select the MIDI messages that will trigger the event.
 
 \begin{rail}
 midifilter : (| '*')
-			 | ('chan' int32) 
-			 (| midikey | 'prog' int32 | 'ctrl' int32 midivalue)
+			 | (| 'chan' int32) 
+			 (midikey | 'prog' int32 | 'ctrl' int32 midivalue)
 \end{rail}
 
 \begin{itemize}

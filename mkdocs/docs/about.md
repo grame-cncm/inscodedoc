@@ -12,7 +12,7 @@ INScore was initiated in the [Interlude](http://interlude.ircam.fr) project, fun
 
 I would like to thank all the people who have been contributing to INScore design and development, and especially:
 
-Kevin Bardotti, Christophe Daudin, Sarah Denoux, Martin Carlé, Guillaume Gouilloux, Joachim Heintz, Camille Le Roi, Gabriel Lepetit-Aimon, Arnaud Margaillan, Eric Ravel.
+Julien Aldon, Kevin Bardotti, Christophe Daudin, Sarah Denoux, Martin Carlé, Guillaume Gouilloux, Joachim Heintz, Camille Le Roi, Gabriel Lepetit-Aimon, Arnaud Margaillan, Eric Ravel.
 
 Many thanks also to the Interlude team - Frédéric Bevilacqua, Norbert Schnell, Nicolas Rasamimanana, Emmanuel Fléty, Fabrice Guédy, Jean-Louis Frechin, Uros Petrevski, Bernard Garabédian, Rémi Dury, Bruno Verbrugghe - who contributed to the elaboration of the project foundations.
 

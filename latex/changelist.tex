@@ -1,5 +1,34 @@
 % !TEX root = OSCMsg.tex
 
+\newcommand{\inscoreweb}	{\hspace{4mm} \textsc{INScore Web Specific changes}}
+
+%===============================
+%:    Differences to version 1.28  (version 1.31)
+\sublevel{Version 1.31 vs version 1.28}
+\begin{itemize}
+\item add support for get 'date\%f' query
+\item add midi node at application level, supported by the native app for compatibility reasons (works only with the web version)
+\item new keyDown and keyUp events
+\item fix \$date quantification
+\item fix 'event' messages forwarding
+\item fix \$date\%f detection in javascript run method
+\item fix non visible mapping for images
+\item fix incorrect \$x et \$y variables value for proportional dimension objects
+\item fix missing curve rendering
+\item fix guido score scaling issue
+\end{itemize}
+
+\inscoreweb
+\begin{itemize}
+\item new 'compute' message supported by faust objects
+\item new form of the 'connect' message (to address individual channels)
+\item font size unit changed to 'vw' (relative to viewport width)
+\item load message implemented
+\item new faustw object (precompiled faust dsp)
+\item new midi events
+\end{itemize}
+
+
 %===============================
 %:    Differences to version 1.27  (version 1.28)
 \sublevel{Version 1.28 vs version 1.27}
@@ -11,9 +40,7 @@
 \item add https support to forwarding mechanism. See section \fullref{Forwarding}
 \end{itemize}
 
-\vspace{-4mm}
-\hspace{4mm} INScore Web version
-\vspace{-4mm}
+\inscoreweb
 \begin{itemize}
 \item fix ready event for audio objects
 \end{itemize}
@@ -21,8 +48,8 @@
 %===============================
 %:    Differences to version 1.24  (version 1.27)
 \sublevel{Version 1.27 vs version 1.24}
+\inscoreweb
 \begin{itemize}
-\item INScore Web version
 \item new \OSC{faust} object (web version)
 \item new \OSC{connect} method (web version)
 \item forwarding mechanism extended with http and ws support. See section \fullref{Forwarding}

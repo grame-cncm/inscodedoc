@@ -66,6 +66,10 @@ s/\\oscstring\\*/<span class="terminal">string<\/span>/
 
 s/\\verb+\(.\)+/\1/g
 
+############## transform % used in date variables
+s/>%f</>___f</
+s/date%f/date___f/
+
 ############## handle inline math
 s/\$\([^ $]*\)\$/\\(\1\\)/g
 

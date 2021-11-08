@@ -7,8 +7,7 @@
 
 This site documents the INScore messages and the scripting language. 
 
-_Note_: All the features described in this document are not available with the online editor.  
-At this time, the documentation does not yet reflect the differences between the web version and the native version of INScore.
+_Note_: All the features described in this document are not available with the online editor. A section entitled INScore Web is dedicated to the specific features and differences of the Javascript version of INScore.
 
 ----
 

@@ -440,9 +440,18 @@ audioMsgs : ('connect' | 'disconnect') ( ([1] destination
 \end{rail}
 
 \begin{itemize}
-\item \OSC{connect}: connect the outputs of the object to the destination inputs. \OSC{destination} must be another audio object. Without  numeric prefix and suffix [1], inputs and outputs count must be the same on source and destination. The second form [2] connects only the corresponding output channel to the corresponding input (indexed from 1). The destination supports regular expressions.
+\item \OSC{connect}: connect the outputs of the object to the destination inputs. \OSC{destination} must be another audio object. Without  numeric prefix and suffix [1], the connexion may be subject of up or down mixing as specified by the \href{https://www.w3.org/TR/webaudio/#channel-up-mixing-and-down-mixing}{Web Audio API}. The destination supports regular expressions. The second form [2] connects an output channel to the a destination input channel. The first number refers to the target object channel, the second one to the destination channel. Channels are indexed from 1, using 0 is equivalent to all channels (that are then mixed together). See the examples below.
 \item \OSC{disconnect}: disconnect the outputs of the object from the destination inputs. Note that errors (e.g. no existing connection with the destination) are silently ignored.
 \end{itemize}
+
+\example\\
+Connect the first channel of an audio object to the second channel of the audio output :
+\sample{/ITL/scene/obj connect '1:audioOutput:2';}
+Connect all channels of an audio object to the first channel of the audio output :
+\sample{/ITL/scene/obj connect '0:audioOutput:1';}
+
+\note{}\\
+The messages \OSC{/ITL/scene/obj connect '0:dest:0';} is equivalent to \OSC{/ITL/scene/obj connect dest;}
 
 \note{}\\
 The \OSC{connect} message assumes that the source and destination are located in the same hierarchy (i.e. they have the same parent). 

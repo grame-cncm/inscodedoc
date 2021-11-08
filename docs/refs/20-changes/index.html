@@ -266,6 +266,10 @@
             
             <li class="nav-item" data-level="1"><a href="#changes-list" class="nav-link">Changes list</a>
               <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#version-131-vs-version-128" class="nav-link">Version 1.31 vs version 1.28</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
             <li class="nav-item" data-level="2"><a href="#version-128-vs-version-127" class="nav-link">Version 1.28 vs version 1.27</a>
               <ul class="nav flex-column">
               </ul>
@@ -421,6 +425,28 @@
 
 <h1 id="changes-list">Changes list</h1>
 <p><a name="changes"></a></p>
+<h2 id="version-131-vs-version-128">Version 1.31 vs version 1.28</h2>
+<ul>
+<li>add support for get 'date%f' query</li>
+<li>add midi node at application level, supported by the native app for compatibility reasons (works only with the web version)</li>
+<li>new keyDown and keyUp events</li>
+<li>fix $date quantification</li>
+<li>fix 'event' messages forwarding</li>
+<li>fix $date%f detection in javascript run method</li>
+<li>fix non visible mapping for images</li>
+<li>fix incorrect $x et $y variables value for proportional dimension objects</li>
+<li>fix missing curve rendering</li>
+<li>fix guido score scaling issue</li>
+</ul>
+<p>\inscoreweb</p>
+<ul>
+<li>new 'compute' message supported by faust objects</li>
+<li>new form of the 'connect' message (to address individual channels)</li>
+<li>font size unit changed to 'vw' (relative to viewport width)</li>
+<li>load message implemented</li>
+<li>new faustw object (precompiled faust dsp)</li>
+<li>new midi events</li>
+</ul>
 <h2 id="version-128-vs-version-127">Version 1.28 vs version 1.27</h2>
 <ul>
 <li>new <span class="OSC">dvolume</span> method for media objects</li>
@@ -429,15 +455,13 @@
 <li>new get clients messages at application level</li>
 <li>add https support to forwarding mechanism. See section <a href="../11-forwarding#Forwarding">Forwarding</a></li>
 </ul>
-<p>\vspace{-4mm}
-   INScore Web version
-\vspace{-4mm}</p>
+<p>\inscoreweb</p>
 <ul>
 <li>fix ready event for audio objects</li>
 </ul>
 <h2 id="version-127-vs-version-124">Version 1.27 vs version 1.24</h2>
+<p>\inscoreweb</p>
 <ul>
-<li>INScore Web version</li>
 <li>new <span class="OSC">faust</span> object (web version)</li>
 <li>new <span class="OSC">connect</span> method (web version)</li>
 <li>forwarding mechanism extended with http and ws support. See section <a href="../11-forwarding#Forwarding">Forwarding</a></li>

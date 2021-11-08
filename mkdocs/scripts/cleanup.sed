@@ -24,4 +24,7 @@ s/\\ //
 
 ############## remove comments
 s/%.*//
+############## restore real '%' uses
+s/>___f</>%f</
+s/date___f/date%f/
 

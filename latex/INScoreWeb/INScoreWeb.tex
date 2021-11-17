@@ -514,10 +514,12 @@ However, it is possible to disable the signals computation when it is not needed
 
 \begin{rail}
 faustMsgs : 'compute' int32
+			| 'autoOff' int32
 \end{rail}
 
 \begin{itemize}
 \item \OSC{compute}: start or stop computing the audio signals. The parameter is a boolean value. Default value is 1.
+\item \OSC{autoOff}: automatically switch buttons Faust UI elements back to off. The parameter is a boolean value. Default value is 0.
 \end{itemize}
 
 Faust objects support the audio objects messages plus additional query messages:

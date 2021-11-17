@@ -371,7 +371,7 @@ However, it is possible to disable the signals computation when it is not needed
 <span class="railtitle">faustMsgs</span>
 <br /><script>
 ComplexDiagram(
-    Sequence ('compute', NonTerminal('int32'))
+    Choice (0, Sequence ('compute', NonTerminal('int32')), Sequence ('autoOff', NonTerminal('int32')))
 ).addTo()
 
 </script>
@@ -379,6 +379,7 @@ ComplexDiagram(
 
 <ul>
 <li><span class="OSC">compute</span>: start or stop computing the audio signals. The parameter is a boolean value. Default value is 1.</li>
+<li><span class="OSC">autoOff</span>: automatically switch buttons Faust UI elements back to off. The parameter is a boolean value. Default value is 0.</li>
 </ul>
 <p>Faust objects support the audio objects messages plus additional query messages:</p>
 <div class="rail">

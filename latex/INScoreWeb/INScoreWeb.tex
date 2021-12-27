@@ -305,7 +305,7 @@ If a \OSC{class} message has not the expected effect, it's likely because the CS
 \label{MIDI}
 
 A \OSC{midi} node is automatically created at application level (\OSC{/ITL/midi}).
-Before using the MIDI features, the \OSC{midi} node must be explicitly initialised using the \OSC{init} message. On success, the \OSC{ready} event is triggered, otherwise an \OSC{error} event is triggered.
+Before using the MIDI features, the \OSC{midi} node must be explicitly initialized using the \OSC{init} message. On success, the \OSC{ready} event is triggered, otherwise an \OSC{error} event is triggered.
 
 \example
 \sample{/ITL/midi watch ready ( do something to use the MIDI interface ); \\
@@ -581,8 +581,26 @@ audioioMsgs : 'set' 'audioio' int32 int32
 \end{rail}
 
 \note\\
-The current Javascript implementation automatically creates an audio input objet named \OSC{audioInput} (if any) and an audio output object named  \OSC{audioOutput} (if any). Thus the names \OSC{audioInput} and \OSC{audioOutput} are reserved and you should avoid to use them (unless audio connections are not needed).
+The current Javascript implementation automatically creates an audio input objet named \OSC{audioInput} and an audio output object named  \OSC{audioOutput}. Thus the names \OSC{audioInput} and \OSC{audioOutput} are reserved and you must not use them. 
+\OSC{audioOutput} and \OSC{audioInput} are created on audio request only, i.e. when an audio object is created (\OSC{audio}, \OSC{video} or \OSC{faust}). 
+
+\note{About I/O OSC addresses}\\
+Since audio connections can only be made between objects that are in the same hierarchy, \OSC{audioOutput} and \OSC{audioInput} objects are created in all hierarchies that contain audio objects. For example, by creating an \OSC{faust} object in the \OSC{/ITL/scene/folder} hierarchy, audio I/O will be created at \OSC{/ITL/scene/folder/audioInput} and \OSC{/ITL/scene/folder/audioOutput}. Thus audio I/O objects may appear at different levels of a scene.
  
+\subsublevel{Audio Input}
+\label{audioInput}
+
+By default, the \OSC{audioInput} object is created with 0 inputs. It must be explicitly initialized using the \OSC{init} message. On success, the \OSC{ready} event is triggered and the number of input channels is set, otherwise an \OSC{error} event is triggered.
+This initialization is intended to avoid capturing the audio input when not used. 
+
+
+\example
+\sample{/ITL/scene/audioInput watch ready ( do something to use the audio input ); \\
+/ITL/scene/audioInput watch error ( do something else ); \\
+/ITL/scene/audioInput init;
+}
+
+
 
 %===============================
 %:Communication

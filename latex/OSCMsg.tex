@@ -1810,9 +1810,17 @@ txtwrite :  'write' (arg +)
 \item \OSC{write}: append the \OSC{arg} list formatted as a string to the textual content.
 \end{itemize}
 
-\example \\
+\example 
 \sample{/ITL/scene/text set txt "Hello";\\
 /ITL/scene/text write "world!";
+}
+
+
+\subsublevel{Getting the text}
+A specific \OSC{text} query is provided to get the textual content.
+
+\example
+\sample{/ITL/scene/text get text;
 }
 
 
@@ -1968,20 +1976,21 @@ ITLSystem : ('browse' file)
 \sublevel{Application level queries}
 \label{ITLQuery}
 
-The application supports the \OSC{get} messages for its parameters (see section \fullref{getsect}). In addition, it provides the following messages to query version numbers.
+The application supports the \OSC{get} messages for its parameters (see section \fullref{getsect}). In addition, it provides the following messages to query version numbers  or IP address.
 
 \index{ITL messages!version}
 \index{ITL messages!guido-version}
 \index{ITL messages!musicxml-version}
 
 \begin{rail}
-ITLRequest : 'get'  ('version' | 'guido-version' | 'musicxml-version')
+ITLRequest : 'get'  ('version' | 'guido-version' | 'musicxml-version' | 'IP')
 \end{rail}
 
 \begin{itemize}
 \item \OSC{version}: version number request.
 \item \OSC{guido-version}: Guido engine version number request.
 \item \OSC{musicxml-version}: MusicXML and Guido converter version numbers request. Returns "not available" when the library is not found.
+\item \OSC{IP}: the host IP address.
 
 \end{itemize}
 

@@ -3559,12 +3559,13 @@ They are set to \values{0} for the other events.
 \index{Interaction!variable!rdate}
 
 \begin{rail} 
-timeVar :  ('date' | 'rdate') (| ':'  mapname) (| '[n/d]') (| '\%' 'f')
+timeVar :  ('date' | 'rdate') (| ':'  mapname) (| '[n/d]') (| '\%' ('f' | 'a'))
 \end{rail}
 
 \begin{itemize}
-\item \OSC{\$date}: denotes the object date corresponding to the mouse pointer position at the time of the event. It is optionnaly followed by a colon and the name of the mapping to be used to compute the date. The \OSC{\$date} variable is replaced by its rational value (i.e. two integers values). The optional rational enclosed in brackets may be used to indicate a quantification: the date value is rounded to an integer count of the specified rational value. The optional \OSC{\%f} may be used to get the date delivered as a float value.
+\item \OSC{\$date}: denotes the object date corresponding to the mouse pointer position at the time of the event. It is optionally followed by a colon and the name of the mapping to be used to compute the date. The \OSC{\$date} variable is replaced by its rational value (i.e. two integers values). The optional rational enclosed in brackets may be used to indicate a quantification: the date value is rounded to an integer count of the specified rational value. The optional \OSC{\%f} may be used to get the date delivered as a float value.
 \item \OSC{\$rdate}: is similar to \OSC{\$date} but ignores the target current date: the date is relative to the object mapping only.
+\item \OSC{\%f} or \OSC{\%a}: request the date value as a float value or as an absolute time value. Absolute time is expressed in seconds, assuming a tempo value of 60 bpm. Actually, \$date\%a = \$date\%f / 4
 \end{itemize}
 
 \note{} \\

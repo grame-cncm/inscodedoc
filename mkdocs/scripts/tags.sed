@@ -69,6 +69,8 @@ s/\\verb+\(.\)+/\1/g
 ############## transform % used in date variables
 s/>%f</>___f</
 s/date%f/date___f/
+s/>%a</>___a</
+s/date%a/date___a/
 
 ############## handle inline math
 s/\$\([^ $]*\)\$/\\(\1\\)/g

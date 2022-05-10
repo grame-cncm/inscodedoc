@@ -853,6 +853,26 @@ Similar ways to move an object date.
 /ITL/scene/myObject ddate '1/96';
 }
 
+\subsublevel{Date queries}
+
+Several formats are available to query the date of an object:
+\begin{rail}
+dateQuery : 'get' (
+			'date' 
+			| ('date\%f')
+			| ('date\%a'))
+\end{rail}
+\index{Time messages!absolute!date\%f}
+\index{Time messages!absolute!date\%a}
+
+\begin{itemize}
+\item \OSC{date}: gives the object date as a rational value.
+\item \OSC{date\%f}: gives the object date as a float value.
+\item \OSC{date\%a}: gives the object date as an absolute time. It assumes that the tempo is 60bpm.
+\end{itemize}
+
+
+
 %===============================
 %:  Tempo
 \sublevel{Tempo}
@@ -1085,6 +1105,9 @@ setVGraphics : 'set' (
 \item \OSC{arc}: an arc defined by its enclosing rectangle and the start and end angles. Angles are in degrees and express counter-clockwise directions.
 \item \OSC{line}: a simple line specified by a point (x,y) expressed in \OSC{scene} coordinate space or by a width and angle. The point form is used to compute a line from (0,0) to (x,y), which is next drawn centered on the scene.
 \end{itemize}
+
+\note\\
+Width and/or height parameters can be expressed as float values or as scene relative values. See section \ref{whcontrol}.
 
 \example \\
 Creating a rectangle with a 0.5 width and a 1.5 height.
@@ -1405,15 +1428,30 @@ Setting a rectangle style :
 \sublevel{Width and height control}
 \label{whcontrol}
 
-\OSC{width} and \OSC{height} messages are accepted by the following components: \OSC{rect | ellipse | arc | graph | fastgraph | grid | pianoroll | pianorollf}.
+\OSC{width} and \OSC{height} messages are accepted by the almost all components except textual components (see section \ref{textscore}).
 
 \index{Specific messages! width}
 \index{Specific messages! height}
 
 \begin{rail}
-widthMsg :  'width' float32
-			| 'height' float32
+widthMsg :  'width' dimension
+			| 'height' dimension
 \end{rail}
+
+\begin{rail}
+dimension :  (float32 ( [1] | [2] ('sw' | 'sh'))) 
+\end{rail}
+
+\begin{itemize}
+\item \OSC{1}: a single float value express the dimension in the inscore coordinate system.
+\item \OSC{2}: a float value suffixed with \OSC{sw} or \OSC{sh} express a dimension relative to the actual scene dimension. \OSC{sw} stands for 'scene width' and \OSC{sh} for 'scene height'. Such dimension dynamically adjusted to any change in the scene dimension.
+\end{itemize}
+
+\example
+\sample{/ITL/scene/myObject width 1; \hspace{1.2cm}\icomment\  using the inscore coordinate system \\
+/ITL/scene/myObject width 0.9sw;     \hspace{0.55cm}\icomment\  using the scene width 
+}
+
 
 \note 
 Querying the \OSC{width} and \OSC{height} of any object is always supported, provided that the object has been graphically rendered.
@@ -2217,15 +2255,21 @@ A scene may respond to queries regarding its elements:
 \index{Scene query}
 \index{Scene query!count}
 \index{Scene query!rcount}
+\index{Scene query!swidth}
+\index{Scene query!sheight}
 
 \begin{rail}
 sceneQuery : 'get' ( 'count'
-					| 'rcount')
+					| 'rcount'
+					| 'swidth'
+					| 'sheight' )
 \end{rail}
 
 \begin{itemize}
 \item \OSC{count}: count the number of elements in the scene.
 \item \OSC{rcount}: recursively count the number of elements in the scene.
+\item \OSC{swidth}: gives the scene width from objects viewpoint (see the note about scene dimensions below).
+\item \OSC{sheight}: gives the scene height from objects viewpoint (see the note about scene dimensions below).
 \end{itemize}
 
 \example \\
@@ -2233,6 +2277,14 @@ Counting the elements in a scene:
 \sample{/ITL/scene get count;\\
 \hspace*{5mm}will give a message like the following as output: \\
 /ITL/scene count 200;
+}
+
+\note{About the scene dimensions} \\
+Similarly to any object, the scene width and height (set using the \OSC{width} and \OSC{height} messages) are expressed regarding its parent (i.e. the screen). The \OSC{swidth} and \OSC{sheight} messages give the scene dimensions as seen by embedded objects. They are provided for convenience since the returned values can be computed from the current width and height.
+
+\example \\
+Fill a scene with a rectangle:
+\sample{/ITL/scene/r set rect \$(/ITL/scene get swidth) \$(/ITL/scene get sheight);
 }
 
 %===============================

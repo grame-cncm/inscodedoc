@@ -422,6 +422,25 @@ relPosMsg :
 Relative displacement of an object:
 \sample{/ITL/scene/myObject dx 0.1;}
 
+\subsublevel{Scene relative position}
+\label{srelpos}
+
+An object position dan be relative to the scene dimensions (i.e. the scene width or height).
+\begin{rail}
+sceneRelativePos :  
+		('x' | 'y' ) float32 ('sw' | 'sh')
+\end{rail}
+
+\begin{itemize}
+\item \OSC{sw} refers to the scene width.
+\item \OSC{sh} refers to the scene height.
+\end{itemize}
+
+\example \\
+Putting on object on top of the scene (whatever its dimension):
+\sample{/ITL/scene/myObject x -1sh;}
+
+
 %-------------------------------
 %:    Components origin
 \subsublevel{Components origin}

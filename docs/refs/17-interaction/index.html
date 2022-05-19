@@ -711,7 +711,7 @@ ComplexDiagram(
 <ul>
 <li><span class="OSC">$date</span>: denotes the object date corresponding to the mouse pointer position at the time of the event. It is optionally followed by a colon and the name of the mapping to be used to compute the date. The <span class="OSC">$date</span> variable is replaced by its rational value (i.e. two integers values). The optional rational enclosed in brackets may be used to indicate a quantification: the date value is rounded to an integer count of the specified rational value. The optional <span class="OSC">%f</span> may be used to get the date delivered as a float value.</li>
 <li><span class="OSC">$rdate</span>: is similar to <span class="OSC">$date</span> but ignores the target current date: the date is relative to the object mapping only.</li>
-<li><span class="OSC">%f</span> or <span class="OSC"></li>
+<li><span class="OSC">%f</span> or <span class="OSC">%a</span>: request the date value as a float value or as an absolute time value. Absolute time is expressed in seconds, assuming a tempo value of 60 bpm. Actually, $date%a = $date%f / 4</li>
 </ul>
 <p><span class="note">Note: </span> 
 A variable can be used several times in a message, but several <span class="OSC">$date</span> variables must always refer to the same mapping.</p>

@@ -471,6 +471,8 @@ ComplexDiagram(
 <li><span class="OSC">arc</span>: an arc defined by its enclosing rectangle and the start and end angles. Angles are in degrees and express counter-clockwise directions.</li>
 <li><span class="OSC">line</span>: a simple line specified by a point (x,y) expressed in <span class="OSC">scene</span> coordinate space or by a width and angle. The point form is used to compute a line from (0,0) to (x,y), which is next drawn centered on the scene.</li>
 </ul>
+<p><span class="note">Note:</span>
+Width and/or height parameters can be expressed as float values or as scene relative values. See section <a href="../8-specificMsg#whcontrol">whcontrol</a>.</p>
 <p><span class="example">Example</span> 
 Creating a rectangle with a 0.5 width and a 1.5 height.</p>
 <pre><code class="language-inscore">/ITL/scene/myObject set rect 0.5 1.5;

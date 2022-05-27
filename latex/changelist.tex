@@ -15,7 +15,8 @@
 \item add \OSC{IP} query to application level (\OSC{/ITL}). See section \fullref{ITLQuery}
 \item add \OSC{text} query to \OSC{txt} objects.
 \item allows negative date messages.
-\item fix evaluation of args variables (\$1...\$n) in javascript run method
+\item fix evaluation of args variables (\$1...\$n) in javascript run method.
+\item fix crash bug with OSC bundles.
 \end{itemize}
 
 \inscoreweb
@@ -34,7 +35,7 @@
 \begin{itemize}
 \item add support for get 'date\%f' query
 \item add midi node at application level, supported by the native app for compatibility reasons (works only with the web version)
-\item new keyDown and keyUp events
+\item new \OSC{keyDown} and \OSC{keyUp} events. See section \fullref{keyevents}
 \item fix \$date quantification
 \item fix 'event' messages forwarding
 \item fix \$date\%f detection in javascript run method

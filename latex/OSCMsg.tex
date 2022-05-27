@@ -1923,6 +1923,7 @@ Application messages are accepted by the static OSC address \OSC{/ITL}.
 \index{ITL messages!hello}
 \index{ITL messages!require}
 \index{ITL messages!compatibility}
+\index{ITL messages!errorAddress}
 \index{ITL messages!rate}
 \index{ITL messages!time}
 \index{ITL messages!ticks}
@@ -1937,6 +1938,7 @@ ITLMsg : 'quit'
 		| ('read' buffer)
 		| ('require' float oscMsg)
 		| ('compatibility' float)
+		| ('errorAddress' string)
 		| ('time' int32)
 		| ('ticks' int32)
 		| ('rate' int32)
@@ -1964,6 +1966,8 @@ The default \OSC{defaultShow} value is 1.
 
 \item \OSC{compatibility}: preserve INScore previous behavior. The argument corresponds to a version number, INScore will preserve the corresponding behavior (objects scaling, default size, etc.).
 
+\item \OSC{errorAddress}: set the OSC address of error messages. Default is \OSC{error:} (which is not a valid OSC address but preserved for compatibility reasons).
+
 \item \OSC{rate}: changes the time task rate. Note that null values are ignored.\\
 The default \OSC{rate} value is 10.
 
@@ -1974,7 +1978,7 @@ The default \OSC{rate} value is 10.
 \item \OSC{hello}: query the host IP number. The message is intended for ITL applications discovery. Answer to the query has the following format: \\
 \hspace*{1cm} \OSC{IP  inPort outPort errPort} where \OSC{IP} is sent as a string and port numbers as integer values.
 
-\item \OSC{forwardingMsg}: application support message forwading and filtering. See section \fullref{forwarding}.
+\item \OSC{forwardingMsg}: application support message forwading and filtering. See section \fullref{Forwarding}.
 \end{itemize}
 
 \example \\
@@ -2328,8 +2332,8 @@ A message from a host cannot be forwarded to him to avoid direct loop.
 ITLMsgForward : ('forward' ( [1] | [2] ForwardDest +))
 \end{rail}
 \begin{itemize}
-\item 1) removes the set of forwarded destinations,
-\item 2) set a list of remote hosts for forwarding. 
+\item 1) removes the set of forward destinations,
+\item 2) set or extends the list of remote hosts for forwarding. 
 \end{itemize}
 
 \begin{rail}
@@ -3462,7 +3466,7 @@ specificEvent : 	  'pageCount'
 
 \begin{itemize}
 \item the \OSC{pageCount} event is supported by all the symbolic score components (\OSC{gmn(f)}, \OSC{gmnstream}, \OSC{musicxml(f)}). It is triggered when the page count of the score changes. It is mainly intended to manage variable scores like \OSC{gmnstream}.
-\item the \OSC{newElement} event is supported at scene level only and triggered when a new element is added to the scene.
+\item the \OSC{newElement} event is supported at scene and application (\OSC{/ITL}) level and triggered when a new element is added to the scene or when a new scene is created.
 \item the \OSC{endPaint} event is supported at scene level only and triggered after a scene has been painted.
 \item the \OSC{error} event is supported at application level and triggered when an error occurs while receiving messages. 
 Typically you can use of this event to open the log window (\OSC{/ITL/log show 1}) 
@@ -3486,7 +3490,8 @@ Watching an object \OSC{x} coordinate change:
 \sample{/ITL/scene/myObject watch x (/ITL/scene/msg set txt "myObject moved");}
 
 \note \\
-Watching the \OSC{newData} event is equivalent to watch the \OSC{set} attribute. However, the \OSC{newData} event is triggered only when the object state is changed.
+Watching the \OSC{newData} event is equivalent to watch the \OSC{set} attribute. However, the \OSC{newData} event is triggered only when the object state is changed.\\
+Although not an object attribute, the \OSC{del} message can be watched and triggered when an object is deleted.
 
 \warning \\
 With the event's generalization to any object attribute, a one tick delay has been introduced to all events. Thus the associated messages are not processed synchronously to the event but posted to be processed by the next time task. This delay has been introduced to avoid freezing the system in case of loops. However, it introduces also a pitfall in interaction design, when message based variables are used (see section \fullref{msgvar}): message based variables are evaluated at the event time while messages are processed by the next time task, thus the following messages won't produce the expected result:

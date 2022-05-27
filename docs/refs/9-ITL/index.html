@@ -309,6 +309,7 @@
 <a name="9-ITL-hello"></a>
 <a name="9-ITL-require"></a>
 <a name="9-ITL-compatibility"></a>
+<a name="9-ITL-errorAddress"></a>
 <a name="9-ITL-rate"></a>
 <a name="9-ITL-time"></a>
 <a name="9-ITL-ticks"></a></p>
@@ -316,7 +317,7 @@
 <span class="railtitle">ITLMsg</span>
 <br /><script>
 ComplexDiagram(
-    Choice (0, 'quit', Sequence ('rootPath', NonTerminal('path')), Sequence ('preprocess', NonTerminal('file')), Sequence ('mouse', Choice (0, 'show', 'hide')), Sequence ('defaultShow', NonTerminal('int32')), Sequence ('load', NonTerminal('filePath')), Sequence ('read', NonTerminal('buffer')), Sequence ('require', NonTerminal('float'), NonTerminal('oscMsg')), Sequence ('compatibility', NonTerminal('float')), Sequence ('time', NonTerminal('int32')), Sequence ('ticks', NonTerminal('int32')), Sequence ('rate', NonTerminal('int32')), 'hello', NonTerminal('forwardingMsg'))
+    Choice (0, 'quit', Sequence ('rootPath', NonTerminal('path')), Sequence ('preprocess', NonTerminal('file')), Sequence ('mouse', Choice (0, 'show', 'hide')), Sequence ('defaultShow', NonTerminal('int32')), Sequence ('load', NonTerminal('filePath')), Sequence ('read', NonTerminal('buffer')), Sequence ('require', NonTerminal('float'), NonTerminal('oscMsg')), Sequence ('compatibility', NonTerminal('float')), Sequence ('errorAddress', NonTerminal('string')), Sequence ('time', NonTerminal('int32')), Sequence ('ticks', NonTerminal('int32')), Sequence ('rate', NonTerminal('int32')), 'hello', NonTerminal('forwardingMsg'))
 ).addTo()
 
 </script>
@@ -352,6 +353,9 @@ The default <span class="OSC">defaultShow</span> value is 1.</p>
 <p><span class="OSC">compatibility</span>: preserve INScore previous behavior. The argument corresponds to a version number, INScore will preserve the corresponding behavior (objects scaling, default size, etc.).</p>
 </li>
 <li>
+<p><span class="OSC">errorAddress</span>: set the OSC address of error messages. Default is <span class="OSC">error:</span> (which is not a valid OSC address but preserved for compatibility reasons).</p>
+</li>
+<li>
 <p><span class="OSC">rate</span>: changes the time task rate. Note that null values are ignored.
 The default <span class="OSC">rate</span> value is 10.</p>
 </li>
@@ -366,7 +370,7 @@ The default <span class="OSC">rate</span> value is 10.</p>
    <span class="OSC">IP  inPort outPort errPort</span> where <span class="OSC">IP</span> is sent as a string and port numbers as integer values.</p>
 </li>
 <li>
-<p><span class="OSC">forwardingMsg</span>: application support message forwading and filtering. See section \fullref{forwarding}.</p>
+<p><span class="OSC">forwardingMsg</span>: application support message forwading and filtering. See section <a href="../11-Forwarding#Forwarding">Forwarding</a>.</p>
 </li>
 </ul>
 <p><span class="example">Example</span> 

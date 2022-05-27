@@ -554,7 +554,7 @@ ComplexDiagram(
 
 <ul>
 <li>the <span class="OSC">pageCount</span> event is supported by all the symbolic score components (<span class="OSC">gmn(f)</span>, <span class="OSC">gmnstream</span>, <span class="OSC">musicxml(f)</span>). It is triggered when the page count of the score changes. It is mainly intended to manage variable scores like <span class="OSC">gmnstream</span>.</li>
-<li>the <span class="OSC">newElement</span> event is supported at scene level only and triggered when a new element is added to the scene.</li>
+<li>the <span class="OSC">newElement</span> event is supported at scene and application (<span class="OSC">/ITL</span>) level and triggered when a new element is added to the scene or when a new scene is created.</li>
 <li>the <span class="OSC">endPaint</span> event is supported at scene level only and triggered after a scene has been painted.</li>
 <li>the <span class="OSC">error</span> event is supported at application level and triggered when an error occurs while receiving messages. 
 Typically you can use of this event to open the log window (<span class="OSC">/ITL/log show 1</span>) </li>
@@ -573,7 +573,8 @@ Watching an object <span class="OSC">x</span> coordinate change:</p>
 <pre><code class="language-inscore">/ITL/scene/myObject watch x (/ITL/scene/msg set txt &quot;myObject moved&quot;);
 </code></pre>
 <p><span class="note">Note:</span> 
-Watching the <span class="OSC">newData</span> event is equivalent to watch the <span class="OSC">set</span> attribute. However, the <span class="OSC">newData</span> event is triggered only when the object state is changed.</p>
+Watching the <span class="OSC">newData</span> event is equivalent to watch the <span class="OSC">set</span> attribute. However, the <span class="OSC">newData</span> event is triggered only when the object state is changed.
+Although not an object attribute, the <span class="OSC">del</span> message can be watched and triggered when an object is deleted.</p>
 <p><span class="warning">Warning</span> 
 With the event's generalization to any object attribute, a one tick delay has been introduced to all events. Thus the associated messages are not processed synchronously to the event but posted to be processed by the next time task. This delay has been introduced to avoid freezing the system in case of loops. However, it introduces also a pitfall in interaction design, when message based variables are used (see section <a href="../17-interaction#msgvar">msgvar</a>): message based variables are evaluated at the event time while messages are processed by the next time task, thus the following messages won't produce the expected result:</p>
 <pre><code class="language-inscore">/ITL/scene/myObject watch x ( 

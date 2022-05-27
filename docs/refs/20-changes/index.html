@@ -266,6 +266,10 @@
             
             <li class="nav-item" data-level="1"><a href="#changes-list" class="nav-link">Changes list</a>
               <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#version-133-vs-version-131" class="nav-link">Version 1.33 vs version 1.31</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
             <li class="nav-item" data-level="2"><a href="#version-131-vs-version-128" class="nav-link">Version 1.31 vs version 1.28</a>
               <ul class="nav flex-column">
               </ul>
@@ -425,11 +429,34 @@
 
 <h1 id="changes-list">Changes list</h1>
 <p><a name="changes"></a></p>
+<h2 id="version-133-vs-version-131">Version 1.33 vs version 1.31</h2>
+<ul>
+<li>new <span class="OSC">errorAddress</span> message at application level to set the OSC address of error messages. See section <a href="../9-ITL#applmgmt">applmgmt</a></li>
+<li><span class="OSC">forward</span> message behavior change: append addresses to destination list, broadcast addresses are explicitly rejected and trigger an error.</li>
+<li>extend <span class="OSC">newElement</span> event to application level (<span class="OSC">/ITL</span>). See section <a href="../17-interaction#typespecevents">typespecevents</a></li>
+<li>add support for get 'date%a' query to get the absolute date in seconds (assumes the tempo is 60 bpm).</li>
+<li>add event handlers <span class="OSC">portrait</span> and <span class="OSC">landscape</span> for screen orientation change (triggered only by the web version)</li>
+<li>supports dynamic scene relative dimensions and positions. See section <a href="../3-common#srelpos">srelpos</a> and <a href="../8-specificMsg#whcontrol">whcontrol</a></li>
+<li>add <span class="OSC">IP</span> query to application level (<span class="OSC">/ITL</span>). See section <a href="../9-ITL#ITLQuery">ITLQuery</a></li>
+<li>add <span class="OSC">text</span> query to <span class="OSC">txt</span> objects.</li>
+<li>allows negative date messages.</li>
+<li>fix evaluation of args variables (<script type="math/tex">1...</script>n) in javascript run method.</li>
+<li>fix crash bug with OSC bundles.</li>
+</ul>
+<p><strong>Web Specific Changes</strong></p>
+<ul>
+<li>new <span class="OSC">init</span> message for audioInput objects, must be called before using the audio input.</li>
+<li>new <span class="OSC">autoOff</span> message supported by <span class="OSC">faust</span> objects to automatically set ui buttons to 0 after a 1 value.</li>
+<li>support <span class="OSC">portrait</span> and <span class="OSC">landscape</span> events.</li>
+<li>prevent default keydown event on window (avoid scrolling).</li>
+<li>fix media <span class="OSC">end</span> event.</li>
+<li>fix concurrent <span class="OSC">faustw</span> objects creation.</li>
+</ul>
 <h2 id="version-131-vs-version-128">Version 1.31 vs version 1.28</h2>
 <ul>
 <li>add support for get 'date%f' query</li>
 <li>add midi node at application level, supported by the native app for compatibility reasons (works only with the web version)</li>
-<li>new keyDown and keyUp events</li>
+<li>new <span class="OSC">keyDown</span> and <span class="OSC">keyUp</span> events. See section <a href="../17-interaction#keyevents">keyevents</a></li>
 <li>fix $date quantification</li>
 <li>fix 'event' messages forwarding</li>
 <li>fix $date%f detection in javascript run method</li>
@@ -438,7 +465,7 @@
 <li>fix missing curve rendering</li>
 <li>fix guido score scaling issue</li>
 </ul>
-<p>\inscoreweb</p>
+<p><strong>Web Specific Changes</strong></p>
 <ul>
 <li>new 'compute' message supported by faust objects</li>
 <li>new form of the 'connect' message (to address individual channels)</li>
@@ -455,12 +482,12 @@
 <li>new get clients messages at application level</li>
 <li>add https support to forwarding mechanism. See section <a href="../11-Forwarding#Forwarding">Forwarding</a></li>
 </ul>
-<p>\inscoreweb</p>
+<p><strong>Web Specific Changes</strong></p>
 <ul>
 <li>fix ready event for audio objects</li>
 </ul>
 <h2 id="version-127-vs-version-124">Version 1.27 vs version 1.24</h2>
-<p>\inscoreweb</p>
+<p><strong>Web Specific Changes</strong></p>
 <ul>
 <li>new <span class="OSC">faust</span> object (web version)</li>
 <li>new <span class="OSC">connect</span> method (web version)</li>

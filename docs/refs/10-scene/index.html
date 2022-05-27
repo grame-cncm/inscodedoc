@@ -371,12 +371,14 @@ OpenGl rendering improves significantly the performance of graphic operations bu
 <p>A scene may respond to queries regarding its elements:</p>
 <p><a name="10-scene-Scene query"></a>
 <a name="10-scene-count"></a>
-<a name="10-scene-rcount"></a></p>
+<a name="10-scene-rcount"></a>
+<a name="10-scene-swidth"></a>
+<a name="10-scene-sheight"></a></p>
 <div class="rail">
 <span class="railtitle">sceneQuery</span>
 <br /><script>
 ComplexDiagram(
-    Sequence ('get', Choice (0, 'count', 'rcount'))
+    Sequence ('get', Choice (0, 'count', 'rcount', 'swidth', 'sheight'))
 ).addTo()
 
 </script>
@@ -385,12 +387,20 @@ ComplexDiagram(
 <ul>
 <li><span class="OSC">count</span>: count the number of elements in the scene.</li>
 <li><span class="OSC">rcount</span>: recursively count the number of elements in the scene.</li>
+<li><span class="OSC">swidth</span>: gives the scene width from objects viewpoint (see the note about scene dimensions below).</li>
+<li><span class="OSC">sheight</span>: gives the scene height from objects viewpoint (see the note about scene dimensions below).</li>
 </ul>
 <p><span class="example">Example</span> 
 Counting the elements in a scene:</p>
 <pre><code class="language-inscore">/ITL/scene get count;
   will give a message like the following as output: 
 /ITL/scene count 200;
+</code></pre>
+<p><span class="note">Note: About the scene dimensions</span> 
+Similarly to any object, the scene width and height (set using the <span class="OSC">width</span> and <span class="OSC">height</span> messages) are expressed regarding its parent (i.e. the screen). The <span class="OSC">swidth</span> and <span class="OSC">sheight</span> messages give the scene dimensions as seen by embedded objects. They are provided for convenience since the returned values can be computed from the current width and height.</p>
+<p><span class="example">Example</span> 
+Fill a scene with a rectangle:</p>
+<pre><code class="language-inscore">/ITL/scene/r set rect $(/ITL/scene get swidth) $(/ITL/scene get sheight);
 </code></pre></div>
             </div>
         </div>

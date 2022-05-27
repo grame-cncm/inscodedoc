@@ -422,6 +422,25 @@ relPosMsg :
 Relative displacement of an object:
 \sample{/ITL/scene/myObject dx 0.1;}
 
+\subsublevel{Scene relative position}
+\label{srelpos}
+
+An object position dan be relative to the scene dimensions (i.e. the scene width or height).
+\begin{rail}
+sceneRelativePos :  
+		('x' | 'y' ) float32 ('sw' | 'sh')
+\end{rail}
+
+\begin{itemize}
+\item \OSC{sw} refers to the scene width.
+\item \OSC{sh} refers to the scene height.
+\end{itemize}
+
+\example \\
+Putting on object on top of the scene (whatever its dimension):
+\sample{/ITL/scene/myObject x -1sh;}
+
+
 %-------------------------------
 %:    Components origin
 \subsublevel{Components origin}
@@ -853,6 +872,26 @@ Similar ways to move an object date.
 /ITL/scene/myObject ddate '1/96';
 }
 
+\subsublevel{Date queries}
+
+Several formats are available to query the date of an object:
+\begin{rail}
+dateQuery : 'get' (
+			'date' 
+			| ('date\%f')
+			| ('date\%a'))
+\end{rail}
+\index{Time messages!absolute!date\%f}
+\index{Time messages!absolute!date\%a}
+
+\begin{itemize}
+\item \OSC{date}: gives the object date as a rational value.
+\item \OSC{date\%f}: gives the object date as a float value.
+\item \OSC{date\%a}: gives the object date as an absolute time. It assumes that the tempo is 60bpm.
+\end{itemize}
+
+
+
 %===============================
 %:  Tempo
 \sublevel{Tempo}
@@ -1085,6 +1124,9 @@ setVGraphics : 'set' (
 \item \OSC{arc}: an arc defined by its enclosing rectangle and the start and end angles. Angles are in degrees and express counter-clockwise directions.
 \item \OSC{line}: a simple line specified by a point (x,y) expressed in \OSC{scene} coordinate space or by a width and angle. The point form is used to compute a line from (0,0) to (x,y), which is next drawn centered on the scene.
 \end{itemize}
+
+\note\\
+Width and/or height parameters can be expressed as float values or as scene relative values. See section \ref{whcontrol}.
 
 \example \\
 Creating a rectangle with a 0.5 width and a 1.5 height.
@@ -1405,15 +1447,30 @@ Setting a rectangle style :
 \sublevel{Width and height control}
 \label{whcontrol}
 
-\OSC{width} and \OSC{height} messages are accepted by the following components: \OSC{rect | ellipse | arc | graph | fastgraph | grid | pianoroll | pianorollf}.
+\OSC{width} and \OSC{height} messages are accepted by the almost all components except textual components (see section \ref{textscore}).
 
 \index{Specific messages! width}
 \index{Specific messages! height}
 
 \begin{rail}
-widthMsg :  'width' float32
-			| 'height' float32
+widthMsg :  'width' dimension
+			| 'height' dimension
 \end{rail}
+
+\begin{rail}
+dimension :  (float32 ( [1] | [2] ('sw' | 'sh'))) 
+\end{rail}
+
+\begin{itemize}
+\item \OSC{1}: a single float value express the dimension in the inscore coordinate system.
+\item \OSC{2}: a float value suffixed with \OSC{sw} or \OSC{sh} express a dimension relative to the actual scene dimension. \OSC{sw} stands for 'scene width' and \OSC{sh} for 'scene height'. Such dimension dynamically adjusted to any change in the scene dimension.
+\end{itemize}
+
+\example
+\sample{/ITL/scene/myObject width 1; \hspace{1.2cm}\icomment\  using the inscore coordinate system \\
+/ITL/scene/myObject width 0.9sw;     \hspace{0.55cm}\icomment\  using the scene width 
+}
+
 
 \note 
 Querying the \OSC{width} and \OSC{height} of any object is always supported, provided that the object has been graphically rendered.
@@ -1810,9 +1867,17 @@ txtwrite :  'write' (arg +)
 \item \OSC{write}: append the \OSC{arg} list formatted as a string to the textual content.
 \end{itemize}
 
-\example \\
+\example 
 \sample{/ITL/scene/text set txt "Hello";\\
 /ITL/scene/text write "world!";
+}
+
+
+\subsublevel{Getting the text}
+A specific \OSC{text} query is provided to get the textual content.
+
+\example
+\sample{/ITL/scene/text get text;
 }
 
 
@@ -1858,6 +1923,7 @@ Application messages are accepted by the static OSC address \OSC{/ITL}.
 \index{ITL messages!hello}
 \index{ITL messages!require}
 \index{ITL messages!compatibility}
+\index{ITL messages!errorAddress}
 \index{ITL messages!rate}
 \index{ITL messages!time}
 \index{ITL messages!ticks}
@@ -1872,6 +1938,7 @@ ITLMsg : 'quit'
 		| ('read' buffer)
 		| ('require' float oscMsg)
 		| ('compatibility' float)
+		| ('errorAddress' string)
 		| ('time' int32)
 		| ('ticks' int32)
 		| ('rate' int32)
@@ -1899,6 +1966,8 @@ The default \OSC{defaultShow} value is 1.
 
 \item \OSC{compatibility}: preserve INScore previous behavior. The argument corresponds to a version number, INScore will preserve the corresponding behavior (objects scaling, default size, etc.).
 
+\item \OSC{errorAddress}: set the OSC address of error messages. Default is \OSC{error:} (which is not a valid OSC address but preserved for compatibility reasons).
+
 \item \OSC{rate}: changes the time task rate. Note that null values are ignored.\\
 The default \OSC{rate} value is 10.
 
@@ -1909,14 +1978,14 @@ The default \OSC{rate} value is 10.
 \item \OSC{hello}: query the host IP number. The message is intended for ITL applications discovery. Answer to the query has the following format: \\
 \hspace*{1cm} \OSC{IP  inPort outPort errPort} where \OSC{IP} is sent as a string and port numbers as integer values.
 
-\item \OSC{forwardingMsg}: application support message forwading and filtering. See section \fullref{forwarding}.
+\item \OSC{forwardingMsg}: application support message forwading and filtering. See section \fullref{Forwarding}.
 \end{itemize}
 
 \example \\
 when sending the message:
 \sample{/ITL hello;}
 \sampleindent the application will answer with the following message:
-\sample{/ITL 192.168.0.5  7000 7001 7003}
+\sample{/ITL 192.168.0.5  7000 7001 7002}
 \sampleindent when it runs on a host which IP address is \OSC{192.168.0.5} using the default port numbers.
 
 %===============================
@@ -1968,20 +2037,21 @@ ITLSystem : ('browse' file)
 \sublevel{Application level queries}
 \label{ITLQuery}
 
-The application supports the \OSC{get} messages for its parameters (see section \fullref{getsect}). In addition, it provides the following messages to query version numbers.
+The application supports the \OSC{get} messages for its parameters (see section \fullref{getsect}). In addition, it provides the following messages to query version numbers  or IP address.
 
 \index{ITL messages!version}
 \index{ITL messages!guido-version}
 \index{ITL messages!musicxml-version}
 
 \begin{rail}
-ITLRequest : 'get'  ('version' | 'guido-version' | 'musicxml-version')
+ITLRequest : 'get'  ('version' | 'guido-version' | 'musicxml-version' | 'IP')
 \end{rail}
 
 \begin{itemize}
 \item \OSC{version}: version number request.
 \item \OSC{guido-version}: Guido engine version number request.
 \item \OSC{musicxml-version}: MusicXML and Guido converter version numbers request. Returns "not available" when the library is not found.
+\item \OSC{IP}: the host IP address.
 
 \end{itemize}
 
@@ -2208,15 +2278,21 @@ A scene may respond to queries regarding its elements:
 \index{Scene query}
 \index{Scene query!count}
 \index{Scene query!rcount}
+\index{Scene query!swidth}
+\index{Scene query!sheight}
 
 \begin{rail}
 sceneQuery : 'get' ( 'count'
-					| 'rcount')
+					| 'rcount'
+					| 'swidth'
+					| 'sheight' )
 \end{rail}
 
 \begin{itemize}
 \item \OSC{count}: count the number of elements in the scene.
 \item \OSC{rcount}: recursively count the number of elements in the scene.
+\item \OSC{swidth}: gives the scene width from objects viewpoint (see the note about scene dimensions below).
+\item \OSC{sheight}: gives the scene height from objects viewpoint (see the note about scene dimensions below).
 \end{itemize}
 
 \example \\
@@ -2224,6 +2300,14 @@ Counting the elements in a scene:
 \sample{/ITL/scene get count;\\
 \hspace*{5mm}will give a message like the following as output: \\
 /ITL/scene count 200;
+}
+
+\note{About the scene dimensions} \\
+Similarly to any object, the scene width and height (set using the \OSC{width} and \OSC{height} messages) are expressed regarding its parent (i.e. the screen). The \OSC{swidth} and \OSC{sheight} messages give the scene dimensions as seen by embedded objects. They are provided for convenience since the returned values can be computed from the current width and height.
+
+\example \\
+Fill a scene with a rectangle:
+\sample{/ITL/scene/r set rect \$(/ITL/scene get swidth) \$(/ITL/scene get sheight);
 }
 
 %===============================
@@ -2248,8 +2332,8 @@ A message from a host cannot be forwarded to him to avoid direct loop.
 ITLMsgForward : ('forward' ( [1] | [2] ForwardDest +))
 \end{rail}
 \begin{itemize}
-\item 1) removes the set of forwarded destinations,
-\item 2) set a list of remote hosts for forwarding. 
+\item 1) removes the set of forward destinations,
+\item 2) set or extends the list of remote hosts for forwarding. 
 \end{itemize}
 
 \begin{rail}
@@ -3382,7 +3466,7 @@ specificEvent : 	  'pageCount'
 
 \begin{itemize}
 \item the \OSC{pageCount} event is supported by all the symbolic score components (\OSC{gmn(f)}, \OSC{gmnstream}, \OSC{musicxml(f)}). It is triggered when the page count of the score changes. It is mainly intended to manage variable scores like \OSC{gmnstream}.
-\item the \OSC{newElement} event is supported at scene level only and triggered when a new element is added to the scene.
+\item the \OSC{newElement} event is supported at scene and application (\OSC{/ITL}) level and triggered when a new element is added to the scene or when a new scene is created.
 \item the \OSC{endPaint} event is supported at scene level only and triggered after a scene has been painted.
 \item the \OSC{error} event is supported at application level and triggered when an error occurs while receiving messages. 
 Typically you can use of this event to open the log window (\OSC{/ITL/log show 1}) 
@@ -3406,7 +3490,8 @@ Watching an object \OSC{x} coordinate change:
 \sample{/ITL/scene/myObject watch x (/ITL/scene/msg set txt "myObject moved");}
 
 \note \\
-Watching the \OSC{newData} event is equivalent to watch the \OSC{set} attribute. However, the \OSC{newData} event is triggered only when the object state is changed.
+Watching the \OSC{newData} event is equivalent to watch the \OSC{set} attribute. However, the \OSC{newData} event is triggered only when the object state is changed.\\
+Although not an object attribute, the \OSC{del} message can be watched and triggered when an object is deleted.
 
 \warning \\
 With the event's generalization to any object attribute, a one tick delay has been introduced to all events. Thus the associated messages are not processed synchronously to the event but posted to be processed by the next time task. This delay has been introduced to avoid freezing the system in case of loops. However, it introduces also a pitfall in interaction design, when message based variables are used (see section \fullref{msgvar}): message based variables are evaluated at the event time while messages are processed by the next time task, thus the following messages won't produce the expected result:
@@ -3550,12 +3635,13 @@ They are set to \values{0} for the other events.
 \index{Interaction!variable!rdate}
 
 \begin{rail} 
-timeVar :  ('date' | 'rdate') (| ':'  mapname) (| '[n/d]') (| '\%' 'f')
+timeVar :  ('date' | 'rdate') (| ':'  mapname) (| '[n/d]') (| '\%' ('f' | 'a'))
 \end{rail}
 
 \begin{itemize}
-\item \OSC{\$date}: denotes the object date corresponding to the mouse pointer position at the time of the event. It is optionnaly followed by a colon and the name of the mapping to be used to compute the date. The \OSC{\$date} variable is replaced by its rational value (i.e. two integers values). The optional rational enclosed in brackets may be used to indicate a quantification: the date value is rounded to an integer count of the specified rational value. The optional \OSC{\%f} may be used to get the date delivered as a float value.
+\item \OSC{\$date}: denotes the object date corresponding to the mouse pointer position at the time of the event. It is optionally followed by a colon and the name of the mapping to be used to compute the date. The \OSC{\$date} variable is replaced by its rational value (i.e. two integers values). The optional rational enclosed in brackets may be used to indicate a quantification: the date value is rounded to an integer count of the specified rational value. The optional \OSC{\%f} may be used to get the date delivered as a float value.
 \item \OSC{\$rdate}: is similar to \OSC{\$date} but ignores the target current date: the date is relative to the object mapping only.
+\item \OSC{\%f} or \OSC{\%a}: request the date value as a float value or as an absolute time value. Absolute time is expressed in seconds, assuming a tempo value of 60 bpm. Actually, \$date\%a = \$date\%f / 4
 \end{itemize}
 
 \note{} \\

@@ -341,6 +341,23 @@ Various ways to set an object date.</p>
 <pre><code class="language-inscore">/ITL/scene/myObject clock;   
 /ITL/scene/myObject ddate '1/96';
 </code></pre>
+<h3 id="date-queries">Date queries</h3>
+<p>Several formats are available to query the date of an object:</p>
+<div class="rail">
+<span class="railtitle">dateQuery</span>
+<br /><script>
+ComplexDiagram(
+    Sequence ('get', Choice (0, 'date', 'date%f', 'date%a'))
+).addTo()
+
+</script>
+</div>
+
+<ul>
+<li><span class="OSC">date</span>: gives the object date as a rational value.</li>
+<li><span class="OSC">date%f</span>: gives the object date as a float value.</li>
+<li><span class="OSC">date%a</span>: gives the object date as an absolute time. It assumes that the tempo is 60bpm.</li>
+</ul>
 <h2 id="tempo">Tempo</h2>
 <p><a name="tempo"></a>
 The <span class="OSC">tempo</span> message is supported by all the score components. Its default value is 0. When non null, the date of an object is moved at the corresponding tempo (e.g. with a tempo = 60, the date move will be 1/4 - a quarter note - every second). Note that the date is refreshed at INScore time task rate.</p>

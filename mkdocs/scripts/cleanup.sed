@@ -27,4 +27,6 @@ s/%.*//
 ############## restore real '%' uses
 s/>___f</>%f</
 s/date___f/date%f/
+s/>___a</>%a</
+s/date___a/date%a/
 

@@ -374,7 +374,7 @@ when sending the message:</p>
 <pre><code class="language-inscore">/ITL hello;
 </code></pre>
 <p>the application will answer with the following message:</p>
-<pre><code class="language-inscore">/ITL 192.168.0.5  7000 7001 7003
+<pre><code class="language-inscore">/ITL 192.168.0.5  7000 7001 7002
 </code></pre>
 <p>when it runs on a host which IP address is <span class="OSC">192.168.0.5</span> using the default port numbers.</p>
 <h2 id="ports-management">Ports management</h2>
@@ -420,7 +420,7 @@ ComplexDiagram(
 </ul>
 <h2 id="application-level-queries">Application level queries</h2>
 <p><a name="ITLQuery"></a></p>
-<p>The application supports the <span class="OSC">get</span> messages for its parameters (see section <a href="../7-getsect#getsect">getsect</a>). In addition, it provides the following messages to query version numbers.</p>
+<p>The application supports the <span class="OSC">get</span> messages for its parameters (see section <a href="../7-getsect#getsect">getsect</a>). In addition, it provides the following messages to query version numbers  or IP address.</p>
 <p><a name="9-ITL-version"></a>
 <a name="9-ITL-guido-version"></a>
 <a name="9-ITL-musicxml-version"></a></p>
@@ -428,7 +428,7 @@ ComplexDiagram(
 <span class="railtitle">ITLRequest</span>
 <br /><script>
 ComplexDiagram(
-    Sequence ('get', Choice (0, 'version', 'guido-version', 'musicxml-version'))
+    Sequence ('get', Choice (0, 'version', 'guido-version', 'musicxml-version', 'IP'))
 ).addTo()
 
 </script>
@@ -438,6 +438,7 @@ ComplexDiagram(
 <li><span class="OSC">version</span>: version number request.</li>
 <li><span class="OSC">guido-version</span>: Guido engine version number request.</li>
 <li><span class="OSC">musicxml-version</span>: MusicXML and Guido converter version numbers request. Returns "not available" when the library is not found.</li>
+<li><span class="OSC">IP</span>: the host IP address.</li>
 </ul>
 <p><span class="example">Example</span> 
 Querying INScore version:</p>
@@ -555,7 +556,7 @@ ComplexDiagram(
 </ul>
 <h3 id="the-ssl-node">The 'ssl' node</h3>
 <p><a name="ITLSsl"></a></p>
-<p>The <span class="OSC">ssl</span> node is provided to manage certificates for encrypted communication with remote hosts. See section <a href="../11-forwarding#SSL">SSL</a> for more details and section <a href="../11-forwarding#Forwarding">Forwarding</a> for communication scheme.</p></div>
+<p>The <span class="OSC">ssl</span> node is provided to manage certificates for encrypted communication with remote hosts. See section <a href="../11-Forwarding#SSL">SSL</a> for more details and section <a href="../11-Forwarding#Forwarding">Forwarding</a> for communication scheme.</p></div>
             </div>
         </div>
 

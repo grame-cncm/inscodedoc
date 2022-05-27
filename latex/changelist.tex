@@ -3,6 +3,32 @@
 \newcommand{\inscoreweb}	{\hspace{4mm} \textsc{INScore Web Specific changes}}
 
 %===============================
+%:    Differences to version 1.31  (version 1.33)
+\sublevel{Version 1.33 vs version 1.31}
+\begin{itemize}
+\item new \OSC{errorAddress} message at application level to set the OSC address of error messages. See section \fullref{applmgmt}
+\item \OSC{forward} message behavior change: append addresses to destination list, broadcast addresses are explicitly rejected and trigger an error.
+\item extend \OSC{newElement} event to application level (\OSC{/ITL}). See section \fullref{typespecevents}
+\item add support for get 'date%a' query to get the absolute date in seconds (assumes the tempo is 60 bpm).
+\item add event handlers \OSC{portrait} and \OSC{landscape} for screen orientation change (triggered only by the web version)
+\item supports dynamic scene relative dimensions and positions. See section \fullref{srelpos} and \fullref{whcontrol}
+\item add \OSC{IP} query to application level (\OSC{/ITL}). See section \fullref{ITLQuery}
+\item add \OSC{text} query to \OSC{txt} objects.
+\item allows negative date messages.
+\item fix evaluation of args variables (\$1...\$n) in javascript run method
+\end{itemize}
+
+\inscoreweb
+\begin{itemize}
+\item new \OSC{init} message for audioInput objects, must be called before using the audio input.
+\item new \OSC{autoOff} message supported by \OSC{faust} objects to automatically set ui buttons to 0 after a 1 value.
+\item support \OSC{portrait} and \OSC{landscape} events.
+\item prevent default keydown event on window (avoid scrolling).
+\item fix media \OSC{end} event.
+\item fix concurrent \OSC{faustw} objects creation.
+\end{itemize}
+
+%===============================
 %:    Differences to version 1.28  (version 1.31)
 \sublevel{Version 1.31 vs version 1.28}
 \begin{itemize}

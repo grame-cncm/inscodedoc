@@ -39,6 +39,7 @@ s/\\op\\*/*op*/g
 s/\\textbf{\([^}]*\)}/**\1**/g
 s/\\textit{\([^}]*\)}/_\1_/g
 s/\\emph{\([^}]*\)}/**\1**/g
+s/\\inscoreweb/  **Web Specific Changes**/g
 
 s/\\note{\([^}]*\)}/<span class="note">Note: \1<\/span>/g
 s/\\note/<span class="note">Note:<\/span>/g
@@ -69,6 +70,8 @@ s/\\verb+\(.\)+/\1/g
 ############## transform % used in date variables
 s/>%f</>___f</
 s/date%f/date___f/
+s/>%a</>___a</
+s/date%a/date___a/
 
 ############## handle inline math
 s/\$\([^ $]*\)\$/\\(\1\\)/g

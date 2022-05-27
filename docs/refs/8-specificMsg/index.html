@@ -372,19 +372,37 @@ Setting a rectangle style :</p>
 </code></pre>
 <h2 id="width-and-height-control">Width and height control</h2>
 <p><a name="whcontrol"></a></p>
-<p><span class="OSC">width</span> and <span class="OSC">height</span> messages are accepted by the following components: <span class="OSC">rect | ellipse | arc | graph | fastgraph | grid | pianoroll | pianorollf</span>.</p>
+<p><span class="OSC">width</span> and <span class="OSC">height</span> messages are accepted by the almost all components except textual components (see section <a href="../6-setsect#textscore">textscore</a>).</p>
 <p><a name="8-specificMsg- width"></a>
 <a name="8-specificMsg- height"></a></p>
 <div class="rail">
 <span class="railtitle">widthMsg</span>
 <br /><script>
 ComplexDiagram(
-    Choice (0, Sequence ('width', NonTerminal('float32')), Sequence ('height', NonTerminal('float32')))
+    Choice (0, Sequence ('width', NonTerminal('dimension')), Sequence ('height', NonTerminal('dimension')))
 ).addTo()
 
 </script>
 </div>
 
+<div class="rail">
+<span class="railtitle">dimension</span>
+<br /><script>
+ComplexDiagram(
+    Sequence (NonTerminal('float32'), Choice (0, Comment ('1'), Sequence (Comment ('2'), Choice (0, 'sw', 'sh'))))
+).addTo()
+
+</script>
+</div>
+
+<ul>
+<li><span class="OSC">1</span>: a single float value express the dimension in the inscore coordinate system.</li>
+<li><span class="OSC">2</span>: a float value suffixed with <span class="OSC">sw</span> or <span class="OSC">sh</span> express a dimension relative to the actual scene dimension. <span class="OSC">sw</span> stands for 'scene width' and <span class="OSC">sh</span> for 'scene height'. Such dimension dynamically adjusted to any change in the scene dimension.</li>
+</ul>
+<p><span class="example">Example</span></p>
+<pre><code class="language-inscore">/ITL/scene/myObject width 1;   #  using the inscore coordinate system 
+/ITL/scene/myObject width 0.9sw;       #  using the scene width 
+</code></pre>
 <p><span class="note">Note:</span> 
 Querying the <span class="OSC">width</span> and <span class="OSC">height</span> of any object is always supported, provided that the object has been graphically rendered.</p>
 <h2 id="symbolic-score">Symbolic score</h2>
@@ -764,6 +782,11 @@ ComplexDiagram(
 <p><span class="example">Example</span> </p>
 <pre><code class="language-inscore">/ITL/scene/text set txt &quot;Hello&quot;;
 /ITL/scene/text write &quot;world!&quot;;
+</code></pre>
+<h3 id="getting-the-text">Getting the text</h3>
+<p>A specific <span class="OSC">text</span> query is provided to get the textual content.</p>
+<p><span class="example">Example</span></p>
+<pre><code class="language-inscore">/ITL/scene/text get text;
 </code></pre>
 <h2 id="the-debug-nodes">The 'debug' nodes</h2>
 <p><a name="debugnode"></a></p>

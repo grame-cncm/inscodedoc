@@ -39,6 +39,7 @@ s/\\op\\*/*op*/g
 s/\\textbf{\([^}]*\)}/**\1**/g
 s/\\textit{\([^}]*\)}/_\1_/g
 s/\\emph{\([^}]*\)}/**\1**/g
+s/\\inscoreweb/  **Web Specific Changes**/g
 
 s/\\note{\([^}]*\)}/<span class="note">Note: \1<\/span>/g
 s/\\note/<span class="note">Note:<\/span>/g

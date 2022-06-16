@@ -3,7 +3,7 @@ MAKE ?= make
 AWK  ?= awk
 PIP  ?= pip3
 CONFIG  ?= mkdocs.yml
-PORT    ?= 8000
+PORT    ?= 5000
 
 MKDIR 		:= .
 DOCSDIR		:= $(MKDIR)/docs

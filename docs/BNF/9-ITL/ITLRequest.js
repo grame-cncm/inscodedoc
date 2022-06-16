@@ -1,4 +1,4 @@
 ComplexDiagram(
-	Sequence ('get', Choice (0, 'version', 'guido-version', 'musicxml-version', 'IP'))
+	Sequence ('get', Choice (0, 'version', 'guido-version', 'musicxml-version', 'IP', 'scount'))
 ).addTo()
 

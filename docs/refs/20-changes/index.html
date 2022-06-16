@@ -266,7 +266,7 @@
             
             <li class="nav-item" data-level="1"><a href="#changes-list" class="nav-link">Changes list</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#version-133-vs-version-131" class="nav-link">Version 1.33 vs version 1.31</a>
+            <li class="nav-item" data-level="2"><a href="#version-134-vs-version-131" class="nav-link">Version 1.34 vs version 1.31</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -429,12 +429,14 @@
 
 <h1 id="changes-list">Changes list</h1>
 <p><a name="changes"></a></p>
-<h2 id="version-133-vs-version-131">Version 1.33 vs version 1.31</h2>
+<h2 id="version-134-vs-version-131">Version 1.34 vs version 1.31</h2>
 <ul>
-<li>new <span class="OSC">errorAddress</span> message at application level to set the OSC address of error messages. See section <a href="../9-ITL#applmgmt">applmgmt</a></li>
+<li>new <span class="OSC">scount</span> query at application level (<span class="OSC">/ITL</span>): gives the scenes count. See section <a href="../9-ITL#ITLQuery">ITLQuery</a></li>
+<li>new <span class="OSC">scenes</span> message at application level (<span class="OSC">/ITL</span>). See section <a href="../9-ITL#applmgmt">applmgmt</a></li>
+<li>new <span class="OSC">errorAddress</span> message at application level (<span class="OSC">/ITL</span>): set the OSC address of error messages. See section <a href="../9-ITL#applmgmt">applmgmt</a></li>
 <li><span class="OSC">forward</span> message behavior change: append addresses to destination list, broadcast addresses are explicitly rejected and trigger an error.</li>
 <li>extend <span class="OSC">newElement</span> event to application level (<span class="OSC">/ITL</span>). See section <a href="../17-interaction#typespecevents">typespecevents</a></li>
-<li>add support for get 'date%a' query to get the absolute date in seconds (assumes the tempo is 60 bpm).</li>
+<li>add support for get 'date%a' query: gives the absolute date in seconds (assumes the tempo is 60 bpm).</li>
 <li>add event handlers <span class="OSC">portrait</span> and <span class="OSC">landscape</span> for screen orientation change (triggered only by the web version)</li>
 <li>supports dynamic scene relative dimensions and positions. See section <a href="../3-common#srelpos">srelpos</a> and <a href="../8-specificMsg#whcontrol">whcontrol</a></li>
 <li>add <span class="OSC">IP</span> query to application level (<span class="OSC">/ITL</span>). See section <a href="../9-ITL#ITLQuery">ITLQuery</a></li>

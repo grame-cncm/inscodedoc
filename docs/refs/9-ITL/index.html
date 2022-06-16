@@ -300,7 +300,9 @@
 <p>Application messages are accepted by the static OSC address <span class="OSC">/ITL</span>. </p>
 <h2 id="application-management">Application management</h2>
 <p><a name="applmgmt"></a></p>
-<p><a name="9-ITL-rootPath"></a>
+<p><a name="9-ITL-quit"></a>
+<a name="9-ITL-scenes"></a>
+<a name="9-ITL-rootPath"></a>
 <a name="9-ITL-preprocess"></a>
 <a name="9-ITL-mouse"></a>
 <a name="9-ITL-defaultShow"></a>
@@ -317,7 +319,7 @@
 <span class="railtitle">ITLMsg</span>
 <br /><script>
 ComplexDiagram(
-    Choice (0, 'quit', Sequence ('rootPath', NonTerminal('path')), Sequence ('preprocess', NonTerminal('file')), Sequence ('mouse', Choice (0, 'show', 'hide')), Sequence ('defaultShow', NonTerminal('int32')), Sequence ('load', NonTerminal('filePath')), Sequence ('read', NonTerminal('buffer')), Sequence ('require', NonTerminal('float'), NonTerminal('oscMsg')), Sequence ('compatibility', NonTerminal('float')), Sequence ('errorAddress', NonTerminal('string')), Sequence ('time', NonTerminal('int32')), Sequence ('ticks', NonTerminal('int32')), Sequence ('rate', NonTerminal('int32')), 'hello', NonTerminal('forwardingMsg'))
+    Choice (0, 'quit', Sequence ('scenes', OneOrMore (NonTerminal('string'))), Sequence ('rootPath', NonTerminal('path')), Sequence ('preprocess', NonTerminal('file')), Sequence ('mouse', Choice (0, 'show', 'hide')), Sequence ('defaultShow', NonTerminal('int32')), Sequence ('load', NonTerminal('filePath')), Sequence ('read', NonTerminal('buffer')), Sequence ('require', NonTerminal('float'), NonTerminal('oscMsg')), Sequence ('compatibility', NonTerminal('float')), Sequence ('errorAddress', NonTerminal('string')), Sequence ('time', NonTerminal('int32')), Sequence ('ticks', NonTerminal('int32')), Sequence ('rate', NonTerminal('int32')), 'hello', NonTerminal('forwardingMsg'))
 ).addTo()
 
 </script>
@@ -326,6 +328,9 @@ ComplexDiagram(
 <ul>
 <li>
 <p><span class="OSC">quit</span>: requests the client application to quit.</p>
+</li>
+<li>
+<p><span class="OSC">scenes</span>: creates a set of scenes. Arguments is a list of scene names. </p>
 </li>
 <li>
 <p><span class="OSC">rootPath</span>: <strong>rootPath</strong> of an INScore application is the default path where the application reads or writes a file when a relative path is used for this file. The default value is the user home directory. Sending the <span class="OSC">rootPath</span> message without parameter resets the application path to its default value.</p>
@@ -427,12 +432,14 @@ ComplexDiagram(
 <p>The application supports the <span class="OSC">get</span> messages for its parameters (see section <a href="../7-getsect#getsect">getsect</a>). In addition, it provides the following messages to query version numbers  or IP address.</p>
 <p><a name="9-ITL-version"></a>
 <a name="9-ITL-guido-version"></a>
-<a name="9-ITL-musicxml-version"></a></p>
+<a name="9-ITL-musicxml-version"></a>
+<a name="9-ITL-IP"></a>
+<a name="9-ITL-scount"></a></p>
 <div class="rail">
 <span class="railtitle">ITLRequest</span>
 <br /><script>
 ComplexDiagram(
-    Sequence ('get', Choice (0, 'version', 'guido-version', 'musicxml-version', 'IP'))
+    Sequence ('get', Choice (0, 'version', 'guido-version', 'musicxml-version', 'IP', 'scount'))
 ).addTo()
 
 </script>
@@ -443,17 +450,18 @@ ComplexDiagram(
 <li><span class="OSC">guido-version</span>: Guido engine version number request.</li>
 <li><span class="OSC">musicxml-version</span>: MusicXML and Guido converter version numbers request. Returns "not available" when the library is not found.</li>
 <li><span class="OSC">IP</span>: the host IP address.</li>
+<li><span class="OSC">scount</span>: gives the count of scenes.</li>
 </ul>
 <p><span class="example">Example</span> 
 Querying INScore version:</p>
 <pre><code class="language-inscore">/ITL get version;
 </code></pre>
 <p>will give the following as output:</p>
-<pre><code class="language-inscore">/ITL version 1.00
+<pre><code class="language-inscore">/ITL version 1.34
 </code></pre>
 <h2 id="application-static-nodes">Application static nodes</h2>
 <p><a name="ITLStatic"></a></p>
-<p>The application level provides the static nodes - <span class="OSC">stats</span>, <span class="OSC">debug</span>, <span class="OSC">log</span> and <span class="OSC">ssl</span>, available at <span class="OSC">/ITL/stats</span> <span class="OSC">/ITL/debug</span>, <span class="OSC">/ITL/log</span> and <span class="OSC">/ITL/ssl</span>. </p>
+<p>The application level provides the static nodes <span class="OSC">stats</span>, <span class="OSC">debug</span>, <span class="OSC">log</span> and <span class="OSC">ssl</span>, available at <span class="OSC">/ITL/stats</span> <span class="OSC">/ITL/debug</span>, <span class="OSC">/ITL/log</span> and <span class="OSC">/ITL/ssl</span>. </p>
 <h3 id="the-stats-nodes">The 'stats' nodes</h3>
 <p><a name="ITLstat"></a></p>
 <p><a name="9-ITL-get"></a>

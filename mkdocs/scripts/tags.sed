@@ -16,6 +16,9 @@ s/\\}/}/
 s/\\{/{/
 s/\\ / /
 
+############## inscore version
+s/\\inscoreversion/1.34/
+
 ############## handle verbatim sections
 s/\\begin{verbatim}/\
 ~~~~~~~~~~~ inscore/

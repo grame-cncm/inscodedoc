@@ -3,13 +3,15 @@
 \newcommand{\inscoreweb}	{\hspace{4mm} \textsc{INScore Web Specific changes}}
 
 %===============================
-%:    Differences to version 1.31  (version 1.33)
-\sublevel{Version 1.33 vs version 1.31}
+%:    Differences to version 1.31  (version 1.34)
+\sublevel{Version 1.34 vs version 1.31}
 \begin{itemize}
-\item new \OSC{errorAddress} message at application level to set the OSC address of error messages. See section \fullref{applmgmt}
+\item new \OSC{scount} query at application level (\OSC{/ITL}): gives the scenes count. See section \fullref{ITLQuery}
+\item new \OSC{scenes} message at application level (\OSC{/ITL}). See section \fullref{applmgmt}
+\item new \OSC{errorAddress} message at application level (\OSC{/ITL}): set the OSC address of error messages. See section \fullref{applmgmt}
 \item \OSC{forward} message behavior change: append addresses to destination list, broadcast addresses are explicitly rejected and trigger an error.
 \item extend \OSC{newElement} event to application level (\OSC{/ITL}). See section \fullref{typespecevents}
-\item add support for get 'date%a' query to get the absolute date in seconds (assumes the tempo is 60 bpm).
+\item add support for get 'date\%a' query: gives the absolute date in seconds (assumes the tempo is 60 bpm).
 \item add event handlers \OSC{portrait} and \OSC{landscape} for screen orientation change (triggered only by the web version)
 \item supports dynamic scene relative dimensions and positions. See section \fullref{srelpos} and \fullref{whcontrol}
 \item add \OSC{IP} query to application level (\OSC{/ITL}). See section \fullref{ITLQuery}

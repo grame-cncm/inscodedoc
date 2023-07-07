@@ -1914,6 +1914,8 @@ Application messages are accepted by the static OSC address \OSC{/ITL}.
 \sublevel{Application management}
 \label{applmgmt}
 
+\index{ITL messages!quit}
+\index{ITL messages!scenes}
 \index{ITL messages!rootPath}
 \index{ITL messages!preprocess}
 \index{ITL messages!mouse}
@@ -1930,6 +1932,7 @@ Application messages are accepted by the static OSC address \OSC{/ITL}.
 
 \begin{rail}
 ITLMsg : 'quit' 
+		| ('scenes' (string +)) 
 		| ('rootPath' path) 
 		| ('preprocess' file) 
 		| ('mouse' ('show' | 'hide'))
@@ -1948,6 +1951,8 @@ ITLMsg : 'quit'
 
 \begin{itemize}
 \item \OSC{quit}: requests the client application to quit.
+
+\item \OSC{scenes}: creates a set of scenes. Arguments is a list of scene names. 
 
 \item \OSC{rootPath}: \emph{rootPath} of an INScore application is the default path where the application reads or writes a file when a relative path is used for this file. The default value is the user home directory. Sending the \OSC{rootPath} message without parameter resets the application path to its default value.
 
@@ -2042,9 +2047,11 @@ The application supports the \OSC{get} messages for its parameters (see section 
 \index{ITL messages!version}
 \index{ITL messages!guido-version}
 \index{ITL messages!musicxml-version}
+\index{ITL messages!IP}
+\index{ITL messages!scount}
 
 \begin{rail}
-ITLRequest : 'get'  ('version' | 'guido-version' | 'musicxml-version' | 'IP')
+ITLRequest : 'get'  ('version' | 'guido-version' | 'musicxml-version' | 'IP' | 'scount')
 \end{rail}
 
 \begin{itemize}
@@ -2052,6 +2059,7 @@ ITLRequest : 'get'  ('version' | 'guido-version' | 'musicxml-version' | 'IP')
 \item \OSC{guido-version}: Guido engine version number request.
 \item \OSC{musicxml-version}: MusicXML and Guido converter version numbers request. Returns "not available" when the library is not found.
 \item \OSC{IP}: the host IP address.
+\item \OSC{scount}: gives the count of scenes.
 
 \end{itemize}
 
@@ -2059,14 +2067,14 @@ ITLRequest : 'get'  ('version' | 'guido-version' | 'musicxml-version' | 'IP')
 Querying INScore version:
 \sample{/ITL get version;}
 \sampleindent will give the following as output:
-\sample{/ITL version 1.00}
+\sample{/ITL version \inscoreversion}
 
 %===============================
 %:  Application static nodes
 \sublevel{Application static nodes}
 \label{ITLStatic}
 
-The application level provides the static nodes - \OSC{stats}, \OSC{debug}, \OSC{log} and \OSC{ssl}, available at \OSC{/ITL/stats} \OSC{/ITL/debug}, \OSC{/ITL/log} and \OSC{/ITL/ssl}. 
+The application level provides the static nodes \OSC{stats}, \OSC{debug}, \OSC{log} and \OSC{ssl}, available at \OSC{/ITL/stats} \OSC{/ITL/debug}, \OSC{/ITL/log} and \OSC{/ITL/ssl}. 
 
 %--------------------------------
 \subsublevel{The 'stats' nodes}

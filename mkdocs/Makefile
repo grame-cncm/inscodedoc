@@ -3,7 +3,7 @@ MAKE ?= make
 AWK  ?= awk
 PIP  ?= pip3
 CONFIG  ?= mkdocs.yml
-PORT    ?= 8000
+PORT    ?= 5000
 
 MKDIR 		:= .
 DOCSDIR		:= $(MKDIR)/docs
@@ -39,6 +39,16 @@ web:
 	$(MAKE) -f Make.one SRCFILE=$(WEBSRC) OUTDIR=$(WEBDIR) INDEX=no
 
 
+pdf: $(DOCSDIR)/rsrc/INScoreLang.pdf $(DOCSDIR)/rsrc/INScoreMessages.pdf $(DOCSDIR)/rsrc/INScoreWeb.pdf
+
+$(DOCSDIR)/rsrc/INScoreLang.pdf: $(SRCDIR)/INScoreLang.pdf
+	cp $< $@
+$(DOCSDIR)/rsrc/INScoreMessages.pdf: $(SRCDIR)/OSCMsg.pdf
+	cp $< $@
+$(DOCSDIR)/rsrc/INScoreWeb.pdf: $(SRCDIR)/INScoreWeb/INScoreWeb.pdf
+	cp $< $@
+
+
 ####################################################################
 help:
 	@echo "======================================================="
@@ -58,6 +68,7 @@ test:
 
 ####################################################################
 build:
+	$(MAKE) pdf
 	cd $(MKDIR) && mkdocs build -f $(CONFIG)
 	git checkout ../docs/CNAME
 
